@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private ConstraintLayout drawLayout = null;
-
+    private SearchLayout searchLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,25 +54,9 @@ public class MainActivity extends AppCompatActivity
 
         drawLayout = findViewById(R.id.draw_layout);
 
-        // 리스트 뷰 어댑터 설정
-        //ArrayAdapter adapter = new ArrayAdapter(this, R.layout.search_main, listMenu);
 
-        // 리스트 뷰 적용
-        //ListView listView = (ListView)findViewById(R.id.listview1);
-        // listView.setAdapter(adapter);
 
-        // 검색창에서 텍스트 얻어옴
-        /*
-        EditText editText1 = (EditText)findViewById(R.id.search_editText1);
-        Button button = (Button)findViewById(R.id.search_Button1);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                  // String strText = editText1.getText().toString();
-            }
-        });
 
-        */
     }
 
 
@@ -118,10 +102,12 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_notice) {
-            // Handle the camera action
+            // 저장된 레이아웃이 있다면 뷰 삭제
             if(drawLayout != null){
                 drawLayout.removeAllViews();
             }
+
+            // 저장된 레이아웃이 없다면 뷰를 띄워준다.
             NoticeLayout noticeLayout = new NoticeLayout(this);
             drawLayout.addView(noticeLayout);
 

@@ -7,7 +7,6 @@ import android.widget.LinearLayout;
 import com.fate.user.fateutil.R;
 
 public class LevelLayout extends LinearLayout {
-    // 서번트 경험치 레이아웃
     public LevelLayout(Context context) {
         super(context);
 

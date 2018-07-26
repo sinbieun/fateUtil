@@ -7,7 +7,6 @@ import android.widget.LinearLayout;
 import com.fate.user.fateutil.R;
 
 public class NoticeLayout extends LinearLayout {
-    // 서번트 공지사항 레이아웃
     public NoticeLayout(Context context) {
         super(context);
 

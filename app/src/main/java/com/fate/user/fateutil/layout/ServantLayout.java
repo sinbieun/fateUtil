@@ -7,7 +7,6 @@ import android.widget.LinearLayout;
 import com.fate.user.fateutil.R;
 
 public class ServantLayout extends LinearLayout {
-    // 서번트 육성 레이아웃
     public ServantLayout(Context context) {
         super(context);
 

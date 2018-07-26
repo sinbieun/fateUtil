@@ -1,0 +1,674 @@
+[
+    {
+        "id": "1",
+        "servantClass": "실더",
+        "servantGrade": "3",
+        "servantName": "마슈 키리에라이트"
+    },
+    {
+        "id": "2",
+        "servantClass": "세이버",
+        "servantGrade": "5",
+        "servantName": "알트리아 펜드래곤"
+    },
+    {
+        "id": "3",
+        "servantClass": "세이버",
+        "servantGrade": "4",
+        "servantName": "알트리아 펜드래곤(얼터)"
+    },
+    {
+        "id": "4",
+        "servantClass": "세이버",
+        "servantGrade": "4",
+        "servantName": "알트리아 펜드래곤(릴리)"
+    },
+    {
+        "id": "5",
+        "servantClass": "세이버",
+        "servantGrade": "4",
+        "servantName": "네로 클라우디우스"
+    },
+    {
+        "id": "6",
+        "servantClass": "세이버",
+        "servantGrade": "4",
+        "servantName": "지크프리트"
+    },
+    {
+        "id": "7",
+        "servantClass": "세이버",
+        "servantGrade": "3",
+        "servantName": "가이우스 율리우스 카이사르"
+    },
+    {
+        "id": "8",
+        "servantClass": "세이버",
+        "servantGrade": "5",
+        "servantName": "알테라"
+    },
+    {
+        "id": "9",
+        "servantClass": "세이버",
+        "servantGrade": "3",
+        "servantName": "질 드 레"
+    },
+    {
+        "id": "10",
+        "servantClass": "세이버",
+        "servantGrade": "4",
+        "servantName": "슈발리에 데옹"
+    },
+    {
+        "id": "11",
+        "servantClass": "아처",
+        "servantGrade": "4",
+        "servantName": "에미야"
+    },
+    {
+        "id": "12",
+        "servantClass": "아처",
+        "servantGrade": "5",
+        "servantName": "길가메시"
+    },
+    {
+        "id": "13",
+        "servantClass": "아처",
+        "servantGrade": "3",
+        "servantName": "로빈 후드"
+    },
+    {
+        "id": "14",
+        "servantClass": "아처",
+        "servantGrade": "4",
+        "servantName": "아탈란테"
+    },
+    {
+        "id": "15",
+        "servantClass": "아처",
+        "servantGrade": "3",
+        "servantName": "에우리알레"
+    },
+    {
+        "id": "16",
+        "servantClass": "아처",
+        "servantGrade": "1",
+        "servantName": "아라쉬"
+    },
+    {
+        "id": "17",
+        "servantClass": "랜서",
+        "servantGrade": "3",
+        "servantName": "쿠 훌린"
+    },
+    {
+        "id": "18",
+        "servantClass": "랜서",
+        "servantGrade": "4",
+        "servantName": "엘리자베트 바토리"
+    },
+    {
+        "id": "19",
+        "servantClass": "랜서",
+        "servantGrade": "2",
+        "servantName": "무사시보 벤케이"
+    },
+    {
+        "id": "20",
+        "servantClass": "랜서",
+        "servantGrade": "3",
+        "servantName": "쿠 훌린(프로토타입)"
+    },
+    {
+        "id": "21",
+        "servantClass": "랜서",
+        "servantGrade": "2",
+        "servantName": "레오니다스 1세"
+    },
+    {
+        "id": "22",
+        "servantClass": "랜서",
+        "servantGrade": "3",
+        "servantName": "로물루스"
+    },
+    {
+        "id": "23",
+        "servantClass": "라이더",
+        "servantGrade": "3",
+        "servantName": "메두사"
+    },
+    {
+        "id": "24",
+        "servantClass": "라이더",
+        "servantGrade": "2",
+        "servantName": "게오르기우스"
+    },
+    {
+        "id": "25",
+        "servantClass": "라이더",
+        "servantGrade": "2",
+        "servantName": "에드워드 티치"
+    },
+    {
+        "id": "26",
+        "servantClass": "라이더",
+        "servantGrade": "3",
+        "servantName": "부디카"
+    },
+    {
+        "id": "27",
+        "servantClass": "라이더",
+        "servantGrade": "3",
+        "servantName": "우시와카마루"
+    },
+    {
+        "id": "28",
+        "servantClass": "라이더",
+        "servantGrade": "3",
+        "servantName": "알렉산더"
+    },
+    {
+        "id": "29",
+        "servantClass": "라이더",
+        "servantGrade": "4",
+        "servantName": "마리 앙투아네트"
+    },
+    {
+        "id": "30",
+        "servantClass": "라이더",
+        "servantGrade": "4",
+        "servantName": "마르타"
+    },
+    {
+        "id": "31",
+        "servantClass": "캐스터",
+        "servantGrade": "3",
+        "servantName": "메데이아"
+    },
+    {
+        "id": "32",
+        "servantClass": "캐스터",
+        "servantGrade": "3",
+        "servantName": "질 드 레"
+    },
+    {
+        "id": "33",
+        "servantClass": "캐스터",
+        "servantGrade": "2",
+        "servantName": "한스 크리스티안 안데르센"
+    },
+    {
+        "id": "34",
+        "servantClass": "캐스터",
+        "servantGrade": "2",
+        "servantName": "윌리엄 셰익스피어"
+    },
+    {
+        "id": "35",
+        "servantClass": "캐스터",
+        "servantGrade": "3",
+        "servantName": "메피스토펠레스"
+    },
+    {
+        "id": "36",
+        "servantClass": "캐스터",
+        "servantGrade": "1",
+        "servantName": "볼프강 아마데우스 모차르트"
+    },
+    {
+        "id": "37",
+        "servantClass": "캐스터",
+        "servantGrade": "5",
+        "servantName": "제갈공명(엘멜로이 2세)"
+    },
+    {
+        "id": "38",
+        "servantClass": "캐스터",
+        "servantGrade": "3",
+        "servantName": "쿠 훌린"
+    },
+    {
+        "id": "39",
+        "servantClass": "어쌔신",
+        "servantGrade": "1",
+        "servantName": "사사키 코지로"
+    },
+    {
+        "id": "40",
+        "servantClass": "어쌔신",
+        "servantGrade": "2",
+        "servantName": "주완의 하산"
+    },
+    {
+        "id": "41",
+        "servantClass": "어쌔신",
+        "servantGrade": "4",
+        "servantName": "스테노"
+    },
+    {
+        "id": "42",
+        "servantClass": "어쌔신",
+        "servantGrade": "3",
+        "servantName": "형가"
+    },
+    {
+        "id": "43",
+        "servantClass": "어쌔신",
+        "servantGrade": "2",
+        "servantName": "샤를-앙리 상송"
+    },
+    {
+        "id": "44",
+        "servantClass": "어쌔신",
+        "servantGrade": "2",
+        "servantName": "팬덤 오브 디 오페라"
+    },
+    {
+        "id": "45",
+        "servantClass": "어쌔신",
+        "servantGrade": "1",
+        "servantName": "마타 하리"
+    },
+    {
+        "id": "46",
+        "servantClass": "어쌔신",
+        "servantGrade": "4",
+        "servantName": "카밀라"
+    },
+    {
+        "id": "47",
+        "servantClass": "버서커",
+        "servantGrade": "4",
+        "servantName": "헤라클레스"
+    },
+    {
+        "id": "48",
+        "servantClass": "버서커",
+        "servantGrade": "4",
+        "servantName": "랜슬롯"
+    },
+    {
+        "id": "49",
+        "servantClass": "버서커",
+        "servantGrade": "3",
+        "servantName": "여포 봉선"
+    },
+    {
+        "id": "50",
+        "servantClass": "버서커",
+        "servantGrade": "1",
+        "servantName": "스파르타쿠스"
+    },
+    {
+        "id": "51",
+        "servantClass": "버서커",
+        "servantGrade": "5",
+        "servantName": "사카타 킨토키"
+    },
+    {
+        "id": "52",
+        "servantClass": "버서커",
+        "servantGrade": "5",
+        "servantName": "블라드 3세"
+    },
+    {
+        "id": "53",
+        "servantClass": "버서커",
+        "servantGrade": "1",
+        "servantName": "아스테리오스"
+    },
+    {
+        "id": "54",
+        "servantClass": "버서커",
+        "servantGrade": "2",
+        "servantName": "칼리굴라"
+    },
+    {
+        "id": "55",
+        "servantClass": "버서커",
+        "servantGrade": "3",
+        "servantName": "다리우스 3세"
+    },
+    {
+        "id": "56",
+        "servantClass": "버서커",
+        "servantGrade": "3",
+        "servantName": "키요히메"
+    },
+    {
+        "id": "57",
+        "servantClass": "버서커",
+        "servantGrade": "2",
+        "servantName": "에릭 블러드액스"
+    },
+    {
+        "id": "58",
+        "servantClass": "버서커",
+        "servantGrade": "4",
+        "servantName": "타마모캣"
+    },
+    {
+        "id": "59",
+        "servantClass": "룰러",
+        "servantGrade": "5",
+        "servantName": "잔 다르크"
+    },
+    {
+        "id": "60",
+        "servantClass": "아처",
+        "servantGrade": "5",
+        "servantName": "오리온"
+    },
+    {
+        "id": "61",
+        "servantClass": "캐스터",
+        "servantGrade": "4",
+        "servantName": "엘리자베트 바토리(할로윈)"
+    },
+    {
+        "id": "62",
+        "servantClass": "캐스터",
+        "servantGrade": "5",
+        "servantName": "타마모노마에"
+    },
+    {
+        "id": "63",
+        "servantClass": "아처",
+        "servantGrade": "3",
+        "servantName": "다윗"
+    },
+    {
+        "id": "64",
+        "servantClass": "랜서",
+        "servantGrade": "3",
+        "servantName": "헥토르"
+    },
+    {
+        "id": "65",
+        "servantClass": "라이더",
+        "servantGrade": "5",
+        "servantName": "프랜시스 드레이크"
+    },
+    {
+        "id": "66",
+        "servantClass": "라이더",
+        "servantGrade": "4",
+        "servantName": "앤 보니&메리 리드"
+    },
+    {
+        "id": "67",
+        "servantClass": "캐스터",
+        "servantGrade": "4",
+        "servantName": "메데이아(릴리)"
+    },
+    {
+        "id": "68",
+        "servantClass": "세이버",
+        "servantGrade": "5",
+        "servantName": "오키타 소지"
+    },
+    {
+        "id": "69",
+        "servantClass": "아처",
+        "servantGrade": "4",
+        "servantName": "오다 노부나가"
+    },
+    {
+        "id": "70",
+        "servantClass": "랜서",
+        "servantGrade": "5",
+        "servantName": "스카사하"
+    },
+    {
+        "id": "71",
+        "servantClass": "랜서",
+        "servantGrade": "5",
+        "servantName": "디어뮈드 오 디나"
+    },
+    {
+        "id": "72",
+        "servantClass": "세이버",
+        "servantGrade": "3",
+        "servantName": "퍼거스 막 로이"
+    },
+    {
+        "id": "73",
+        "servantClass": "라이더",
+        "servantGrade": "4",
+        "servantName": "알트리아 펜드래곤(산타 얼터)"
+    },
+    {
+        "id": "74",
+        "servantClass": "캐스터",
+        "servantGrade": "4",
+        "servantName": "너서리 라임"
+    },
+    {
+        "id": "75",
+        "servantClass": "어쌔신",
+        "servantGrade": "5",
+        "servantName": "잭 더 리퍼"
+    },
+    {
+        "id": "76",
+        "servantClass": "세이버",
+        "servantGrade": "5",
+        "servantName": "모드레드"
+    },
+    {
+        "id": "77",
+        "servantClass": "아처",
+        "servantGrade": "5",
+        "servantName": "니콜라 테슬라"
+    },
+    {
+        "id": "78",
+        "servantClass": "랜서",
+        "servantGrade": "4",
+        "servantName": "알트리아 펜드래곤(얼터)"
+    },
+    {
+        "id": "79",
+        "servantClass": "캐스터",
+        "servantGrade": "3",
+        "servantName": "반 호엔하임 파라켈수스"
+    },
+    {
+        "id": "80",
+        "servantClass": "캐스터",
+        "servantGrade": "3",
+        "servantName": "찰스 배비지"
+    },
+    {
+        "id": "81",
+        "servantClass": "어쌔신",
+        "servantGrade": "3",
+        "servantName": "헨리 지킬&하이드"
+    },
+    {
+        "id": "82",
+        "servantClass": "버서커",
+        "servantGrade": "4",
+        "servantName": "프랑켄슈타인"
+    },
+    {
+        "id": "83",
+        "servantClass": "그랜드 캐스터",
+        "servantGrade": "5",
+        "servantName": "솔로몬"
+    },
+    {
+        "id": "84",
+        "servantClass": "아처",
+        "servantGrade": "5",
+        "servantName": "아르주나"
+    },
+    {
+        "id": "85",
+        "servantClass": "랜서",
+        "servantGrade": "5",
+        "servantName": "카르나"
+    },
+    {
+        "id": "86",
+        "servantClass": "어쌔신",
+        "servantGrade": "5",
+        "servantName": "수수께끼의 히로인 X"
+    },
+    {
+        "id": "87",
+        "servantClass": "랜서",
+        "servantGrade": "4",
+        "servantName": "핀 막 쿨"
+    },
+    {
+        "id": "88",
+        "servantClass": "랜서",
+        "servantGrade": "4",
+        "servantName": "브륀힐드"
+    },
+    {
+        "id": "89",
+        "servantClass": "버서커",
+        "servantGrade": "4",
+        "servantName": "베오울프"
+    },
+    {
+        "id": "90",
+        "servantClass": "세이버",
+        "servantGrade": "5",
+        "servantName": "네로 클라우디우스(브라이드)"
+    },
+    {
+        "id": "91",
+        "servantClass": "세이버",
+        "servantGrade": "5",
+        "servantName": "료기 시키"
+    },
+    {
+        "id": "92",
+        "servantClass": "어쌔신",
+        "servantGrade": "4",
+        "servantName": "료기 시키"
+    },
+    {
+        "id": "93",
+        "servantClass": "룰러",
+        "servantGrade": "5",
+        "servantName": "아마쿠사 시로"
+    },
+    {
+        "id": "94",
+        "servantClass": "라이더",
+        "servantGrade": "4",
+        "servantName": "아스톨포"
+    },
+    {
+        "id": "95",
+        "servantClass": "아처",
+        "servantGrade": "3",
+        "servantName": "꼬마 길"
+    },
+    {
+        "id": "96",
+        "servantClass": "어벤저",
+        "servantGrade": "5",
+        "servantName": "에드몽 당테스"
+    },
+    {
+        "id": "97",
+        "servantClass": "버서커",
+        "servantGrade": "5",
+        "servantName": "나이팅게일"
+    },
+    {
+        "id": "98",
+        "servantClass": "버서커",
+        "servantGrade": "5",
+        "servantName": "쿠 훌린(얼터)"
+    },
+    {
+        "id": "99",
+        "servantClass": "라이더",
+        "servantGrade": "5",
+        "servantName": "여왕 메이브"
+    },
+    {
+        "id": "100",
+        "servantClass": "캐스터",
+        "servantGrade": "4",
+        "servantName": "엘레나 블라바츠키"
+    },
+    {
+        "id": "101",
+        "servantClass": "세이버",
+        "servantGrade": "4",
+        "servantName": "라마"
+    },
+    {
+        "id": "102",
+        "servantClass": "랜서",
+        "servantGrade": "4",
+        "servantName": "이서문"
+    },
+    {
+        "id": "103",
+        "servantClass": "캐스터",
+        "servantGrade": "4",
+        "servantName": "토마스 에디슨"
+    },
+    {
+        "id": "104",
+        "servantClass": "캐스터",
+        "servantGrade": "3",
+        "servantName": "제로니모"
+    },
+    {
+        "id": "105",
+        "servantClass": "아처",
+        "servantGrade": "3",
+        "servantName": "발리 더 키드"
+    },
+    {
+        "id": "106",
+        "servantClass": "어벤저",
+        "servantGrade": "5",
+        "servantName": "잔 다르크(얼터)"
+    },
+    {
+        "id": "107",
+        "servantClass": "어벤저",
+        "servantGrade": "0",
+        "servantName": "앙리 마유"
+    },
+    {
+        "id": "108",
+        "servantClass": "라이더",
+        "servantGrade": "5",
+        "servantName": "이스칸다르"
+    },
+    {
+        "id": "109",
+        "servantClass": "어쌔신",
+        "servantGrade": "4",
+        "servantName": "에미야"
+    },
+    {
+        "id": "110",
+        "servantClass": "어쌔신",
+        "servantGrade": "3",
+        "servantName": "백모의 하산"
+    },
+    {
+        "id": "111",
+        "servantClass": "캐스터",
+        "servantGrade": "4",
+        "servantName": "아이리스필(하늘의 옷)"
+    },
+    {
+        "id": "112",
+        "servantClass": "어쌔신",
+        "servantGrade": "5",
+        "servantName": "슈텐도지"
+    }
+]

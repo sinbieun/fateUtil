@@ -11,13 +11,13 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/search_editText1"
+            android:id="@+id/edit_Search"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:hint="이름을 입력하세요"/>
 
         <Button
-            android:id="@+id/search_Button1"
+            android:id="@+id/btn_Search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="검색"/>
