@@ -1,5 +1,6 @@
 package com.fate.user.fateutil;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -14,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.fate.user.fateutil.db.DbOpenHelper;
 import com.fate.user.fateutil.layout.LevelLayout;
 import com.fate.user.fateutil.layout.NoticeLayout;
 import com.fate.user.fateutil.layout.SearchLayout;
@@ -23,7 +25,9 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private ConstraintLayout drawLayout = null;
-    private SearchLayout searchLayout;
+    private SearchLayout searchLayout = null;
+    private DbOpenHelper mDBHelper;
+    private  SQLiteDatabase mDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +56,12 @@ public class MainActivity extends AppCompatActivity
         navigationView.setItemIconTintList(null);
         navigationView.setNavigationItemSelectedListener(this);
 
+        // 레이아웃 관리
         drawLayout = findViewById(R.id.draw_layout);
+        searchLayout = new SearchLayout(this);
 
+        // 서번트 데이터 삽입
+        searchLayout.servantParser();
 
 
 
@@ -118,7 +126,6 @@ public class MainActivity extends AppCompatActivity
                 drawLayout.removeAllViews();
             }
 
-            SearchLayout searchLayout = new SearchLayout(this);
             drawLayout.addView(searchLayout);
         }
 
