@@ -2,6 +2,7 @@ package com.fate.user.fateutil.db;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -14,11 +15,13 @@ import java.util.List;
 
 public class DbOpenHelper{
 
+
     private static final String DATABASE_NAME = "fatedb.db";
     private static final int DATABASE_VERSION = 1;
     private DatabaseHelper mDBHelper;
     public static SQLiteDatabase mDB;
     private Context mContext;
+
 
 
     private class DatabaseHelper extends SQLiteOpenHelper{
@@ -62,9 +65,9 @@ public class DbOpenHelper{
 
         mDB = mDBHelper.getWritableDatabase();
 
-        // ContentValues values = new ContentValues();
         ContentValues cv = new ContentValues();
         cv.put(DataBase.ServantTable.ID, contact.getId());
+        cv.put(DataBase.ServantTable.SERVANT_ICON, contact.getServantIcon());
         cv.put(DataBase.ServantTable.SERVANT_NAME, contact.getServantName());
         cv.put(DataBase.ServantTable.SERVANT_CLASS, contact.getServantClass());
         cv.put(DataBase.ServantTable.SERVANT_GRADE, contact.getServantGrade());
@@ -79,6 +82,7 @@ public class DbOpenHelper{
 
         Cursor cursor = mDB.query(DataBase.ServantTable.TABLE_NAME,
                 new String[] {DataBase.ServantTable.ID,
+                        DataBase.ServantTable.SERVANT_ICON,
                         DataBase.ServantTable.SERVANT_NAME,
                         DataBase.ServantTable.SERVANT_CLASS,
                         DataBase.ServantTable.SERVANT_GRADE},
@@ -88,18 +92,19 @@ public class DbOpenHelper{
         if(cursor != null)
             cursor.moveToFirst();
 
+        // id, 서번트 아이콘 경로, 서번트 이름, 서번트 클래스, 서번트 등급
         ServantContact contact = new ServantContact(
                 Integer.parseInt(cursor.getString(0)),
                 cursor.getString(1),
                 cursor.getString(2),
-                Integer.parseInt(cursor.getString(3)));
+                cursor.getString(3),
+                Integer.parseInt(cursor.getString(4)));
 
         return contact;
     }
 
     // 모든 서번트 리스트 가져오기
     public List<ServantContact> getAllServantContacts(){
-
         List<ServantContact> contactServantList = new ArrayList<ServantContact>();
 
         // 검색 쿼리 저장
@@ -114,9 +119,10 @@ public class DbOpenHelper{
             do{
                 ServantContact contact = new ServantContact();
                 contact.setId(Integer.parseInt(cursor.getString(0)));
-                contact.setServantName(cursor.getString(1));
-                contact.setServantClass(cursor.getString(2));
-                contact.setServantGrade(Integer.parseInt(cursor.getString(3)));
+                contact.setServantIcon(cursor.getString(1));
+                contact.setServantName(cursor.getString(2));
+                contact.setServantClass(cursor.getString(3));
+                contact.setServantGrade(Integer.parseInt(cursor.getString(4)));
 
                 contactServantList.add(contact);
 
@@ -129,9 +135,9 @@ public class DbOpenHelper{
     public int updateServantContact(ServantContact contact){
         mDB = mDBHelper.getWritableDatabase();
 
-        ContentValues values = new ContentValues();
         ContentValues cv = new ContentValues();
         cv.put(DataBase.ServantTable.ID, contact.getId());
+        cv.put(DataBase.ServantTable.SERVANT_ICON, contact.getServantIcon());
         cv.put(DataBase.ServantTable.SERVANT_NAME, contact.getServantName());
         cv.put(DataBase.ServantTable.SERVANT_CLASS, contact.getServantClass());
         cv.put(DataBase.ServantTable.SERVANT_GRADE, contact.getServantGrade());
@@ -146,6 +152,8 @@ public class DbOpenHelper{
         mDB.delete(DataBase.ServantTable.TABLE_NAME, DataBase.ServantTable.ID + "= ? ", new String[]{String.valueOf(contact.getId())});
         mDB.close();
     }
+
+
 }
 
 

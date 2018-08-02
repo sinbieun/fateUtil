@@ -3,6 +3,7 @@ package com.fate.user.fateutil.layout;
 import android.content.Context;
 import android.content.res.AssetManager;
 
+import android.graphics.drawable.Drawable;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -20,6 +21,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
@@ -77,7 +79,6 @@ public class SearchLayout extends LinearLayout {
 
         });
 
-        // 4. 버튼을 누르면 검색어에 따라 검색을 다르게 한다.
         btnSearch.setOnClickListener(new OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -95,7 +96,6 @@ public class SearchLayout extends LinearLayout {
     // Asset에 저장된 Servant.json을 읽어오는 함수
     public String loadServantFromAsset(){
         String json = null;
-
         try {
             InputStream is = assetManager.open("databases/Servant.json");
             int size = is.available();
@@ -113,8 +113,9 @@ public class SearchLayout extends LinearLayout {
     // JSON 읽어 온 파일을 파싱하고 DB에 넣어주는 함수
     public void servantParser(){
 
-        // Servant.json 파일을 String에 저장
+        // 1. Servant.json 파일을 String에 저장
         String jsonString = loadServantFromAsset();
+
         // 트랜잭션 시작
         mDbOpenHelper.open();
         mDbOpenHelper.mDB.beginTransaction();
@@ -124,24 +125,26 @@ public class SearchLayout extends LinearLayout {
             for(int i = 0; i < jarray.length(); i++){
                 JSONObject jObject = jarray.getJSONObject(i);
 
-                // 아이디, 서번트 이름, 서번트 클래스, 서번트 등급
+                // 2. 아이디, 서번트 아이콘 서번트 이름, 서번트 클래스, 서번트 등급에 따라 저장
                 int id = jObject.getInt("id");
+                String servantIcon = jObject.getString("servantIcon");
                 String servantName = jObject.getString("servantName");
                 String servantClass = jObject.getString("servantClass");
                 int servantGrade = jObject.getInt("servantGrade");
 
-                // db에 삽입
-                mDbOpenHelper.addServantContact(new ServantContact(id, servantName,servantClass,servantGrade));
+                // 3. db가 비어 있으면 db에 서번트 리스트 삽입(문제있음)
+                //if(mDbOpenHelper.getAllServantContacts() == null)
+                mDbOpenHelper.addServantContact(new ServantContact(id, servantIcon, servantName,servantClass,servantGrade));
 
             }
-            // 완전히 종료되면 실행
+            // 4. 완전히 종료되면 실행
             mDbOpenHelper.mDB.setTransactionSuccessful();
         } catch (JSONException e){
             e.printStackTrace();
         } finally {
-            // 삽입 끝나면 트랜잭션 종료
+            // 5. 삽입 끝나면 트랜잭션 종료
             mDbOpenHelper.mDB.endTransaction();
-            // DB 닫기
+            // 6. DB 닫기
             mDbOpenHelper.close();
         }
 

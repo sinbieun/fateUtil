@@ -1,14 +1,25 @@
 package com.fate.user.fateutil.db;
 
+import android.graphics.drawable.Drawable;
+
 public class ServantContact {
 
     int id;
+    String servantIcon;
     String servantName;
     String servantClass;
     int servantGrade;
 
     public ServantContact(){
 
+    }
+
+    public ServantContact(int id, String servantIcon, String servantName, String servantClass, int servantGrade){
+        this.id = id;
+        this.servantIcon = servantIcon;
+        this.servantName = servantName;
+        this.servantClass = servantClass;
+        this.servantGrade = servantGrade;
     }
 
     public ServantContact(int id, String servantName, String servantClass, int servantGrade){
@@ -31,6 +42,15 @@ public class ServantContact {
     public void setId(int id){
         this.id = id;
     }
+
+    public String getServantIcon() {
+        return this.servantIcon;
+    }
+
+    public void setServantIcon(String servantIcon){
+        this.servantIcon = servantIcon;
+    }
+
 
     public String getServantName(){
         return this.servantName;

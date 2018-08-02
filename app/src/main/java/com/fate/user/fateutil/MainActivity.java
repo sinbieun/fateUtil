@@ -14,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.fate.user.fateutil.db.DbOpenHelper;
 import com.fate.user.fateutil.layout.LevelLayout;
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity
     private SearchLayout searchLayout = null;
     private DbOpenHelper mDBHelper;
     private  SQLiteDatabase mDB;
+    private ImageView imgView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,11 +62,8 @@ public class MainActivity extends AppCompatActivity
         drawLayout = findViewById(R.id.draw_layout);
         searchLayout = new SearchLayout(this);
 
-        // 서번트 데이터 삽입
+        // 데이터 삽입
         searchLayout.servantParser();
-
-
-
     }
 
 

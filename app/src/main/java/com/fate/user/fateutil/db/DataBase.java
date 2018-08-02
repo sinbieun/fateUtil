@@ -14,6 +14,7 @@ public class DataBase {
     public static final class ServantTable implements BaseColumns {
         public static final String TABLE_NAME = "servant";
         public static final String ID = "id";
+        public static final String SERVANT_ICON = "servantIcon";
         public static final String SERVANT_NAME = "servantName";
         public static final String SERVANT_CLASS = "servantClass";
         public static final String SERVANT_GRADE = "servantGrade";
@@ -24,6 +25,7 @@ public class DataBase {
             "create table " +
                     ServantTable.TABLE_NAME + " (" +
                     ServantTable.ID + " integer primary key not null, " +
+                    ServantTable.SERVANT_ICON + " text not null ," +
                     ServantTable.SERVANT_NAME  + " text not null , " +
                     ServantTable.SERVANT_CLASS + " text not null , " +
                     ServantTable.SERVANT_GRADE + " integer not null" + ");";
