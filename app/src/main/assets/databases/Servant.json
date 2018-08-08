@@ -3,784 +3,784 @@
         "id": "1",
         "servantClass": "실더",
         "servantGrade": "3",
-        "servantIcon": "@drawable/servant_1",
+        "servantIcon": "servant_1",
         "servantName": "마슈 키리에라이트"
     },
     {
         "id": "2",
         "servantClass": "세이버",
         "servantGrade": "5",
-        "servantIcon": "@drawable/servant_2",
+        "servantIcon": "servant_2",
         "servantName": "알트리아 펜드래곤"
     },
     {
         "id": "3",
         "servantClass": "세이버",
         "servantGrade": "4",
-        "servantIcon": "@drawable/servant_3",
+        "servantIcon": "servant_3",
         "servantName": "알트리아 펜드래곤(얼터)"
     },
     {
         "id": "4",
         "servantClass": "세이버",
         "servantGrade": "4",
-        "servantIcon": "@drawable/servant_4",
+        "servantIcon": "servant_4",
         "servantName": "알트리아 펜드래곤(릴리)"
     },
     {
         "id": "5",
         "servantClass": "세이버",
         "servantGrade": "4",
-        "servantIcon": "@drawable/servant_5",
+        "servantIcon": "servant_5",
         "servantName": "네로 클라우디우스"
     },
     {
         "id": "6",
         "servantClass": "세이버",
         "servantGrade": "4",
-        "servantIcon": "@drawable/servant_6",
+        "servantIcon": "servant_6",
         "servantName": "지크프리트"
     },
     {
         "id": "7",
         "servantClass": "세이버",
         "servantGrade": "3",
-        "servantIcon": "@drawable/servant_7",
+        "servantIcon": "servant_7",
         "servantName": "가이우스 율리우스 카이사르"
     },
     {
         "id": "8",
         "servantClass": "세이버",
         "servantGrade": "5",
-        "servantIcon": "@drawable/servant_8",
+        "servantIcon": "servant_8",
         "servantName": "알테라"
     },
     {
         "id": "9",
         "servantClass": "세이버",
         "servantGrade": "3",
-        "servantIcon": "@drawable/servant_9",
+        "servantIcon": "servant_9",
         "servantName": "질 드 레"
     },
     {
         "id": "10",
         "servantClass": "세이버",
         "servantGrade": "4",
-        "servantIcon": "@drawable/servant_10",
+        "servantIcon": "servant_10",
         "servantName": "슈발리에 데옹"
     },
     {
         "id": "11",
         "servantClass": "아처",
         "servantGrade": "4",
-        "servantIcon": "@drawable/servant_11",
+        "servantIcon": "servant_11",
         "servantName": "에미야"
     },
     {
         "id": "12",
         "servantClass": "아처",
         "servantGrade": "5",
-        "servantIcon": "@drawable/servant_12",
+        "servantIcon": "servant_12",
         "servantName": "길가메시"
     },
     {
         "id": "13",
         "servantClass": "아처",
         "servantGrade": "3",
-        "servantIcon": "@drawable/servant_13",
+        "servantIcon": "servant_13",
         "servantName": "로빈 후드"
     },
     {
         "id": "14",
         "servantClass": "아처",
         "servantGrade": "4",
-        "servantIcon": "@drawable/servant_14",
+        "servantIcon": "servant_14",
         "servantName": "아탈란테"
     },
     {
         "id": "15",
         "servantClass": "아처",
         "servantGrade": "3",
-        "servantIcon": "@drawable/servant_15",
+        "servantIcon": "servant_15",
         "servantName": "에우리알레"
     },
     {
         "id": "16",
         "servantClass": "아처",
         "servantGrade": "1",
-        "servantIcon": "@drawable/servant_16",
+        "servantIcon": "servant_16",
         "servantName": "아라쉬"
     },
     {
         "id": "17",
         "servantClass": "랜서",
         "servantGrade": "3",
-        "servantIcon": "@drawable/servant_17",
+        "servantIcon": "servant_17",
         "servantName": "쿠 훌린"
     },
     {
         "id": "18",
         "servantClass": "랜서",
         "servantGrade": "4",
-        "servantIcon": "@drawable/servant_18",
+        "servantIcon": "servant_18",
         "servantName": "엘리자베트 바토리"
     },
     {
         "id": "19",
         "servantClass": "랜서",
         "servantGrade": "2",
-        "servantIcon": "@drawable/servant_19",
+        "servantIcon": "servant_19",
         "servantName": "무사시보 벤케이"
     },
     {
         "id": "20",
         "servantClass": "랜서",
         "servantGrade": "3",
-        "servantIcon": "@drawable/servant_20",
+        "servantIcon": "servant_20",
         "servantName": "쿠 훌린(프로토타입)"
     },
     {
         "id": "21",
         "servantClass": "랜서",
         "servantGrade": "2",
-        "servantIcon": "@drawable/servant_21",
+        "servantIcon": "servant_21",
         "servantName": "레오니다스 1세"
     },
     {
         "id": "22",
         "servantClass": "랜서",
         "servantGrade": "3",
-        "servantIcon": "@drawable/servant_22",
+        "servantIcon": "servant_22",
         "servantName": "로물루스"
     },
     {
         "id": "23",
         "servantClass": "라이더",
         "servantGrade": "3",
-        "servantIcon": "@drawable/servant_23",
+        "servantIcon": "servant_23",
         "servantName": "메두사"
     },
     {
         "id": "24",
         "servantClass": "라이더",
         "servantGrade": "2",
-        "servantIcon": "@drawable/servant_24",
+        "servantIcon": "servant_24",
         "servantName": "게오르기우스"
     },
     {
         "id": "25",
         "servantClass": "라이더",
         "servantGrade": "2",
-        "servantIcon": "@drawable/servant_25",
+        "servantIcon": "servant_25",
         "servantName": "에드워드 티치"
     },
     {
         "id": "26",
         "servantClass": "라이더",
         "servantGrade": "3",
-        "servantIcon": "@drawable/servant_26",
+        "servantIcon": "servant_26",
         "servantName": "부디카"
     },
     {
         "id": "27",
         "servantClass": "라이더",
         "servantGrade": "3",
-        "servantIcon": "@drawable/servant_27",
+        "servantIcon": "servant_27",
         "servantName": "우시와카마루"
     },
     {
         "id": "28",
         "servantClass": "라이더",
         "servantGrade": "3",
-        "servantIcon": "@drawable/servant_28",
+        "servantIcon": "servant_28",
         "servantName": "알렉산더"
     },
     {
         "id": "29",
         "servantClass": "라이더",
         "servantGrade": "4",
-        "servantIcon": "@drawable/servant_29",
+        "servantIcon": "servant_29",
         "servantName": "마리 앙투아네트"
     },
     {
         "id": "30",
         "servantClass": "라이더",
         "servantGrade": "4",
-        "servantIcon": "@drawable/servant_30",
+        "servantIcon": "servant_30",
         "servantName": "마르타"
     },
     {
         "id": "31",
         "servantClass": "캐스터",
         "servantGrade": "3",
-        "servantIcon": "@drawable/servant_31",
+        "servantIcon": "servant_31",
         "servantName": "메데이아"
     },
     {
         "id": "32",
         "servantClass": "캐스터",
         "servantGrade": "3",
-        "servantIcon": "@drawable/servant_32",
+        "servantIcon": "servant_32",
         "servantName": "질 드 레"
     },
     {
         "id": "33",
         "servantClass": "캐스터",
         "servantGrade": "2",
-        "servantIcon": "@drawable/servant_33",
+        "servantIcon": "servant_33",
         "servantName": "한스 크리스티안 안데르센"
     },
     {
         "id": "34",
         "servantClass": "캐스터",
         "servantGrade": "2",
-        "servantIcon": "@drawable/servant_34",
+        "servantIcon": "servant_34",
         "servantName": "윌리엄 셰익스피어"
     },
     {
         "id": "35",
         "servantClass": "캐스터",
         "servantGrade": "3",
-        "servantIcon": "@drawable/servant_35",
+        "servantIcon": "servant_35",
         "servantName": "메피스토펠레스"
     },
     {
         "id": "36",
         "servantClass": "캐스터",
         "servantGrade": "1",
-        "servantIcon": "@drawable/servant_36",
+        "servantIcon": "servant_36",
         "servantName": "볼프강 아마데우스 모차르트"
     },
     {
         "id": "37",
         "servantClass": "캐스터",
         "servantGrade": "5",
-        "servantIcon": "@drawable/servant_37",
+        "servantIcon": "servant_37",
         "servantName": "제갈공명(엘멜로이 2세)"
     },
     {
         "id": "38",
         "servantClass": "캐스터",
         "servantGrade": "3",
-        "servantIcon": "@drawable/servant_38",
+        "servantIcon": "servant_38",
         "servantName": "쿠 훌린"
     },
     {
         "id": "39",
         "servantClass": "어쌔신",
         "servantGrade": "1",
-        "servantIcon": "@drawable/servant_39",
+        "servantIcon": "servant_39",
         "servantName": "사사키 코지로"
     },
     {
         "id": "40",
         "servantClass": "어쌔신",
         "servantGrade": "2",
-        "servantIcon": "@drawable/servant_40",
+        "servantIcon": "servant_40",
         "servantName": "주완의 하산"
     },
     {
         "id": "41",
         "servantClass": "어쌔신",
         "servantGrade": "4",
-        "servantIcon": "@drawable/servant_41",
+        "servantIcon": "servant_41",
         "servantName": "스테노"
     },
     {
         "id": "42",
         "servantClass": "어쌔신",
         "servantGrade": "3",
-        "servantIcon": "@drawable/servant_42",
+        "servantIcon": "servant_42",
         "servantName": "형가"
     },
     {
         "id": "43",
         "servantClass": "어쌔신",
         "servantGrade": "2",
-        "servantIcon": "@drawable/servant_43",
+        "servantIcon": "servant_43",
         "servantName": "샤를-앙리 상송"
     },
     {
         "id": "44",
         "servantClass": "어쌔신",
         "servantGrade": "2",
-        "servantIcon": "@drawable/servant_44",
+        "servantIcon": "servant_44",
         "servantName": "팬덤 오브 디 오페라"
     },
     {
         "id": "45",
         "servantClass": "어쌔신",
         "servantGrade": "1",
-        "servantIcon": "@drawable/servant_45",
+        "servantIcon": "servant_45",
         "servantName": "마타 하리"
     },
     {
         "id": "46",
         "servantClass": "어쌔신",
         "servantGrade": "4",
-        "servantIcon": "@drawable/servant_46",
+        "servantIcon": "servant_46",
         "servantName": "카밀라"
     },
     {
         "id": "47",
         "servantClass": "버서커",
         "servantGrade": "4",
-        "servantIcon": "@drawable/servant_47",
+        "servantIcon": "servant_47",
         "servantName": "헤라클레스"
     },
     {
         "id": "48",
         "servantClass": "버서커",
         "servantGrade": "4",
-        "servantIcon": "@drawable/servant_48",
+        "servantIcon": "servant_48",
         "servantName": "랜슬롯"
     },
     {
         "id": "49",
         "servantClass": "버서커",
         "servantGrade": "3",
-        "servantIcon": "@drawable/servant_49",
+        "servantIcon": "servant_49",
         "servantName": "여포 봉선"
     },
     {
         "id": "50",
         "servantClass": "버서커",
         "servantGrade": "1",
-        "servantIcon": "@drawable/servant_50",
+        "servantIcon": "servant_50",
         "servantName": "스파르타쿠스"
     },
     {
         "id": "51",
         "servantClass": "버서커",
         "servantGrade": "5",
-        "servantIcon": "@drawable/servant_51",
+        "servantIcon": "servant_51",
         "servantName": "사카타 킨토키"
     },
     {
         "id": "52",
         "servantClass": "버서커",
         "servantGrade": "5",
-        "servantIcon": "@drawable/servant_52",
+        "servantIcon": "servant_52",
         "servantName": "블라드 3세"
     },
     {
         "id": "53",
         "servantClass": "버서커",
         "servantGrade": "1",
-        "servantIcon": "@drawable/servant_53",
+        "servantIcon": "servant_53",
         "servantName": "아스테리오스"
     },
     {
         "id": "54",
         "servantClass": "버서커",
         "servantGrade": "2",
-        "servantIcon": "@drawable/servant_54",
+        "servantIcon": "servant_54",
         "servantName": "칼리굴라"
     },
     {
         "id": "55",
         "servantClass": "버서커",
         "servantGrade": "3",
-        "servantIcon": "@drawable/servant_55",
+        "servantIcon": "servant_55",
         "servantName": "다리우스 3세"
     },
     {
         "id": "56",
         "servantClass": "버서커",
         "servantGrade": "3",
-        "servantIcon": "@drawable/servant_56",
+        "servantIcon": "servant_56",
         "servantName": "키요히메"
     },
     {
         "id": "57",
         "servantClass": "버서커",
         "servantGrade": "2",
-        "servantIcon": "@drawable/servant_57",
+        "servantIcon": "servant_57",
         "servantName": "에릭 블러드액스"
     },
     {
         "id": "58",
         "servantClass": "버서커",
         "servantGrade": "4",
-        "servantIcon": "@drawable/servant_58",
+        "servantIcon": "servant_58",
         "servantName": "타마모캣"
     },
     {
         "id": "59",
         "servantClass": "룰러",
         "servantGrade": "5",
-        "servantIcon": "@drawable/servant_59",
+        "servantIcon": "servant_59",
         "servantName": "잔 다르크"
     },
     {
         "id": "60",
         "servantClass": "아처",
         "servantGrade": "5",
-        "servantIcon": "@drawable/servant_60",
+        "servantIcon": "servant_60",
         "servantName": "오리온"
     },
     {
         "id": "61",
         "servantClass": "캐스터",
         "servantGrade": "4",
-        "servantIcon": "@drawable/servant_61",
+        "servantIcon": "servant_61",
         "servantName": "엘리자베트 바토리(할로윈)"
     },
     {
         "id": "62",
         "servantClass": "캐스터",
         "servantGrade": "5",
-        "servantIcon": "@drawable/servant_62",
+        "servantIcon": "servant_62",
         "servantName": "타마모노마에"
     },
     {
         "id": "63",
         "servantClass": "아처",
         "servantGrade": "3",
-        "servantIcon": "@drawable/servant_63",
+        "servantIcon": "servant_63",
         "servantName": "다윗"
     },
     {
         "id": "64",
         "servantClass": "랜서",
         "servantGrade": "3",
-        "servantIcon": "@drawable/servant_64",
+        "servantIcon": "servant_64",
         "servantName": "헥토르"
     },
     {
         "id": "65",
         "servantClass": "라이더",
         "servantGrade": "5",
-        "servantIcon": "@drawable/servant_65",
+        "servantIcon": "servant_65",
         "servantName": "프랜시스 드레이크"
     },
     {
         "id": "66",
         "servantClass": "라이더",
         "servantGrade": "4",
-        "servantIcon": "@drawable/servant_66",
+        "servantIcon": "servant_66",
         "servantName": "앤 보니&메리 리드"
     },
     {
         "id": "67",
         "servantClass": "캐스터",
         "servantGrade": "4",
-        "servantIcon": "@drawable/servant_67",
+        "servantIcon": "servant_67",
         "servantName": "메데이아(릴리)"
     },
     {
         "id": "68",
         "servantClass": "세이버",
         "servantGrade": "5",
-        "servantIcon": "@drawable/servant_68",
+        "servantIcon": "servant_68",
         "servantName": "오키타 소지"
     },
     {
         "id": "69",
         "servantClass": "아처",
         "servantGrade": "4",
-        "servantIcon": "@drawable/servant_69",
+        "servantIcon": "servant_69",
         "servantName": "오다 노부나가"
     },
     {
         "id": "70",
         "servantClass": "랜서",
         "servantGrade": "5",
-        "servantIcon": "@drawable/servant_70",
+        "servantIcon": "servant_70",
         "servantName": "스카사하"
     },
     {
         "id": "71",
         "servantClass": "랜서",
         "servantGrade": "5",
-        "servantIcon": "@drawable/servant_71",
+        "servantIcon": "servant_71",
         "servantName": "디어뮈드 오 디나"
     },
     {
         "id": "72",
         "servantClass": "세이버",
         "servantGrade": "3",
-        "servantIcon": "@drawable/servant_72",
+        "servantIcon": "servant_72",
         "servantName": "퍼거스 막 로이"
     },
     {
         "id": "73",
         "servantClass": "라이더",
         "servantGrade": "4",
-        "servantIcon": "@drawable/servant_73",
+        "servantIcon": "servant_73",
         "servantName": "알트리아 펜드래곤(산타 얼터)"
     },
     {
         "id": "74",
         "servantClass": "캐스터",
         "servantGrade": "4",
-        "servantIcon": "@drawable/servant_74",
+        "servantIcon": "servant_74",
         "servantName": "너서리 라임"
     },
     {
         "id": "75",
         "servantClass": "어쌔신",
         "servantGrade": "5",
-        "servantIcon": "@drawable/servant_75",
+        "servantIcon": "servant_75",
         "servantName": "잭 더 리퍼"
     },
     {
         "id": "76",
         "servantClass": "세이버",
         "servantGrade": "5",
-        "servantIcon": "@drawable/servant_76",
+        "servantIcon": "servant_76",
         "servantName": "모드레드"
     },
     {
         "id": "77",
         "servantClass": "아처",
         "servantGrade": "5",
-        "servantIcon": "@drawable/servant_77",
+        "servantIcon": "servant_77",
         "servantName": "니콜라 테슬라"
     },
     {
         "id": "78",
         "servantClass": "랜서",
         "servantGrade": "4",
-        "servantIcon": "@drawable/servant_78",
+        "servantIcon": "servant_78",
         "servantName": "알트리아 펜드래곤(얼터)"
     },
     {
         "id": "79",
         "servantClass": "캐스터",
         "servantGrade": "3",
-        "servantIcon": "@drawable/servant_79",
+        "servantIcon": "servant_79",
         "servantName": "반 호엔하임 파라켈수스"
     },
     {
         "id": "80",
         "servantClass": "캐스터",
         "servantGrade": "3",
-        "servantIcon": "@drawable/servant_80",
+        "servantIcon": "servant_80",
         "servantName": "찰스 배비지"
     },
     {
         "id": "81",
         "servantClass": "어쌔신",
         "servantGrade": "3",
-        "servantIcon": "@drawable/servant_81",
+        "servantIcon": "servant_81",
         "servantName": "헨리 지킬&하이드"
     },
     {
         "id": "82",
         "servantClass": "버서커",
         "servantGrade": "4",
-        "servantIcon": "@drawable/servant_82",
+        "servantIcon": "servant_82",
         "servantName": "프랑켄슈타인"
     },
     {
         "id": "83",
         "servantClass": "그랜드 캐스터",
         "servantGrade": "5",
-        "servantIcon": "@drawable/servant_83",
+        "servantIcon": "servant_83",
         "servantName": "솔로몬"
     },
     {
         "id": "84",
         "servantClass": "아처",
         "servantGrade": "5",
-        "servantIcon": "@drawable/servant_84",
+        "servantIcon": "servant_84",
         "servantName": "아르주나"
     },
     {
         "id": "85",
         "servantClass": "랜서",
         "servantGrade": "5",
-        "servantIcon": "@drawable/servant_85",
+        "servantIcon": "servant_85",
         "servantName": "카르나"
     },
     {
         "id": "86",
         "servantClass": "어쌔신",
         "servantGrade": "5",
-        "servantIcon": "@drawable/servant_86",
+        "servantIcon": "servant_86",
         "servantName": "수수께끼의 히로인 X"
     },
     {
         "id": "87",
         "servantClass": "랜서",
         "servantGrade": "4",
-        "servantIcon": "@drawable/servant_87",
+        "servantIcon": "servant_87",
         "servantName": "핀 막 쿨"
     },
     {
         "id": "88",
         "servantClass": "랜서",
         "servantGrade": "4",
-        "servantIcon": "@drawable/servant_88",
+        "servantIcon": "servant_88",
         "servantName": "브륀힐드"
     },
     {
         "id": "89",
         "servantClass": "버서커",
         "servantGrade": "4",
-        "servantIcon": "@drawable/servant_89",
+        "servantIcon": "servant_89",
         "servantName": "베오울프"
     },
     {
         "id": "90",
         "servantClass": "세이버",
         "servantGrade": "5",
-        "servantIcon": "@drawable/servant_90",
+        "servantIcon": "servant_90",
         "servantName": "네로 클라우디우스(브라이드)"
     },
     {
         "id": "91",
         "servantClass": "세이버",
         "servantGrade": "5",
-        "servantIcon": "@drawable/servant_91",
+        "servantIcon": "servant_91",
         "servantName": "료기 시키"
     },
     {
         "id": "92",
         "servantClass": "어쌔신",
         "servantGrade": "4",
-        "servantIcon": "@drawable/servant_92",
+        "servantIcon": "servant_92",
         "servantName": "료기 시키"
     },
     {
         "id": "93",
         "servantClass": "룰러",
         "servantGrade": "5",
-        "servantIcon": "@drawable/servant_93",
+        "servantIcon": "servant_93",
         "servantName": "아마쿠사 시로"
     },
     {
         "id": "94",
         "servantClass": "라이더",
         "servantGrade": "4",
-        "servantIcon": "@drawable/servant_94",
+        "servantIcon": "servant_94",
         "servantName": "아스톨포"
     },
     {
         "id": "95",
         "servantClass": "아처",
         "servantGrade": "3",
-        "servantIcon": "@drawable/servant_95",
+        "servantIcon": "servant_95",
         "servantName": "꼬마 길"
     },
     {
         "id": "96",
         "servantClass": "어벤저",
         "servantGrade": "5",
-        "servantIcon": "@drawable/servant_96",
+        "servantIcon": "servant_96",
         "servantName": "에드몽 당테스"
     },
     {
         "id": "97",
         "servantClass": "버서커",
         "servantGrade": "5",
-        "servantIcon": "@drawable/servant_97",
+        "servantIcon": "servant_97",
         "servantName": "나이팅게일"
     },
     {
         "id": "98",
         "servantClass": "버서커",
         "servantGrade": "5",
-        "servantIcon": "@drawable/servant_98",
+        "servantIcon": "servant_98",
         "servantName": "쿠 훌린(얼터)"
     },
     {
         "id": "99",
         "servantClass": "라이더",
         "servantGrade": "5",
-        "servantIcon": "@drawable/servant_99",
+        "servantIcon": "servant_99",
         "servantName": "여왕 메이브"
     },
     {
         "id": "100",
         "servantClass": "캐스터",
         "servantGrade": "4",
-        "servantIcon": "@drawable/servant_100",
+        "servantIcon": "servant_100",
         "servantName": "엘레나 블라바츠키"
     },
     {
         "id": "101",
         "servantClass": "세이버",
         "servantGrade": "4",
-        "servantIcon": "@drawable/servant_101",
+        "servantIcon": "servant_101",
         "servantName": "라마"
     },
     {
         "id": "102",
         "servantClass": "랜서",
         "servantGrade": "4",
-        "servantIcon": "@drawable/servant_102",
+        "servantIcon": "servant_102",
         "servantName": "이서문"
     },
     {
         "id": "103",
         "servantClass": "캐스터",
         "servantGrade": "4",
-        "servantIcon": "@drawable/servant_103",
+        "servantIcon": "servant_103",
         "servantName": "토마스 에디슨"
     },
     {
         "id": "104",
         "servantClass": "캐스터",
         "servantGrade": "3",
-        "servantIcon": "@drawable/servant_104",
+        "servantIcon": "servant_104",
         "servantName": "제로니모"
     },
     {
         "id": "105",
         "servantClass": "아처",
         "servantGrade": "3",
-        "servantIcon": "@drawable/servant_105",
+        "servantIcon": "servant_105",
         "servantName": "발리 더 키드"
     },
     {
         "id": "106",
         "servantClass": "어벤저",
         "servantGrade": "5",
-        "servantIcon": "@drawable/servant_106",
+        "servantIcon": "servant_106",
         "servantName": "잔 다르크(얼터)"
     },
     {
         "id": "107",
         "servantClass": "어벤저",
         "servantGrade": "0",
-        "servantIcon": "@drawable/servant_107",
+        "servantIcon": "servant_107",
         "servantName": "앙리 마유"
     },
     {
         "id": "108",
         "servantClass": "라이더",
         "servantGrade": "5",
-        "servantIcon": "@drawable/servant_108",
+        "servantIcon": "servant_108",
         "servantName": "이스칸다르"
     },
     {
         "id": "109",
         "servantClass": "어쌔신",
         "servantGrade": "4",
-        "servantIcon": "@drawable/servant_109",
+        "servantIcon": "servant_109",
         "servantName": "에미야"
     },
     {
         "id": "110",
         "servantClass": "어쌔신",
         "servantGrade": "3",
-        "servantIcon": "@drawable/servant_110",
+        "servantIcon": "servant_110",
         "servantName": "백모의 하산"
     },
     {
         "id": "111",
         "servantClass": "캐스터",
         "servantGrade": "4",
-        "servantIcon": "@drawable/servant_111",
+        "servantIcon": "servant_111",
         "servantName": "아이리스필(하늘의 옷)"
     },
     {
         "id": "112",
         "servantClass": "어쌔신",
         "servantGrade": "5",
-        "servantIcon": "@drawable/servant_112",
+        "servantIcon": "servant_112",
         "servantName": "슈텐도지"
     }
 ]

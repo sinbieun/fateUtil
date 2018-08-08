@@ -1,0 +1,502 @@
+[
+    {
+        "id": "1",
+        "servant_exp": "100",
+        "servant_level": "1"
+    },
+    {
+        "id": "2",
+        "servant_exp": "400",
+        "servant_level": "2"
+    },
+    {
+        "id": "3",
+        "servant_exp": "1000",
+        "servant_level": "3"
+    },
+    {
+        "id": "4",
+        "servant_exp": "2000",
+        "servant_level": "4"
+    },
+    {
+        "id": "5",
+        "servant_exp": "3500",
+        "servant_level": "5"
+    },
+    {
+        "id": "6",
+        "servant_exp": "5600",
+        "servant_level": "6"
+    },
+    {
+        "id": "7",
+        "servant_exp": "8400",
+        "servant_level": "7"
+    },
+    {
+        "id": "8",
+        "servant_exp": "12000",
+        "servant_level": "8"
+    },
+    {
+        "id": "9",
+        "servant_exp": "16500",
+        "servant_level": "9"
+    },
+    {
+        "id": "10",
+        "servant_exp": "22000",
+        "servant_level": "10"
+    },
+    {
+        "id": "11",
+        "servant_exp": "28600",
+        "servant_level": "11"
+    },
+    {
+        "id": "12",
+        "servant_exp": "36400",
+        "servant_level": "12"
+    },
+    {
+        "id": "13",
+        "servant_exp": "45500",
+        "servant_level": "13"
+    },
+    {
+        "id": "14",
+        "servant_exp": "56000",
+        "servant_level": "14"
+    },
+    {
+        "id": "15",
+        "servant_exp": "68000",
+        "servant_level": "15"
+    },
+    {
+        "id": "16",
+        "servant_exp": "81600",
+        "servant_level": "16"
+    },
+    {
+        "id": "17",
+        "servant_exp": "96900",
+        "servant_level": "17"
+    },
+    {
+        "id": "18",
+        "servant_exp": "114000",
+        "servant_level": "18"
+    },
+    {
+        "id": "19",
+        "servant_exp": "133000",
+        "servant_level": "19"
+    },
+    {
+        "id": "20",
+        "servant_exp": "154000",
+        "servant_level": "20"
+    },
+    {
+        "id": "21",
+        "servant_exp": "177100",
+        "servant_level": "21"
+    },
+    {
+        "id": "22",
+        "servant_exp": "202400",
+        "servant_level": "22"
+    },
+    {
+        "id": "23",
+        "servant_exp": "230000",
+        "servant_level": "23"
+    },
+    {
+        "id": "24",
+        "servant_exp": "260000",
+        "servant_level": "24"
+    },
+    {
+        "id": "25",
+        "servant_exp": "292500",
+        "servant_level": "25"
+    },
+    {
+        "id": "26",
+        "servant_exp": "327600",
+        "servant_level": "26"
+    },
+    {
+        "id": "27",
+        "servant_exp": "365400",
+        "servant_level": "27"
+    },
+    {
+        "id": "28",
+        "servant_exp": "406000",
+        "servant_level": "28"
+    },
+    {
+        "id": "29",
+        "servant_exp": "449500",
+        "servant_level": "29"
+    },
+    {
+        "id": "30",
+        "servant_exp": "496000",
+        "servant_level": "30"
+    },
+    {
+        "id": "31",
+        "servant_exp": "545600",
+        "servant_level": "31"
+    },
+    {
+        "id": "32",
+        "servant_exp": "598400",
+        "servant_level": "32"
+    },
+    {
+        "id": "33",
+        "servant_exp": "654500",
+        "servant_level": "33"
+    },
+    {
+        "id": "34",
+        "servant_exp": "714000",
+        "servant_level": "34"
+    },
+    {
+        "id": "35",
+        "servant_exp": "777000",
+        "servant_level": "35"
+    },
+    {
+        "id": "36",
+        "servant_exp": "843600",
+        "servant_level": "36"
+    },
+    {
+        "id": "37",
+        "servant_exp": "913900",
+        "servant_level": "37"
+    },
+    {
+        "id": "38",
+        "servant_exp": "988000",
+        "servant_level": "38"
+    },
+    {
+        "id": "39",
+        "servant_exp": "1066000",
+        "servant_level": "39"
+    },
+    {
+        "id": "40",
+        "servant_exp": "1148000",
+        "servant_level": "40"
+    },
+    {
+        "id": "41",
+        "servant_exp": "1234100",
+        "servant_level": "41"
+    },
+    {
+        "id": "42",
+        "servant_exp": "1324400",
+        "servant_level": "42"
+    },
+    {
+        "id": "43",
+        "servant_exp": "1419000",
+        "servant_level": "43"
+    },
+    {
+        "id": "44",
+        "servant_exp": "1518000",
+        "servant_level": "44"
+    },
+    {
+        "id": "45",
+        "servant_exp": "1621500",
+        "servant_level": "45"
+    },
+    {
+        "id": "46",
+        "servant_exp": "1729600",
+        "servant_level": "46"
+    },
+    {
+        "id": "47",
+        "servant_exp": "1842400",
+        "servant_level": "47"
+    },
+    {
+        "id": "48",
+        "servant_exp": "1960000",
+        "servant_level": "48"
+    },
+    {
+        "id": "49",
+        "servant_exp": "2082500",
+        "servant_level": "49"
+    },
+    {
+        "id": "50",
+        "servant_exp": "2210000",
+        "servant_level": "50"
+    },
+    {
+        "id": "51",
+        "servant_exp": "2342600",
+        "servant_level": "51"
+    },
+    {
+        "id": "52",
+        "servant_exp": "2480400",
+        "servant_level": "52"
+    },
+    {
+        "id": "53",
+        "servant_exp": "2623500",
+        "servant_level": "53"
+    },
+    {
+        "id": "54",
+        "servant_exp": "2772000",
+        "servant_level": "54"
+    },
+    {
+        "id": "55",
+        "servant_exp": "2926000",
+        "servant_level": "55"
+    },
+    {
+        "id": "56",
+        "servant_exp": "3085600",
+        "servant_level": "56"
+    },
+    {
+        "id": "57",
+        "servant_exp": "3250900",
+        "servant_level": "57"
+    },
+    {
+        "id": "58",
+        "servant_exp": "3422000",
+        "servant_level": "58"
+    },
+    {
+        "id": "59",
+        "servant_exp": "3599000",
+        "servant_level": "59"
+    },
+    {
+        "id": "60",
+        "servant_exp": "3782000",
+        "servant_level": "60"
+    },
+    {
+        "id": "61",
+        "servant_exp": "3971100",
+        "servant_level": "61"
+    },
+    {
+        "id": "62",
+        "servant_exp": "4166400",
+        "servant_level": "62"
+    },
+    {
+        "id": "63",
+        "servant_exp": "4368000",
+        "servant_level": "63"
+    },
+    {
+        "id": "64",
+        "servant_exp": "4576000",
+        "servant_level": "64"
+    },
+    {
+        "id": "65",
+        "servant_exp": "4790500",
+        "servant_level": "65"
+    },
+    {
+        "id": "66",
+        "servant_exp": "5011600",
+        "servant_level": "66"
+    },
+    {
+        "id": "67",
+        "servant_exp": "5239400",
+        "servant_level": "67"
+    },
+    {
+        "id": "68",
+        "servant_exp": "5474000",
+        "servant_level": "68"
+    },
+    {
+        "id": "69",
+        "servant_exp": "5715500",
+        "servant_level": "69"
+    },
+    {
+        "id": "70",
+        "servant_exp": "5964000",
+        "servant_level": "70"
+    },
+    {
+        "id": "71",
+        "servant_exp": "6219600",
+        "servant_level": "71"
+    },
+    {
+        "id": "72",
+        "servant_exp": "6482400",
+        "servant_level": "72"
+    },
+    {
+        "id": "73",
+        "servant_exp": "6752500",
+        "servant_level": "73"
+    },
+    {
+        "id": "74",
+        "servant_exp": "7030000",
+        "servant_level": "74"
+    },
+    {
+        "id": "75",
+        "servant_exp": "7315000",
+        "servant_level": "75"
+    },
+    {
+        "id": "76",
+        "servant_exp": "7607600",
+        "servant_level": "76"
+    },
+    {
+        "id": "77",
+        "servant_exp": "7907900",
+        "servant_level": "77"
+    },
+    {
+        "id": "78",
+        "servant_exp": "8216000",
+        "servant_level": "78"
+    },
+    {
+        "id": "79",
+        "servant_exp": "8532000",
+        "servant_level": "79"
+    },
+    {
+        "id": "80",
+        "servant_exp": "8856000",
+        "servant_level": "80"
+    },
+    {
+        "id": "81",
+        "servant_exp": "9188100",
+        "servant_level": "81"
+    },
+    {
+        "id": "82",
+        "servant_exp": "9528400",
+        "servant_level": "82"
+    },
+    {
+        "id": "83",
+        "servant_exp": "9877000",
+        "servant_level": "83"
+    },
+    {
+        "id": "84",
+        "servant_exp": "10234000",
+        "servant_level": "84"
+    },
+    {
+        "id": "85",
+        "servant_exp": "10599500",
+        "servant_level": "85"
+    },
+    {
+        "id": "86",
+        "servant_exp": "10973600",
+        "servant_level": "86"
+    },
+    {
+        "id": "87",
+        "servant_exp": "11356400",
+        "servant_level": "87"
+    },
+    {
+        "id": "88",
+        "servant_exp": "11748000",
+        "servant_level": "88"
+    },
+    {
+        "id": "89",
+        "servant_exp": "12148500",
+        "servant_level": "89"
+    },
+    {
+        "id": "90",
+        "servant_exp": "12558000",
+        "servant_level": "90"
+    },
+    {
+        "id": "91",
+        "servant_exp": "12976600",
+        "servant_level": "91"
+    },
+    {
+        "id": "92",
+        "servant_exp": "13404400",
+        "servant_level": "92"
+    },
+    {
+        "id": "93",
+        "servant_exp": "13841500",
+        "servant_level": "93"
+    },
+    {
+        "id": "94",
+        "servant_exp": "14288000",
+        "servant_level": "94"
+    },
+    {
+        "id": "95",
+        "servant_exp": "14744000",
+        "servant_level": "95"
+    },
+    {
+        "id": "96",
+        "servant_exp": "15209600",
+        "servant_level": "96"
+    },
+    {
+        "id": "97",
+        "servant_exp": "15684900",
+        "servant_level": "97"
+    },
+    {
+        "id": "98",
+        "servant_exp": "16170000",
+        "servant_level": "98"
+    },
+    {
+        "id": "99",
+        "servant_exp": "16665000",
+        "servant_level": "99"
+    },
+    {
+        "id": "100",
+        "servant_exp": "17170000",
+        "servant_level": "100"
+    }
+]

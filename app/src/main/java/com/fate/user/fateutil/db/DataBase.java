@@ -10,7 +10,7 @@ public class DataBase {
 
     private DataBase(){};
 
-    // 서번트 테이블 변수 생성
+    // 1. 서번트 테이블 변수 생성
     public static final class ServantTable implements BaseColumns {
         public static final String TABLE_NAME = "servant";
         public static final String ID = "id";
@@ -20,7 +20,15 @@ public class DataBase {
         public static final String SERVANT_GRADE = "servantGrade";
     }
 
-    // 서번트 테이블 생성
+    // 2. 경험치 테이블 변수 생성
+    public static final class ExpTable implements BaseColumns {
+        public static final String TABLE_NAME = "exp";
+        public static final String ID = "id";
+        public static final String SERVANT_LEVEL = "servantLevel";
+        public static final String SERVANT_EXP = "servantExp";
+    }
+
+    // 서번트 테이블 생성문
     public static final String SQL_CREATE_SERVANT =
             "create table " +
                     ServantTable.TABLE_NAME + " (" +
@@ -30,8 +38,18 @@ public class DataBase {
                     ServantTable.SERVANT_CLASS + " text not null , " +
                     ServantTable.SERVANT_GRADE + " integer not null" + ");";
 
-    // 서번트 테이블 삭제
+    // 서번트 검색문
+    public static final String SQL_SELECT_SERVANT = "SELECT " + ServantTable.SERVANT_NAME +"FROM WHERE = " + ServantTable.ID;
+
+    // 서번트 경험치 테이블 생성
+    public static final String SQL_CREATE_EXP =
+            "create table " +
+                    ExpTable.TABLE_NAME + " (" +
+                    ExpTable.ID + " integer not null , " +
+                    ExpTable.SERVANT_LEVEL + " integer not null ," +
+                    ExpTable.SERVANT_EXP  + " integer not null" + ");";
+
     // 서번트 테이블 검색
-    public static final String SQL_SELECT_SERVANT = "SELECT Servant FROM WHERE = " + ServantTable.SERVANT_NAME;
+    public static final String SQL_SELECT_EXP = "SELECT " + ExpTable.SERVANT_EXP +"FROM WHERE = " + ExpTable.SERVANT_LEVEL;
 
 }

@@ -7,7 +7,6 @@
 
 
     <!--ListView에 띄워줄 레이아웃 (서번트아이콘, 서번트 이름, 서번트 클래스 서번트 등급-->
-
     <LinearLayout
         android:id="@+id/label"
         android:layout_width="match_parent"

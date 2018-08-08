@@ -92,7 +92,7 @@ public class SearchAdapter extends BaseAdapter {
         }
 
         // 뷰 홀더에 넣어준다.
-        viewHolder.servantIcon.setImageResource(context.getResources().getIdentifier(servant.getServantIcon(), "drawable",packName));
+        viewHolder.servantIcon.setImageResource(context.getResources().getIdentifier("@drawable/" + servant.getServantIcon(), "drawable",packName));
         viewHolder.servantName.setText(servant.getServantName());
         viewHolder.servantClass.setText(servant.getServantClass());
         viewHolder.servantGrade.setText(String.valueOf(servant.getServantGrade()));

@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity
 
     private ConstraintLayout drawLayout = null;
     private SearchLayout searchLayout = null;
+    private LevelLayout levelLayout = null;
     private DbOpenHelper mDBHelper;
     private  SQLiteDatabase mDB;
     private ImageView imgView;
@@ -61,9 +62,14 @@ public class MainActivity extends AppCompatActivity
         // 레이아웃 관리
         drawLayout = findViewById(R.id.draw_layout);
         searchLayout = new SearchLayout(this);
+        levelLayout = new LevelLayout(this);
 
-        // 데이터 삽입
+        // 서번트 데이터 삽입
         searchLayout.servantParser();
+        // 경험치 테이블 삽입
+        levelLayout.expParser();
+
+
     }
 
 
