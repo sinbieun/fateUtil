@@ -65,64 +65,6 @@ public class LevelLayout extends LinearLayout {
         });
 
     }
-    // JSON 파일을 읽어 온다.
-    public String loadServantFromAsset(){
-        String json = null;
-        try {
-            InputStream is = assetManager.open("databases/Exp.json");
-            int size = is.available();
-            byte [] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-            json = new String(buffer, "UTF-8");
-        } catch (IOException e){
-            e.printStackTrace();
-            return  null;
-        }
-        return json;
-    }
-
-    // JSON 읽어 온 파일을 파싱하고 DB에 넣어주는 함수
-    public void expParser(){
-        // 0. 테이블에 값이 있으면 저장하지 않는다.
-        mDbOpenHelper.open();
-        if(mDbOpenHelper.checkData(DataBase.ExpTable.TABLE_NAME) == true){
-            mDbOpenHelper.close();
-            return ;
-        }
-
-        // 1. Servant.json 파일을 String에 저장
-        String jsonString = loadServantFromAsset();
-        // 트랜잭션 시작
-        mDbOpenHelper.mDB.beginTransaction();
-        try{
-            JSONArray jarray = new JSONArray(jsonString);
-
-            for(int i = 0; i < jarray.length(); i++){
-                JSONObject jObject = jarray.getJSONObject(i);
-
-                // 2. 아이디, 서번트 아이콘 서번트 이름, 서번트 클래스, 서번트 등급에 따라 저장
-                int id = jObject.getInt("id");
-                int servantLevel = jObject.getInt("servant_level");
-                int servantExp = jObject.getInt("servant_exp");
-
-                // 3. db가 비어 있으면 db에 서번트 리스트 삽입(문제있음)
-                //if(mDbOpenHelper.getAllServantContacts() == null)
-                mDbOpenHelper.addExpContact(new ExpContact(id, servantLevel, servantExp));
-
-            }
-            // 4. 완전히 종료되면 실행
-            mDbOpenHelper.mDB.setTransactionSuccessful();
-        } catch (JSONException e){
-            e.printStackTrace();
-        } finally {
-            // 5. 삽입 끝나면 트랜잭션 종료
-            mDbOpenHelper.mDB.endTransaction();
-            // 6. DB 닫기
-            mDbOpenHelper.close();
-        }
-
-    }
 
     public void Calculate (){
 
@@ -132,7 +74,7 @@ public class LevelLayout extends LinearLayout {
         int currentLv = 0; // 현재의 레벨
         int targetLv = 0; // 목표의 레벨
 
-        int sumExp;
+        int sumExp; // 전체 경험치 - 1 한 값
 
         // 경험치 카드 경험치
         final int fourClassExp = 32400; // 4성 클래스
@@ -154,12 +96,15 @@ public class LevelLayout extends LinearLayout {
         targetLv = Integer.parseInt(targetLevel.getText().toString());
 
         // 경험치 입력칸이 공백이면 계산하지 않음
-        if(currentLevel.getText().toString().length() == 0 || targetLevel.getText().toString().length() == 0){
+        if((currentLevel.getText().toString().length() == 0) || (targetLevel.getText().toString().length() == 0)){
             Toast.makeText(getContext(),"다시 입력해주십시오", Toast.LENGTH_SHORT).show();
         }
         // 목표 레벨이 현재 레벨보다 작거나 같을 때
         else if (currentLv >= targetLv){
-            Toast.makeText(getContext(),"목표레벨이 현재 레벨보다 작습니다.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(),"목표레벨이 현재 레벨보다 작거나 같습니다.", Toast.LENGTH_SHORT).show();
+        }
+        else if ((currentLv > 100) || (targetLv > 100)){
+            Toast.makeText(getContext(),"최대 레벨은 100입니다", Toast.LENGTH_SHORT).show();
         }
         // 공백이 아니면 계산 시작, DB에서 커서를 사용하여 데이터 값을 가져온다.
         else{

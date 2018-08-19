@@ -1,17 +1,19 @@
 package com.fate.user.fateutil.layout;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.AssetManager;
 
-import android.database.Cursor;
 import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -29,8 +31,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
-
-
+import com.fate.user.fateutil.db.Parser;
 import com.fate.user.fateutil.db.ServantContact;
 
 public class SearchLayout extends LinearLayout implements AbsListView.OnScrollListener {
@@ -42,6 +43,7 @@ public class SearchLayout extends LinearLayout implements AbsListView.OnScrollLi
     LayoutInflater li = null;
     private ListView listView = null; // 리스트 뷰
     private ProgressBar progressBar; // 데이터 로딩중 표시할 프로그레스바
+    GridView gridView;
 
     // 어댑터 변수
     AssetManager assetManager = getResources().getAssets();
@@ -53,6 +55,7 @@ public class SearchLayout extends LinearLayout implements AbsListView.OnScrollLi
 
     // DB 변수
     private DbOpenHelper mDbOpenHelper;
+    private Parser parser;
 
     public SearchLayout(Context context) {
         super(context);
@@ -67,6 +70,7 @@ public class SearchLayout extends LinearLayout implements AbsListView.OnScrollLi
         editSearch = currentLayout.findViewById(R.id.edit_Search);
         listView = currentLayout.findViewById(R.id.list_View);
         progressBar = currentLayout.findViewById(R.id.progressbar);
+        gridView = currentLayout.findViewById(R.id.grid_skill);
 
         mDbOpenHelper = new DbOpenHelper(currentLayout.getContext());
 
@@ -95,6 +99,19 @@ public class SearchLayout extends LinearLayout implements AbsListView.OnScrollLi
 
         });
 
+        // 리스트 뷰를 클릭할 때 일어남
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // 클릭을 하였을 때 position 값을 인텐트에 넘겨준다.
+                // 인텐트 생성
+                Intent intent = new Intent(getContext(), SearchIntent.class);
+                // position 값을 넘긴다.
+                intent.putExtra("POSITION", (position+1));
+                getContext().startActivity(intent);
+            }
+        });
+
     }
 
     // 서번트 리스트 생성, 리스트 뷰와 어댑터 연결
@@ -112,68 +129,6 @@ public class SearchLayout extends LinearLayout implements AbsListView.OnScrollLi
         mDbOpenHelper.close();
     }
 
-    // Asset에 저장된 Servant.json을 읽어오는 함수
-    public String loadServantFromAsset(){
-        String json = null;
-        try {
-            InputStream is = assetManager.open("databases/Servant.json");
-            int size = is.available();
-            byte [] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-            json = new String(buffer, "UTF-8");
-        } catch (IOException e){
-            e.printStackTrace();
-            return  null;
-        }
-        return json;
-    }
-
-    // JSON 읽어 온 파일을 파싱하고 DB에 넣어주는 함수
-    public void servantParser(){
-
-        // 0. 테이블에 값이 있다면 checkData에서 true를 반환한다.
-        mDbOpenHelper.open();
-        if(mDbOpenHelper.checkData(DataBase.ServantTable.TABLE_NAME) == true){
-            mDbOpenHelper.close();
-            return ;
-        }
-        // 1. Servant.json 파일을 String에 저장
-        String jsonString = loadServantFromAsset();
-
-        // 트랜잭션 시작
-        mDbOpenHelper.mDB.beginTransaction();
-        try{
-            JSONArray jarray = new JSONArray(jsonString);
-
-            for(int i = 0; i < jarray.length(); i++){
-                JSONObject jObject = jarray.getJSONObject(i);
-
-                // 2. 아이디, 서번트 아이콘 서번트 이름, 서번트 클래스, 서번트 등급에 따라 저장
-                int id = jObject.getInt("id");
-                String servantIcon = jObject.getString("servantIcon");
-                String servantName = jObject.getString("servantName");
-                String servantClass = jObject.getString("servantClass");
-                int servantGrade = jObject.getInt("servantGrade");
-
-                // 3. db가 비어 있으면 db에 서번트 리스트 삽입(문제있음)
-                //if(mDbOpenHelper.getAllServantContacts() == null)
-                mDbOpenHelper.addServantContact(new ServantContact(id, servantIcon, servantName,servantClass,servantGrade));
-
-            }
-            // 4. 완전히 종료되면 실행
-            mDbOpenHelper.mDB.setTransactionSuccessful();
-        } catch (JSONException e){
-            e.printStackTrace();
-        } finally {
-            // 5. 삽입 끝나면 트랜잭션 종료
-            mDbOpenHelper.mDB.endTransaction();
-            // 6. DB 닫기
-            mDbOpenHelper.close();
-        }
-
-    }
-
     // 페이징
     @Override
     public void onScrollStateChanged(AbsListView absListView, int scrollState) {
@@ -181,7 +136,6 @@ public class SearchLayout extends LinearLayout implements AbsListView.OnScrollLi
         // 2. lastItemVisibleFlag : 리스트뷰의 마지막 셀의 끝에 스크롤이 이동했을 때
         // 3. lockListView == flase : 데이터 리스트에 다음 데이터를 불러오는 작업이 끝났을 때
         // 4. 모두가 참이면 다음 데이터를 불러온다.
-
         if(scrollState == AbsListView.OnScrollListener.SCROLL_STATE_IDLE && lastItemVisibleFlag && lockListView == false){
             // 화면이 바닥에 닿을 때 처리
             // 로딩중을 알리는 프로그레스바를 보인다.

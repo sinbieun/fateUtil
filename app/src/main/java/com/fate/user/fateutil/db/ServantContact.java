@@ -22,17 +22,15 @@ public class ServantContact {
         this.servantGrade = servantGrade;
     }
 
-    public ServantContact(int id, String servantName, String servantClass, int servantGrade){
+    public ServantContact(int id, String servantName){
         this.id = id;
         this.servantName = servantName;
-        this.servantClass = servantClass;
-        this.servantGrade = servantGrade;
     }
 
-    public ServantContact(String servantName, String servantClass, int servantGrade){
+    public ServantContact(int id, String servantIcon, String servantName){
+        this.id = id;
+        this.servantIcon = servantIcon;
         this.servantName = servantName;
-        this.servantClass = servantClass;
-        this.servantGrade = servantGrade;
     }
 
     public int getId(){
