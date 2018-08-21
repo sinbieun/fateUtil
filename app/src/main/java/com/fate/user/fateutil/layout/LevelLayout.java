@@ -25,12 +25,12 @@ import java.io.InputStream;
 public class LevelLayout extends LinearLayout {
 
 
-    Button btnLevel = null;
-    EditText currentLevel, targetLevel;
-    LinearLayout currentLayout;
-    TextView fourClass, fourNormal, threeClass, threeNormal;
-    LayoutInflater li;
-    AssetManager assetManager = getResources().getAssets();
+    private  Button btnLevel = null;
+    private  EditText currentLevel, targetLevel;
+    private  LinearLayout currentLayout;
+    private  TextView fourClass, fourNormal, threeClass, threeNormal;
+    private  LayoutInflater li;
+    private  AssetManager assetManager = getResources().getAssets();
 
     // DB 변수
     private DbOpenHelper mDbOpenHelper;

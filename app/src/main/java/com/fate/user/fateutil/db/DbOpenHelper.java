@@ -294,6 +294,36 @@ public class DbOpenHelper{
 
     }
 
+    public List<SkillContact> getServantHavingSkill(int servantId){
+        List<SkillContact> skillHaving = new ArrayList<SkillContact>();
+
+        // 서번트가 가지고 있는 스킬 데이터를 가져온다.
+        String selectHavingSkill = "SELECT " +
+                "(SS.skill_name || ' ' SS.skill_rank) as skill_name " +
+                "SS.skill_icon as skill_icon " +
+                " from  " + DataBase.ServantJoinSkillTable.TABLE_NAME + " as SJS " +
+                " inner join " + DataBase.ServantNameTable.TABLE_NAME +" as SN " +
+                " on SJS.servant_id = " + servantId + " AND SN.id = " + servantId +
+                " inner join " + DataBase.SkillTable.TABLE_NAME +" as SS " +
+                " on SJS.skill_id = SS.id" +
+                " group by SS.skill_name";
+
+        mDB = mDBHelper.getReadableDatabase();
+
+        // 커서에 검색 쿼리 삽입
+        Cursor cursor = mDB.rawQuery(selectHavingSkill, null);
+
+        if(cursor.moveToFirst()){
+            do {
+                SkillContact contact = new SkillContact();
+                contact.setSkillName(cursor.getString(cursor.getColumnIndex("skill_name")));
+                contact.setSkillIcon(cursor.getString(cursor.getColumnIndex("skill_icon")));
+            } while(cursor.moveToNext());
+        }
+
+        return skillHaving;
+    }
+
     // 스킬 리스트 가져오기
     public List<SkillContact> getServantJoinSkill(int servantId){
 

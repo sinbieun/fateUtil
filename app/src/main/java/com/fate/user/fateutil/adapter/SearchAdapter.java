@@ -22,8 +22,8 @@ import java.util.Locale;
 // 리스트 어댑터
 public class SearchAdapter extends BaseAdapter {
 
-    Context context;
-    LayoutInflater li;
+    private  Context context;
+    private  LayoutInflater li;
     private List<ServantContact> servantList; // 서번트 데이터를 받은 리스트 변수
     private ArrayList<ServantContact> arrayList;
 

@@ -13,7 +13,7 @@ import java.io.InputStream;
 
 public class Parser extends LinearLayout {
 
-    AssetManager assetManager = getResources().getAssets();
+    private AssetManager assetManager = getResources().getAssets();
     private DbOpenHelper mDbOpenHelper;
 
     public Parser(Context context) {

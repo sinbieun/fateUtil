@@ -35,10 +35,13 @@ public class SearchIntentAdapter extends BaseAdapter {
 
 
 
-    // 뷰 홀더 변수
-    public class SkillViewHolder {
+    public class SkillHavingViewHolder{
         public ImageView skillIcon;
         public TextView skillName;
+    }
+    // 뷰 홀더 변수
+    public class SkillViewHolder {
+
         public TextView skillRank;
         public TextView skillClassification;
         public TextView skillLevel;
@@ -83,15 +86,15 @@ public class SearchIntentAdapter extends BaseAdapter {
         if (view == null) {
 
            viewHolder = new SkillViewHolder();
-           view = li.inflate(R.layout.seach_intent_skill_list_item, null);
+           view = li.inflate(R.layout.search_intent_skill_list_item, null);
 
             // 1). 리스트 뷰를 만들때 사용 될 id를 가지고 온다.
            //viewHolder.skillIcon = (ImageView) view.findViewById(R.id.skill_icon);
            //viewHolder.skillName = (TextView) view.findViewById(R.id.skill_name);
-           viewHolder.skillLevel = (TextView) view.findViewById(R.id.skill_level_item);
-           viewHolder.skillValue = (TextView) view.findViewById(R.id.skill_effect_item);
+           //viewHolder.skillLevel = (TextView) view.findViewById(R.id.skill_level_item);
+           //viewHolder.skillValue = (TextView) view.findViewById(R.id.skill_effect_item);
 
-            view.setTag(viewHolder);
+            //view.setTag(viewHolder);
 
         }
         // 2. 캐시된 뷰가 있을 경우 저장된 뷰홀더를 사용한다..
@@ -115,11 +118,15 @@ public class SearchIntentAdapter extends BaseAdapter {
 
         //viewHolder.skillIcon.setImageResource(context.getResources().getIdentifier("@drawable/" + skillContact.getSkillIcon(), "drawable",packName));
         //viewHolder.skillName.setText(skillContact.getSkillName());
-        viewHolder.skillLevel.setText(String.valueOf(skillContact.getSkillLevel()));
-        viewHolder.skillValue.setText(String.valueOf(skillContact.getSkillValue()));
+        //viewHolder.skillLevel.setText(String.valueOf(skillContact.getSkillLevel()));
+        //viewHolder.skillValue.setText(String.valueOf(skillContact.getSkillValue()));
 
 
         return view;
 
     }
+
+
+
 }
+

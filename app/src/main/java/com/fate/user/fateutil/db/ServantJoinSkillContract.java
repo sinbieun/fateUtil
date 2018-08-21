@@ -2,9 +2,9 @@ package com.fate.user.fateutil.db;
 
 public class ServantJoinSkillContract {
 
-    int id;
-    int servantId;
-    int skillId;
+    private int id;
+    private int servantId;
+    private int skillId;
 
 
     public ServantJoinSkillContract(int id, int servantId, int skillId) {

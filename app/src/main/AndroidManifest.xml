@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".layout.SearchIntent"></activity>
+        <activity android:name=".layout.detail.SearchIntent"></activity>
         <activity android:name=".layout.detail.NoticeIntent"></activity>
 
     </application>

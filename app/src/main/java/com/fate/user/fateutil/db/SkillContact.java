@@ -3,21 +3,21 @@ package com.fate.user.fateutil.db;
 // 스킬 getter, setter
 public class SkillContact {
 
-    int id; // 아이디
-    String skillIcon; // 스킬 아이콘 이름
-    String skillName; // 스킬 이름
-    String skillRank; // 스킬 랭크
-    String skillClassification; // 스킬 분류 (레벨 아니면 고정값)
-    int skillLevel; // 스킬 레벨 (0부터 10까지 0은 고정값)
-    String skillTarget; // 스킬 목표(아군, 적, 자기 자신)
-    String skillRange; // 스킬 범위(전체, 한 명)
-    String skillEffect; // 스킬 효과
-    double skillValue; // 스킬 효과 수치
-    String skillMerit; // 스킬 장단점
-    int skillDuration; // 스킬 지속 시간 (0부터 3까지 0이면 즉발)
-    int skillCoolDown; // 스킬 쿨다운
-    int skillPercent; // 스킬 효과 수치가 퍼센트가 포함됬는지 아닌지 true면 % false면 일반 숫자
-    int skillEnhance; // 스킬 강화여부 true면 강회퀘 받음, 아니면 강화퀘 받지 않음
+    private int id; // 아이디
+    private String skillIcon; // 스킬 아이콘 이름
+    private String skillName; // 스킬 이름
+    private String skillRank; // 스킬 랭크
+    private String skillClassification; // 스킬 분류 (레벨 아니면 고정값)
+    private int skillLevel; // 스킬 레벨 (0부터 10까지 0은 고정값)
+    private String skillTarget; // 스킬 목표(아군, 적, 자기 자신)
+    private String skillRange; // 스킬 범위(전체, 한 명)
+    private String skillEffect; // 스킬 효과
+    private double skillValue; // 스킬 효과 수치
+    private String skillMerit; // 스킬 장단점
+    private int skillDuration; // 스킬 지속 시간 (0부터 3까지 0이면 즉발)
+    private int skillCoolDown; // 스킬 쿨다운
+    private int skillPercent; // 스킬 효과 수치가 퍼센트가 포함됬는지 아닌지 true면 % false면 일반 숫자
+    private int skillEnhance; // 스킬 강화여부 true면 강회퀘 받음, 아니면 강화퀘 받지 않음
 
     public SkillContact() {
 

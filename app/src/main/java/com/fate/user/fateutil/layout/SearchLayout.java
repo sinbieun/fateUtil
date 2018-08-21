@@ -20,33 +20,27 @@ import android.widget.ProgressBar;
 
 import com.fate.user.fateutil.R;
 import com.fate.user.fateutil.adapter.SearchAdapter;
-import com.fate.user.fateutil.db.DataBase;
 import com.fate.user.fateutil.db.DbOpenHelper;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 
 import com.fate.user.fateutil.db.Parser;
 import com.fate.user.fateutil.db.ServantContact;
+import com.fate.user.fateutil.layout.detail.SearchIntent;
 
 public class SearchLayout extends LinearLayout implements AbsListView.OnScrollListener {
 
     // 레이아웃 변수
-    Button btnSearch = null;
-    EditText editSearch = null;
-    LinearLayout currentLayout;
-    LayoutInflater li = null;
+    private  Button btnSearch = null;
+    private  EditText editSearch = null;
+    private  LinearLayout currentLayout;
+    private  LayoutInflater li = null;
     private ListView listView = null; // 리스트 뷰
     private ProgressBar progressBar; // 데이터 로딩중 표시할 프로그레스바
-    GridView gridView;
+    private  GridView gridView;
 
     // 어댑터 변수
-    AssetManager assetManager = getResources().getAssets();
+    private  AssetManager assetManager = getResources().getAssets();
     private SearchAdapter mAdapter;
     private boolean lastItemVisibleFlag = false; // 리스트 스크롤이 마지막 셀로 이동했을 지 체크하는 변수
     private int page = 0; // 페이징 변수 초기값은 0
@@ -70,7 +64,7 @@ public class SearchLayout extends LinearLayout implements AbsListView.OnScrollLi
         editSearch = currentLayout.findViewById(R.id.edit_Search);
         listView = currentLayout.findViewById(R.id.list_View);
         progressBar = currentLayout.findViewById(R.id.progressbar);
-        gridView = currentLayout.findViewById(R.id.grid_skill);
+        //gridView = currentLayout.findViewById(R.id.grid_skill);
 
         mDbOpenHelper = new DbOpenHelper(currentLayout.getContext());
 

@@ -1,48 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/grid_skill"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <TextView
+    <TabHost
+        android:id="@+id/tabhost"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="기본정보"/>
+        android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="인게임 이미지"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="액티브 스킬 정보"/>
+            <!--탭 위젯-->
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
-    <include
-        layout="@layout/search_intent_skill">
-    </include>
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="클래스 스킬 정보"/>
+                <!--첫번째 페이지-->
+                <LinearLayout
+                    android:id="@+id/content1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <include
+                        layout="@layout/search_intent_basic">
+
+                    </include>
+
+                </LinearLayout>
+
+                <!--두번째 페이지-->
+                <LinearLayout
+                    android:id="@+id/content2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/active_skill_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="액티브 스킬" />
+                    
+                    <include
+                        android:id="@+id/skill_list_1"
+                        layout="@layout/search_intent_skill_list_item">
+
+                    </include>
+
+                    <include
+                        android:id="@+id/skill_list_2"
+                        layout="@layout/search_intent_skill_list_item">
+
+                    </include>
+
+                    <include
+                        android:id="@+id/skill_list_3"
+                        layout="@layout/search_intent_skill_list_item">
+                    </include>
+
+                    <include
+                        android:id="@+id/skill_list_4"
+                        layout="@layout/search_intent_skill_list_item">
+                    </include>
+
+                </LinearLayout>
 
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="보구"/>
+                <!--세번째 페이지-->
+                <LinearLayout
+                    android:id="@+id/content3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="영기재림 재료"/>
+                </LinearLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="스킬강화 재료"/>
-</LinearLayout>
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+
+    </TabHost>
+
+</RelativeLayout>
 

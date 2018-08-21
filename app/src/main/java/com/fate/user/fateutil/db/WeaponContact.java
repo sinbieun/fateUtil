@@ -3,23 +3,23 @@ package com.fate.user.fateutil.db;
 // 스킬 getter, setter
 public class WeaponContact {
 
-    int id; // 보구 아이디
-    String weaponName; // 보구 이름
-    String weaponSubName; // 보구 서브 이름
-    String weaponRank; // 보구 랭크
-    String weaponClassification; // 스킬 분류 (레벨 오버차지 아니면 고정값)
-    int weaponLevel; // 보구 레벨 (0부터 10까지 0은 고정값)
-    String weaponTarget; // 보구 목표(아군, 적, 자기 자신)
-    String weaponRange; // 보구 범위(전체, 한 명)
-    String weaponExcept; // 보구 제외
-    String weaponEffect; // 스킬 효과
-    float weaponValue; // 스킬 효과 수치
-    String weaponType; // 보구 타입
-    String weaponMerit; // 보구 장단점
-    int weaponHit; // 보구 타수
-    int weaponDuration; // 보구 지속 시간 (0부터 3까지 0이면 즉발)
-    int weaponPercent; // 스킬 효과 수치가 퍼센트가 포함됬는지 아닌지 true면 % false면 일반 숫자
-    int weaponEnhance; // 스킬 강화여부 true면 강회퀘 받음, 아니면 강화퀘 받지 않음
+    private int id; // 보구 아이디
+    private String weaponName; // 보구 이름
+    private String weaponSubName; // 보구 서브 이름
+    private String weaponRank; // 보구 랭크
+    private String weaponClassification; // 스킬 분류 (레벨 오버차지 아니면 고정값)
+    private int weaponLevel; // 보구 레벨 (0부터 10까지 0은 고정값)
+    private String weaponTarget; // 보구 목표(아군, 적, 자기 자신)
+    private String weaponRange; // 보구 범위(전체, 한 명)
+    private String weaponExcept; // 보구 제외
+    private String weaponEffect; // 스킬 효과
+    private float weaponValue; // 스킬 효과 수치
+    private String weaponType; // 보구 타입
+    private String weaponMerit; // 보구 장단점
+    private int weaponHit; // 보구 타수
+    private int weaponDuration; // 보구 지속 시간 (0부터 3까지 0이면 즉발)
+    private int weaponPercent; // 스킬 효과 수치가 퍼센트가 포함됬는지 아닌지 true면 % false면 일반 숫자
+    private int weaponEnhance; // 스킬 강화여부 true면 강회퀘 받음, 아니면 강화퀘 받지 않음
 
     public WeaponContact() {
 
