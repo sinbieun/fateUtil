@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <!-- ListView에 띄워줄 레이아웃 ( noticeKind, noticeTitle, noticeRegUser, noticeRegDate )-->
+    <LinearLayout
+        android:id="@+id/label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="3dp">
+        
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:layout_margin="1dp">
+            
+            <TextView
+                android:id="@+id/title_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="제목"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_margin="1dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/reg_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:text="등록정보"
+                android:gravity="right"
+                android:textColor="#BDBDBD"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</LinearLayout>

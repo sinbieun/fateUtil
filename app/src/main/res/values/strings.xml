@@ -7,4 +7,7 @@
     <string name="action_settings">Settings</string>
 
     <string name="toolbar_title_notice">공지사항</string>
+    <string name="toolbar_title_search">서번트 검색</string>
+    <string name="toolbar_title_servant">서번트 육성</string>
+    <string name="toolbar_title_exp">경험치 계산</string>
 </resources>

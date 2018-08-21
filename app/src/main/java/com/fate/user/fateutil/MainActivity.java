@@ -62,9 +62,9 @@ public class MainActivity extends AppCompatActivity
         // 데이터 삽입 관리
         parser.servantParser(); // 서번트 데이터 삽입
         parser.expParser(); // 경험치 테이블 삽입
-        parser.skillParser(); // 스킬 테이블 삽입
-        parser.servantNameParser(); // 서번트 이름 삽입
-        parser.servantJoinSkillParser(); // 조인 테이블 삽입
+        //parser.skillParser(); // 스킬 테이블 삽입
+        //parser.servantNameParser(); // 서번트 이름 삽입
+        //parser.servantJoinSkillParser(); // 조인 테이블 삽입
     }
 
     @Override
@@ -118,9 +118,11 @@ public class MainActivity extends AppCompatActivity
             NoticeLayout noticeLayout = new NoticeLayout(this);
             drawLayout.addView(noticeLayout);
 
+            // 공지사항 레이아웃 그려주기
+            noticeLayout.init();
+
             // 타이틀 변경
-            TextView toolbarTitle = (TextView) findViewById(R.id.toolbar_title);
-            toolbarTitle.setText(R.string.toolbar_title_notice);
+            this.toolbarTitleChange(getString(R.string.toolbar_title_notice));
         }
         else if (id == R.id.nav_search) {
 
@@ -130,6 +132,9 @@ public class MainActivity extends AppCompatActivity
 
             SearchLayout searchLayout = new SearchLayout(this);
             drawLayout.addView(searchLayout);
+
+            // 타이틀 변경
+            this.toolbarTitleChange(getString(R.string.toolbar_title_search));
         }
 
         else if (id == R.id.nav_servant) {
@@ -140,6 +145,9 @@ public class MainActivity extends AppCompatActivity
 
             ServantLayout servantLayout = new ServantLayout(this);
             drawLayout.addView(servantLayout);
+
+            // 타이틀 변경
+            this.toolbarTitleChange(getString(R.string.toolbar_title_servant));
         }
 
         else if (id == R.id.nav_level) {
@@ -151,11 +159,22 @@ public class MainActivity extends AppCompatActivity
             LevelLayout levelLayout = new LevelLayout(this);
             drawLayout.addView(levelLayout);
 
+            // 타이틀 변경
+            this.toolbarTitleChange(getString(R.string.toolbar_title_exp));
         }
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    /**
+     * 툴바 타이틀을 바꿔주는 함수
+     * @param title
+     */
+    public void toolbarTitleChange(String title){
+        TextView toolbarTitle = (TextView) findViewById(R.id.toolbar_title);
+        toolbarTitle.setText(title);
     }
 }

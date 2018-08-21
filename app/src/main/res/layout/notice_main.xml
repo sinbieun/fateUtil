@@ -3,15 +3,22 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:background="@drawable/background_image_1">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="20dp"
-        android:background="#FFFFFF">
+        android:background="@drawable/layout_border_1">
 
-    </LinearLayout>
+        <ListView
+            android:id="@+id/notice_list_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="3dp">
+
+        </ListView>
+    </RelativeLayout>
 
 </LinearLayout>
