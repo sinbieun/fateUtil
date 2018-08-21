@@ -2,12 +2,15 @@ package com.fate.user.fateutil.layout.detail;
 
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.TypedValue;
 import android.view.MenuItem;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -19,6 +22,8 @@ import com.fate.user.fateutil.adapter.SearchIntentAdapter;
 import com.fate.user.fateutil.db.DbOpenHelper;
 import com.fate.user.fateutil.db.SkillContact;
 import com.fate.user.fateutil.model.NoticeModel;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,8 +50,22 @@ public class NoticeIntent extends AppCompatActivity{
         noticeArray = (ArrayList<NoticeModel>) getIntent().getSerializableExtra("DATA");
 
         // TOOL BAR 세팅
+        // TOOL BAR 배경 화면
         getSupportActionBar().setBackgroundDrawable(getDrawable(R.drawable.img_navigation_bar));
-        getSupportActionBar().setTitle("공지사항");
+
+        // TOOL BAR TITLE 제거 ( 폰트가 먹지 않음 )
+        getSupportActionBar().setTitle("");
+
+        // TOOL BAR TITLE 대신 들어갈 TextView 세팅
+        TextView titleView = new TextView(this);
+        titleView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
+        titleView.setTextColor(Color.WHITE);
+        titleView.setTypeface(titleView.getTypeface(), Typeface.BOLD);
+        titleView.setText(getString(R.string.toolbar_title_notice));
+
+        // TOOL BAR 설정 및 TextView 삽입
+        getSupportActionBar().setDisplayShowCustomEnabled(true);
+        getSupportActionBar().setCustomView(titleView);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         init();
