@@ -99,8 +99,8 @@ public class NoticeLayout extends LinearLayout {
                 Intent intent = new Intent(getContext(), NoticeIntent.class);
 
                 // Data send
-                intent.putExtra("POSITION", (position + 1));
-                //intent.putExtra("DATA", noticeArray[position + 1]);
+                intent.putExtra("POSITION", position);
+                intent.putExtra("DATA", noticeArray);
                 getContext().startActivity(intent);
             }
         });

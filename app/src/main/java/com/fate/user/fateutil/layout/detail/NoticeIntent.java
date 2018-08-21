@@ -2,8 +2,12 @@ package com.fate.user.fateutil.layout.detail;
 
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -33,17 +37,19 @@ public class NoticeIntent extends AppCompatActivity{
         super.onCreate(savedInstanceState);
 
         // 화면 설정
-        setContentView(R.layout.search_intent);
+        setContentView(R.layout.notice_intent);
 
+        // 데이터 설정
         Intent intent = getIntent();
         position = (int) intent.getSerializableExtra("POSITION");
-        //noticeArray = (List) intent.getSerializableExtra("POSITION");
+        noticeArray = (ArrayList<NoticeModel>) getIntent().getSerializableExtra("DATA");
 
-        init();
-
-        // 뒤로가기 버튼
+        // TOOL BAR 세팅
+        getSupportActionBar().setBackgroundDrawable(getDrawable(R.drawable.img_navigation_bar));
+        getSupportActionBar().setTitle("공지사항");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        init();
     }
 
     // 뒤로 가기 버튼 누를 시, 현재 페이지 종료
@@ -59,12 +65,20 @@ public class NoticeIntent extends AppCompatActivity{
 
     // 초기 상태 설정
     public void init(){
-        /*mDbOpenHelper.open();
-        List<SkillContact> skillContacts = mDbOpenHelper.getServantJoinSkill(position); // 스킬 들을 조인한다.
-        mAdapter = new SearchIntentAdapter(this, skillContacts); // 어댑터에 DB에서 받은 스킬들을 넣어준다.
-        listView = (ListView) findViewById(R.id.active_skill_list); // listView 아이디를 불러온다.
-        listView.setAdapter(mAdapter); // 리스트 뷰에 어댑터 설정을 저장한다.
-        mDbOpenHelper.close();*/
+        NoticeModel noticeModel = noticeArray.get(position);
+
+        TextView noticeKind = (TextView) findViewById(R.id.noticeKind);
+        TextView noticeTitle = (TextView) findViewById(R.id.noticeTitle);
+        TextView noticeContent = (TextView) findViewById(R.id.noticeContent);
+        TextView noticeReguser = (TextView) findViewById(R.id.noticeReguser);
+        TextView noticeRegdate = (TextView) findViewById(R.id.noticeRegdate);
+
+        noticeKind.setText(noticeModel.getNoticeKind());
+        noticeTitle.setText(noticeModel.getNoticeTitle());
+        noticeContent.setText(noticeModel.getNoticeContent());
+        noticeReguser.setText(noticeModel.getNoticeRegUser());
+        noticeRegdate.setText(noticeModel.getNoticeRegDate());
+
     }
 
 

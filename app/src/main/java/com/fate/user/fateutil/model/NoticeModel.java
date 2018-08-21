@@ -1,6 +1,8 @@
 package com.fate.user.fateutil.model;
 
-public class NoticeModel {
+import java.io.Serializable;
+
+public class NoticeModel implements Serializable {
 
     private int noticeId;
     private String noticeKind;
