@@ -30,6 +30,9 @@ public class DbOpenHelper{
         {
             db.execSQL(DataBase.SQL_CREATE_SERVANT);
             db.execSQL(DataBase.SQL_CREATE_EXP);
+            db.execSQL(DataBase.SQL_CREATE_SKILL);
+            db.execSQL(DataBase.SQL_CREATE_SERVANT_NAME);
+            db.execSQL(DataBase.SQL_CREATE_SERVANT_JOIN_SKILL);
 
         }
 
@@ -86,6 +89,86 @@ public class DbOpenHelper{
         cv.put(DataBase.ServantTable.SERVANT_GRADE, contact.getServantGrade());
 
         mDB.insert(DataBase.ServantTable.TABLE_NAME,null,cv);
+
+    }
+
+    public void addServantNameContact(ServantContact contact){
+
+        mDB = mDBHelper.getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+        cv.put(DataBase.ServantNameTable.ID, contact.getId());
+        cv.put(DataBase.ServantNameTable.SERVANT_ICON, contact.getServantIcon());
+        cv.put(DataBase.ServantNameTable.SERVANT_NAME, contact.getServantName());
+
+        mDB.insert(DataBase.ServantNameTable.TABLE_NAME,null,cv);
+
+    }
+
+    public void addServantJoinSkillContact(ServantJoinSkillContract contact){
+
+        mDB = mDBHelper.getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+        cv.put(DataBase.ServantJoinSkillTable.ID, contact.getId());
+        cv.put(DataBase.ServantJoinSkillTable.SERVANT_ID, contact.getServantId());
+        cv.put(DataBase.ServantJoinSkillTable.SKILL_ID, contact.getSkillId());
+
+        mDB.insert(DataBase.ServantJoinSkillTable.TABLE_NAME,null,cv);
+
+    }
+
+    // 스킬 테이블에 데이터 삽입
+    public void addSkillContact(SkillContact contact){
+
+        mDB = mDBHelper.getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+        cv.put(DataBase.SkillTable.ID, contact.getId());
+        cv.put(DataBase.SkillTable.SKILL_ICON, contact.getSkillIcon());
+        cv.put(DataBase.SkillTable.SKILL_NAME, contact.getSkillName());
+        cv.put(DataBase.SkillTable.SKILL_RANK, contact.getSkillRank());
+        cv.put(DataBase.SkillTable.SKILL_CLASSIFICATION, contact.getSkillClassification());
+        cv.put(DataBase.SkillTable.SKILL_LEVEL, contact.getSkillLevel());
+        cv.put(DataBase.SkillTable.SKILL_TARGET, contact.getSkillTarget());
+        cv.put(DataBase.SkillTable.SKILL_RANGE, contact.getSkillRange());
+        cv.put(DataBase.SkillTable.SKILL_EFFECT, contact.getSkillEffect());
+        cv.put(DataBase.SkillTable.SKILL_VALUE, contact.getSkillValue());
+        cv.put(DataBase.SkillTable.SKILL_MERIT, contact.getSkillMerit());
+        cv.put(DataBase.SkillTable.SKILL_DURATION, contact.getSkillDuration());
+        cv.put(DataBase.SkillTable.SKILL_COOLDOWN, contact.getSkillCoolDown());
+        cv.put(DataBase.SkillTable.SKILL_PERCENT, contact.getSkillPercent());
+        cv.put(DataBase.SkillTable.SKILL_ENHANCE, contact.getSkillEnhance());
+
+        mDB.insert(DataBase.SkillTable.TABLE_NAME,null,cv);
+
+    }
+
+    // 보구 테이블에 데이터 삽입
+    public void addWeaponContact(WeaponContact contact){
+
+        mDB = mDBHelper.getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+        cv.put(DataBase.WeaponTable.ID, contact.getWeaponId());
+        cv.put(DataBase.WeaponTable.WEAPON_NAME, contact.getWeaponName());
+        cv.put(DataBase.WeaponTable.WEAPON_SUB_NAME, contact.getWeaponSubName());
+        cv.put(DataBase.WeaponTable.WEAPON_RANK, contact.getWeaponRank());
+        cv.put(DataBase.WeaponTable.WEAPON_CLASSIFICATION, contact.getWeaponClassification());
+        cv.put(DataBase.WeaponTable.WEAPON_LEVEL, contact.getWeaponLevel());
+        cv.put(DataBase.WeaponTable.WEAPON_TARGET, contact.getWeaponTarget());
+        cv.put(DataBase.WeaponTable.WEAPON_RANGE, contact.getWeaponRange());
+        cv.put(DataBase.WeaponTable.WEAPON_EXCEPT, contact.getWeaponExcept());
+        cv.put(DataBase.WeaponTable.WEAPON_EFFECT, contact.getWeaponEffect());
+        cv.put(DataBase.WeaponTable.WEAPON_VALUE, contact.getWeaponValue());
+        cv.put(DataBase.WeaponTable.WEAPON_TYPE, contact.getWeaponType());
+        cv.put(DataBase.WeaponTable.WEAPON_MERIT, contact.getWeaponMerit());
+        cv.put(DataBase.WeaponTable.WEAPON_HIT, contact.getWeaponHit());
+        cv.put(DataBase.WeaponTable.WEAPON_DURATION, contact.getWeaponDuration());
+        cv.put(DataBase.WeaponTable.WEAPON_PERCENT, contact.getWeaponPercent());
+        cv.put(DataBase.WeaponTable.WEAPON_ENHANCE, contact.getWeaponEnhance());
+
+        mDB.insert(DataBase.WeaponTable.TABLE_NAME,null,cv);
 
     }
 
@@ -209,6 +292,151 @@ public class DbOpenHelper{
         }
         return exp;
 
+    }
+
+    public List<SkillContact> getServantHavingSkill(int servantId){
+        List<SkillContact> skillHaving = new ArrayList<SkillContact>();
+
+        // 서번트가 가지고 있는 스킬 데이터를 가져온다.
+        String selectHavingSkill = "SELECT " +
+                "(SS.skill_name || ' ' SS.skill_rank) as skill_name " +
+                "SS.skill_icon as skill_icon " +
+                " from  " + DataBase.ServantJoinSkillTable.TABLE_NAME + " as SJS " +
+                " inner join " + DataBase.ServantNameTable.TABLE_NAME +" as SN " +
+                " on SJS.servant_id = " + servantId + " AND SN.id = " + servantId +
+                " inner join " + DataBase.SkillTable.TABLE_NAME +" as SS " +
+                " on SJS.skill_id = SS.id" +
+                " group by SS.skill_name";
+
+        mDB = mDBHelper.getReadableDatabase();
+
+        // 커서에 검색 쿼리 삽입
+        Cursor cursor = mDB.rawQuery(selectHavingSkill, null);
+
+        if(cursor.moveToFirst()){
+            do {
+                SkillContact contact = new SkillContact();
+                contact.setSkillName(cursor.getString(cursor.getColumnIndex("skill_name")));
+                contact.setSkillIcon(cursor.getString(cursor.getColumnIndex("skill_icon")));
+            } while(cursor.moveToNext());
+        }
+
+        return skillHaving;
+    }
+
+    // 스킬 리스트 가져오기
+    public List<SkillContact> getServantJoinSkill(int servantId){
+
+        List<SkillContact> contactSkillList = new ArrayList<SkillContact>();
+        // 검색 쿼리 저장
+        String selectServantJoinSkill = "SELECT " +
+                "SS.skill_name as skill_name, " +
+                "SS.skill_icon as skill_icon, " +
+                "SS.skill_rank as skill_rank, " +
+                "SS.skill_classification as skill_classification, " +
+                "SS.skill_level as skill_level, " +
+                "SS.skill_target as skill_target, " +
+                "SS.skill_range as skill_range, " +
+                "SS.skill_effect as skill_effect, " +
+                "SS.skill_value as skill_value, " +
+                "SS.skill_merit as skill_merit, " +
+                "SS.skill_duration as skill_duration, " +
+                "SS.skill_coolDown as skill_cd, " +
+                "SS.skill_percent as skill_percent, " +
+                "SS.skill_enhance as skill_enhance " +
+                " from " + DataBase.ServantJoinSkillTable.TABLE_NAME + " as SJS " +
+                " inner join " + DataBase.ServantNameTable.TABLE_NAME + " as SN " +
+                " on SJS.servant_id = " + servantId + " AND SN.id = " + servantId +
+                " inner join " + DataBase.SkillTable.TABLE_NAME +" as SS " +
+                " on SJS.skill_id = SS.id";
+
+        mDB = mDBHelper.getReadableDatabase();
+
+        // 커서에 검색 쿼리 삽입
+        Cursor cursor = mDB.rawQuery(selectServantJoinSkill, null);
+
+        if(cursor.moveToFirst()){
+            do{
+                SkillContact contact = new SkillContact();
+                contact.setSkillIcon(cursor.getString(cursor.getColumnIndex("skill_icon")));
+                contact.setSkillName(cursor.getString(cursor.getColumnIndex("skill_name")));
+                contact.setSkillRank(cursor.getString(cursor.getColumnIndex("skill_rank")));
+                contact.setSkillClassification(cursor.getString(cursor.getColumnIndex("skill_classification")));
+                contact.setSkillLevel(cursor.getInt(cursor.getColumnIndex("skill_level")));
+                contact.setSkillTarget(cursor.getString(cursor.getColumnIndex("skill_target")));
+                contact.setSkillRange(cursor.getString(cursor.getColumnIndex("skill_range")));
+                contact.setSkillEffect(cursor.getString(cursor.getColumnIndex("skill_effect")));
+                contact.setSkillValue(cursor.getDouble(cursor.getColumnIndex("skill_value")));
+                contact.setSkillMerit(cursor.getString(cursor.getColumnIndex("skill_merit")));
+                contact.setSkillDuration(cursor.getInt(cursor.getColumnIndex("skill_duration")));
+                contact.setSkillCoolDown(cursor.getInt(cursor.getColumnIndex("skill_cd")));
+                contact.setSkillPercent(cursor.getInt(cursor.getColumnIndex("skill_percent")));
+                contact.setSkillEnhance(cursor.getInt(cursor.getColumnIndex("skill_enhance")));
+
+                contactSkillList.add(contact);
+
+            } while (cursor.moveToNext());
+        }
+        return contactSkillList;
+    }
+
+    // 보구 리스트 가져오기
+    public List<WeaponContact> getServantJoinWeapon(int servantId){
+
+        List<WeaponContact> contactSkillList = new ArrayList<WeaponContact>();
+        // 검색 쿼리 저장
+        String selectServantJoinWeapon = "SELECT " +
+                "SS.weapon_name as weapon_name, " +
+                "SS.weapon_icon as weapon_icon, " +
+                "SS.weapon_rank as weapon_rank, " +
+                "SS.weapon_classification as weapon_classification, " +
+                "SS.weapon_level as weapon_level, " +
+                "SS.weapon_target as weapon_target, " +
+                "SS.weapon_range as weapon_range, " +
+                "SS.weapon_effect as weapon_effect, " +
+                "SS.weapon_value as weapon_value, " +
+                "SS.weapon_merit as weapon_merit, " +
+                "SS.weapon_duration as weapon_duration, " +
+                "SS.weapon_coolDown as weapon_cd, " +
+                "SS.weapon_percent as weapon_percent, " +
+                "SS.weapon_enhance as weapon_enhance " +
+                " from " + DataBase.ServantJoinSkillTable.TABLE_NAME + " as SJS " +
+                " inner join " + DataBase.ServantNameTable.TABLE_NAME + " as SN " +
+                " on SJS.servant_id = " + servantId + " AND SN.id = " + servantId +
+                " inner join " + DataBase.SkillTable.TABLE_NAME +" as SS " +
+                " on SJS.weapon_id = SS.id";
+
+        mDB = mDBHelper.getReadableDatabase();
+
+        // 커서에 검색 쿼리 삽입
+        Cursor cursor = mDB.rawQuery(selectServantJoinWeapon, null);
+
+        if(cursor.moveToFirst()){
+            do{
+                WeaponContact contact = new WeaponContact();
+                contact.setWeaponId(cursor.getInt(cursor.getColumnIndex("weapon_id")));
+                contact.setWeaponSubName(cursor.getString(cursor.getColumnIndex("weapon_sub_name")));
+                contact.setWeaponName(cursor.getString(cursor.getColumnIndex("weapon_name")));
+                contact.setWeaponRank(cursor.getString(cursor.getColumnIndex("weapon_rank")));
+                contact.setWeaponClassification(cursor.getString(cursor.getColumnIndex("weapon_classification")));
+                contact.setWeaponLevel(cursor.getInt(cursor.getColumnIndex("weapon_level")));
+                contact.setWeaponTarget(cursor.getString(cursor.getColumnIndex("weapon_target")));
+                contact.setWeaponRange(cursor.getString(cursor.getColumnIndex("weapon_range")));
+                contact.setWeaponExcept(cursor.getString(cursor.getColumnIndex("weapon_except")));
+                contact.setWeaponEffect(cursor.getString(cursor.getColumnIndex("weapon_effect")));
+                contact.setWeaponValue(cursor.getFloat(cursor.getColumnIndex("weapon_value")));
+                contact.setWeaponType(cursor.getString(cursor.getColumnIndex("weapon_type")));
+                contact.setWeaponMerit(cursor.getString(cursor.getColumnIndex("weapon_merit")));
+                contact.setWeaponHit(cursor.getInt(cursor.getColumnIndex("weapon_hit")));
+                contact.setWeaponDuration(cursor.getInt(cursor.getColumnIndex("weapon_duration")));
+                contact.setWeaponPercent(cursor.getInt(cursor.getColumnIndex("weapon_percent")));
+                contact.setWeaponEnhance(cursor.getInt(cursor.getColumnIndex("weapon_enhance")));
+
+                contactSkillList.add(contact);
+
+            } while (cursor.moveToNext());
+        }
+        return contactSkillList;
     }
 
 }

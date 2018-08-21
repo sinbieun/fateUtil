@@ -1,6 +1,5 @@
 package com.fate.user.fateutil;
 
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -14,23 +13,20 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
+import android.widget.TextView;
 
-import com.fate.user.fateutil.db.DbOpenHelper;
+import com.fate.user.fateutil.db.Parser;
 import com.fate.user.fateutil.layout.LevelLayout;
 import com.fate.user.fateutil.layout.NoticeLayout;
 import com.fate.user.fateutil.layout.SearchLayout;
 import com.fate.user.fateutil.layout.ServantLayout;
 
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private ConstraintLayout drawLayout = null;
-    private SearchLayout searchLayout = null;
-    private LevelLayout levelLayout = null;
-    private DbOpenHelper mDBHelper;
-    private  SQLiteDatabase mDB;
-    private ImageView imgView;
+    private Parser parser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,17 +57,15 @@ public class MainActivity extends AppCompatActivity
 
         // 레이아웃 관리
         drawLayout = findViewById(R.id.draw_layout);
-        searchLayout = new SearchLayout(this);
-        levelLayout = new LevelLayout(this);
+        parser = new Parser(this);
 
-        // 서번트 데이터 삽입
-        searchLayout.servantParser();
-        // 경험치 테이블 삽입
-        levelLayout.expParser();
-
-
+        // 데이터 삽입 관리
+        parser.servantParser(); // 서번트 데이터 삽입
+        parser.expParser(); // 경험치 테이블 삽입
+        //parser.skillParser(); // 스킬 테이블 삽입
+        //parser.servantNameParser(); // 서번트 이름 삽입
+        //parser.servantJoinSkillParser(); // 조인 테이블 삽입
     }
-
 
     @Override
     public void onBackPressed() {
@@ -124,6 +118,11 @@ public class MainActivity extends AppCompatActivity
             NoticeLayout noticeLayout = new NoticeLayout(this);
             drawLayout.addView(noticeLayout);
 
+            // 공지사항 레이아웃 그려주기
+            noticeLayout.init();
+
+            // 타이틀 변경
+            this.toolbarTitleChange(getString(R.string.toolbar_title_notice));
         }
         else if (id == R.id.nav_search) {
 
@@ -131,7 +130,11 @@ public class MainActivity extends AppCompatActivity
                 drawLayout.removeAllViews();
             }
 
+            SearchLayout searchLayout = new SearchLayout(this);
             drawLayout.addView(searchLayout);
+
+            // 타이틀 변경
+            this.toolbarTitleChange(getString(R.string.toolbar_title_search));
         }
 
         else if (id == R.id.nav_servant) {
@@ -142,6 +145,9 @@ public class MainActivity extends AppCompatActivity
 
             ServantLayout servantLayout = new ServantLayout(this);
             drawLayout.addView(servantLayout);
+
+            // 타이틀 변경
+            this.toolbarTitleChange(getString(R.string.toolbar_title_servant));
         }
 
         else if (id == R.id.nav_level) {
@@ -153,11 +159,22 @@ public class MainActivity extends AppCompatActivity
             LevelLayout levelLayout = new LevelLayout(this);
             drawLayout.addView(levelLayout);
 
+            // 타이틀 변경
+            this.toolbarTitleChange(getString(R.string.toolbar_title_exp));
         }
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    /**
+     * 툴바 타이틀을 바꿔주는 함수
+     * @param title
+     */
+    public void toolbarTitleChange(String title){
+        TextView toolbarTitle = (TextView) findViewById(R.id.toolbar_title);
+        toolbarTitle.setText(title);
     }
 }

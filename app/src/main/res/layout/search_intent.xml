@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TabHost
+        android:id="@+id/tabhost"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!--탭 위젯-->
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!--첫번째 페이지-->
+                <LinearLayout
+                    android:id="@+id/content1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <include
+                        layout="@layout/search_intent_basic">
+
+                    </include>
+
+                </LinearLayout>
+
+                <!--두번째 페이지-->
+                <LinearLayout
+                    android:id="@+id/content2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/active_skill_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="액티브 스킬" />
+                    
+                    <include
+                        android:id="@+id/skill_list_1"
+                        layout="@layout/search_intent_skill_list_item">
+
+                    </include>
+
+                    <include
+                        android:id="@+id/skill_list_2"
+                        layout="@layout/search_intent_skill_list_item">
+
+                    </include>
+
+                    <include
+                        android:id="@+id/skill_list_3"
+                        layout="@layout/search_intent_skill_list_item">
+                    </include>
+
+                    <include
+                        android:id="@+id/skill_list_4"
+                        layout="@layout/search_intent_skill_list_item">
+                    </include>
+
+                </LinearLayout>
+
+
+                <!--세번째 페이지-->
+                <LinearLayout
+                    android:id="@+id/content3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                </LinearLayout>
+
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+
+    </TabHost>
+
+</RelativeLayout>
+
