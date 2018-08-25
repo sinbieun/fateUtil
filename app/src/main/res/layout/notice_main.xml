@@ -10,14 +10,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="20dp"
-        android:background="@drawable/layout_border_1">
+    android:background="@drawable/layout_border_1">
 
-        <ListView
-            android:id="@+id/notice_list_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="3dp">
-        </ListView>
+<ListView
+android:id="@+id/notice_list_view"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:layout_margin="3dp">
+</ListView>
     </RelativeLayout>
 
-</LinearLayout>
+    </LinearLayout>

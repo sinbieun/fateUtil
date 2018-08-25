@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.fate.user.fateutil.db.ServantContact;
@@ -41,8 +42,14 @@ public class SearchAdapter extends BaseAdapter {
     public class ServantViewHolder {
         public ImageView servantIcon;
         public TextView servantName;
-        public TextView servantClass;
-        public TextView servantGrade;
+
+        public ImageView gradeStar1;
+        public ImageView gradeStar2;
+        public ImageView gradeStar3;
+        public ImageView gradeStar4;
+        public ImageView gradeStar5;
+
+        public ImageView servantClass;
     }
 
     // 리스트 사이즈 크기를 얻는다.
@@ -80,8 +87,14 @@ public class SearchAdapter extends BaseAdapter {
             // 1). 리스트 뷰를 만들때 사용 될 id를 가지고 온다.
             viewHolder.servantIcon = (ImageView) view.findViewById(R.id.servant_icon);
             viewHolder.servantName = (TextView) view.findViewById(R.id.servant_name);
-            viewHolder.servantClass = (TextView) view.findViewById(R.id.servant_class);
-            viewHolder.servantGrade = (TextView) view.findViewById(R.id.servant_grade);
+
+            viewHolder.gradeStar1 = (ImageView) view.findViewById(R.id.grade_star_1);
+            viewHolder.gradeStar2 = (ImageView) view.findViewById(R.id.grade_star_2);
+            viewHolder.gradeStar3 = (ImageView) view.findViewById(R.id.grade_star_3);
+            viewHolder.gradeStar4 = (ImageView) view.findViewById(R.id.grade_star_4);
+            viewHolder.gradeStar5 = (ImageView) view.findViewById(R.id.grade_star_5);
+
+            viewHolder.servantClass = (ImageView) view.findViewById(R.id.class_icon);
 
             view.setTag(viewHolder);
 
@@ -94,8 +107,72 @@ public class SearchAdapter extends BaseAdapter {
         // 뷰 홀더에 넣어준다.
         viewHolder.servantIcon.setImageResource(context.getResources().getIdentifier("@drawable/" + servant.getServantIcon(), "drawable",packName));
         viewHolder.servantName.setText(servant.getServantName());
-        viewHolder.servantClass.setText(servant.getServantClass());
-        viewHolder.servantGrade.setText(String.valueOf(servant.getServantGrade()));
+
+        // 그리드의 숫자에 맞춰서 별 이미지를 넣어줌
+        int servantGrade = servant.getServantGrade();
+        switch (servantGrade) {
+            case 1 :
+                viewHolder.gradeStar1.setVisibility(View.VISIBLE);
+                break;
+            case 2 :
+                viewHolder.gradeStar1.setVisibility(View.VISIBLE);
+                viewHolder.gradeStar2.setVisibility(View.VISIBLE);
+                break;
+            case 3 :
+                viewHolder.gradeStar1.setVisibility(View.VISIBLE);
+                viewHolder.gradeStar2.setVisibility(View.VISIBLE);
+                viewHolder.gradeStar3.setVisibility(View.VISIBLE);
+                break;
+            case 4 :
+                viewHolder.gradeStar1.setVisibility(View.VISIBLE);
+                viewHolder.gradeStar2.setVisibility(View.VISIBLE);
+                viewHolder.gradeStar3.setVisibility(View.VISIBLE);
+                viewHolder.gradeStar4.setVisibility(View.VISIBLE);
+                break;
+            case 5 :
+                viewHolder.gradeStar1.setVisibility(View.VISIBLE);
+                viewHolder.gradeStar2.setVisibility(View.VISIBLE);
+                viewHolder.gradeStar3.setVisibility(View.VISIBLE);
+                viewHolder.gradeStar4.setVisibility(View.VISIBLE);
+                viewHolder.gradeStar5.setVisibility(View.VISIBLE);
+                break;
+        }
+
+        // 클래스에 맞춰서 이미지를 넣어줌
+        String servantClass = servant.getServantClass();
+        switch (servantClass){
+            case "세이버" :
+                viewHolder.servantClass.setImageResource(context.getResources().getIdentifier("@drawable/icon_class_saber", "drawable",packName));
+                break;
+            case "랜서" :
+                viewHolder.servantClass.setImageResource(context.getResources().getIdentifier("@drawable/icon_class_lancer", "drawable",packName));
+                break;
+            case "아처" :
+                viewHolder.servantClass.setImageResource(context.getResources().getIdentifier("@drawable/icon_class_archer", "drawable",packName));
+                break;
+            case "라이더" :
+                viewHolder.servantClass.setImageResource(context.getResources().getIdentifier("@drawable/icon_class_rider", "drawable",packName));
+                break;
+            case "캐스터" :
+                viewHolder.servantClass.setImageResource(context.getResources().getIdentifier("@drawable/icon_class_caster", "drawable",packName));
+                break;
+            case "어새신" :
+                viewHolder.servantClass.setImageResource(context.getResources().getIdentifier("@drawable/icon_class_assassin", "drawable",packName));
+                break;
+            case "버서커" :
+                viewHolder.servantClass.setImageResource(context.getResources().getIdentifier("@drawable/icon_class_berserker", "drawable",packName));
+                break;
+            case "쉴더" :
+                viewHolder.servantClass.setImageResource(context.getResources().getIdentifier("@drawable/icon_class_shielder", "drawable",packName));
+                break;
+            case "룰러" :
+                viewHolder.servantClass.setImageResource(context.getResources().getIdentifier("@drawable/icon_class_ruler", "drawable",packName));
+                break;
+            case "어벤져" :
+                viewHolder.servantClass.setImageResource(context.getResources().getIdentifier("@drawable/icon_class_avenger", "drawable",packName));
+                break;
+        }
+
         return view;
 
     }

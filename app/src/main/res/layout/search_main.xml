@@ -4,7 +4,8 @@
     android:id="@+id/search_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/background_image_1">
 
     <!--검색 레이아웃-->
     <LinearLayout
@@ -30,7 +31,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="gone">
 
         <TextView
             android:layout_width="wrap_content"
@@ -45,7 +47,9 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:layout_margin="20dp"
+        android:background="@drawable/layout_border_1">
 
         <ProgressBar
             android:id="@+id/progressbar"
@@ -57,8 +61,6 @@
             android:id="@+id/list_View"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:divider="#999999 "
-            android:dividerHeight="1dp"
             android:layout_above="@id/progressbar">
         </ListView>
 
