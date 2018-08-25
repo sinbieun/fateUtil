@@ -18,20 +18,17 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.fate.user.fateutil.R;
-import com.fate.user.fateutil.adapter.SearchIntentAdapter;
+
 import com.fate.user.fateutil.db.DbOpenHelper;
-import com.fate.user.fateutil.db.SkillContact;
 import com.fate.user.fateutil.model.NoticeModel;
 
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class NoticeIntent extends AppCompatActivity{
 
     private DbOpenHelper mDbOpenHelper;
-    private SearchIntentAdapter mAdapter;
     private GridView gridView;
 
     private int position;

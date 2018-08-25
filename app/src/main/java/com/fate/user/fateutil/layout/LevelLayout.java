@@ -91,22 +91,27 @@ public class LevelLayout extends LinearLayout {
         // 4성 클래스, 4성 일반, 3성 클래스, 3성 일반 저장
         int result[] = new int [4];
 
-        // Edit 텍스트 값을 Int로 변환
-        currentLv = Integer.parseInt(currentLevel.getText().toString());
-        targetLv = Integer.parseInt(targetLevel.getText().toString());
-
         // 경험치 입력칸이 공백이면 계산하지 않음
         if((currentLevel.getText().toString().length() == 0) || (targetLevel.getText().toString().length() == 0)){
             Toast.makeText(getContext(),"다시 입력해주십시오", Toast.LENGTH_SHORT).show();
+            return ;
         }
+        // 공백이 아니면 경험치 입력 텍스트 값을 정수형으로 변환한다.
+        else {
+            currentLv = Integer.parseInt(currentLevel.getText().toString());
+            targetLv = Integer.parseInt(targetLevel.getText().toString());
+        }
+
+        // 계산 부분
         // 목표 레벨이 현재 레벨보다 작거나 같을 때
-        else if (currentLv >= targetLv){
+        if (currentLv >= targetLv){
             Toast.makeText(getContext(),"목표레벨이 현재 레벨보다 작거나 같습니다.", Toast.LENGTH_SHORT).show();
         }
+        // 입력된 레벨이 100보다 클때
         else if ((currentLv > 100) || (targetLv > 100)){
             Toast.makeText(getContext(),"최대 레벨은 100입니다", Toast.LENGTH_SHORT).show();
         }
-        // 공백이 아니면 계산 시작, DB에서 커서를 사용하여 데이터 값을 가져온다.
+        // DB에서 커서를 사용하여 데이터 값을 가져온다.
         else{
             mDbOpenHelper.open(); // db열기
             currentExp = mDbOpenHelper.getExpContact(currentLevel.getText().toString());  // 현재 경험치

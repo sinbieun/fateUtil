@@ -31,11 +31,6 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <include
-                        layout="@layout/search_intent_basic">
-
-                    </include>
-
                 </LinearLayout>
 
                 <!--두번째 페이지-->
@@ -51,28 +46,12 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="액티브 스킬" />
-                    
-                    <include
-                        android:id="@+id/skill_list_1"
-                        layout="@layout/search_intent_skill_list_item">
 
-                    </include>
 
-                    <include
-                        android:id="@+id/skill_list_2"
-                        layout="@layout/search_intent_skill_list_item">
-
-                    </include>
-
-                    <include
-                        android:id="@+id/skill_list_3"
-                        layout="@layout/search_intent_skill_list_item">
-                    </include>
-
-                    <include
-                        android:id="@+id/skill_list_4"
-                        layout="@layout/search_intent_skill_list_item">
-                    </include>
+                    <TableLayout
+                        android:id="@+id/active_skill_table"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"></TableLayout>
 
                 </LinearLayout>
 

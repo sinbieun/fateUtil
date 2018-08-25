@@ -62,9 +62,9 @@ public class MainActivity extends AppCompatActivity
         // 데이터 삽입 관리
         parser.servantParser(); // 서번트 데이터 삽입
         parser.expParser(); // 경험치 테이블 삽입
-        //parser.skillParser(); // 스킬 테이블 삽입
-        //parser.servantNameParser(); // 서번트 이름 삽입
-        //parser.servantJoinSkillParser(); // 조인 테이블 삽입
+        parser.skillParser(); // 스킬 테이블 삽입
+        parser.servantNameParser(); // 서번트 이름 삽입
+        parser.servantJoinSkillParser(); // 조인 테이블 삽입
     }
 
     @Override

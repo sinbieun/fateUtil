@@ -60,21 +60,27 @@ public class DbOpenHelper{
         mDB.close();
     }
 
+    // 데이터베이스에 데이터가 들어있는지 확인
     public boolean checkData(String tableName){
 
         mDB = mDBHelper.getReadableDatabase();
 
-        String selectServantQuery = "SELECT id FROM " + tableName;
+        // String getId = "SELECT " + tableName.
+        String getData = "SELECT id FROM " + tableName;
 
-        Cursor cursor = mDB.rawQuery(selectServantQuery, null);
+        Cursor cursor = mDB.rawQuery(getData, null);
 
+        // 데이터가 있으면 true를 반환
         if(cursor.getCount() >0){
             return true;
         }
 
+        // 아니면 false
         return false;
 
     }
+
+    // 1. 데이터 삽입
 
     // DB에 새로운 ServantContact 추가
     public void addServantContact(ServantContact contact){
@@ -92,25 +98,27 @@ public class DbOpenHelper{
 
     }
 
+    //
     public void addServantNameContact(ServantContact contact){
 
         mDB = mDBHelper.getWritableDatabase();
 
         ContentValues cv = new ContentValues();
-        cv.put(DataBase.ServantNameTable.ID, contact.getId());
-        cv.put(DataBase.ServantNameTable.SERVANT_ICON, contact.getServantIcon());
-        cv.put(DataBase.ServantNameTable.SERVANT_NAME, contact.getServantName());
+        cv.put(DataBase.ServantNameTable.ID, contact.getId()); // ID
+        cv.put(DataBase.ServantNameTable.SERVANT_ICON, contact.getServantIcon()); // 서번트 아이콘
+        cv.put(DataBase.ServantNameTable.SERVANT_NAME, contact.getServantName()); // 서번트 이름
 
         mDB.insert(DataBase.ServantNameTable.TABLE_NAME,null,cv);
 
     }
 
+    // 조인 부분
     public void addServantJoinSkillContact(ServantJoinSkillContract contact){
 
         mDB = mDBHelper.getWritableDatabase();
 
         ContentValues cv = new ContentValues();
-        cv.put(DataBase.ServantJoinSkillTable.ID, contact.getId());
+        cv.put(DataBase.ServantJoinSkillTable.ID, contact.getId()); // JOIN 부ㅂ
         cv.put(DataBase.ServantJoinSkillTable.SERVANT_ID, contact.getServantId());
         cv.put(DataBase.ServantJoinSkillTable.SKILL_ID, contact.getSkillId());
 
@@ -294,19 +302,24 @@ public class DbOpenHelper{
 
     }
 
+    // 서번트가 소유하고 있는 스킬을 가져온다.
     public List<SkillContact> getServantHavingSkill(int servantId){
         List<SkillContact> skillHaving = new ArrayList<SkillContact>();
 
         // 서번트가 가지고 있는 스킬 데이터를 가져온다.
         String selectHavingSkill = "SELECT " +
-                "(SS.skill_name || ' ' SS.skill_rank) as skill_name " +
-                "SS.skill_icon as skill_icon " +
+                "SS.skill_name as skill_name," +
+                "(SS.skill_name || ' ' || SS.skill_rank) as skill_full_name, " +
+                "SS.skill_effect as skill_effect," +
+                "SS.skill_icon as skill_icon" +
                 " from  " + DataBase.ServantJoinSkillTable.TABLE_NAME + " as SJS " +
-                " inner join " + DataBase.ServantNameTable.TABLE_NAME +" as SN " +
-                " on SJS.servant_id = " + servantId + " AND SN.id = " + servantId +
-                " inner join " + DataBase.SkillTable.TABLE_NAME +" as SS " +
+                " inner join " + DataBase.ServantNameTable.TABLE_NAME +" as SN" +
+                " on SJS.servant_id = " + servantId + " AND SN.id=" + servantId +
+                " inner join " + DataBase.SkillTable.TABLE_NAME +" as SS" +
                 " on SJS.skill_id = SS.id" +
-                " group by SS.skill_name";
+                " where SS.skill_classification =" + "'L'" +
+                " group by SS.skill_name" +
+                " order by SS.skill_name desc";
 
         mDB = mDBHelper.getReadableDatabase();
 
@@ -316,12 +329,50 @@ public class DbOpenHelper{
         if(cursor.moveToFirst()){
             do {
                 SkillContact contact = new SkillContact();
-                contact.setSkillName(cursor.getString(cursor.getColumnIndex("skill_name")));
                 contact.setSkillIcon(cursor.getString(cursor.getColumnIndex("skill_icon")));
+                contact.setSkillEffect(cursor.getString(cursor.getColumnIndex("skill_effect")));
+                contact.setSkillName(cursor.getString(cursor.getColumnIndex("skill_name")));
+                contact.setSkillFullName(cursor.getString(cursor.getColumnIndex("skill_full_name")));
+                skillHaving.add(contact);
             } while(cursor.moveToNext());
         }
 
         return skillHaving;
+    }
+
+    // 검색된 스킬 수치 가져오기
+    public List<SkillContact> getServantHavingValue(int servantId, String skillName){
+        List<SkillContact> skillNumber = new ArrayList<SkillContact>();
+
+        // 서번트가 가지고 있는 수치를 가져온다.
+        String selectHavingSkillValue = "select " +
+                " SS.skill_level as skill_level," +
+                "(case when skill_percent = 1 then (SS.skill_value || ' ' || '%') else SS.skill_value end) as skill_number" +
+                " from  " + DataBase.ServantJoinSkillTable.TABLE_NAME + " as SJS " +
+                " inner join " + DataBase.ServantNameTable.TABLE_NAME +" as SN" +
+                " on SJS.servant_id = " + servantId + " AND SN.id=" + servantId +
+                " inner join " + DataBase.SkillTable.TABLE_NAME +" as SS" +
+                " on SJS.skill_id = SS.id" +
+                " where SS.skill_name ='" + skillName + "'" +
+                "and SS.skill_classification =" + "'L'" +
+                " order by skill_level asc";
+
+        mDB = mDBHelper.getReadableDatabase();
+
+        // 커서에 검색 쿼리 삽입
+        Cursor cursor = mDB.rawQuery(selectHavingSkillValue, null);
+
+        if(cursor.moveToFirst()){
+            do {
+                SkillContact contact = new SkillContact();
+                contact.setSkillLevel(cursor.getInt(cursor.getColumnIndex("skill_level")));
+                contact.setSkillNumber(cursor.getString(cursor.getColumnIndex("skill_number")));
+                skillNumber.add(contact);
+            } while(cursor.moveToNext());
+        }
+
+        return skillNumber;
+
     }
 
     // 스킬 리스트 가져오기

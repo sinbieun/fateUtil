@@ -6,6 +6,7 @@ public class SkillContact {
     private int id; // 아이디
     private String skillIcon; // 스킬 아이콘 이름
     private String skillName; // 스킬 이름
+    private String skillFullName; // 스킬이름 + 스킬 랭크
     private String skillRank; // 스킬 랭크
     private String skillClassification; // 스킬 분류 (레벨 아니면 고정값)
     private int skillLevel; // 스킬 레벨 (0부터 10까지 0은 고정값)
@@ -18,13 +19,14 @@ public class SkillContact {
     private int skillCoolDown; // 스킬 쿨다운
     private int skillPercent; // 스킬 효과 수치가 퍼센트가 포함됬는지 아닌지 true면 % false면 일반 숫자
     private int skillEnhance; // 스킬 강화여부 true면 강회퀘 받음, 아니면 강화퀘 받지 않음
+    private String skillNumber;
 
     public SkillContact() {
 
     }
 
     public SkillContact(int id, String skillIcon, String skillName, String skillRank, String skillClassification,
-                        int skillLevel, String skillTarget, String skillEffect, double skillValue, String skillMerit,
+                        int skillLevel, String skillTarget, String skillRange, String skillEffect, double skillValue, String skillMerit,
                         int skillDuration, int skillCoolDown, int skillPercent, int skillEnhance) {
         this.id = id;
         this.skillIcon = skillIcon;
@@ -33,6 +35,7 @@ public class SkillContact {
         this.skillClassification = skillClassification;
         this.skillLevel = skillLevel;
         this.skillTarget = skillTarget;
+        this.skillRange = skillRange;
         this.skillEffect = skillEffect;
         this.skillValue = skillValue;
         this.skillMerit = skillMerit;
@@ -65,6 +68,14 @@ public class SkillContact {
 
     public void setSkillName(String skillName) {
         this.skillName = skillName;
+    }
+
+    public String getSkillFullName() {
+        return this.skillFullName;
+    }
+
+    public void setSkillFullName(String skillFullName) {
+        this.skillFullName = skillFullName;
     }
 
     public String getSkillRank() {
@@ -163,4 +174,12 @@ public class SkillContact {
         this.skillEnhance = skillEnhance;
     }
 
+    public String getSkillNumber(){
+        return  this.skillNumber;
+    }
+
+
+    public void setSkillNumber(String skillNumber) {
+        this.skillNumber = skillNumber;
+    }
 }

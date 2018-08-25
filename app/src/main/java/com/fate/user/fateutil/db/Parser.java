@@ -46,6 +46,7 @@ public class Parser extends LinearLayout {
             mDbOpenHelper.close();
             return;
         }
+
         // 1. 파일 이름 저장 변수
         String fileName = "databases/Servant.json";
         // 2. Servant.json 파일을 String에 저장
@@ -85,11 +86,14 @@ public class Parser extends LinearLayout {
 
     public void expParser() {
         // 0. 테이블에 값이 있으면 저장하지 않는다.
+
         mDbOpenHelper.open();
+
         if (mDbOpenHelper.checkData(DataBase.ExpTable.TABLE_NAME) == true) {
             mDbOpenHelper.close();
             return;
         }
+
 
         // 1. Servant.json 파일을 String에 저장
         String fileName = "databases/Exp.json";
@@ -125,10 +129,12 @@ public class Parser extends LinearLayout {
     public void servantNameParser() {
         // 0. 테이블에 값이 있다면 checkData에서 true를 반환하고 데이터 값을 넣지 않는다.
         mDbOpenHelper.open();
+
         if (mDbOpenHelper.checkData(DataBase.ServantNameTable.TABLE_NAME) == true) {
             mDbOpenHelper.close();
             return;
         }
+
         // 1. 파일 이름 저장 변수
         String fileName = "databases/ServantName.json";
         // 2. Servant.json 파일을 String에 저장
@@ -167,6 +173,7 @@ public class Parser extends LinearLayout {
             mDbOpenHelper.close();
             return;
         }
+
         // 1. 파일 이름 저장 변수
         String fileName = "databases/ServantJoinSkill.json";
         // 2. Servant.json 파일을 String에 저장
@@ -208,6 +215,7 @@ public class Parser extends LinearLayout {
             return;
         }
 
+
         // 1. Servant.json 파일을 String에 저장
         String fileName = "databases/ServantSkill.json";
         String jsonString = loadServantFromAsset(fileName);
@@ -227,6 +235,7 @@ public class Parser extends LinearLayout {
                 String skillClassification = jObject.getString("skill_classification");
                 int skillLevel = jObject.getInt("skill_level");
                 String skillTarget = jObject.getString("skill_target");
+                String skillRange = jObject.getString("skill_range");
                 String skillEffect = jObject.getString("skill_effect");
                 double skillValue = jObject.getDouble("skill_value");
                 String skillMerit = jObject.getString("skill_merit");
@@ -237,7 +246,7 @@ public class Parser extends LinearLayout {
 
                 // 3. 데이터 삽입을 하여준다.
                 mDbOpenHelper.addSkillContact(new SkillContact(
-                        id, skillIcon, skillName, skillRank, skillClassification, skillLevel, skillTarget,
+                        id, skillIcon, skillName, skillRank, skillClassification, skillLevel, skillTarget,skillRange,
                         skillEffect, skillValue, skillMerit, skillDuration, skillCoolDown, skillPercent,
                         skillEnhance));
 

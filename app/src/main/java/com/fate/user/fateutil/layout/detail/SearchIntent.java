@@ -4,6 +4,7 @@ package com.fate.user.fateutil.layout.detail;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,22 +19,25 @@ import android.widget.TextView;
 
 import com.fate.user.fateutil.R;
 import com.fate.user.fateutil.adapter.SearchAdapter;
-import com.fate.user.fateutil.adapter.SearchIntentAdapter;
 import com.fate.user.fateutil.db.DbOpenHelper;
 import com.fate.user.fateutil.db.SkillContact;
 
+import org.w3c.dom.Text;
+
+import java.util.HashMap;
 import java.util.List;
 
-public class SearchIntent extends AppCompatActivity{
+public class SearchIntent extends AppCompatActivity {
 
     private DbOpenHelper mDbOpenHelper;
-    private  int position;
-    private SearchIntentAdapter mAdapter, skillHavingAdapter;
+    private int position;
     private GridView gridView;
     private ListView listView;
-    private TextView skillName;
+    private TextView skillName, tempTextView;
     private ImageView skillIcon;
     private TabHost tabHost1;
+    private TableLayout container;
+    private List<SkillContact> servantHavingSkillValue;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,15 +46,10 @@ public class SearchIntent extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_intent);
 
-        //skillIcon = (ImageView) findViewById(R.id.skill_icon);
-        //skillName = (TextView) findViewById(R.id.skill_name);
-
-
-
         Intent intent = getIntent();
-        position = (int)intent.getSerializableExtra("POSITION");
+        position = (int) intent.getSerializableExtra("POSITION");
 
-        init();
+        init(); // 초기화
 
 
         // 뒤로가기 버튼
@@ -59,9 +58,9 @@ public class SearchIntent extends AppCompatActivity{
     }
 
     // 뒤로 가기 버튼 누를 SearchLayout으로 돌아감
-    public boolean onOptionsItemSelected(MenuItem item){
-        switch (item.getItemId()){
-            case android.R.id.home : {
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home: {
                 finish();
                 return true;
             }
@@ -70,18 +69,38 @@ public class SearchIntent extends AppCompatActivity{
     }
 
     // 초기 상태 설정
-    public void init(){
-        mDbOpenHelper.open();
-        // drawTable();
+    public void init() {
+        // id를 가져오는 부분
+        // 테이블 레이아웃의 id를 가져온다.
+        TableLayout servantSkillList;
+        servantSkillList = (TableLayout) findViewById(R.id.active_skill_table);
 
-        //List<SkillContact> skillContacts = mDbOpenHelper.getServantJoinSkill(position); // 스킬 들을 조인한다.
-        //mAdapter = new SearchIntentAdapter(this, skillContacts); // 어댑터에 DB에서 받은 스킬들을 넣어준다.
-        //listView = (ListView) findViewById(R.id.active_skill_list); // listView 아이디를 불러온다.
-        //listView.setAdapter(mAdapter); // 리스트 뷰에 어댑터 설정을 저장한다.
+        TableRow tr_head = new TableRow(this);
+        // tr_head.setId(10);
+        tr_head.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
+
+
+        // DB를 열고 데이터를 가지고 온다.
+        mDbOpenHelper.open();
+        // 서번트가 보유하고 있는 스킬들을 가져온다.
+        List<SkillContact> servantHavingSkill = mDbOpenHelper.getServantHavingSkill(position);
+        // 서번트가 보유하고 있는 스킬들의 수치를 가지고 온다.
+        for(int i= 0; i <servantHavingSkill.size(); i++){
+            SkillContact contact = servantHavingSkill.get(i);
+            String skillFullName = contact.getSkillFullName();
+            
+        }
+
+        for (int i = 0; i < servantHavingSkill.size(); i++) {
+            SkillContact contact = servantHavingSkill.get(i);
+            String skillName = contact.getSkillName();
+            servantHavingSkillValue = mDbOpenHelper.getServantHavingValue(position, skillName);
+            tableSkillValue(1, servantHavingSkillValue.size());
+        }
+
         mDbOpenHelper.close();
 
-
-        tabHost1 = (TabHost)findViewById(R.id.tabhost);
+        tabHost1 = (TabHost) findViewById(R.id.tabhost);
         tabHost1.setup();
 
         // 서번트 기본 스텟
@@ -109,24 +128,42 @@ public class SearchIntent extends AppCompatActivity{
     }
 
     /*
-    public void drawTable(){
-        List<SkillContact> skillHaving = mDbOpenHelper.getServantHavingSkill(position); // 가지고 있는 스킬을 가져온다.
-        int size = skillHaving.size();
-        TableLayout tableLayout = (TableLayout) findViewById(R.id.table_layout);
+    public void tableSkillName(int trCt){
+        TextView textView = (TextView)findViewById(R.id.skill_name);
+        TextView text[] = new TextView[trCt];
 
-        for(int i = 0; i < size; i++){
-            TextView skillName = new TextView(this);
-            TableRow tableRow = new TableRow(this);
-
-            tableRow.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
-
-            skillName.setText("카리스마");
-            skillName.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
-
-
+        for(int tr = 0; tr < trCt; tr++){
+            tr
         }
 
     }
     */
+
+    public void tableSkillValue(int trCt, int tdCt) {
+
+        TableLayout table = (TableLayout)findViewById(R.id.active_skill_table);
+        TableRow.LayoutParams rowLayout = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT);
+        TableRow row[] = new TableRow[trCt];
+        TextView text[][] = new TextView[trCt][tdCt];
+
+        SkillContact contact;
+        for(int tr = 0; tr < trCt; tr++){
+            row[tr] = new TableRow(this);
+
+            for(int td = 0; td < tdCt; td++){
+                contact = servantHavingSkillValue.get(td);
+                String skillNumber = contact.getSkillNumber();
+                text[tr][td] = new TextView(this);
+                text[tr][td].setText(skillNumber);
+                text[tr][td].setTextSize(8);
+                text[tr][td].setGravity(Gravity.CENTER);
+
+                row[tr].addView(text[tr][td]);
+            } // td for end
+
+            table.addView(row[tr], rowLayout);
+        } // tr for end
+
+    }
 
 }
