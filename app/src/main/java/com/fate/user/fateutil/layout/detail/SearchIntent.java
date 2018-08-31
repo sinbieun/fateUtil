@@ -113,10 +113,12 @@ public class SearchIntent extends AppCompatActivity {
 
         // 테이블 변수
         TableLayout skillTable = (TableLayout) findViewById(R.id.active_skill_table);
-        TableRow.LayoutParams rowLayout = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
+        // TableRow.LayoutParams rowLayout = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
+        TableRow.LayoutParams rowLayout = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f);
         String packName = this.getPackageName();
         TableRow row[] = new TableRow[trCt];
         ImageView skillIcon[][] = new ImageView[trCt][tdCt];
+
         TextView textViews[][] = new TextView[trCt][tdCt];
 
         for (int tr = 0; tr < trCt; tr++) {
@@ -170,50 +172,73 @@ public class SearchIntent extends AppCompatActivity {
 
         // 테이블 변수
         TableLayout skillTable = (TableLayout) findViewById(R.id.active_skill_table);
-        TableRow.LayoutParams rowLayout = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
 
+        TableRow.LayoutParams rowLayout = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f);
         TableRow row[] = new TableRow[trCt];
         TextView text[][] = new TextView[trCt][tdCt];
 
-        SkillContact skillEffect, skillValue;
+        SkillContact skillValue;
+
         for (int tr = 0; tr < trCt; tr++) {
             row[tr] = new TableRow(this);
 
+            for (int td1 = 0; td1 < 1; td1++) {
+                skillValue = servantHavingSkillValue.get(td1);
+
+                if (tr == 0) {
+                    String lv = "레벨";
+                    text[tr][td1] = new TextView(this);
+                    text[tr][td1].setText(lv);
+                    text[tr][td1].setTextSize(5);
+                    text[tr][td1].setGravity(Gravity.CENTER);
+                    row[tr].addView(text[tr][td1]);
+                } else if (tr > 0 && tr < (trCt - 1)) {
+                    String skillEffect = skillValue.getSkillEffect();
+                    text[tr][td1] = new TextView(this);
+                    text[tr][td1].setText(skillEffect);
+                    text[tr][td1].setTextSize(5);
+                    text[tr][td1].setGravity(Gravity.CENTER);
+                    row[tr].addView(text[tr][td1]);
+                } else {
+                    String cd = "쿨다운";
+                    text[tr][td1] = new TextView(this);
+                    text[tr][td1].setText(cd);
+                    text[tr][td1].setTextSize(5);
+                    text[tr][td1].setGravity(Gravity.CENTER);
+                    row[tr].addView(text[tr][td1]);
+                }
+            }
+
             for (int td = 0; td < tdCt; td++) {
+
                 skillValue = servantHavingSkillValue.get(td);
-                switch (tr) {
-                    case 0: {
-                        // 1렙부터 10렙 표시
-                        String lv = String.valueOf((td + 1));
-                        text[tr][td] = new TextView(this);
-                        text[tr][td].setText(lv);
-                        text[tr][td].setTextSize(5);
-                        text[tr][td].setGravity(Gravity.CENTER);
-                        row[tr].addView(text[tr][td]);
-                        break;
-                    }
 
-                    case 1: {
-                        // 스킬 수치 넣기
-                        String skillNumber = skillValue.getSkillNumber();
-                        text[tr][td] = new TextView(this);
-                        text[tr][td].setText(skillNumber);
-                        text[tr][td].setTextSize(5);
-                        text[tr][td].setGravity(Gravity.CENTER);
-                        row[tr].addView(text[tr][td]);
-                        break;
-                    }
-
-                    case 2: {
-                        // 스킬 쿨다운 넣기
-                        String skillCoolDown = String.valueOf(skillValue.getSkillCoolDown());
-                        text[tr][td] = new TextView(this);
-                        text[tr][td].setText(skillCoolDown);
-                        text[tr][td].setTextSize(5);
-                        text[tr][td].setGravity(Gravity.CENTER);
-                        row[tr].addView(text[tr][td]);
-                        break;
-                    }
+                // 수치값 넣기
+                if (tr == 0) {
+                    String lv = String.valueOf(td + 1);
+                    text[tr][td] = new TextView(this);
+                    text[tr][td].setText(lv);
+                    text[tr][td].setTextSize(5);
+                    text[tr][td].setGravity(Gravity.CENTER);
+                    row[tr].addView(text[tr][td]);
+                }
+                // 스킬 수치 넣기
+                else if (tr > 0 && tr < (trCt - 1)) {
+                    String skillNumber = skillValue.getSkillNumber();
+                    text[tr][td] = new TextView(this);
+                    text[tr][td].setText(skillNumber);
+                    text[tr][td].setTextSize(5);
+                    text[tr][td].setGravity(Gravity.CENTER);
+                    row[tr].addView(text[tr][td]);
+                }
+                // 쿨다운 수치
+                else if (tr == (trCt - 1)) {
+                    String skillCoolDown = String.valueOf(skillValue.getSkillCoolDown());
+                    text[tr][td] = new TextView(this);
+                    text[tr][td].setText(skillCoolDown);
+                    text[tr][td].setTextSize(5);
+                    text[tr][td].setGravity(Gravity.CENTER);
+                    row[tr].addView(text[tr][td]);
                 }
 
             } // td for end

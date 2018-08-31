@@ -346,6 +346,7 @@ public class DbOpenHelper{
 
         // 서번트가 가지고 있는 수치를 가져온다.
         String selectHavingSkillValue = "select " +
+                " SS.skill_effect as skill_effect," +
                 " SS.skill_level as skill_level," +
                 "(case when skill_percent = 1 then (SS.skill_value || ' ' || '%') else SS.skill_value end) as skill_number," +
                 " SS.skill_coolDown as skill_coolDown" +
@@ -366,6 +367,7 @@ public class DbOpenHelper{
         if(cursor.moveToFirst()){
             do {
                 SkillContact contact = new SkillContact();
+                contact.setSkillEffect(cursor.getString(cursor.getColumnIndex("skill_effect")));
                 contact.setSkillLevel(cursor.getInt(cursor.getColumnIndex("skill_level")));
                 contact.setSkillNumber(cursor.getString(cursor.getColumnIndex("skill_number")));
                 contact.setSkillCoolDown(cursor.getInt(cursor.getColumnIndex("skill_coolDown")));
