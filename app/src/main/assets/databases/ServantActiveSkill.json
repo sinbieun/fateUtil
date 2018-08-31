@@ -1,12 +1,12 @@
 [
     {
-        "id": "1",
         "skill_classification": "L",
         "skill_coolDown": "7",
         "skill_duration": "3",
         "skill_effect": "방어력 +",
         "skill_enhance": "0",
         "skill_icon": "shield_up",
+        "skill_id": "1",
         "skill_level": "1",
         "skill_merit": "M",
         "skill_name": "지금은 여린 눈꽃의 벽",
@@ -17,13 +17,13 @@
         "skill_value": "10.0"
     },
     {
-        "id": "2",
         "skill_classification": "L",
         "skill_coolDown": "7",
         "skill_duration": "3",
         "skill_effect": "방어력 +",
         "skill_enhance": "0",
         "skill_icon": "shield_up",
+        "skill_id": "2",
         "skill_level": "2",
         "skill_merit": "M",
         "skill_name": "지금은 여린 눈꽃의 벽",
@@ -34,13 +34,13 @@
         "skill_value": "10.5"
     },
     {
-        "id": "3",
         "skill_classification": "L",
         "skill_coolDown": "7",
         "skill_duration": "3",
         "skill_effect": "방어력 +",
         "skill_enhance": "0",
         "skill_icon": "shield_up",
+        "skill_id": "3",
         "skill_level": "3",
         "skill_merit": "M",
         "skill_name": "지금은 여린 눈꽃의 벽",
@@ -51,13 +51,13 @@
         "skill_value": "11.0"
     },
     {
-        "id": "4",
         "skill_classification": "L",
         "skill_coolDown": "7",
         "skill_duration": "3",
         "skill_effect": "방어력 +",
         "skill_enhance": "0",
         "skill_icon": "shield_up",
+        "skill_id": "4",
         "skill_level": "4",
         "skill_merit": "M",
         "skill_name": "지금은 여린 눈꽃의 벽",
@@ -68,13 +68,13 @@
         "skill_value": "11.5"
     },
     {
-        "id": "5",
         "skill_classification": "L",
         "skill_coolDown": "7",
         "skill_duration": "3",
         "skill_effect": "방어력 +",
         "skill_enhance": "0",
         "skill_icon": "shield_up",
+        "skill_id": "5",
         "skill_level": "5",
         "skill_merit": "M",
         "skill_name": "지금은 여린 눈꽃의 벽",
@@ -85,13 +85,13 @@
         "skill_value": "12.0"
     },
     {
-        "id": "6",
         "skill_classification": "L",
         "skill_coolDown": "6",
         "skill_duration": "3",
         "skill_effect": "방어력 +",
         "skill_enhance": "0",
         "skill_icon": "shield_up",
+        "skill_id": "6",
         "skill_level": "6",
         "skill_merit": "M",
         "skill_name": "지금은 여린 눈꽃의 벽",
@@ -102,13 +102,13 @@
         "skill_value": "12.5"
     },
     {
-        "id": "7",
         "skill_classification": "L",
         "skill_coolDown": "6",
         "skill_duration": "3",
         "skill_effect": "방어력 +",
         "skill_enhance": "0",
         "skill_icon": "shield_up",
+        "skill_id": "7",
         "skill_level": "7",
         "skill_merit": "M",
         "skill_name": "지금은 여린 눈꽃의 벽",
@@ -119,13 +119,13 @@
         "skill_value": "13.0"
     },
     {
-        "id": "8",
         "skill_classification": "L",
         "skill_coolDown": "6",
         "skill_duration": "3",
         "skill_effect": "방어력 +",
         "skill_enhance": "0",
         "skill_icon": "shield_up",
+        "skill_id": "8",
         "skill_level": "8",
         "skill_merit": "M",
         "skill_name": "지금은 여린 눈꽃의 벽",
@@ -136,13 +136,13 @@
         "skill_value": "13.5"
     },
     {
-        "id": "9",
         "skill_classification": "L",
         "skill_coolDown": "6",
         "skill_duration": "3",
         "skill_effect": "방어력 +",
         "skill_enhance": "0",
         "skill_icon": "shield_up",
+        "skill_id": "9",
         "skill_level": "9",
         "skill_merit": "M",
         "skill_name": "지금은 여린 눈꽃의 벽",
@@ -153,13 +153,13 @@
         "skill_value": "14.0"
     },
     {
-        "id": "10",
         "skill_classification": "L",
         "skill_coolDown": "5",
         "skill_duration": "3",
         "skill_effect": "방어력 +",
         "skill_enhance": "0",
         "skill_icon": "shield_up",
+        "skill_id": "10",
         "skill_level": "10",
         "skill_merit": "M",
         "skill_name": "지금은 여린 눈꽃의 벽",
@@ -170,13 +170,13 @@
         "skill_value": "15.0"
     },
     {
-        "id": "11",
         "skill_classification": "L",
         "skill_coolDown": "9",
         "skill_duration": "1",
         "skill_effect": "NP +",
         "skill_enhance": "0",
         "skill_icon": "invishield",
+        "skill_id": "11",
         "skill_level": "1",
         "skill_merit": "M",
         "skill_name": "때때로는 흐린 백악의 벽",
@@ -187,13 +187,13 @@
         "skill_value": "10.0"
     },
     {
-        "id": "12",
         "skill_classification": "L",
         "skill_coolDown": "9",
         "skill_duration": "1",
         "skill_effect": "NP +",
         "skill_enhance": "0",
         "skill_icon": "invishield",
+        "skill_id": "12",
         "skill_level": "2",
         "skill_merit": "M",
         "skill_name": "때때로는 흐린 백악의 벽",
@@ -204,13 +204,13 @@
         "skill_value": "11.0"
     },
     {
-        "id": "13",
         "skill_classification": "L",
         "skill_coolDown": "9",
         "skill_duration": "1",
         "skill_effect": "NP +",
         "skill_enhance": "0",
         "skill_icon": "invishield",
+        "skill_id": "13",
         "skill_level": "3",
         "skill_merit": "M",
         "skill_name": "때때로는 흐린 백악의 벽",
@@ -221,13 +221,13 @@
         "skill_value": "12.0"
     },
     {
-        "id": "14",
         "skill_classification": "L",
         "skill_coolDown": "9",
         "skill_duration": "1",
         "skill_effect": "NP +",
         "skill_enhance": "0",
         "skill_icon": "invishield",
+        "skill_id": "14",
         "skill_level": "4",
         "skill_merit": "M",
         "skill_name": "때때로는 흐린 백악의 벽",
@@ -238,13 +238,13 @@
         "skill_value": "13.0"
     },
     {
-        "id": "15",
         "skill_classification": "L",
         "skill_coolDown": "9",
         "skill_duration": "1",
         "skill_effect": "NP +",
         "skill_enhance": "0",
         "skill_icon": "invishield",
+        "skill_id": "15",
         "skill_level": "5",
         "skill_merit": "M",
         "skill_name": "때때로는 흐린 백악의 벽",
@@ -255,13 +255,13 @@
         "skill_value": "14.0"
     },
     {
-        "id": "16",
         "skill_classification": "L",
         "skill_coolDown": "8",
         "skill_duration": "1",
         "skill_effect": "NP +",
         "skill_enhance": "0",
         "skill_icon": "invishield",
+        "skill_id": "16",
         "skill_level": "6",
         "skill_merit": "M",
         "skill_name": "때때로는 흐린 백악의 벽",
@@ -272,13 +272,13 @@
         "skill_value": "15.0"
     },
     {
-        "id": "17",
         "skill_classification": "L",
         "skill_coolDown": "8",
         "skill_duration": "1",
         "skill_effect": "NP +",
         "skill_enhance": "0",
         "skill_icon": "invishield",
+        "skill_id": "17",
         "skill_level": "7",
         "skill_merit": "M",
         "skill_name": "때때로는 흐린 백악의 벽",
@@ -289,13 +289,13 @@
         "skill_value": "16.0"
     },
     {
-        "id": "18",
         "skill_classification": "L",
         "skill_coolDown": "8",
         "skill_duration": "1",
         "skill_effect": "NP +",
         "skill_enhance": "0",
         "skill_icon": "invishield",
+        "skill_id": "18",
         "skill_level": "8",
         "skill_merit": "M",
         "skill_name": "때때로는 흐린 백악의 벽",
@@ -306,13 +306,13 @@
         "skill_value": "17.0"
     },
     {
-        "id": "19",
         "skill_classification": "L",
         "skill_coolDown": "8",
         "skill_duration": "1",
         "skill_effect": "NP +",
         "skill_enhance": "0",
         "skill_icon": "invishield",
+        "skill_id": "19",
         "skill_level": "9",
         "skill_merit": "M",
         "skill_name": "때때로는 흐린 백악의 벽",
@@ -323,13 +323,13 @@
         "skill_value": "18.0"
     },
     {
-        "id": "20",
         "skill_classification": "L",
         "skill_coolDown": "7",
         "skill_duration": "1",
         "skill_effect": "NP +",
         "skill_enhance": "0",
         "skill_icon": "invishield",
+        "skill_id": "20",
         "skill_level": "10",
         "skill_merit": "M",
         "skill_name": "때때로는 흐린 백악의 벽",
@@ -340,13 +340,13 @@
         "skill_value": "20.0"
     },
     {
-        "id": "21",
         "skill_classification": "H",
         "skill_coolDown": "0",
         "skill_duration": "1",
         "skill_effect": "무적 상태",
         "skill_enhance": "0",
         "skill_icon": "invishield",
+        "skill_id": "21",
         "skill_level": "0",
         "skill_merit": "M",
         "skill_name": "때때로는 흐린 백악의 벽",
@@ -357,13 +357,13 @@
         "skill_value": "0.0"
     },
     {
-        "id": "22",
         "skill_classification": "L",
         "skill_coolDown": "8",
         "skill_duration": "1",
         "skill_effect": "NP 획득량 +",
         "skill_enhance": "0",
         "skill_icon": "taunt",
+        "skill_id": "22",
         "skill_level": "1",
         "skill_merit": "M",
         "skill_name": "떨쳐 일어나는 결의의 방패",
@@ -374,13 +374,13 @@
         "skill_value": "200.0"
     },
     {
-        "id": "23",
         "skill_classification": "L",
         "skill_coolDown": "8",
         "skill_duration": "1",
         "skill_effect": "NP 획득량 +",
         "skill_enhance": "0",
         "skill_icon": "taunt",
+        "skill_id": "23",
         "skill_level": "2",
         "skill_merit": "M",
         "skill_name": "떨쳐 일어나는 결의의 방패",
@@ -391,13 +391,13 @@
         "skill_value": "220.0"
     },
     {
-        "id": "24",
         "skill_classification": "L",
         "skill_coolDown": "8",
         "skill_duration": "1",
         "skill_effect": "NP 획득량 +",
         "skill_enhance": "0",
         "skill_icon": "taunt",
+        "skill_id": "24",
         "skill_level": "3",
         "skill_merit": "M",
         "skill_name": "떨쳐 일어나는 결의의 방패",
@@ -408,13 +408,13 @@
         "skill_value": "240.0"
     },
     {
-        "id": "25",
         "skill_classification": "L",
         "skill_coolDown": "8",
         "skill_duration": "1",
         "skill_effect": "NP 획득량 +",
         "skill_enhance": "0",
         "skill_icon": "taunt",
+        "skill_id": "25",
         "skill_level": "4",
         "skill_merit": "M",
         "skill_name": "떨쳐 일어나는 결의의 방패",
@@ -425,13 +425,13 @@
         "skill_value": "260.0"
     },
     {
-        "id": "26",
         "skill_classification": "L",
         "skill_coolDown": "8",
         "skill_duration": "1",
         "skill_effect": "NP 획득량 +",
         "skill_enhance": "0",
         "skill_icon": "taunt",
+        "skill_id": "26",
         "skill_level": "5",
         "skill_merit": "M",
         "skill_name": "떨쳐 일어나는 결의의 방패",
@@ -442,13 +442,13 @@
         "skill_value": "280.0"
     },
     {
-        "id": "27",
         "skill_classification": "L",
         "skill_coolDown": "7",
         "skill_duration": "1",
         "skill_effect": "NP 획득량 +",
         "skill_enhance": "0",
         "skill_icon": "taunt",
+        "skill_id": "27",
         "skill_level": "6",
         "skill_merit": "M",
         "skill_name": "떨쳐 일어나는 결의의 방패",
@@ -459,13 +459,13 @@
         "skill_value": "300.0"
     },
     {
-        "id": "28",
         "skill_classification": "L",
         "skill_coolDown": "7",
         "skill_duration": "1",
         "skill_effect": "NP 획득량 +",
         "skill_enhance": "0",
         "skill_icon": "taunt",
+        "skill_id": "28",
         "skill_level": "7",
         "skill_merit": "M",
         "skill_name": "떨쳐 일어나는 결의의 방패",
@@ -476,13 +476,13 @@
         "skill_value": "320.0"
     },
     {
-        "id": "29",
         "skill_classification": "L",
         "skill_coolDown": "7",
         "skill_duration": "1",
         "skill_effect": "NP 획득량 +",
         "skill_enhance": "0",
         "skill_icon": "taunt",
+        "skill_id": "29",
         "skill_level": "8",
         "skill_merit": "M",
         "skill_name": "떨쳐 일어나는 결의의 방패",
@@ -493,13 +493,13 @@
         "skill_value": "340.0"
     },
     {
-        "id": "30",
         "skill_classification": "L",
         "skill_coolDown": "7",
         "skill_duration": "1",
         "skill_effect": "NP 획득량 +",
         "skill_enhance": "0",
         "skill_icon": "taunt",
+        "skill_id": "30",
         "skill_level": "9",
         "skill_merit": "M",
         "skill_name": "떨쳐 일어나는 결의의 방패",
@@ -510,13 +510,13 @@
         "skill_value": "360.0"
     },
     {
-        "id": "31",
         "skill_classification": "L",
         "skill_coolDown": "6",
         "skill_duration": "1",
         "skill_effect": "NP 획득량 +",
         "skill_enhance": "0",
         "skill_icon": "taunt",
+        "skill_id": "31",
         "skill_level": "10",
         "skill_merit": "M",
         "skill_name": "떨쳐 일어나는 결의의 방패",
@@ -527,13 +527,13 @@
         "skill_value": "400.0"
     },
     {
-        "id": "32",
         "skill_classification": "H",
         "skill_coolDown": "0",
         "skill_duration": "1",
         "skill_effect": "타겟 집중 상태",
         "skill_enhance": "0",
         "skill_icon": "taunt",
+        "skill_id": "32",
         "skill_level": "0",
         "skill_merit": "M",
         "skill_name": "떨쳐 일어나는 결의의 방패",
@@ -544,13 +544,13 @@
         "skill_value": "0.0"
     },
     {
-        "id": "33",
         "skill_classification": "L",
         "skill_coolDown": "7",
         "skill_duration": "3",
         "skill_effect": "공격력 +",
         "skill_enhance": "0",
         "skill_icon": "dmg_up",
+        "skill_id": "33",
         "skill_level": "1",
         "skill_merit": "M",
         "skill_name": "카리스마",
@@ -561,13 +561,13 @@
         "skill_value": "9.0"
     },
     {
-        "id": "34",
         "skill_classification": "L",
         "skill_coolDown": "7",
         "skill_duration": "3",
         "skill_effect": "공격력 +",
         "skill_enhance": "0",
         "skill_icon": "dmg_up",
+        "skill_id": "34",
         "skill_level": "2",
         "skill_merit": "M",
         "skill_name": "카리스마",
@@ -578,13 +578,13 @@
         "skill_value": "9.9"
     },
     {
-        "id": "35",
         "skill_classification": "L",
         "skill_coolDown": "7",
         "skill_duration": "3",
         "skill_effect": "공격력 +",
         "skill_enhance": "0",
         "skill_icon": "dmg_up",
+        "skill_id": "35",
         "skill_level": "3",
         "skill_merit": "M",
         "skill_name": "카리스마",
@@ -595,13 +595,13 @@
         "skill_value": "10.8"
     },
     {
-        "id": "36",
         "skill_classification": "L",
         "skill_coolDown": "7",
         "skill_duration": "3",
         "skill_effect": "공격력 +",
         "skill_enhance": "0",
         "skill_icon": "dmg_up",
+        "skill_id": "36",
         "skill_level": "4",
         "skill_merit": "M",
         "skill_name": "카리스마",
@@ -612,13 +612,13 @@
         "skill_value": "11.7"
     },
     {
-        "id": "37",
         "skill_classification": "L",
         "skill_coolDown": "7",
         "skill_duration": "3",
         "skill_effect": "공격력 +",
         "skill_enhance": "0",
         "skill_icon": "dmg_up",
+        "skill_id": "37",
         "skill_level": "5",
         "skill_merit": "M",
         "skill_name": "카리스마",
@@ -629,13 +629,13 @@
         "skill_value": "12.6"
     },
     {
-        "id": "38",
         "skill_classification": "L",
         "skill_coolDown": "6",
         "skill_duration": "3",
         "skill_effect": "공격력 +",
         "skill_enhance": "0",
         "skill_icon": "dmg_up",
+        "skill_id": "38",
         "skill_level": "6",
         "skill_merit": "M",
         "skill_name": "카리스마",
@@ -646,13 +646,13 @@
         "skill_value": "13.5"
     },
     {
-        "id": "39",
         "skill_classification": "L",
         "skill_coolDown": "6",
         "skill_duration": "3",
         "skill_effect": "공격력 +",
         "skill_enhance": "0",
         "skill_icon": "dmg_up",
+        "skill_id": "39",
         "skill_level": "7",
         "skill_merit": "M",
         "skill_name": "카리스마",
@@ -663,13 +663,13 @@
         "skill_value": "14.4"
     },
     {
-        "id": "40",
         "skill_classification": "L",
         "skill_coolDown": "6",
         "skill_duration": "3",
         "skill_effect": "공격력 +",
         "skill_enhance": "0",
         "skill_icon": "dmg_up",
+        "skill_id": "40",
         "skill_level": "8",
         "skill_merit": "M",
         "skill_name": "카리스마",
@@ -680,13 +680,13 @@
         "skill_value": "15.3"
     },
     {
-        "id": "41",
         "skill_classification": "L",
         "skill_coolDown": "6",
         "skill_duration": "3",
         "skill_effect": "공격력 +",
         "skill_enhance": "0",
         "skill_icon": "dmg_up",
+        "skill_id": "41",
         "skill_level": "9",
         "skill_merit": "M",
         "skill_name": "카리스마",
@@ -697,13 +697,13 @@
         "skill_value": "16.2"
     },
     {
-        "id": "42",
         "skill_classification": "L",
         "skill_coolDown": "5",
         "skill_duration": "3",
         "skill_effect": "공격력 +",
         "skill_enhance": "0",
         "skill_icon": "dmg_up",
+        "skill_id": "42",
         "skill_level": "10",
         "skill_merit": "M",
         "skill_name": "카리스마",
@@ -714,13 +714,13 @@
         "skill_value": "18.0"
     },
     {
-        "id": "43",
         "skill_classification": "L",
         "skill_coolDown": "7",
         "skill_duration": "1",
         "skill_effect": "버스터 +",
         "skill_enhance": "0",
         "skill_icon": "buster_up",
+        "skill_id": "43",
         "skill_level": "1",
         "skill_merit": "M",
         "skill_name": "마력 방출",
@@ -731,13 +731,13 @@
         "skill_value": "30.0"
     },
     {
-        "id": "44",
         "skill_classification": "L",
         "skill_coolDown": "7",
         "skill_duration": "1",
         "skill_effect": "버스터 +",
         "skill_enhance": "0",
         "skill_icon": "buster_up",
+        "skill_id": "44",
         "skill_level": "2",
         "skill_merit": "M",
         "skill_name": "마력 방출",
@@ -748,13 +748,13 @@
         "skill_value": "32.0"
     },
     {
-        "id": "45",
         "skill_classification": "L",
         "skill_coolDown": "7",
         "skill_duration": "1",
         "skill_effect": "버스터 +",
         "skill_enhance": "0",
         "skill_icon": "buster_up",
+        "skill_id": "45",
         "skill_level": "3",
         "skill_merit": "M",
         "skill_name": "마력 방출",
@@ -765,13 +765,13 @@
         "skill_value": "34.0"
     },
     {
-        "id": "46",
         "skill_classification": "L",
         "skill_coolDown": "7",
         "skill_duration": "1",
         "skill_effect": "버스터 +",
         "skill_enhance": "0",
         "skill_icon": "buster_up",
+        "skill_id": "46",
         "skill_level": "4",
         "skill_merit": "M",
         "skill_name": "마력 방출",
@@ -782,13 +782,13 @@
         "skill_value": "36.0"
     },
     {
-        "id": "47",
         "skill_classification": "L",
         "skill_coolDown": "7",
         "skill_duration": "1",
         "skill_effect": "버스터 +",
         "skill_enhance": "0",
         "skill_icon": "buster_up",
+        "skill_id": "47",
         "skill_level": "5",
         "skill_merit": "M",
         "skill_name": "마력 방출",
@@ -799,13 +799,13 @@
         "skill_value": "38.0"
     },
     {
-        "id": "48",
         "skill_classification": "L",
         "skill_coolDown": "6",
         "skill_duration": "1",
         "skill_effect": "버스터 +",
         "skill_enhance": "0",
         "skill_icon": "buster_up",
+        "skill_id": "48",
         "skill_level": "6",
         "skill_merit": "M",
         "skill_name": "마력 방출",
@@ -816,13 +816,13 @@
         "skill_value": "40.0"
     },
     {
-        "id": "49",
         "skill_classification": "L",
         "skill_coolDown": "6",
         "skill_duration": "1",
         "skill_effect": "버스터 +",
         "skill_enhance": "0",
         "skill_icon": "buster_up",
+        "skill_id": "49",
         "skill_level": "7",
         "skill_merit": "M",
         "skill_name": "마력 방출",
@@ -833,13 +833,13 @@
         "skill_value": "42.0"
     },
     {
-        "id": "50",
         "skill_classification": "L",
         "skill_coolDown": "6",
         "skill_duration": "1",
         "skill_effect": "버스터 +",
         "skill_enhance": "0",
         "skill_icon": "buster_up",
+        "skill_id": "50",
         "skill_level": "8",
         "skill_merit": "M",
         "skill_name": "마력 방출",
@@ -850,13 +850,13 @@
         "skill_value": "44.0"
     },
     {
-        "id": "51",
         "skill_classification": "L",
         "skill_coolDown": "6",
         "skill_duration": "1",
         "skill_effect": "버스터 +",
         "skill_enhance": "0",
         "skill_icon": "buster_up",
+        "skill_id": "51",
         "skill_level": "9",
         "skill_merit": "M",
         "skill_name": "마력 방출",
@@ -867,13 +867,13 @@
         "skill_value": "46.0"
     },
     {
-        "id": "52",
         "skill_classification": "L",
         "skill_coolDown": "5",
         "skill_duration": "1",
         "skill_effect": "버스터 +",
         "skill_enhance": "0",
         "skill_icon": "buster_up",
+        "skill_id": "52",
         "skill_level": "10",
         "skill_merit": "M",
         "skill_name": "마력 방출",
@@ -884,13 +884,13 @@
         "skill_value": "50.0"
     },
     {
-        "id": "53",
         "skill_classification": "L",
         "skill_coolDown": "7",
         "skill_duration": "0",
         "skill_effect": "스타 +",
         "skill_enhance": "0",
         "skill_icon": "crit_normal",
+        "skill_id": "53",
         "skill_level": "1",
         "skill_merit": "M",
         "skill_name": "직감",
@@ -901,13 +901,13 @@
         "skill_value": "5.0"
     },
     {
-        "id": "54",
         "skill_classification": "L",
         "skill_coolDown": "7",
         "skill_duration": "0",
         "skill_effect": "스타 +",
         "skill_enhance": "0",
         "skill_icon": "crit_normal",
+        "skill_id": "54",
         "skill_level": "2",
         "skill_merit": "M",
         "skill_name": "직감",
@@ -918,13 +918,13 @@
         "skill_value": "6.0"
     },
     {
-        "id": "55",
         "skill_classification": "L",
         "skill_coolDown": "7",
         "skill_duration": "0",
         "skill_effect": "스타 +",
         "skill_enhance": "0",
         "skill_icon": "crit_normal",
+        "skill_id": "55",
         "skill_level": "3",
         "skill_merit": "M",
         "skill_name": "직감",
@@ -935,13 +935,13 @@
         "skill_value": "7.0"
     },
     {
-        "id": "56",
         "skill_classification": "L",
         "skill_coolDown": "7",
         "skill_duration": "0",
         "skill_effect": "스타 +",
         "skill_enhance": "0",
         "skill_icon": "crit_normal",
+        "skill_id": "56",
         "skill_level": "4",
         "skill_merit": "M",
         "skill_name": "직감",
@@ -952,13 +952,13 @@
         "skill_value": "8.0"
     },
     {
-        "id": "57",
         "skill_classification": "L",
         "skill_coolDown": "7",
         "skill_duration": "0",
         "skill_effect": "스타 +",
         "skill_enhance": "0",
         "skill_icon": "crit_normal",
+        "skill_id": "57",
         "skill_level": "5",
         "skill_merit": "M",
         "skill_name": "직감",
@@ -969,13 +969,13 @@
         "skill_value": "9.0"
     },
     {
-        "id": "58",
         "skill_classification": "L",
         "skill_coolDown": "6",
         "skill_duration": "0",
         "skill_effect": "스타 +",
         "skill_enhance": "0",
         "skill_icon": "crit_normal",
+        "skill_id": "58",
         "skill_level": "6",
         "skill_merit": "M",
         "skill_name": "직감",
@@ -986,13 +986,13 @@
         "skill_value": "10.0"
     },
     {
-        "id": "59",
         "skill_classification": "L",
         "skill_coolDown": "6",
         "skill_duration": "0",
         "skill_effect": "스타 +",
         "skill_enhance": "0",
         "skill_icon": "crit_normal",
+        "skill_id": "59",
         "skill_level": "7",
         "skill_merit": "M",
         "skill_name": "직감",
@@ -1003,13 +1003,13 @@
         "skill_value": "11.0"
     },
     {
-        "id": "60",
         "skill_classification": "L",
         "skill_coolDown": "6",
         "skill_duration": "0",
         "skill_effect": "스타 +",
         "skill_enhance": "0",
         "skill_icon": "crit_normal",
+        "skill_id": "60",
         "skill_level": "8",
         "skill_merit": "M",
         "skill_name": "직감",
@@ -1020,13 +1020,13 @@
         "skill_value": "12.0"
     },
     {
-        "id": "61",
         "skill_classification": "L",
         "skill_coolDown": "6",
         "skill_duration": "0",
         "skill_effect": "스타 +",
         "skill_enhance": "0",
         "skill_icon": "crit_normal",
+        "skill_id": "61",
         "skill_level": "9",
         "skill_merit": "M",
         "skill_name": "직감",
@@ -1037,13 +1037,13 @@
         "skill_value": "13.0"
     },
     {
-        "id": "62",
         "skill_classification": "L",
         "skill_coolDown": "5",
         "skill_duration": "0",
         "skill_effect": "스타 +",
         "skill_enhance": "0",
         "skill_icon": "crit_normal",
+        "skill_id": "62",
         "skill_level": "10",
         "skill_merit": "M",
         "skill_name": "직감",

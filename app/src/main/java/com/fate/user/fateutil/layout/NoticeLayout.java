@@ -6,15 +6,11 @@ import android.content.res.AssetManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.fate.user.fateutil.R;
 import com.fate.user.fateutil.adapter.NoticeAdapter;
-import com.fate.user.fateutil.adapter.SearchAdapter;
-import com.fate.user.fateutil.db.ServantContact;
 import com.fate.user.fateutil.layout.detail.NoticeIntent;
 import com.fate.user.fateutil.model.NoticeModel;
 
@@ -25,7 +21,6 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.List;
 
 public class NoticeLayout extends LinearLayout {
 

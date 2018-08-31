@@ -1,9 +1,9 @@
-package com.fate.user.fateutil.db;
+package com.fate.user.fateutil.db.contract.Skill;
 
 // 스킬 getter, setter
 public class SkillContact {
 
-    private int id; // 아이디
+    private int skillId; // 아이디
     private String skillIcon; // 스킬 아이콘 이름
     private String skillName; // 스킬 이름
     private String skillFullName; // 스킬이름 + 스킬 랭크
@@ -25,10 +25,10 @@ public class SkillContact {
 
     }
 
-    public SkillContact(int id, String skillIcon, String skillName, String skillRank, String skillClassification,
+    public SkillContact(int skillId, String skillIcon, String skillName, String skillRank, String skillClassification,
                         int skillLevel, String skillTarget, String skillRange, String skillEffect, double skillValue, String skillMerit,
                         int skillDuration, int skillCoolDown, int skillPercent, int skillEnhance) {
-        this.id = id;
+        this.skillId = skillId;
         this.skillIcon = skillIcon;
         this.skillName = skillName;
         this.skillRank = skillRank;
@@ -46,12 +46,12 @@ public class SkillContact {
     }
 
     // getter, setter
-    public int getId() {
-        return this.id;
+    public int getSkillId() {
+        return this.skillId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setSkillId(int skillId) {
+        this.skillId = skillId;
     }
 
     public String getSkillIcon() {

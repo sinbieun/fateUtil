@@ -22,11 +22,11 @@ import com.fate.user.fateutil.R;
 import com.fate.user.fateutil.adapter.SearchAdapter;
 import com.fate.user.fateutil.db.DbOpenHelper;
 
-import java.util.List;
-
 import com.fate.user.fateutil.db.Parser;
-import com.fate.user.fateutil.db.ServantContact;
+import com.fate.user.fateutil.db.contract.Servant.ServantContact;
 import com.fate.user.fateutil.layout.detail.SearchIntent;
+
+import java.util.List;
 
 public class SearchLayout extends LinearLayout implements AbsListView.OnScrollListener {
 
@@ -37,7 +37,6 @@ public class SearchLayout extends LinearLayout implements AbsListView.OnScrollLi
     private  LayoutInflater li = null;
     private ListView listView = null; // 리스트 뷰
     private ProgressBar progressBar; // 데이터 로딩중 표시할 프로그레스바
-    private  GridView gridView;
 
     // 어댑터 변수
     private  AssetManager assetManager = getResources().getAssets();
@@ -64,7 +63,6 @@ public class SearchLayout extends LinearLayout implements AbsListView.OnScrollLi
         editSearch = currentLayout.findViewById(R.id.edit_Search);
         listView = currentLayout.findViewById(R.id.list_View);
         progressBar = currentLayout.findViewById(R.id.progressbar);
-        //gridView = currentLayout.findViewById(R.id.grid_skill);
 
         mDbOpenHelper = new DbOpenHelper(currentLayout.getContext());
 
@@ -99,7 +97,7 @@ public class SearchLayout extends LinearLayout implements AbsListView.OnScrollLi
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // 클릭을 하였을 때 position 값을 인텐트에 넘겨준다.
                 // 인텐트 생성
-                Intent intent = new Intent(getContext(), SearchIntent.class);
+               Intent intent = new Intent(getContext(), SearchIntent.class);
                 // position 값을 넘긴다.
                 intent.putExtra("POSITION", (position+1));
                 getContext().startActivity(intent);
@@ -112,7 +110,7 @@ public class SearchLayout extends LinearLayout implements AbsListView.OnScrollLi
     public void init(){
         mDbOpenHelper.open();
         // 1. DB에서 서번트 리스트를 가져오고 저장한다.
-        List<ServantContact> contacts = mDbOpenHelper.getAllServantContacts();
+        List<ServantContact> contacts = mDbOpenHelper.getAllServantList();
         // 2. 리스트에 연동 될 어댑터 생성
         mAdapter = new SearchAdapter(currentLayout.getContext(), contacts);
         listView = (ListView)findViewById(R.id.list_View);
@@ -120,6 +118,7 @@ public class SearchLayout extends LinearLayout implements AbsListView.OnScrollLi
         // 프로그레스바
         progressBar.setVisibility(View.GONE);
         listView.setOnScrollListener(this);
+
         mDbOpenHelper.close();
     }
 
@@ -148,6 +147,7 @@ public class SearchLayout extends LinearLayout implements AbsListView.OnScrollLi
 
     }
 
+
     private void getItem(){
         // 리스트에 다음 데이터를 입력할 동안에 이 메소드가 또 호출되지 않도록 lockListView를 true로 설정
         lockListView = true;
@@ -164,4 +164,5 @@ public class SearchLayout extends LinearLayout implements AbsListView.OnScrollLi
         },1000);
 
     }
+
 }

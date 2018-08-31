@@ -1,5 +1,7 @@
 package com.fate.user.fateutil;
 
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -21,10 +23,13 @@ import com.fate.user.fateutil.layout.NoticeLayout;
 import com.fate.user.fateutil.layout.SearchLayout;
 import com.fate.user.fateutil.layout.ServantLayout;
 
+import java.io.File;
+
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private SQLiteDatabase sqliteDB;
     private ConstraintLayout drawLayout = null;
     private Parser parser;
 
@@ -57,14 +62,16 @@ public class MainActivity extends AppCompatActivity
 
         // 레이아웃 관리
         drawLayout = findViewById(R.id.draw_layout);
-        parser = new Parser(this);
+
+        InputData();
 
         // 데이터 삽입 관리
-        parser.servantParser(); // 서번트 데이터 삽입
-        parser.expParser(); // 경험치 테이블 삽입
-        parser.skillParser(); // 스킬 테이블 삽입
-        parser.servantNameParser(); // 서번트 이름 삽입
-        parser.servantJoinSkillParser(); // 조인 테이블 삽입
+        // 1. 경험치 테이블
+
+        //parser.skillParser(); // 스킬 테이블 삽입
+        //parser.servantParser(); // 서번트 데이터 삽입
+        //parser.servantNameParser(); // 서번트 이름 삽입
+        // parser.servantJoinSkillParser(); // 조인 테이블 삽입
     }
 
     @Override
@@ -100,7 +107,6 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-
     // 네비게이션 메뉴 설정
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -110,7 +116,7 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_notice) {
             // 저장된 레이아웃이 있다면 뷰 삭제
-            if(drawLayout != null){
+            if (drawLayout != null) {
                 drawLayout.removeAllViews();
             }
 
@@ -123,10 +129,9 @@ public class MainActivity extends AppCompatActivity
 
             // 타이틀 변경
             this.toolbarTitleChange(getString(R.string.toolbar_title_notice));
-        }
-        else if (id == R.id.nav_search) {
+        } else if (id == R.id.nav_search) {
 
-            if(drawLayout != null){
+            if (drawLayout != null) {
                 drawLayout.removeAllViews();
             }
 
@@ -135,11 +140,9 @@ public class MainActivity extends AppCompatActivity
 
             // 타이틀 변경
             this.toolbarTitleChange(getString(R.string.toolbar_title_search));
-        }
+        } else if (id == R.id.nav_servant) {
 
-        else if (id == R.id.nav_servant) {
-
-            if(drawLayout != null){
+            if (drawLayout != null) {
                 drawLayout.removeAllViews();
             }
 
@@ -148,11 +151,9 @@ public class MainActivity extends AppCompatActivity
 
             // 타이틀 변경
             this.toolbarTitleChange(getString(R.string.toolbar_title_servant));
-        }
+        } else if (id == R.id.nav_level) {
 
-        else if (id == R.id.nav_level) {
-
-            if(drawLayout != null){
+            if (drawLayout != null) {
                 drawLayout.removeAllViews();
             }
 
@@ -171,10 +172,38 @@ public class MainActivity extends AppCompatActivity
 
     /**
      * 툴바 타이틀을 바꿔주는 함수
+     *
      * @param title
      */
-    public void toolbarTitleChange(String title){
+    public void toolbarTitleChange(String title) {
         TextView toolbarTitle = (TextView) findViewById(R.id.toolbar_title);
         toolbarTitle.setText(title);
+    }
+
+    private SQLiteDatabase init_database() {
+        SQLiteDatabase db = null;
+        File file = new File(getFilesDir(), "fatedb.db");
+        try {
+            db = SQLiteDatabase.openOrCreateDatabase(file, null);
+        } catch (SQLiteException e) {
+            e.printStackTrace();
+        }
+        if (db == null) {
+            System.out.println("DB creation failed." + file.getAbsolutePath());
+        }
+
+        return db;
+    }
+
+    public void InputData() {
+        parser = new Parser(this);
+        parser.expParser();
+        parser.servanJointListParser();
+        parser.servantIconParser();
+        parser.servantNameParser();
+        parser.servantClassParser();
+
+        parser.activeSkillParser();
+        parser.servantJoinActiveSkillParser();
     }
 }

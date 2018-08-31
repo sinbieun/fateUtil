@@ -1,562 +1,450 @@
 [
     {
-        "icon": "servant_1",
-        "id": "1",
-        "name": "마슈 키리에라이트"
+        "name_id": "1",
+        "name_value": "마슈 키리에라이트"
     },
     {
-        "icon": "servant_2",
-        "id": "2",
-        "name": "알트리아 펜드래곤"
+        "name_id": "2",
+        "name_value": "알트리아 펜드래곤"
     },
     {
-        "icon": "servant_3",
-        "id": "3",
-        "name": "알트리아 펜드래곤(얼터)"
+        "name_id": "3",
+        "name_value": "알트리아 펜드래곤(얼터)"
     },
     {
-        "icon": "servant_4",
-        "id": "4",
-        "name": "알트리아 펜드래곤(릴리)"
+        "name_id": "4",
+        "name_value": "알트리아 펜드래곤(릴리)"
     },
     {
-        "icon": "servant_5",
-        "id": "5",
-        "name": "네로 클라우디우스"
+        "name_id": "5",
+        "name_value": "네로 클라우디우스"
     },
     {
-        "icon": "servant_6",
-        "id": "6",
-        "name": "지크프리트"
+        "name_id": "6",
+        "name_value": "지크프리트"
     },
     {
-        "icon": "servant_7",
-        "id": "7",
-        "name": "가이우스 율리우스 카이사르"
+        "name_id": "7",
+        "name_value": "가이우스 율리우스 카이사르"
     },
     {
-        "icon": "servant_8",
-        "id": "8",
-        "name": "알테라"
+        "name_id": "8",
+        "name_value": "알테라"
     },
     {
-        "icon": "servant_9",
-        "id": "9",
-        "name": "질 드 레"
+        "name_id": "9",
+        "name_value": "질 드 레"
     },
     {
-        "icon": "servant_10",
-        "id": "10",
-        "name": "슈발리에 데옹"
+        "name_id": "10",
+        "name_value": "슈발리에 데옹"
     },
     {
-        "icon": "servant_11",
-        "id": "11",
-        "name": "에미야"
+        "name_id": "11",
+        "name_value": "에미야"
     },
     {
-        "icon": "servant_12",
-        "id": "12",
-        "name": "길가메시"
+        "name_id": "12",
+        "name_value": "길가메시"
     },
     {
-        "icon": "servant_13",
-        "id": "13",
-        "name": "로빈 후드"
+        "name_id": "13",
+        "name_value": "로빈 후드"
     },
     {
-        "icon": "servant_14",
-        "id": "14",
-        "name": "아탈란테"
+        "name_id": "14",
+        "name_value": "아탈란테"
     },
     {
-        "icon": "servant_15",
-        "id": "15",
-        "name": "에우리알레"
+        "name_id": "15",
+        "name_value": "에우리알레"
     },
     {
-        "icon": "servant_16",
-        "id": "16",
-        "name": "아라쉬"
+        "name_id": "16",
+        "name_value": "아라쉬"
     },
     {
-        "icon": "servant_17",
-        "id": "17",
-        "name": "쿠 훌린"
+        "name_id": "17",
+        "name_value": "쿠 훌린"
     },
     {
-        "icon": "servant_18",
-        "id": "18",
-        "name": "엘리자베트 바토리"
+        "name_id": "18",
+        "name_value": "엘리자베트 바토리"
     },
     {
-        "icon": "servant_19",
-        "id": "19",
-        "name": "무사시보 벤케이"
+        "name_id": "19",
+        "name_value": "무사시보 벤케이"
     },
     {
-        "icon": "servant_20",
-        "id": "20",
-        "name": "쿠 훌린(프로토타입)"
+        "name_id": "20",
+        "name_value": "쿠 훌린(프로토타입)"
     },
     {
-        "icon": "servant_21",
-        "id": "21",
-        "name": "레오니다스 1세"
+        "name_id": "21",
+        "name_value": "레오니다스 1세"
     },
     {
-        "icon": "servant_22",
-        "id": "22",
-        "name": "로물루스"
+        "name_id": "22",
+        "name_value": "로물루스"
     },
     {
-        "icon": "servant_23",
-        "id": "23",
-        "name": "메두사"
+        "name_id": "23",
+        "name_value": "메두사"
     },
     {
-        "icon": "servant_24",
-        "id": "24",
-        "name": "게오르기우스"
+        "name_id": "24",
+        "name_value": "게오르기우스"
     },
     {
-        "icon": "servant_25",
-        "id": "25",
-        "name": "에드워드 티치"
+        "name_id": "25",
+        "name_value": "에드워드 티치"
     },
     {
-        "icon": "servant_26",
-        "id": "26",
-        "name": "부디카"
+        "name_id": "26",
+        "name_value": "부디카"
     },
     {
-        "icon": "servant_27",
-        "id": "27",
-        "name": "우시와카마루"
+        "name_id": "27",
+        "name_value": "우시와카마루"
     },
     {
-        "icon": "servant_28",
-        "id": "28",
-        "name": "알렉산더"
+        "name_id": "28",
+        "name_value": "알렉산더"
     },
     {
-        "icon": "servant_29",
-        "id": "29",
-        "name": "마리 앙투아네트"
+        "name_id": "29",
+        "name_value": "마리 앙투아네트"
     },
     {
-        "icon": "servant_30",
-        "id": "30",
-        "name": "마르타"
+        "name_id": "30",
+        "name_value": "마르타"
     },
     {
-        "icon": "servant_31",
-        "id": "31",
-        "name": "메데이아"
+        "name_id": "31",
+        "name_value": "메데이아"
     },
     {
-        "icon": "servant_32",
-        "id": "32",
-        "name": "질 드 레"
+        "name_id": "32",
+        "name_value": "질 드 레"
     },
     {
-        "icon": "servant_33",
-        "id": "33",
-        "name": "한스 크리스티안 안데르센"
+        "name_id": "33",
+        "name_value": "한스 크리스티안 안데르센"
     },
     {
-        "icon": "servant_34",
-        "id": "34",
-        "name": "윌리엄 셰익스피어"
+        "name_id": "34",
+        "name_value": "윌리엄 셰익스피어"
     },
     {
-        "icon": "servant_35",
-        "id": "35",
-        "name": "메피스토펠레스"
+        "name_id": "35",
+        "name_value": "메피스토펠레스"
     },
     {
-        "icon": "servant_36",
-        "id": "36",
-        "name": "볼프강 아마데우스 모차르트"
+        "name_id": "36",
+        "name_value": "볼프강 아마데우스 모차르트"
     },
     {
-        "icon": "servant_37",
-        "id": "37",
-        "name": "제갈공명(엘멜로이 2세)"
+        "name_id": "37",
+        "name_value": "제갈공명(엘멜로이 2세)"
     },
     {
-        "icon": "servant_38",
-        "id": "38",
-        "name": "쿠 훌린"
+        "name_id": "38",
+        "name_value": "쿠 훌린"
     },
     {
-        "icon": "servant_39",
-        "id": "39",
-        "name": "사사키 코지로"
+        "name_id": "39",
+        "name_value": "사사키 코지로"
     },
     {
-        "icon": "servant_40",
-        "id": "40",
-        "name": "주완의 하산"
+        "name_id": "40",
+        "name_value": "주완의 하산"
     },
     {
-        "icon": "servant_41",
-        "id": "41",
-        "name": "스테노"
+        "name_id": "41",
+        "name_value": "스테노"
     },
     {
-        "icon": "servant_42",
-        "id": "42",
-        "name": "형가"
+        "name_id": "42",
+        "name_value": "형가"
     },
     {
-        "icon": "servant_43",
-        "id": "43",
-        "name": "샤를-앙리 상송"
+        "name_id": "43",
+        "name_value": "샤를-앙리 상송"
     },
     {
-        "icon": "servant_44",
-        "id": "44",
-        "name": "팬덤 오브 디 오페라"
+        "name_id": "44",
+        "name_value": "팬덤 오브 디 오페라"
     },
     {
-        "icon": "servant_45",
-        "id": "45",
-        "name": "마타 하리"
+        "name_id": "45",
+        "name_value": "마타 하리"
     },
     {
-        "icon": "servant_46",
-        "id": "46",
-        "name": "카밀라"
+        "name_id": "46",
+        "name_value": "카밀라"
     },
     {
-        "icon": "servant_47",
-        "id": "47",
-        "name": "헤라클레스"
+        "name_id": "47",
+        "name_value": "헤라클레스"
     },
     {
-        "icon": "servant_48",
-        "id": "48",
-        "name": "랜슬롯"
+        "name_id": "48",
+        "name_value": "랜슬롯"
     },
     {
-        "icon": "servant_49",
-        "id": "49",
-        "name": "여포 봉선"
+        "name_id": "49",
+        "name_value": "여포 봉선"
     },
     {
-        "icon": "servant_50",
-        "id": "50",
-        "name": "스파르타쿠스"
+        "name_id": "50",
+        "name_value": "스파르타쿠스"
     },
     {
-        "icon": "servant_51",
-        "id": "51",
-        "name": "사카타 킨토키"
+        "name_id": "51",
+        "name_value": "사카타 킨토키"
     },
     {
-        "icon": "servant_52",
-        "id": "52",
-        "name": "블라드 3세"
+        "name_id": "52",
+        "name_value": "블라드 3세"
     },
     {
-        "icon": "servant_53",
-        "id": "53",
-        "name": "아스테리오스"
+        "name_id": "53",
+        "name_value": "아스테리오스"
     },
     {
-        "icon": "servant_54",
-        "id": "54",
-        "name": "칼리굴라"
+        "name_id": "54",
+        "name_value": "칼리굴라"
     },
     {
-        "icon": "servant_55",
-        "id": "55",
-        "name": "다리우스 3세"
+        "name_id": "55",
+        "name_value": "다리우스 3세"
     },
     {
-        "icon": "servant_56",
-        "id": "56",
-        "name": "키요히메"
+        "name_id": "56",
+        "name_value": "키요히메"
     },
     {
-        "icon": "servant_57",
-        "id": "57",
-        "name": "에릭 블러드액스"
+        "name_id": "57",
+        "name_value": "에릭 블러드액스"
     },
     {
-        "icon": "servant_58",
-        "id": "58",
-        "name": "타마모캣"
+        "name_id": "58",
+        "name_value": "타마모캣"
     },
     {
-        "icon": "servant_59",
-        "id": "59",
-        "name": "잔 다르크"
+        "name_id": "59",
+        "name_value": "잔 다르크"
     },
     {
-        "icon": "servant_60",
-        "id": "60",
-        "name": "오리온"
+        "name_id": "60",
+        "name_value": "오리온"
     },
     {
-        "icon": "servant_61",
-        "id": "61",
-        "name": "엘리자베트 바토리(할로윈)"
+        "name_id": "61",
+        "name_value": "엘리자베트 바토리(할로윈)"
     },
     {
-        "icon": "servant_62",
-        "id": "62",
-        "name": "타마모노마에"
+        "name_id": "62",
+        "name_value": "타마모노마에"
     },
     {
-        "icon": "servant_63",
-        "id": "63",
-        "name": "다윗"
+        "name_id": "63",
+        "name_value": "다윗"
     },
     {
-        "icon": "servant_64",
-        "id": "64",
-        "name": "헥토르"
+        "name_id": "64",
+        "name_value": "헥토르"
     },
     {
-        "icon": "servant_65",
-        "id": "65",
-        "name": "프랜시스 드레이크"
+        "name_id": "65",
+        "name_value": "프랜시스 드레이크"
     },
     {
-        "icon": "servant_66",
-        "id": "66",
-        "name": "앤 보니&메리 리드"
+        "name_id": "66",
+        "name_value": "앤 보니&메리 리드"
     },
     {
-        "icon": "servant_67",
-        "id": "67",
-        "name": "메데이아(릴리)"
+        "name_id": "67",
+        "name_value": "메데이아(릴리)"
     },
     {
-        "icon": "servant_68",
-        "id": "68",
-        "name": "오키타 소지"
+        "name_id": "68",
+        "name_value": "오키타 소지"
     },
     {
-        "icon": "servant_69",
-        "id": "69",
-        "name": "오다 노부나가"
+        "name_id": "69",
+        "name_value": "오다 노부나가"
     },
     {
-        "icon": "servant_70",
-        "id": "70",
-        "name": "스카사하"
+        "name_id": "70",
+        "name_value": "스카사하"
     },
     {
-        "icon": "servant_71",
-        "id": "71",
-        "name": "디어뮈드 오 디나"
+        "name_id": "71",
+        "name_value": "디어뮈드 오 디나"
     },
     {
-        "icon": "servant_72",
-        "id": "72",
-        "name": "퍼거스 막 로이"
+        "name_id": "72",
+        "name_value": "퍼거스 막 로이"
     },
     {
-        "icon": "servant_73",
-        "id": "73",
-        "name": "알트리아 펜드래곤(산타 얼터)"
+        "name_id": "73",
+        "name_value": "알트리아 펜드래곤(산타 얼터)"
     },
     {
-        "icon": "servant_74",
-        "id": "74",
-        "name": "너서리 라임"
+        "name_id": "74",
+        "name_value": "너서리 라임"
     },
     {
-        "icon": "servant_75",
-        "id": "75",
-        "name": "잭 더 리퍼"
+        "name_id": "75",
+        "name_value": "잭 더 리퍼"
     },
     {
-        "icon": "servant_76",
-        "id": "76",
-        "name": "모드레드"
+        "name_id": "76",
+        "name_value": "모드레드"
     },
     {
-        "icon": "servant_77",
-        "id": "77",
-        "name": "니콜라 테슬라"
+        "name_id": "77",
+        "name_value": "니콜라 테슬라"
     },
     {
-        "icon": "servant_78",
-        "id": "78",
-        "name": "알트리아 펜드래곤(얼터)"
+        "name_id": "78",
+        "name_value": "알트리아 펜드래곤(얼터)"
     },
     {
-        "icon": "servant_79",
-        "id": "79",
-        "name": "반 호엔하임 파라켈수스"
+        "name_id": "79",
+        "name_value": "반 호엔하임 파라켈수스"
     },
     {
-        "icon": "servant_80",
-        "id": "80",
-        "name": "찰스 배비지"
+        "name_id": "80",
+        "name_value": "찰스 배비지"
     },
     {
-        "icon": "servant_81",
-        "id": "81",
-        "name": "헨리 지킬&하이드"
+        "name_id": "81",
+        "name_value": "헨리 지킬&하이드"
     },
     {
-        "icon": "servant_82",
-        "id": "82",
-        "name": "프랑켄슈타인"
+        "name_id": "82",
+        "name_value": "프랑켄슈타인"
     },
     {
-        "icon": "servant_83",
-        "id": "83",
-        "name": "솔로몬"
+        "name_id": "83",
+        "name_value": "솔로몬"
     },
     {
-        "icon": "servant_84",
-        "id": "84",
-        "name": "아르주나"
+        "name_id": "84",
+        "name_value": "아르주나"
     },
     {
-        "icon": "servant_85",
-        "id": "85",
-        "name": "카르나"
+        "name_id": "85",
+        "name_value": "카르나"
     },
     {
-        "icon": "servant_86",
-        "id": "86",
-        "name": "수수께끼의 히로인 X"
+        "name_id": "86",
+        "name_value": "수수께끼의 히로인 X"
     },
     {
-        "icon": "servant_87",
-        "id": "87",
-        "name": "핀 막 쿨"
+        "name_id": "87",
+        "name_value": "핀 막 쿨"
     },
     {
-        "icon": "servant_88",
-        "id": "88",
-        "name": "브륀힐드"
+        "name_id": "88",
+        "name_value": "브륀힐드"
     },
     {
-        "icon": "servant_89",
-        "id": "89",
-        "name": "베오울프"
+        "name_id": "89",
+        "name_value": "베오울프"
     },
     {
-        "icon": "servant_90",
-        "id": "90",
-        "name": "네로 클라우디우스(브라이드)"
+        "name_id": "90",
+        "name_value": "네로 클라우디우스(브라이드)"
     },
     {
-        "icon": "servant_91",
-        "id": "91",
-        "name": "료기 시키"
+        "name_id": "91",
+        "name_value": "료기 시키"
     },
     {
-        "icon": "servant_92",
-        "id": "92",
-        "name": "료기 시키"
+        "name_id": "92",
+        "name_value": "료기 시키"
     },
     {
-        "icon": "servant_93",
-        "id": "93",
-        "name": "아마쿠사 시로"
+        "name_id": "93",
+        "name_value": "아마쿠사 시로"
     },
     {
-        "icon": "servant_94",
-        "id": "94",
-        "name": "아스톨포"
+        "name_id": "94",
+        "name_value": "아스톨포"
     },
     {
-        "icon": "servant_95",
-        "id": "95",
-        "name": "꼬마 길"
+        "name_id": "95",
+        "name_value": "꼬마 길"
     },
     {
-        "icon": "servant_96",
-        "id": "96",
-        "name": "에드몽 당테스"
+        "name_id": "96",
+        "name_value": "에드몽 당테스"
     },
     {
-        "icon": "servant_97",
-        "id": "97",
-        "name": "나이팅게일"
+        "name_id": "97",
+        "name_value": "나이팅게일"
     },
     {
-        "icon": "servant_98",
-        "id": "98",
-        "name": "쿠 훌린(얼터)"
+        "name_id": "98",
+        "name_value": "쿠 훌린(얼터)"
     },
     {
-        "icon": "servant_99",
-        "id": "99",
-        "name": "여왕 메이브"
+        "name_id": "99",
+        "name_value": "여왕 메이브"
     },
     {
-        "icon": "servant_100",
-        "id": "100",
-        "name": "엘레나 블라바츠키"
+        "name_id": "100",
+        "name_value": "엘레나 블라바츠키"
     },
     {
-        "icon": "servant_101",
-        "id": "101",
-        "name": "라마"
+        "name_id": "101",
+        "name_value": "라마"
     },
     {
-        "icon": "servant_102",
-        "id": "102",
-        "name": "이서문"
+        "name_id": "102",
+        "name_value": "이서문"
     },
     {
-        "icon": "servant_103",
-        "id": "103",
-        "name": "토마스 에디슨"
+        "name_id": "103",
+        "name_value": "토마스 에디슨"
     },
     {
-        "icon": "servant_104",
-        "id": "104",
-        "name": "제로니모"
+        "name_id": "104",
+        "name_value": "제로니모"
     },
     {
-        "icon": "servant_105",
-        "id": "105",
-        "name": "발리 더 키드"
+        "name_id": "105",
+        "name_value": "발리 더 키드"
     },
     {
-        "icon": "servant_106",
-        "id": "106",
-        "name": "잔 다르크(얼터)"
+        "name_id": "106",
+        "name_value": "잔 다르크(얼터)"
     },
     {
-        "icon": "servant_107",
-        "id": "107",
-        "name": "앙리 마유"
+        "name_id": "107",
+        "name_value": "앙리 마유"
     },
     {
-        "icon": "servant_108",
-        "id": "108",
-        "name": "이스칸다르"
+        "name_id": "108",
+        "name_value": "이스칸다르"
     },
     {
-        "icon": "servant_109",
-        "id": "109",
-        "name": "에미야"
+        "name_id": "109",
+        "name_value": "에미야"
     },
     {
-        "icon": "servant_110",
-        "id": "110",
-        "name": "백모의 하산"
+        "name_id": "110",
+        "name_value": "백모의 하산"
     },
     {
-        "icon": "servant_111",
-        "id": "111",
-        "name": "아이리스필(하늘의 옷)"
+        "name_id": "111",
+        "name_value": "아이리스필(하늘의 옷)"
     },
     {
-        "icon": "servant_112",
-        "id": "112",
-        "name": "슈텐도지"
+        "name_id": "112",
+        "name_value": "슈텐도지"
     }
 ]

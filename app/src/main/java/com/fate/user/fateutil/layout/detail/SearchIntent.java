@@ -15,7 +15,7 @@ import android.widget.TextView;
 import com.fate.user.fateutil.R;
 
 import com.fate.user.fateutil.db.DbOpenHelper;
-import com.fate.user.fateutil.db.SkillContact;
+import com.fate.user.fateutil.db.contract.Skill.SkillContact;
 
 
 import java.util.List;
@@ -93,9 +93,9 @@ public class SearchIntent extends AppCompatActivity {
 
     public void createTable() {
 
-
         // DB를 열고 데이터를 가져온다.
         mDbOpenHelper.open();
+
         // 1. 서번트가 보유하고 있는 스킬들을 가져온다.
         servantHavingSkill = mDbOpenHelper.getServantHavingSkill(position); // 리스트 위치에 따라 검색을 다르게 한다.
         // 2. 보유하고 있는 스킬 갯수에 따라 테이블의 행을 생성한다.
@@ -103,6 +103,7 @@ public class SearchIntent extends AppCompatActivity {
             // 2. 스킬 테이블을 만들고 스킬 이름, 설명, 표시할 효과를 넣는다.
             tableSkillHaving(servantHavingSkill.size(), 3);
         }
+
 
         mDbOpenHelper.close();
 
@@ -112,6 +113,7 @@ public class SearchIntent extends AppCompatActivity {
     public void tableSkillHaving(int trCt, int tdCt) {
 
         // 테이블 변수
+
         TableLayout skillTable = (TableLayout) findViewById(R.id.active_skill_table);
         // TableRow.LayoutParams rowLayout = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
         TableRow.LayoutParams rowLayout = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f);
@@ -120,6 +122,7 @@ public class SearchIntent extends AppCompatActivity {
         ImageView skillIcon[][] = new ImageView[trCt][tdCt];
 
         TextView textViews[][] = new TextView[trCt][tdCt];
+
 
         for (int tr = 0; tr < trCt; tr++) {
             row[tr] = new TableRow(this);
@@ -165,6 +168,7 @@ public class SearchIntent extends AppCompatActivity {
             // 4. 스킬 수치 값을 집어 넣는다. (좀더 동적으로 수정 예정)
             tableSkillValue(3, servantHavingSkillValue.size());
         } // tr 의 끝
+
     }
 
     // 스킬 수치 테이블 생성
@@ -246,5 +250,6 @@ public class SearchIntent extends AppCompatActivity {
         } // tr for end
 
     }
-
 }
+
+

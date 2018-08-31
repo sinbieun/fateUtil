@@ -6,23 +6,39 @@ public class DataBase {
 
     // 계약 클래스
     // DB 내용
-    private DataBase(){};
-
-    // 1. 서번트 테이블 변수 생성
-    public static final class ServantTable implements BaseColumns {
-        public static final String TABLE_NAME = "servant";
-        public static final String ID = "id";
-        public static final String SERVANT_ICON = "servantIcon";
-        public static final String SERVANT_NAME = "servantName";
-        public static final String SERVANT_CLASS = "servantClass";
-        public static final String SERVANT_GRADE = "servantGrade";
+    private DataBase() {
     }
 
+    // 1. 서번트 테이블 생성
+    // 1_1) 서번트 조인 리스트 테이블 생성 (서번트 아이디, 아이콘 아이디, 이름 아이디, 클래스 아이디)
+    public static final class ServantJoinListTable implements BaseColumns {
+        public static final String TABLE_NAME = "ServantJoinList";
+        public static final String SERVANT_ID = "servant_id";
+        public static final String ICON_ID = "icon_id";
+        public static final String NAME_ID = "name_id";
+        public static final String CLASS_ID = "class_id";
+        public static final String GRADE_VALUE = "grade_value";
+    }
+
+    // 1_2) 서번트 아이콘 테이블 생성 (서번트 아이콘 이름 아이디, 서번트 아이콘 이름)
+    public static final class ServantIconTable implements BaseColumns {
+        public static final String TABLE_NAME = "ServantIcon";
+        public static final String ICON_ID = "icon_id";
+        public static final String ICON_NAME = "icon_name";
+    }
+
+    // 1_3) 서번트 이름 테이블 생성 (서번트 이름 아이디, 서번트 이름 값)
     public static final class ServantNameTable implements BaseColumns {
         public static final String TABLE_NAME = "ServantName";
-        public static final String ID = "id";
-        public static final String SERVANT_ICON = "icon";
-        public static final String SERVANT_NAME = "name";
+        public static final String NAME_ID = "name_id";
+        public static final String NAME_VALUE = "name_value";
+    }
+
+    // 1_4) 서번트 클래스 테이블 생성 (서번트 클래스 아이디, 서번트 클래스 이름)
+    public static final class ServantClassTable implements BaseColumns {
+        public static final String TABLE_NAME = "ServantClass";
+        public static final String CLASS_ID = "class_id";
+        public static final String CLASS_NAME = "class_name";
     }
 
     // 2. 경험치 테이블 변수 생성
@@ -34,9 +50,20 @@ public class DataBase {
     }
 
     // 3. 스킬 테이블 변수 생성
-    public static final class SkillTable implements BaseColumns {
-        public static final String TABLE_NAME = "ServantSkill";
+    // 3_1) 서번트 조인 액티브스킬 테이블 생성 (아이디, 서번트 아이디, 스킬 아이디)
+    public static final class ServantJoinSkillTable implements BaseColumns {
+        public static final String TABLE_NAME = "ServantJoinSkill";
         public static final String ID = "id";
+        public static final String SERVANT_ID = "servant_id";
+        public static final String SKILL_ID = "skill_id";
+    }
+
+    // 3_2) 서번트 액티브 스킬 테이블 생성
+    // (스킬 아이디, 스킬 아이콘, 스킬 이름, 스킬 랭크, 스킬 분류, 스킬 레벨, 스킬 타겟, 스킬 범위
+    // 스킬 효과, 스킬 값, 스킬 장단점, 스킬 지속시간, 스킬 쿨다운, 스킬 퍼센트 여부, 스킬 강화여부)
+    public static final class ActiveSkillTable implements BaseColumns {
+        public static final String TABLE_NAME = "ServantActiveSkill";
+        public static final String SKILL_ID = "skill_id";
         public static final String SKILL_ICON = "skill_icon";
         public static final String SKILL_NAME = "skill_name";
         public static final String SKILL_RANK = "skill_rank";
@@ -75,38 +102,47 @@ public class DataBase {
         public static final String WEAPON_ENHANCE = "weapon_enhance";
     }
 
-    public static final class ServantJoinSkillTable implements BaseColumns {
-        public static final String TABLE_NAME = "ServantJoinSkill";
-        public static final String ID = "id";
-        public static final String SERVANT_ID = "servant_id";
-        public static final String SKILL_ID = "skill_id";
-    }
 
-
-    // 서번트 테이블 생성문
-    public static final String SQL_CREATE_SERVANT =
+    // 1. 서번트 조인 리스트
+    // 1_1) 서번트 조인 리스트 테이블 생성
+    public static final String SQL_CREATE_SERVANT_JOIN_LIST =
             "create table " +
-                    ServantTable.TABLE_NAME + " (" +
-                    ServantTable.ID + " integer primary key not null, " +
-                    ServantTable.SERVANT_ICON + " text not null ," +
-                    ServantTable.SERVANT_NAME  + " text not null , " +
-                    ServantTable.SERVANT_CLASS + " text not null , " +
-                    ServantTable.SERVANT_GRADE + " integer not null" + ");";
+                    ServantJoinListTable.TABLE_NAME + " (" +
+                    ServantJoinListTable.SERVANT_ID + " integer primary key not null, " +
+                    ServantJoinListTable.ICON_ID + " integer not null ," +
+                    ServantJoinListTable.NAME_ID + " integer not null , " +
+                    ServantJoinListTable.CLASS_ID + " integer not null , " +
+                    ServantJoinListTable.GRADE_VALUE + " integer not null" + ");";
 
+    // 1_2) 서번트 아이콘 테이블 생성
+    public static final String SQL_CREATE_SERVANT_ICON =
+            "create table " +
+                    ServantIconTable.TABLE_NAME + " (" +
+                    ServantIconTable.ICON_ID + " integer primary key not null, " +
+                    ServantIconTable.ICON_NAME + " text not null" + ");";
+
+    // 1_3) 서번트 이름 테이블 생성
     public static final String SQL_CREATE_SERVANT_NAME =
             "create table " +
                     ServantNameTable.TABLE_NAME + " (" +
-                    ServantNameTable.ID + " integer primary key not null, " +
-                    ServantNameTable.SERVANT_ICON + " text not null ," +
-                    ServantNameTable.SERVANT_NAME  + " text not null" + ");";
+                    ServantNameTable.NAME_ID + " integer primary key not null, " +
+                    ServantNameTable.NAME_VALUE + " text not null" + ");";
 
+    // 1_4) 서번트 클래스 테이블 생성
+    public static final String SQL_CREATE_SERVANT_CLASS =
+            "create table " +
+                    ServantClassTable.TABLE_NAME + " (" +
+                    ServantClassTable.CLASS_ID + " integer primary key not null, " +
+                    ServantClassTable.CLASS_NAME + " text not null" + ");";
+
+    // 2. 서번트 스킬
+    // 2_1) 서번트 조인 액티브 스킬 테이블 생성
     public static final String SQL_CREATE_SERVANT_JOIN_SKILL =
             "create table " +
                     ServantJoinSkillTable.TABLE_NAME + " (" +
                     ServantJoinSkillTable.ID + " integer primary key not null, " +
                     ServantJoinSkillTable.SERVANT_ID + " integer not null ," +
-                    ServantJoinSkillTable.SKILL_ID  + " integer not null" + ");";
-
+                    ServantJoinSkillTable.SKILL_ID + " integer not null" + ");";
 
     // 서번트 경험치 테이블 생성
     public static final String SQL_CREATE_EXP =
@@ -114,35 +150,37 @@ public class DataBase {
                     ExpTable.TABLE_NAME + " (" +
                     ExpTable.ID + " integer not null , " +
                     ExpTable.SERVANT_LEVEL + " integer not null ," +
-                    ExpTable.SERVANT_EXP  + " integer not null" + ");";
+                    ExpTable.SERVANT_EXP + " integer not null" + ");";
 
     // 스킬 테이블 생성
-    public static final String SQL_CREATE_SKILL =
+    public static final String SQL_CREATE_ACTIVE_SKILL =
             "create table " +
-                    SkillTable.TABLE_NAME + " (" +
-                    SkillTable.ID + " integer primary key not null, " +
-                    SkillTable.SKILL_ICON + " text not null ," +
-                    SkillTable.SKILL_NAME  + " text not null , " +
-                    SkillTable.SKILL_RANK + " text , " +
-                    SkillTable.SKILL_CLASSIFICATION + " text ," +
-                    SkillTable.SKILL_LEVEL + " integer , " +
-                    SkillTable.SKILL_TARGET + " text , " +
-                    SkillTable.SKILL_RANGE + " text , " +
-                    SkillTable.SKILL_EFFECT + " text , " +
-                    SkillTable.SKILL_VALUE + " real , " +
-                    SkillTable.SKILL_MERIT + " text , " +
-                    SkillTable.SKILL_DURATION + " integer ," +
-                    SkillTable.SKILL_COOLDOWN + " integer , " +
-                    SkillTable.SKILL_PERCENT + " integer , " +
-                    SkillTable.SKILL_ENHANCE + " integer " +
+                    ActiveSkillTable.TABLE_NAME + " (" +
+                    ActiveSkillTable.SKILL_ID + " integer primary key not null, " +
+                    ActiveSkillTable.SKILL_ICON + " text not null ," +
+                    ActiveSkillTable.SKILL_NAME + " text not null , " +
+                    ActiveSkillTable.SKILL_RANK + " text , " +
+                    ActiveSkillTable.SKILL_CLASSIFICATION + " text ," +
+                    ActiveSkillTable.SKILL_LEVEL + " integer , " +
+                    ActiveSkillTable.SKILL_TARGET + " text , " +
+                    ActiveSkillTable.SKILL_RANGE + " text , " +
+                    ActiveSkillTable.SKILL_EFFECT + " text , " +
+                    ActiveSkillTable.SKILL_VALUE + " real , " +
+                    ActiveSkillTable.SKILL_MERIT + " text , " +
+                    ActiveSkillTable.SKILL_DURATION + " integer ," +
+                    ActiveSkillTable.SKILL_COOLDOWN + " integer , " +
+                    ActiveSkillTable.SKILL_PERCENT + " integer , " +
+                    ActiveSkillTable.SKILL_ENHANCE + " integer " +
                     ");";
 
+    // 3. 서번트 조인 보구 테이블 생성
+    // 3_1) 서번트 보구 테이블 생성
     public static final String SQL_CREATE_WEAPON =
             "create table " +
                     WeaponTable.TABLE_NAME + " (" +
                     WeaponTable.ID + " integer primary key not null, " +
-                    WeaponTable.WEAPON_NAME  + " text not null , " +
-                    WeaponTable.WEAPON_SUB_NAME  + " text , " +
+                    WeaponTable.WEAPON_NAME + " text not null , " +
+                    WeaponTable.WEAPON_SUB_NAME + " text , " +
                     WeaponTable.WEAPON_RANK + " text , " +
                     WeaponTable.WEAPON_CLASSIFICATION + " text ," +
                     WeaponTable.WEAPON_LEVEL + " integer , " +

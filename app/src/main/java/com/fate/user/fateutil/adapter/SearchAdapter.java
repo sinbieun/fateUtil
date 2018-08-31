@@ -1,21 +1,16 @@
 package com.fate.user.fateutil.adapter;
 
 import android.content.Context;
-import android.content.res.AssetManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.fate.user.fateutil.db.ServantContact;
+import com.fate.user.fateutil.db.contract.Servant.ServantContact;
 import com.fate.user.fateutil.R;
 
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -173,12 +168,17 @@ public class SearchAdapter extends BaseAdapter {
                 break;
         }
 
+
         return view;
+
 
     }
 
+
+
     // 검색 필터 클래스
     public void Filter(String charText) {
+
         // 1. 펄터 클래스에 검색어 입력된다.
         // 2. 검색 필터에 저장된 서번트 리스트들을 모두 지워준다.
         charText = charText.toLowerCase(Locale.getDefault());
@@ -202,4 +202,6 @@ public class SearchAdapter extends BaseAdapter {
         // 5. 리스트 데이터가 변경 되었으므로 아답터를 갱신하여 검색된 데이터를 화면에 보여준다.
         notifyDataSetChanged();
     }
+
 }
+
