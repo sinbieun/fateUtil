@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="classSelected">
+        <item>전체</item>
+        <item>세이버</item>
+        <item>랜서</item>
+        <item>아처</item>
+        <item>라이더</item>
+        <item>캐스터</item>
+        <item>어쌔신</item>
+        <item>버서커</item>
+        <item>쉴더</item>
+        <item>룰러</item>
+        <item>어벤져</item>
+    </string-array>
+</resources>

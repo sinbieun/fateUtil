@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="gradeSelected">
+        <item>전체</item>
+        <item>5성</item>
+        <item>4성</item>
+        <item>3성</item>
+        <item>2성</item>
+        <item>1성</item>
+    </string-array>
+</resources>

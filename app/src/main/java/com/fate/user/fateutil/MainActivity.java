@@ -135,7 +135,8 @@ public class MainActivity extends AppCompatActivity
                 drawLayout.removeAllViews();
             }
 
-            SearchLayout searchLayout = new SearchLayout(this);
+            SearchLayout searchLayout = new SearchLayout(this);        // 1. Layout Setting
+            searchLayout.init();                                                // 2. DB에서 서번트 항목 전체를 할당 받고 Adapter와 연결하여준다.
             drawLayout.addView(searchLayout);
 
             // 타이틀 변경

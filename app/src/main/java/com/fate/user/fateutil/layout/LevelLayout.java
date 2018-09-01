@@ -127,10 +127,9 @@ public class LevelLayout extends LinearLayout {
         }
 
         // 계산 한 것을 각각의 테이블에 띄워준다.
-        fourClass.setText(Integer.toString(result[0]));
-        fourNormal.setText(Integer.toString(result[1]));
-        threeClass.setText(Integer.toString(result[2]));
-        threeNormal.setText(Integer.toString(result[3]));
+        fourClass.setText(Integer.toString(result[0]) + "개");
+        fourNormal.setText(Integer.toString(result[1]) + "개");
+        threeClass.setText(Integer.toString(result[2]) + "개");
+        threeNormal.setText(Integer.toString(result[3]) + "개");
     }
-
 }

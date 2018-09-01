@@ -279,7 +279,7 @@ public class DbOpenHelper {
     // 1. 서번트 검색
     // 1_1) 모든 서번트 리스트 가져오기
 
-    public List<ServantContact> getAllServantList() {
+    public List<ServantContact> getAllServantList(String gradeData, String classData) {
 
         List<ServantContact> contactServantList = new ArrayList<>();
 
@@ -297,6 +297,19 @@ public class DbOpenHelper {
                 " on SJL.name_id = SN.name_id" +
                 " inner join ServantClass as SC" +
                 " on SJL.class_id = SC.class_id";
+
+        getAllServantQuery += " WHERE 0=0 ";
+
+        // 등급 데이터가 있을 경우
+        if(!"".equals(gradeData) && !"전체".equals(gradeData)){
+            gradeData = gradeData.replace("성","");
+            getAllServantQuery += " AND SJL.grade_value = '" + gradeData + "'";
+        }
+
+        // 클래스 데이터가 있을 경우
+        if(!"".equals(classData) && !"전체".equals(classData)){
+            getAllServantQuery += " AND SC.class_name = '" + classData + "'";
+        }
 
         mDB = mDBHelper.getReadableDatabase();
 
