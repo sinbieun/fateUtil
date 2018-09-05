@@ -21,7 +21,7 @@ import java.util.List;
 public class DbOpenHelper {
 
     private static final String DATABASE_NAME = "fatedb.db";
-    private static final int DATABASE_VERSION = 1_1;
+    private static final int DATABASE_VERSION = 1_1_10;
     private DatabaseHelper mDBHelper;
     public static SQLiteDatabase mDB;
     private Context mContext;
@@ -189,6 +189,7 @@ public class DbOpenHelper {
         cv.put(DataBase.ActiveSkillTable.SKILL_TARGET, contact.getSkillTarget());
         cv.put(DataBase.ActiveSkillTable.SKILL_RANGE, contact.getSkillRange());
         cv.put(DataBase.ActiveSkillTable.SKILL_EFFECT, contact.getSkillEffect());
+        cv.put(DataBase.ActiveSkillTable.SKILL_EXPLAIN, contact.getSkillExplain());
         cv.put(DataBase.ActiveSkillTable.SKILL_VALUE, contact.getSkillValue());
         cv.put(DataBase.ActiveSkillTable.SKILL_MERIT, contact.getSkillMerit());
         cv.put(DataBase.ActiveSkillTable.SKILL_DURATION, contact.getSkillDuration());
@@ -274,11 +275,15 @@ public class DbOpenHelper {
     1. 서번트 검색
     1_1) 모든 서번트 리스트 가져오기
     1_2) 서번트 조인 리스트 에서 아이디에 맞는 서번트 리스트 가져오기
+
+    2. 스킬 검색
+    2_1) 서번트가 가지고 있는 스킬 아이콘, 이름 가지고 오기
+    2_2) 서번트가 가지고 있는 스킬의 설명 리스트 가져오기
+    2_3) 서번트가 가지고 있는 스킬의 수치 가져오기
      */
 
     // 1. 서번트 검색
     // 1_1) 모든 서번트 리스트 가져오기
-
     public List<ServantContact> getAllServantList(String gradeData, String classData) {
 
         List<ServantContact> contactServantList = new ArrayList<>();
@@ -334,35 +339,7 @@ public class DbOpenHelper {
         return contactServantList;
     }
 
-
-    /*
-        // 아이디에 해당하는 ServantContact 가져오기
-        public ServantContact getSelectList(int id){
-            mDB = mDBHelper.getReadableDatabase();
-
-            Cursor cursor = mDB.query(DataBase.ServantJoinListTable.TABLE_NAME,
-                    new String[] {DataBase.ServantJoinListTable.SERVANT_ID,
-                            DataBase.ServantJoinListTable.NAME_ID,
-                            DataBase.ServantJoinListTable.ICON_ID,
-                            DataBase.ServantJoinListTable.CLASS_ID,
-                            DataBase.ServantJoinListTable.GRADE_VALUE},
-                    DataBase.ServantJoinListTable.SERVANT_ID + "=?",
-                    new String [] {String.valueOf(id)}, null,null,null,null);
-
-            if(cursor != null)
-                cursor.moveToFirst();
-
-            // id, 서번트 아이콘 경로, 서번트 이름, 서번트 클래스, 서번트 등급
-            ServantContact contact = new ServantContact(
-                    Integer.parseInt(cursor.getString(0)),
-                    cursor.getString(1),
-                    cursor.getString(2),
-                    cursor.getString(3),
-                    Integer.parseInt(cursor.getString(4)));
-
-            return contact;
-        }
-        */
+    // 1_2) 서번트 조인 리스트 에서 아이디에 맞는 서번트 리스트 가져오기
     public List<ServantContact> getSelectList(int servantId){
 
         List<ServantContact> contactServantList = new ArrayList<>();
@@ -405,8 +382,7 @@ public class DbOpenHelper {
         return contactServantList;
     }
 
-
-    // 서번트가 소유하고 있는 스킬을 가져온다.
+    // 2_1) 서번트가 가지고 있는 스킬 아이콘, 이름 가지고 오기
     public List<SkillContact> getServantHavingSkill(int servantId) {
         List<SkillContact> skillHaving = new ArrayList<SkillContact>();
 
@@ -414,7 +390,6 @@ public class DbOpenHelper {
         String selectHavingSkill = "SELECT " +
                 "SAS.skill_name as skill_name," +
                 "(SAS.skill_name || ' ' || SAS.skill_rank) as skill_full_name," +
-                "SAS.skill_effect as skill_effect," +
                 "SAS.skill_icon as skill_icon" +
                 " from  " + DataBase.ServantJoinSkillTable.TABLE_NAME + " as SJS " +
                 " inner join " + DataBase.ServantNameTable.TABLE_NAME + " as SN" +
@@ -423,7 +398,7 @@ public class DbOpenHelper {
                 " on SJS.skill_id = SAS.skill_id" +
                 " where SAS.skill_classification =" + "'L'" +
                 " group by skill_name" +
-                " order by skill_name desc";
+                " order by SAS.skill_id";
 
         mDB = mDBHelper.getReadableDatabase();
 
@@ -434,7 +409,6 @@ public class DbOpenHelper {
             do {
                 SkillContact contact = new SkillContact();
                 contact.setSkillIcon(cursor.getString(cursor.getColumnIndex("skill_icon")));
-                contact.setSkillEffect(cursor.getString(cursor.getColumnIndex("skill_effect")));
                 contact.setSkillName(cursor.getString(cursor.getColumnIndex("skill_name")));
                 contact.setSkillFullName(cursor.getString(cursor.getColumnIndex("skill_full_name")));
                 skillHaving.add(contact);
@@ -444,15 +418,91 @@ public class DbOpenHelper {
         return skillHaving;
     }
 
-    // 검색된 스킬 수치 가져오기
-    public List<SkillContact> getServantHavingValue(int servantId, String skillName) {
+    // 2_2) 서번트가 가지고 있는 스킬의 설명 리스트 가져오기
+    public List<SkillContact> getServantSkillExplain(int servantId, String skillName){
+        List <SkillContact> skillExplain = new ArrayList<>();
+
+        // 설명 리스트를 가져온다.
+        String selectSkillExplain = "select" +
+                " (case " +
+                " when SAS.skill_range = '' and SAS.skill_duration = 0" +
+                " then (SAS.skill_target || SAS.skill_explain)" +
+                " when SAS.skill_range = '' and SAS.skill_duration != 0" +
+                " then (SAS.skill_target || SAS.skill_explain || ' (' || SAS.skill_duration || '턴)')" +
+                " when SAS.skill_range != '' and SAS.skill_duration = 0" +
+                " then (SAS.skill_target || ' ' || SAS.skill_range || ' ' || SAS.skill_explain)" +
+                " else (SAS.skill_target || ' ' || SAS.skill_range || ' ' || SAS.skill_explain || ' (' || SAS.skill_duration || '턴)')" +
+                " end)as skill_explain" +
+                " from  " + DataBase.ServantJoinSkillTable.TABLE_NAME + " as SJS " +
+                " inner join " + DataBase.ServantNameTable.TABLE_NAME + " as SN" +
+                " on SJS.servant_id = " + servantId + " AND SN.name_id=" + servantId +
+                " inner join " + DataBase.ActiveSkillTable.TABLE_NAME + " as SAS" +
+                " on SJS.skill_id = SAS.skill_id" +
+                " where SAS.skill_name ='" + skillName + "'" +
+                " and SAS.skill_level between 0 and 1" +
+                " group by skill_effect" +
+                " order by SAS.skill_id";
+
+        mDB = mDBHelper.getReadableDatabase();
+        
+
+        // 커서에 검색 쿼리 삽입
+        Cursor cursor = mDB.rawQuery(selectSkillExplain, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                SkillContact contact = new SkillContact();
+                contact.setSkillExplain(cursor.getString(cursor.getColumnIndex("skill_explain")));
+                skillExplain.add(contact);
+            } while (cursor.moveToNext());
+        }
+
+        return skillExplain;
+    }
+
+    // 수치가 있는 서번트 스킬 효과 가져오기
+    public List<SkillContact> getServantSkillEffect(int servantId, String skillName){
+        List<SkillContact> skillEffect = new ArrayList<>();
+
+        String selectHavingSkillEffect = "select" +
+                " SAS.skill_effect as skill_effect" +
+                " from  ServantJoinSkill as SJS " +
+                " inner join ServantName as SN " +
+                " on SJS.servant_id = " + servantId + " AND SN.name_id=" + servantId +
+                " inner join ServantActiveSkill as SAS " +
+                " on SJS.skill_id = SAS.skill_id " +
+                " where SAS.skill_name ='" + skillName + "'" +
+                " and SAS.skill_level = 1" +
+                " order by skill_level asc";
+
+        mDB = mDBHelper.getReadableDatabase();
+
+        // 커서에 검색 쿼리 삽입
+        Cursor cursor = mDB.rawQuery(selectHavingSkillEffect, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                SkillContact contact = new SkillContact();
+                contact.setSkillEffect(cursor.getString(cursor.getColumnIndex("skill_effect")));
+                skillEffect.add(contact);
+            } while (cursor.moveToNext());
+        }
+
+        return skillEffect;
+
+    }
+
+    // 2_4) 서번트가 가지고 있는 스킬의 수치 가져오기
+    public List<SkillContact> getServantHavingValue(int servantId, String skillName, String skillEffect) {
         List<SkillContact> skillNumber = new ArrayList<SkillContact>();
 
         // 서번트가 가지고 있는 수치를 가져온다.
         String selectHavingSkillValue = "select " +
                 " SAS.skill_effect as skill_effect," +
                 " SAS.skill_level as skill_level," +
-                "(case when skill_percent = 1 then (SAS.skill_value || ' ' || '%') else SAS.skill_value end) as skill_number," +
+                "(case when skill_percent = 1 then (SAS.skill_value || ' ' || '%') " +
+                " else SAS.skill_value " +
+                " end) as skill_number," +
                 " SAS.skill_coolDown as skill_coolDown" +
                 " from  " + DataBase.ServantJoinSkillTable.TABLE_NAME + " as SJS " +
                 " inner join " + DataBase.ServantNameTable.TABLE_NAME + " as SN" +
@@ -460,7 +510,8 @@ public class DbOpenHelper {
                 " inner join " + DataBase.ActiveSkillTable.TABLE_NAME + " as SAS" +
                 " on SJS.skill_id = SAS.skill_id" +
                 " where SAS.skill_name ='" + skillName + "'" +
-                "and SAS.skill_classification =" + "'L'" +
+                " and SAS.skill_classification =" + "'L'" +
+                " and SAS.skill_effect = '" + skillEffect + "'" +
                 " order by skill_level asc";
 
         mDB = mDBHelper.getReadableDatabase();
@@ -483,61 +534,6 @@ public class DbOpenHelper {
 
     }
 
-    // 스킬 리스트 가져오기
-    public List<SkillContact> getServantJoinSkill(int servantId) {
-
-        List<SkillContact> contactSkillList = new ArrayList<SkillContact>();
-        // 검색 쿼리 저장
-        String selectServantJoinSkill = "SELECT " +
-                "SS.skill_name as skill_name, " +
-                "SS.skill_icon as skill_icon, " +
-                "SS.skill_rank as skill_rank, " +
-                "SS.skill_classification as skill_classification, " +
-                "SS.skill_level as skill_level, " +
-                "SS.skill_target as skill_target, " +
-                "SS.skill_range as skill_range, " +
-                "SS.skill_effect as skill_effect, " +
-                "SS.skill_value as skill_value, " +
-                "SS.skill_merit as skill_merit, " +
-                "SS.skill_duration as skill_duration, " +
-                "SS.skill_coolDown as skill_cd, " +
-                "SS.skill_percent as skill_percent, " +
-                "SS.skill_enhance as skill_enhance " +
-                " from " + DataBase.ServantJoinSkillTable.TABLE_NAME + " as SJS " +
-                " inner join " + DataBase.ServantNameTable.TABLE_NAME + " as SN " +
-                " on SJS.servant_id = " + servantId + " AND SN.id = " + servantId +
-                " inner join " + DataBase.ActiveSkillTable.TABLE_NAME + " as SS " +
-                " on SJS.skill_id = SS.id";
-
-        mDB = mDBHelper.getReadableDatabase();
-
-        // 커서에 검색 쿼리 삽입
-        Cursor cursor = mDB.rawQuery(selectServantJoinSkill, null);
-
-        if (cursor.moveToFirst()) {
-            do {
-                SkillContact contact = new SkillContact();
-                contact.setSkillIcon(cursor.getString(cursor.getColumnIndex("skill_icon")));
-                contact.setSkillName(cursor.getString(cursor.getColumnIndex("skill_name")));
-                contact.setSkillRank(cursor.getString(cursor.getColumnIndex("skill_rank")));
-                contact.setSkillClassification(cursor.getString(cursor.getColumnIndex("skill_classification")));
-                contact.setSkillLevel(cursor.getInt(cursor.getColumnIndex("skill_level")));
-                contact.setSkillTarget(cursor.getString(cursor.getColumnIndex("skill_target")));
-                contact.setSkillRange(cursor.getString(cursor.getColumnIndex("skill_range")));
-                contact.setSkillEffect(cursor.getString(cursor.getColumnIndex("skill_effect")));
-                contact.setSkillValue(cursor.getDouble(cursor.getColumnIndex("skill_value")));
-                contact.setSkillMerit(cursor.getString(cursor.getColumnIndex("skill_merit")));
-                contact.setSkillDuration(cursor.getInt(cursor.getColumnIndex("skill_duration")));
-                contact.setSkillCoolDown(cursor.getInt(cursor.getColumnIndex("skill_cd")));
-                contact.setSkillPercent(cursor.getInt(cursor.getColumnIndex("skill_percent")));
-                contact.setSkillEnhance(cursor.getInt(cursor.getColumnIndex("skill_enhance")));
-
-                contactSkillList.add(contact);
-
-            } while (cursor.moveToNext());
-        }
-        return contactSkillList;
-    }
 
     // 보구 리스트 가져오기
     public List<WeaponContact> getServantJoinWeapon(int servantId) {

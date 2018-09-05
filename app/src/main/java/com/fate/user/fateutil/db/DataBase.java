@@ -71,6 +71,7 @@ public class DataBase {
         public static final String SKILL_LEVEL = "skill_level";
         public static final String SKILL_TARGET = "skill_target";
         public static final String SKILL_RANGE = "skill_range";
+        public static final String SKILL_EXPLAIN = "skill_explain";
         public static final String SKILL_EFFECT = "skill_effect";
         public static final String SKILL_VALUE = "skill_value";
         public static final String SKILL_MERIT = "skill_merit";
@@ -164,6 +165,7 @@ public class DataBase {
                     ActiveSkillTable.SKILL_LEVEL + " integer , " +
                     ActiveSkillTable.SKILL_TARGET + " text , " +
                     ActiveSkillTable.SKILL_RANGE + " text , " +
+                    ActiveSkillTable.SKILL_EXPLAIN + " text , " +
                     ActiveSkillTable.SKILL_EFFECT + " text , " +
                     ActiveSkillTable.SKILL_VALUE + " real , " +
                     ActiveSkillTable.SKILL_MERIT + " text , " +

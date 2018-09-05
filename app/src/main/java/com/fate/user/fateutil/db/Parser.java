@@ -91,6 +91,7 @@ public class Parser extends LinearLayout {
         }
 
     }
+
     // 서번트 아이콘 테이블에 데이터 삽입
     public void servantIconParser() {
         // 0. 테이블에 값이 있다면 checkData에서 true를 반환하고 데이터 값을 넣지 않는다.
@@ -314,6 +315,7 @@ public class Parser extends LinearLayout {
                 int skillLevel = jObject.getInt("skill_level");
                 String skillTarget = jObject.getString("skill_target");
                 String skillRange = jObject.getString("skill_range");
+                String skillExplain = jObject.getString("skill_explain");
                 String skillEffect = jObject.getString("skill_effect");
                 double skillValue = jObject.getDouble("skill_value");
                 String skillMerit = jObject.getString("skill_merit");
@@ -324,8 +326,8 @@ public class Parser extends LinearLayout {
 
                 // 3. 데이터 삽입을 하여준다.
                 mDbOpenHelper.addActiveSkillList(new SkillContact(
-                        skillId, skillIcon, skillName, skillRank, skillClassification, skillLevel, skillTarget,skillRange,
-                        skillEffect, skillValue, skillMerit, skillDuration, skillCoolDown, skillPercent,
+                        skillId, skillIcon, skillName, skillRank, skillClassification, skillLevel, skillTarget, skillRange,
+                        skillExplain, skillEffect, skillValue, skillMerit, skillDuration, skillCoolDown, skillPercent,
                         skillEnhance));
 
             }

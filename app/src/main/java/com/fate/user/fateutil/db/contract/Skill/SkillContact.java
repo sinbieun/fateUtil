@@ -13,6 +13,7 @@ public class SkillContact {
     private String skillTarget; // 스킬 목표(아군, 적, 자기 자신)
     private String skillRange; // 스킬 범위(전체, 한 명)
     private String skillEffect; // 스킬 효과
+    private String skillExplain; // 스킬 설명
     private double skillValue; // 스킬 효과 수치
     private String skillMerit; // 스킬 장단점
     private int skillDuration; // 스킬 지속 시간 (0부터 3까지 0이면 즉발)
@@ -26,7 +27,7 @@ public class SkillContact {
     }
 
     public SkillContact(int skillId, String skillIcon, String skillName, String skillRank, String skillClassification,
-                        int skillLevel, String skillTarget, String skillRange, String skillEffect, double skillValue, String skillMerit,
+                        int skillLevel, String skillTarget, String skillRange, String skillExplain, String skillEffect, double skillValue, String skillMerit,
                         int skillDuration, int skillCoolDown, int skillPercent, int skillEnhance) {
         this.skillId = skillId;
         this.skillIcon = skillIcon;
@@ -36,6 +37,7 @@ public class SkillContact {
         this.skillLevel = skillLevel;
         this.skillTarget = skillTarget;
         this.skillRange = skillRange;
+        this.skillExplain = skillExplain;
         this.skillEffect = skillEffect;
         this.skillValue = skillValue;
         this.skillMerit = skillMerit;
@@ -106,20 +108,20 @@ public class SkillContact {
         return this.skillRange;
     }
 
-    public void setSkillRange(String skillRange) {
-        this.skillRange = skillRange;
-    }
-
     public String getSkillTarget() {
         return this.skillTarget;
     }
 
-    public void setSkillTarget(String skillTarget) {
-        this.skillTarget = skillTarget;
-    }
-
     public String getSkillEffect() {
         return this.skillEffect;
+    }
+
+    public String getSkillExplain(){
+        return this.skillExplain;
+    }
+
+    public void setSkillExplain(String skillExplain) {
+        this.skillExplain = skillExplain;
     }
 
     public void setSkillEffect(String skillEffect) {
@@ -130,24 +132,12 @@ public class SkillContact {
         return this.skillValue;
     }
 
-    public void setSkillValue(double skillValue) {
-        this.skillValue = skillValue;
-    }
-
     public String getSkillMerit() {
         return this.skillMerit;
     }
 
-    public void setSkillMerit(String skillMerit) {
-        this.skillMerit = skillMerit;
-    }
-
     public int getSkillDuration() {
         return this.skillDuration;
-    }
-
-    public void setSkillDuration(int skillDuration) {
-        this.skillDuration = skillDuration;
     }
 
     public int getSkillCoolDown() {
@@ -162,17 +152,11 @@ public class SkillContact {
         return this.skillPercent;
     }
 
-    public void setSkillPercent(int skillPercent) {
-        this.skillPercent = skillPercent;
-    }
 
     public int getSkillEnhance() {
         return this.skillEnhance;
     }
 
-    public void setSkillEnhance(int skillEnhance) {
-        this.skillEnhance = skillEnhance;
-    }
 
     public String getSkillNumber(){
         return  this.skillNumber;

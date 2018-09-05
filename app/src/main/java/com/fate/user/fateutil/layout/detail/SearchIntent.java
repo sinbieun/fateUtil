@@ -27,7 +27,10 @@ public class SearchIntent extends AppCompatActivity {
     private TabHost tabHost1;
     private List<SkillContact> servantHavingSkillValue;
     private List<SkillContact> servantHavingSkill;
+    private List<SkillContact> servantHavingSkillExplain;
+    private List<SkillContact> servantHavingSkillEffect;
 
+    private String skillName;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -103,8 +106,6 @@ public class SearchIntent extends AppCompatActivity {
             // 2. 스킬 테이블을 만들고 스킬 이름, 설명, 표시할 효과를 넣는다.
             tableSkillHaving(servantHavingSkill.size(), 3);
         }
-
-
         mDbOpenHelper.close();
 
     }
@@ -113,60 +114,71 @@ public class SearchIntent extends AppCompatActivity {
     public void tableSkillHaving(int trCt, int tdCt) {
 
         // 테이블 변수
-
         TableLayout skillTable = (TableLayout) findViewById(R.id.active_skill_table);
-        // TableRow.LayoutParams rowLayout = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
         TableRow.LayoutParams rowLayout = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f);
         String packName = this.getPackageName();
         TableRow row[] = new TableRow[trCt];
         ImageView skillIcon[][] = new ImageView[trCt][tdCt];
-
         TextView textViews[][] = new TextView[trCt][tdCt];
 
 
         for (int tr = 0; tr < trCt; tr++) {
             row[tr] = new TableRow(this);
-            SkillContact contact = servantHavingSkill.get(tr);
-            String skillName = contact.getSkillName();
-            // 스킬의 수치, 쿨다운을 얻어온다.
-            servantHavingSkillValue = mDbOpenHelper.getServantHavingValue(position, skillName);
+
+            // 스킬 이름을 가져온다.
+            SkillContact skillNameContact = servantHavingSkill.get(tr);
+            skillName = skillNameContact.getSkillName();
+
+            servantHavingSkillExplain = mDbOpenHelper.getServantSkillExplain(position, skillName); // 해당 스킬 설명을 가져온다
+            servantHavingSkillEffect = mDbOpenHelper.getServantSkillEffect(position, skillName); // 해당 스킬의 이펙트를 가져온다.
 
             // 1. 스킬 이미지, 스킬 이름, 스킬 설명을 넣는다.
             for (int td = 0; td < 3; td++) {
-                String skillFullName = contact.getSkillFullName();
-                String skillPath = contact.getSkillIcon();
+                String skillFullName = skillNameContact.getSkillFullName();
+                String skillPath = skillNameContact.getSkillIcon();
 
-                // 2. 넣을 행을 만들고 데이터를 집어 넣는다.
                 switch (td) {
-                    // 스킬 이미지 넣기
+                    // 1) 스킬 이미지 넣기
                     case 0: {
                         skillIcon[tr][td] = new ImageView(this);
                         skillIcon[tr][td].setImageResource(getResources().getIdentifier("@drawable/" + skillPath, "drawable", packName));
                         row[tr].addView(skillIcon[tr][td]);
                         break;
                     }
-                    // 스킬 이름 넣기
+                    // 2) 스킬 이름 넣기
                     case 1: {
                         textViews[tr][td] = new TextView(this);
                         textViews[tr][td].setText(skillFullName);
-                        textViews[tr][td].setTextSize(5);
+                        textViews[tr][td].setTextSize(8);
                         textViews[tr][td].setGravity(Gravity.CENTER);
                         row[tr].addView(textViews[tr][td]);
                         break;
                     }
 
-                    // 스킬 설명 넣기
+                    // 3) 스킬 설명 넣기
                     case 2: {
+                        String strExplain = "", str;
+                        SkillContact skillExplain;
+                        for(int tr1 = 0; tr1 < servantHavingSkillExplain.size(); tr1++){
+                            skillExplain = servantHavingSkillExplain.get(tr1); // 스킬 설명을 가져온다.
+                            str = skillExplain.getSkillExplain() + "\n";
+                            strExplain += str;
+                        }
+
+                        textViews[tr][td] = new TextView(this);
+                        textViews[tr][td].setText(strExplain);
+                        textViews[tr][td].setTextSize(8);
+                        textViews[tr][td].setGravity(Gravity.CENTER);
+                        row[tr].addView(textViews[tr][td]);
                         break;
                     }
 
                 }
             } // td 의 끝
+            skillTable.addView(row[tr], rowLayout); // 3. 스킬이미지, 스킬 이름, 스킬 설명을 띄워준다.
+            // 4. 스킬 수치 값을 집어 넣는다.
+            tableSkillValue(servantHavingSkillEffect.size()+2, 10);
 
-            // 3. 스킬이미지, 스킬 이름, 스킬 설명을 추가 시킨 후에 수치 값을 집어 넣는다. (스킬 설명 추가 예정)
-            skillTable.addView(row[tr], rowLayout);
-            // 4. 스킬 수치 값을 집어 넣는다. (좀더 동적으로 수정 예정)
-            tableSkillValue(3, servantHavingSkillValue.size());
         } // tr 의 끝
 
     }
@@ -181,72 +193,94 @@ public class SearchIntent extends AppCompatActivity {
         TableRow row[] = new TableRow[trCt];
         TextView text[][] = new TextView[trCt][tdCt];
 
-        SkillContact skillValue;
+        SkillContact skillEffect; // 스킬 효과 contact
+        SkillContact skillValue; // 스킬 수치 contact
+
+        String effect; // 스킬 효과
 
         for (int tr = 0; tr < trCt; tr++) {
             row[tr] = new TableRow(this);
 
+            // 스킬 레벨, 스킬 효과, 스킬 쿨다운 표시
             for (int td1 = 0; td1 < 1; td1++) {
-                skillValue = servantHavingSkillValue.get(td1);
+                text[tr][td1] = new TextView(this);
 
+                // 첫 줄
                 if (tr == 0) {
-                    String lv = "레벨";
-                    text[tr][td1] = new TextView(this);
-                    text[tr][td1].setText(lv);
+                    text[tr][td1].setText("레벨");
                     text[tr][td1].setTextSize(5);
                     text[tr][td1].setGravity(Gravity.CENTER);
                     row[tr].addView(text[tr][td1]);
-                } else if (tr > 0 && tr < (trCt - 1)) {
-                    String skillEffect = skillValue.getSkillEffect();
-                    text[tr][td1] = new TextView(this);
-                    text[tr][td1].setText(skillEffect);
+                }
+                // 두번째 줄 부터 마지막의 전 줄 까지 효과 입력
+                else if (tr > 0 && tr < (trCt-1)) {
+                    // 스킬 효과를 가져온다.
+                    skillEffect = servantHavingSkillEffect.get(tr-1);
+                    effect = skillEffect.getSkillEffect();
+                    servantHavingSkillValue = mDbOpenHelper.getServantHavingValue(position, skillName, effect); // 효과를 사용해서 스킬 수치를 가져온다.
+
+                    text[tr][td1].setText(effect);
                     text[tr][td1].setTextSize(5);
                     text[tr][td1].setGravity(Gravity.CENTER);
                     row[tr].addView(text[tr][td1]);
-                } else {
-                    String cd = "쿨다운";
-                    text[tr][td1] = new TextView(this);
-                    text[tr][td1].setText(cd);
+                }
+                // 마지막은 쿨다운 표시
+                else {
+                    // 효과 가져오기
+                    skillEffect = servantHavingSkillEffect.get(tr-2);
+                    effect = skillEffect.getSkillEffect();
+                    servantHavingSkillValue = mDbOpenHelper.getServantHavingValue(position, skillName, effect); // 쿨다운 가져오기
+
+                    text[tr][td1].setText("쿨다운");
                     text[tr][td1].setTextSize(5);
                     text[tr][td1].setGravity(Gravity.CENTER);
                     row[tr].addView(text[tr][td1]);
                 }
             }
 
-            for (int td = 0; td < tdCt; td++) {
+            // 스킬 레벨, 스킬 수치, 스킬 쿨다운 테이블
+            for (int td2 = 0; td2 < tdCt; td2++) {
+                text[tr][td2] = new TextView(this);
+                String lv; // 레벨
+                String skillNumber; // 스킬 수치
+                String skillCoolDown; // 스킬 쿨다운
 
-                skillValue = servantHavingSkillValue.get(td);
 
-                // 수치값 넣기
+                // 레벨 넣기
                 if (tr == 0) {
-                    String lv = String.valueOf(td + 1);
-                    text[tr][td] = new TextView(this);
-                    text[tr][td].setText(lv);
-                    text[tr][td].setTextSize(5);
-                    text[tr][td].setGravity(Gravity.CENTER);
-                    row[tr].addView(text[tr][td]);
+                    lv = String.valueOf(td2 + 1);
+                    text[tr][td2].setText(lv);
+                    text[tr][td2].setTextSize(5);
+                    text[tr][td2].setGravity(Gravity.CENTER);
+                    row[tr].addView(text[tr][td2]);
                 }
+
                 // 스킬 수치 넣기
                 else if (tr > 0 && tr < (trCt - 1)) {
-                    String skillNumber = skillValue.getSkillNumber();
-                    text[tr][td] = new TextView(this);
-                    text[tr][td].setText(skillNumber);
-                    text[tr][td].setTextSize(5);
-                    text[tr][td].setGravity(Gravity.CENTER);
-                    row[tr].addView(text[tr][td]);
+                    // 열에 따라 스킬 수치 가져오기
+                    skillValue = servantHavingSkillValue.get(td2);
+                    skillNumber = skillValue.getSkillNumber();
+
+                    text[tr][td2].setText(skillNumber);
+                    text[tr][td2].setTextSize(5);
+                    text[tr][td2].setGravity(Gravity.CENTER);
+                    row[tr].addView(text[tr][td2]);
+
                 }
                 // 쿨다운 수치
                 else if (tr == (trCt - 1)) {
-                    String skillCoolDown = String.valueOf(skillValue.getSkillCoolDown());
-                    text[tr][td] = new TextView(this);
-                    text[tr][td].setText(skillCoolDown);
-                    text[tr][td].setTextSize(5);
-                    text[tr][td].setGravity(Gravity.CENTER);
-                    row[tr].addView(text[tr][td]);
+                    // 열에 따라 스킬 쿨다운 가져오기
+                    skillValue = servantHavingSkillValue.get(td2);
+                    skillCoolDown = String.valueOf(skillValue.getSkillCoolDown());
+
+                    text[tr][td2].setText(skillCoolDown);
+                    text[tr][td2].setTextSize(5);
+                    text[tr][td2].setGravity(Gravity.CENTER);
+                    row[tr].addView(text[tr][td2]);
                 }
 
             } // td for end
-            skillTable.addView(row[tr], rowLayout);
+            skillTable.addView(row[tr], rowLayout); // 뷰에 추가
         } // tr for end
 
     }
