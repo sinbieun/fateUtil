@@ -19,6 +19,7 @@ import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 
 import com.fate.user.fateutil.R;
@@ -31,12 +32,12 @@ import com.fate.user.fateutil.layout.detail.SearchIntent;
 
 import java.util.List;
 
-public class SearchLayout extends LinearLayout implements AbsListView.OnScrollListener {
+public class SearchLayout extends RelativeLayout implements AbsListView.OnScrollListener {
 
     // 레이아웃 변수
     private Button btnSearch = null;
     private EditText editSearch = null;
-    private LinearLayout currentLayout;
+    private RelativeLayout currentLayout;
     private LayoutInflater li = null;
     private ListView listView = null; // 리스트 뷰
     private ProgressBar progressBar; // 데이터 로딩중 표시할 프로그레스바
@@ -71,7 +72,7 @@ public class SearchLayout extends LinearLayout implements AbsListView.OnScrollLi
         // Layout Setting
         String infService = context.LAYOUT_INFLATER_SERVICE;
         li = (LayoutInflater) context.getSystemService(infService);
-        currentLayout = (LinearLayout) li.inflate(R.layout.search_main, null);
+        currentLayout = (RelativeLayout) li.inflate(R.layout.search_main, null);
         addView(currentLayout);
 
         // 1. searchLayout에 들어가야하는 id 찾기
@@ -195,7 +196,7 @@ public class SearchLayout extends LinearLayout implements AbsListView.OnScrollLi
 
         // prograss bar Setting
         progressBar.setVisibility(View.GONE);
-        listView.setOnScrollListener(this);
+        //listView.setOnScrollListener(this);
 
         mDbOpenHelper.close();
     }

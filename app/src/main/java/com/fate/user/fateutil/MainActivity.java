@@ -12,10 +12,13 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.fate.user.fateutil.db.Parser;
 import com.fate.user.fateutil.layout.LevelLayout;
@@ -30,8 +33,12 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private SQLiteDatabase sqliteDB;
-    private ConstraintLayout drawLayout = null;
+    private RelativeLayout contentView;
     private Parser parser;
+
+    // ALERT
+    private long backKeyPressedTime = 0;
+    private Toast toast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +68,7 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         // 레이아웃 관리
-        drawLayout = findViewById(R.id.draw_layout);
+        contentView = findViewById(R.id.content_view);
 
         InputData();
 
@@ -72,16 +79,38 @@ public class MainActivity extends AppCompatActivity
         //parser.servantParser(); // 서번트 데이터 삽입
         //parser.servantNameParser(); // 서번트 이름 삽입
         // parser.servantJoinSkillParser(); // 조인 테이블 삽입
+
+        // 맨처음 변경점
+        // 타이틀 변경
+        this.toolbarTitleChange(getString(R.string.toolbar_title_main));
     }
 
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
+        if(drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(Gravity.START);
+            return;
         }
+
+        if(System.currentTimeMillis() > (backKeyPressedTime + 2000)) {
+            backKeyPressedTime = System.currentTimeMillis();
+            showGuide();
+            return;
+        }
+
+        if(System.currentTimeMillis() <= (backKeyPressedTime + 2000)) {
+            finish();
+            toast.cancel();
+        }
+    }
+
+    /**
+     * 앱 종료 시, 2번 클릭하기 전에 ALERT 창 보여줌.
+     */
+    public void showGuide() {
+        toast = Toast.makeText(this, "앱 종료를 하시려면 '뒤로 가기'를 한번 더 눌러주십시오.", Toast.LENGTH_SHORT);
+        toast.show();
     }
 
     @Override
@@ -116,13 +145,13 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_notice) {
             // 저장된 레이아웃이 있다면 뷰 삭제
-            if (drawLayout != null) {
-                drawLayout.removeAllViews();
+            if (contentView != null) {
+                contentView.removeAllViews();
             }
 
             // 저장된 레이아웃이 없다면 뷰를 띄워준다.
             NoticeLayout noticeLayout = new NoticeLayout(this);
-            drawLayout.addView(noticeLayout);
+            contentView.addView(noticeLayout);
 
             // 공지사항 레이아웃 그려주기
             noticeLayout.init();
@@ -131,35 +160,35 @@ public class MainActivity extends AppCompatActivity
             this.toolbarTitleChange(getString(R.string.toolbar_title_notice));
         } else if (id == R.id.nav_search) {
 
-            if (drawLayout != null) {
-                drawLayout.removeAllViews();
+            if (contentView != null) {
+                contentView.removeAllViews();
             }
 
             SearchLayout searchLayout = new SearchLayout(this);        // 1. Layout Setting
             searchLayout.init();                                                // 2. DB에서 서번트 항목 전체를 할당 받고 Adapter와 연결하여준다.
-            drawLayout.addView(searchLayout);
+            contentView.addView(searchLayout);
 
             // 타이틀 변경
             this.toolbarTitleChange(getString(R.string.toolbar_title_search));
         } else if (id == R.id.nav_servant) {
 
-            if (drawLayout != null) {
-                drawLayout.removeAllViews();
+            if (contentView != null) {
+                contentView.removeAllViews();
             }
 
             ServantLayout servantLayout = new ServantLayout(this);
-            drawLayout.addView(servantLayout);
+            contentView.addView(servantLayout);
 
             // 타이틀 변경
             this.toolbarTitleChange(getString(R.string.toolbar_title_servant));
         } else if (id == R.id.nav_level) {
 
-            if (drawLayout != null) {
-                drawLayout.removeAllViews();
+            if (contentView != null) {
+                contentView.removeAllViews();
             }
 
             LevelLayout levelLayout = new LevelLayout(this);
-            drawLayout.addView(levelLayout);
+            contentView.addView(levelLayout);
 
             // 타이틀 변경
             this.toolbarTitleChange(getString(R.string.toolbar_title_exp));
