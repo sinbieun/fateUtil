@@ -26,6 +26,9 @@ public class SkillContact {
 
     }
 
+
+
+    // 서번트 액티브 스킬 생성자
     public SkillContact(int skillId, String skillIcon, String skillName, String skillRank, String skillClassification,
                         int skillLevel, String skillTarget, String skillRange, String skillExplain, String skillEffect, double skillValue, String skillMerit,
                         int skillDuration, int skillCoolDown, int skillPercent, int skillEnhance) {
@@ -45,6 +48,15 @@ public class SkillContact {
         this.skillCoolDown = skillCoolDown;
         this.skillPercent = skillPercent;
         this.skillEnhance = skillEnhance;
+    }
+
+    // 서번트 패시브 스킬 생성자
+    public SkillContact(int skillId, String skillIcon, String skillName, String skillRank, String skillExplain) {
+        this.skillId = skillId;
+        this.skillIcon = skillIcon;
+        this.skillName = skillName;
+        this.skillRank = skillRank;
+        this.skillExplain = skillExplain;
     }
 
     // getter, setter

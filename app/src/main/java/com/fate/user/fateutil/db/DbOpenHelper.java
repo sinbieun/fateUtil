@@ -21,7 +21,7 @@ import java.util.List;
 public class DbOpenHelper {
 
     private static final String DATABASE_NAME = "fatedb.db";
-    private static final int DATABASE_VERSION = 1_1_10;
+    private static final int DATABASE_VERSION = 1_1_15;
     private DatabaseHelper mDBHelper;
     public static SQLiteDatabase mDB;
     private Context mContext;
@@ -42,6 +42,7 @@ public class DbOpenHelper {
             db.execSQL(DataBase.SQL_CREATE_SERVANT_CLASS);
             db.execSQL(DataBase.SQL_CREATE_EXP);
             db.execSQL(DataBase.SQL_CREATE_ACTIVE_SKILL);
+            db.execSQL(DataBase.SQL_CREATE_PASSIVE_SKILL);
             db.execSQL(DataBase.SQL_CREATE_SERVANT_JOIN_SKILL);
         }
 
@@ -54,6 +55,7 @@ public class DbOpenHelper {
             db.execSQL("DROP TABLE IF EXISTS " + DataBase.ServantJoinListTable.TABLE_NAME);
             db.execSQL("DROP TABLE IF EXISTS " + DataBase.ExpTable.TABLE_NAME);
             db.execSQL("DROP TABLE IF EXISTS " + DataBase.ActiveSkillTable.TABLE_NAME);
+            db.execSQL("DROP TABLE IF EXISTS " + DataBase.PassiveSkillTable.TABLE_NAME);
             db.execSQL("DROP TABLE IF EXISTS " + DataBase.ServantJoinSkillTable.TABLE_NAME);
             onCreate(db);
         }
@@ -160,7 +162,7 @@ public class DbOpenHelper {
     }
 
 
-    // 조인 부분
+    // 2_1) 서번트 액티브 스킬 조인 리스트 데이터 집어 넣기
     public void addServantJoinSkillContact(ServantJoinSkillContract contact) {
 
         mDB = mDBHelper.getWritableDatabase();
@@ -168,13 +170,14 @@ public class DbOpenHelper {
         ContentValues cv = new ContentValues();
         cv.put(DataBase.ServantJoinSkillTable.ID, contact.getId()); // JOIN 부분
         cv.put(DataBase.ServantJoinSkillTable.SERVANT_ID, contact.getServantId());
+        cv.put(DataBase.ServantJoinSkillTable.SKILL_CLASSIFICATION, contact.getSkillClassification());
         cv.put(DataBase.ServantJoinSkillTable.SKILL_ID, contact.getSkillId());
 
         mDB.insert(DataBase.ServantJoinSkillTable.TABLE_NAME, null, cv);
 
     }
 
-    // 스킬 테이블에 데이터 삽입
+    // 2_2) 서번트 액티브 스킬 데이터 집어 넣기
     public void addActiveSkillList(SkillContact contact) {
 
         mDB = mDBHelper.getWritableDatabase();
@@ -198,6 +201,22 @@ public class DbOpenHelper {
         cv.put(DataBase.ActiveSkillTable.SKILL_ENHANCE, contact.getSkillEnhance());
 
         mDB.insert(DataBase.ActiveSkillTable.TABLE_NAME, null, cv);
+
+    }
+
+    // 2_3) 서번트 패시브 스킬 데이터 집어 넣기
+    public void addPassiveSkillList(SkillContact contact) {
+
+        mDB = mDBHelper.getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+        cv.put(DataBase.PassiveSkillTable.SKILL_ID, contact.getSkillId());
+        cv.put(DataBase.PassiveSkillTable.SKILL_ICON, contact.getSkillIcon());
+        cv.put(DataBase.PassiveSkillTable.SKILL_NAME, contact.getSkillName());
+        cv.put(DataBase.PassiveSkillTable.SKILL_RANK, contact.getSkillRank());
+        cv.put(DataBase.PassiveSkillTable.SKILL_EXPLAIN, contact.getSkillExplain());
+
+        mDB.insert(DataBase.PassiveSkillTable.TABLE_NAME, null, cv);
 
     }
 
@@ -306,13 +325,13 @@ public class DbOpenHelper {
         getAllServantQuery += " WHERE 0=0 ";
 
         // 등급 데이터가 있을 경우
-        if(!"".equals(gradeData) && !"전체".equals(gradeData)){
-            gradeData = gradeData.replace("성","");
+        if (!"".equals(gradeData) && !"전체".equals(gradeData)) {
+            gradeData = gradeData.replace("성", "");
             getAllServantQuery += " AND SJL.grade_value = '" + gradeData + "'";
         }
 
         // 클래스 데이터가 있을 경우
-        if(!"".equals(classData) && !"전체".equals(classData)){
+        if (!"".equals(classData) && !"전체".equals(classData)) {
             getAllServantQuery += " AND SC.class_name = '" + classData + "'";
         }
 
@@ -340,7 +359,7 @@ public class DbOpenHelper {
     }
 
     // 1_2) 서번트 조인 리스트 에서 아이디에 맞는 서번트 리스트 가져오기
-    public List<ServantContact> getSelectList(int servantId){
+    public List<ServantContact> getSelectList(int servantId) {
 
         List<ServantContact> contactServantList = new ArrayList<>();
 
@@ -396,8 +415,8 @@ public class DbOpenHelper {
                 " on SJS.servant_id = " + servantId + " AND SN.name_id=" + servantId +
                 " inner join " + DataBase.ActiveSkillTable.TABLE_NAME + " as SAS" +
                 " on SJS.skill_id = SAS.skill_id" +
-                " where SAS.skill_classification =" + "'L'" +
-                " group by skill_name" +
+                " where SAS.skill_classification =" + "'L'" + " and SJS.skill_classification =" + "'A'" +
+                " group by skill_full_name" +
                 " order by SAS.skill_id";
 
         mDB = mDBHelper.getReadableDatabase();
@@ -419,8 +438,8 @@ public class DbOpenHelper {
     }
 
     // 2_2) 서번트가 가지고 있는 스킬의 설명 리스트 가져오기
-    public List<SkillContact> getServantSkillExplain(int servantId, String skillName){
-        List <SkillContact> skillExplain = new ArrayList<>();
+    public List<SkillContact> getServantSkillExplain(int servantId, String skillName) {
+        List<SkillContact> skillExplain = new ArrayList<>();
 
         // 설명 리스트를 가져온다.
         String selectSkillExplain = "select" +
@@ -444,7 +463,7 @@ public class DbOpenHelper {
                 " order by SAS.skill_id";
 
         mDB = mDBHelper.getReadableDatabase();
-        
+
 
         // 커서에 검색 쿼리 삽입
         Cursor cursor = mDB.rawQuery(selectSkillExplain, null);
@@ -461,7 +480,7 @@ public class DbOpenHelper {
     }
 
     // 수치가 있는 서번트 스킬 효과 가져오기
-    public List<SkillContact> getServantSkillEffect(int servantId, String skillName){
+    public List<SkillContact> getServantSkillEffect(int servantId, String skillName) {
         List<SkillContact> skillEffect = new ArrayList<>();
 
         String selectHavingSkillEffect = "select" +
@@ -500,7 +519,7 @@ public class DbOpenHelper {
         String selectHavingSkillValue = "select " +
                 " SAS.skill_effect as skill_effect," +
                 " SAS.skill_level as skill_level," +
-                "(case when skill_percent = 1 then (SAS.skill_value || ' ' || '%') " +
+                "(case when skill_percent = 1 then (SAS.skill_value || ' ' || '% ')" +
                 " else SAS.skill_value " +
                 " end) as skill_number," +
                 " SAS.skill_coolDown as skill_coolDown" +

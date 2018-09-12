@@ -124,7 +124,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
-                    android:src="@drawable/exp_00"/>
+                    android:src="@drawable/icon_exp_00"/>
 
                 <TextView
                     android:id="@+id/four_class"
@@ -156,7 +156,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="1dp"
                     android:layout_weight="1"
-                    android:src="@drawable/exp_01"/>
+                    android:src="@drawable/icon_exp_01"/>
 
                 <TextView
                     android:id="@+id/three_class"

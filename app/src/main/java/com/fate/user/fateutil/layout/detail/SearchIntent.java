@@ -102,10 +102,8 @@ public class SearchIntent extends AppCompatActivity {
         // 1. 서번트가 보유하고 있는 스킬들을 가져온다.
         servantHavingSkill = mDbOpenHelper.getServantHavingSkill(position); // 리스트 위치에 따라 검색을 다르게 한다.
         // 2. 보유하고 있는 스킬 갯수에 따라 테이블의 행을 생성한다.
-        for (int i = 0; i < 1; i++) {
-            // 2. 스킬 테이블을 만들고 스킬 이름, 설명, 표시할 효과를 넣는다.
-            tableSkillHaving(servantHavingSkill.size(), 3);
-        }
+        tableSkillHaving(servantHavingSkill.size(), 3);
+
         mDbOpenHelper.close();
 
     }
@@ -115,7 +113,8 @@ public class SearchIntent extends AppCompatActivity {
 
         // 테이블 변수
         TableLayout skillTable = (TableLayout) findViewById(R.id.active_skill_table);
-        TableRow.LayoutParams rowLayout = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f);
+        skillTable.setPadding(2,2,2,2);
+        TableRow.LayoutParams rowLayout = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT);
         String packName = this.getPackageName();
         TableRow row[] = new TableRow[trCt];
         ImageView skillIcon[][] = new ImageView[trCt][tdCt];
@@ -124,6 +123,7 @@ public class SearchIntent extends AppCompatActivity {
 
         for (int tr = 0; tr < trCt; tr++) {
             row[tr] = new TableRow(this);
+            // row[tr].setLayoutParams(rowLayout);
 
             // 스킬 이름을 가져온다.
             SkillContact skillNameContact = servantHavingSkill.get(tr);
@@ -142,6 +142,7 @@ public class SearchIntent extends AppCompatActivity {
                     case 0: {
                         skillIcon[tr][td] = new ImageView(this);
                         skillIcon[tr][td].setImageResource(getResources().getIdentifier("@drawable/" + skillPath, "drawable", packName));
+                        rowLayout.weight = 1;
                         row[tr].addView(skillIcon[tr][td]);
                         break;
                     }
@@ -151,6 +152,7 @@ public class SearchIntent extends AppCompatActivity {
                         textViews[tr][td].setText(skillFullName);
                         textViews[tr][td].setTextSize(8);
                         textViews[tr][td].setGravity(Gravity.CENTER);
+                        rowLayout.weight = 2;
                         row[tr].addView(textViews[tr][td]);
                         break;
                     }
@@ -169,13 +171,17 @@ public class SearchIntent extends AppCompatActivity {
                         textViews[tr][td].setText(strExplain);
                         textViews[tr][td].setTextSize(8);
                         textViews[tr][td].setGravity(Gravity.CENTER);
+                        rowLayout.weight = 3;
                         row[tr].addView(textViews[tr][td]);
                         break;
                     }
 
+
                 }
+                //skillTable.addView(row[tr], rowLayout);
             } // td 의 끝
-            skillTable.addView(row[tr], rowLayout); // 3. 스킬이미지, 스킬 이름, 스킬 설명을 띄워준다.
+            skillTable.addView(row[tr], rowLayout);
+            // 3. 스킬이미지, 스킬 이름, 스킬 설명을 띄워준다.
             // 4. 스킬 수치 값을 집어 넣는다.
             tableSkillValue(servantHavingSkillEffect.size()+2, 10);
 
@@ -188,10 +194,12 @@ public class SearchIntent extends AppCompatActivity {
 
         // 테이블 변수
         TableLayout skillTable = (TableLayout) findViewById(R.id.active_skill_table);
-
-        TableRow.LayoutParams rowLayout = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f);
+        //TableRow.LayoutParams rowLayout = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f);
+        TableRow.LayoutParams rowLayout = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT, 1f);
+        TableRow.LayoutParams textLayout = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT);
         TableRow row[] = new TableRow[trCt];
         TextView text[][] = new TextView[trCt][tdCt];
+
 
         SkillContact skillEffect; // 스킬 효과 contact
         SkillContact skillValue; // 스킬 수치 contact
@@ -204,11 +212,13 @@ public class SearchIntent extends AppCompatActivity {
             // 스킬 레벨, 스킬 효과, 스킬 쿨다운 표시
             for (int td1 = 0; td1 < 1; td1++) {
                 text[tr][td1] = new TextView(this);
+               text[tr][td1].setLayoutParams(textLayout);
+
 
                 // 첫 줄
                 if (tr == 0) {
                     text[tr][td1].setText("레벨");
-                    text[tr][td1].setTextSize(5);
+                    text[tr][td1].setTextSize(10);
                     text[tr][td1].setGravity(Gravity.CENTER);
                     row[tr].addView(text[tr][td1]);
                 }
@@ -220,7 +230,7 @@ public class SearchIntent extends AppCompatActivity {
                     servantHavingSkillValue = mDbOpenHelper.getServantHavingValue(position, skillName, effect); // 효과를 사용해서 스킬 수치를 가져온다.
 
                     text[tr][td1].setText(effect);
-                    text[tr][td1].setTextSize(5);
+                    text[tr][td1].setTextSize(10);
                     text[tr][td1].setGravity(Gravity.CENTER);
                     row[tr].addView(text[tr][td1]);
                 }
@@ -232,7 +242,7 @@ public class SearchIntent extends AppCompatActivity {
                     servantHavingSkillValue = mDbOpenHelper.getServantHavingValue(position, skillName, effect); // 쿨다운 가져오기
 
                     text[tr][td1].setText("쿨다운");
-                    text[tr][td1].setTextSize(5);
+                    text[tr][td1].setTextSize(10);
                     text[tr][td1].setGravity(Gravity.CENTER);
                     row[tr].addView(text[tr][td1]);
                 }
@@ -250,8 +260,8 @@ public class SearchIntent extends AppCompatActivity {
                 if (tr == 0) {
                     lv = String.valueOf(td2 + 1);
                     text[tr][td2].setText(lv);
-                    text[tr][td2].setTextSize(5);
-                    text[tr][td2].setGravity(Gravity.CENTER);
+                    text[tr][td2].setTextSize(10);
+                    //text[tr][td2].setGravity(Gravity.CENTER);
                     row[tr].addView(text[tr][td2]);
                 }
 
@@ -262,8 +272,8 @@ public class SearchIntent extends AppCompatActivity {
                     skillNumber = skillValue.getSkillNumber();
 
                     text[tr][td2].setText(skillNumber);
-                    text[tr][td2].setTextSize(5);
-                    text[tr][td2].setGravity(Gravity.CENTER);
+                    text[tr][td2].setTextSize(10);
+                    //text[tr][td2].setGravity(Gravity.CENTER);
                     row[tr].addView(text[tr][td2]);
 
                 }
@@ -274,8 +284,8 @@ public class SearchIntent extends AppCompatActivity {
                     skillCoolDown = String.valueOf(skillValue.getSkillCoolDown());
 
                     text[tr][td2].setText(skillCoolDown);
-                    text[tr][td2].setTextSize(5);
-                    text[tr][td2].setGravity(Gravity.CENTER);
+                    text[tr][td2].setTextSize(10);
+                    //text[tr][td2].setGravity(Gravity.CENTER);
                     row[tr].addView(text[tr][td2]);
                 }
 

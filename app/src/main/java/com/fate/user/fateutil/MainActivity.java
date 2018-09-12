@@ -234,6 +234,7 @@ public class MainActivity extends AppCompatActivity
         parser.servantClassParser();
 
         parser.activeSkillParser();
-        parser.servantJoinActiveSkillParser();
+        parser.passiveSkillParser();
+        parser.servantJoinSkillParser();
     }
 }

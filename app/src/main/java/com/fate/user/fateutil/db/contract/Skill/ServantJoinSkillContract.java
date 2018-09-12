@@ -4,12 +4,15 @@ public class ServantJoinSkillContract {
 
     private int id;
     private int servantId;
+    private String skillClassification;
     private int skillId;
 
 
-    public ServantJoinSkillContract(int id, int servantId, int skillId) {
+
+    public ServantJoinSkillContract(int id, int servantId, String skillClassification, int skillId) {
         this.id = id;
         this.servantId = servantId;
+        this.skillClassification = skillClassification;
         this.skillId = skillId;
     }
 
@@ -30,6 +33,9 @@ public class ServantJoinSkillContract {
         this.servantId = servantId;
     }
 
+    public String getSkillClassification(){
+        return this.skillClassification;
+    }
 
     public int getSkillId(){
         return this.skillId;

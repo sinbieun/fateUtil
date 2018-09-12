@@ -1,90 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
 
-    <TabHost
-        android:id="@+id/tabhost"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <TabHost
+            android:id="@+id/tabhost"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-            <!--탭 위젯-->
-            <TabWidget
-                android:id="@android:id/tabs"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <FrameLayout
-                android:id="@android:id/tabcontent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <!--첫번째 페이지-->
-                <LinearLayout
-                    android:id="@+id/content1"
+                <!--탭 위젯-->
+                <TabWidget
+                    android:id="@android:id/tabs"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content" />
 
-                </LinearLayout>
-
-                <!--두번째 페이지-->
-                <LinearLayout
-                    android:id="@+id/content2"
+                <FrameLayout
+                    android:id="@android:id/tabcontent"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content">
 
-                    <TextView
-                        android:id="@+id/active_skill_title"
+                    <!--첫번째 페이지-->
+                    <LinearLayout
+                        android:id="@+id/content1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="액티브 스킬" />
+                        android:orientation="vertical">
 
+                    </LinearLayout>
 
-                    <TableLayout
-                        android:id="@+id/active_skill_table"
+                    <!--두번째 페이지-->
+                    <LinearLayout
+                        android:id="@+id/content2"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/active_skill_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="액티브 스킬" />
 
 
-                    </TableLayout>
+                        <TableLayout
+                            android:id="@+id/active_skill_table"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
 
-                    <TableLayout
-                        android:id="@+id/active_skill_value"
+
+                        </TableLayout>
+
+
+                    </LinearLayout>
+
+
+                    <!--세번째 페이지-->
+                    <LinearLayout
+                        android:id="@+id/content3"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
-                    </TableLayout>
-
-
-
-
-                </LinearLayout>
+                    </LinearLayout>
 
 
-                <!--세번째 페이지-->
-                <LinearLayout
-                    android:id="@+id/content3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                </FrameLayout>
 
-                </LinearLayout>
+            </LinearLayout>
 
 
-            </FrameLayout>
+        </TabHost>
 
-        </LinearLayout>
+    </RelativeLayout>
+</HorizontalScrollView>
 
-
-    </TabHost>
-
-</RelativeLayout>
 

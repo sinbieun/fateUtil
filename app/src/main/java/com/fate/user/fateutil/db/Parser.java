@@ -26,11 +26,11 @@ public class Parser extends LinearLayout {
     private String fileName;
     private JSONArray jarray;
 
+    // 생성자
     public Parser(Context context) {
         super(context);
         mDbOpenHelper = new DbOpenHelper(context);
     }
-
 
     // Asset에 저장된 Servant.json을 읽어오는 함수
     public String loadServantFromAsset(String fileName) {
@@ -49,7 +49,23 @@ public class Parser extends LinearLayout {
         return json;
     }
 
-    // 서번트 리스트 조인 값을 집어 넣는다.
+    /*
+        JSON 파일 파싱해서 DB에 집어 넣기
+        1. 서번트
+        1_1) 서번트 리스트 조인 테이블에 데이터 삽입
+        1_2) 서번트 아이콘 테이블에 데이터 삽입
+        1_3) 서번트 이름 테이블에 데이터 삽입
+        1_4) 서번트 클래스 테이블에 데이터 삽입
+
+        2. 서번트 스킬
+        2_1) 서번트 조인 스킬 테이블에 데이터 삽입
+        2_2) 서번트 액티브 스킬 테이블에 데이터 삽입
+
+        3. 경험치
+        3_1) 서번트 경험치를 집어 넣는다.
+
+     */
+    // 1_1) 서번트 리스트 조인 테이블에 데이터 삽입
     public void servanJointListParser() {
 
         mDbOpenHelper.open();
@@ -92,7 +108,7 @@ public class Parser extends LinearLayout {
 
     }
 
-    // 서번트 아이콘 테이블에 데이터 삽입
+    // 1_2) 서번트 아이콘 테이블에 데이터 삽입
     public void servantIconParser() {
         // 0. 테이블에 값이 있다면 checkData에서 true를 반환하고 데이터 값을 넣지 않는다.
 
@@ -131,7 +147,7 @@ public class Parser extends LinearLayout {
         }
     }
 
-    // 서번트 이름 테이블에 데이터 삽입
+    // 1_3) 서번트 이름 테이블에 데이터 삽입
     public void servantNameParser() {
         // 0. 테이블에 값이 있다면 checkData에서 true를 반환하고 데이터 값을 넣지 않는다.
 
@@ -169,7 +185,7 @@ public class Parser extends LinearLayout {
         }
     }
 
-    // 서번트 클래스 테이블에 데이터 삽입
+    // 1_4) 서번트 클래스 테이블에 데이터 삽입
     public void servantClassParser() {
         // 0. 테이블에 값이 있다면 checkData에서 true를 반환하고 데이터 값을 넣지 않는다.
 
@@ -208,49 +224,8 @@ public class Parser extends LinearLayout {
         }
     }
 
-    // 경험치 테이블에 데이터 삽입
-    public void expParser() {
-        // 0. 테이블에 값이 있으면 저장하지 않는다.
-
-        mDbOpenHelper.open();
-        if (mDbOpenHelper.checkData(DataBase.ExpTable.TABLE_NAME) == true) {
-            mDbOpenHelper.close();
-            return;
-        }
-        // 1. Servant.json 파일을 String에 저장
-        String fileName = "databases/Exp.json";
-        String jsonString = loadServantFromAsset(fileName);
-        // 트랜잭션 시작
-        mDbOpenHelper.mDB.beginTransaction();
-        try {
-            JSONArray jarray = new JSONArray(jsonString);
-
-            for (int i = 0; i < jarray.length(); i++) {
-                JSONObject jObject = jarray.getJSONObject(i);
-                // 2. 아이디, 서번트 아이콘 서번트 이름, 서번트 클래스, 서번트 등급에 따라 저장
-                int id = jObject.getInt("id");
-                int servantLevel = jObject.getInt("servant_level");
-                int servantExp = jObject.getInt("servant_exp");
-                // 3. 데이터 삽입을 하여준다.
-                mDbOpenHelper.addExpContact(new ExpContact(id, servantLevel, servantExp));
-
-            }
-            // 4. 완전히 종료되면 실행
-            mDbOpenHelper.mDB.setTransactionSuccessful();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        } finally {
-            // 5. 삽입 끝나면 트랜잭션 종료
-            mDbOpenHelper.mDB.endTransaction();
-            // 6. DB 닫기
-            mDbOpenHelper.close();
-        }
-
-    }
-
-
-    // 서번트 조인 스킬 테이블에 데이터 삽입
-    public void servantJoinActiveSkillParser() {
+    // 2_1) 서번트 조인 스킬 테이블에 데이터 삽입
+    public void servantJoinSkillParser() {
         // 0. 테이블에 값이 있다면 checkData에서 true를 반환하고 데이터 값을 넣지 않는다.
         mDbOpenHelper.open();
         if (mDbOpenHelper.checkData(DataBase.ServantJoinSkillTable.TABLE_NAME) == true) {
@@ -270,10 +245,12 @@ public class Parser extends LinearLayout {
 
                 int id = jObject.getInt("id");
                 int servantId = jObject.getInt("servant_id");
+                String skillClassification = jObject.getString("skill_classification");
                 int skillId = jObject.getInt("skill_id");
 
+
                 // 데이터 삽입
-                mDbOpenHelper.addServantJoinSkillContact(new ServantJoinSkillContract(id, servantId, skillId));
+                mDbOpenHelper.addServantJoinSkillContact(new ServantJoinSkillContract(id, servantId, skillClassification, skillId));
             }
             // 5. 완전히 종료되면 실행
             mDbOpenHelper.mDB.setTransactionSuccessful();
@@ -288,7 +265,7 @@ public class Parser extends LinearLayout {
 
     }
 
-    // 스킬 파싱 테이블
+    // 2_2) 서번트 액티브 스킬 테이블에 데이터 삽입
     public void activeSkillParser() {
         // 0. 테이블에 값이 있으면 db에 저장하지 않는다.
         mDbOpenHelper.open();
@@ -342,4 +319,87 @@ public class Parser extends LinearLayout {
             mDbOpenHelper.close();
         }
     }
+
+    // 2_3) 서번트 패시브 스킬 테이블에 데이터 삽입
+    public void passiveSkillParser() {
+        // 0. 테이블에 값이 있으면 db에 저장하지 않는다.
+        mDbOpenHelper.open();
+        if (mDbOpenHelper.checkData(DataBase.PassiveSkillTable.TABLE_NAME) == true) {
+            mDbOpenHelper.close();
+            return;
+        }
+        fileName = "databases/ServantPassiveSkill.json"; // 파일 이름 저장 변수
+        jsonString = loadServantFromAsset(fileName); // JSON에서 데이터를 뽑아서 집어 넣는다.
+        // 트랜잭션 시작
+        mDbOpenHelper.mDB.beginTransaction();
+        try {
+            jarray = new JSONArray(jsonString);
+
+            for (int i = 0; i < jarray.length(); i++) {
+                JSONObject jObject = jarray.getJSONObject(i);
+
+                // 2. 아이디, 서번트 아이콘 서번트 이름, 서번트 클래스, 서번트 등급에 따라 저장
+                int skillId = jObject.getInt("skill_id");
+                String skillIcon = jObject.getString("skill_icon");
+                String skillName = jObject.getString("skill_name");
+                String skillRank = jObject.getString("skill_rank");
+                String skillExplain = jObject.getString("skill_explain");
+
+
+                // 3. 데이터 삽입을 하여준다.
+                mDbOpenHelper.addPassiveSkillList(new SkillContact(skillId, skillIcon, skillName, skillRank, skillExplain));
+
+            }
+            // 4. 완전히 종료되면 실행
+            mDbOpenHelper.mDB.setTransactionSuccessful();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } finally {
+            // 5. 삽입 끝나면 트랜잭션 종료
+            mDbOpenHelper.mDB.endTransaction();
+            // 6. DB 닫기
+            mDbOpenHelper.close();
+        }
+    }
+
+    // 3_1) 서번트 경험치를 집어 넣는다.
+    public void expParser() {
+        // 0. 테이블에 값이 있으면 저장하지 않는다.
+
+        mDbOpenHelper.open();
+        if (mDbOpenHelper.checkData(DataBase.ExpTable.TABLE_NAME) == true) {
+            mDbOpenHelper.close();
+            return;
+        }
+        // 1. Servant.json 파일을 String에 저장
+        String fileName = "databases/Exp.json";
+        String jsonString = loadServantFromAsset(fileName);
+        // 트랜잭션 시작
+        mDbOpenHelper.mDB.beginTransaction();
+        try {
+            JSONArray jarray = new JSONArray(jsonString);
+
+            for (int i = 0; i < jarray.length(); i++) {
+                JSONObject jObject = jarray.getJSONObject(i);
+                // 2. 아이디, 서번트 아이콘 서번트 이름, 서번트 클래스, 서번트 등급에 따라 저장
+                int id = jObject.getInt("id");
+                int servantLevel = jObject.getInt("servant_level");
+                int servantExp = jObject.getInt("servant_exp");
+                // 3. 데이터 삽입을 하여준다.
+                mDbOpenHelper.addExpContact(new ExpContact(id, servantLevel, servantExp));
+
+            }
+            // 4. 완전히 종료되면 실행
+            mDbOpenHelper.mDB.setTransactionSuccessful();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } finally {
+            // 5. 삽입 끝나면 트랜잭션 종료
+            mDbOpenHelper.mDB.endTransaction();
+            // 6. DB 닫기
+            mDbOpenHelper.close();
+        }
+
+    }
+
 }

@@ -41,20 +41,13 @@ public class DataBase {
         public static final String CLASS_NAME = "class_name";
     }
 
-    // 2. 경험치 테이블 변수 생성
-    public static final class ExpTable implements BaseColumns {
-        public static final String TABLE_NAME = "exp";
-        public static final String ID = "id";
-        public static final String SERVANT_LEVEL = "servantLevel";
-        public static final String SERVANT_EXP = "servantExp";
-    }
-
     // 3. 스킬 테이블 변수 생성
     // 3_1) 서번트 조인 액티브스킬 테이블 생성 (아이디, 서번트 아이디, 스킬 아이디)
     public static final class ServantJoinSkillTable implements BaseColumns {
         public static final String TABLE_NAME = "ServantJoinSkill";
         public static final String ID = "id";
         public static final String SERVANT_ID = "servant_id";
+        public static final String SKILL_CLASSIFICATION ="skill_classification";
         public static final String SKILL_ID = "skill_id";
     }
 
@@ -81,6 +74,16 @@ public class DataBase {
         public static final String SKILL_ENHANCE = "skill_enhance";
     }
 
+    // 3_3) 서번트 패시브 스킬 테이블 생성
+    public static final class PassiveSkillTable implements BaseColumns {
+        public static final String TABLE_NAME = "ServantPassiveSkill";
+        public static final String SKILL_ID = "skill_id";
+        public static final String SKILL_ICON = "skill_icon";
+        public static final String SKILL_NAME = "skill_name";
+        public static final String SKILL_RANK = "skill_rank";
+        public static final String SKILL_EXPLAIN = "skill_explain";
+    }
+
     // 보구 테이블 변수
     public static final class WeaponTable implements BaseColumns {
         public static final String TABLE_NAME = "ServantWeapon";
@@ -101,6 +104,14 @@ public class DataBase {
         public static final String WEAPON_DURATION = "weapon_duration";
         public static final String WEAPON_PERCENT = "weapon_percent";
         public static final String WEAPON_ENHANCE = "weapon_enhance";
+    }
+
+    // 4. 경험치 테이블 변수 생성
+    public static final class ExpTable implements BaseColumns {
+        public static final String TABLE_NAME = "exp";
+        public static final String ID = "id";
+        public static final String SERVANT_LEVEL = "servantLevel";
+        public static final String SERVANT_EXP = "servantExp";
     }
 
 
@@ -143,17 +154,10 @@ public class DataBase {
                     ServantJoinSkillTable.TABLE_NAME + " (" +
                     ServantJoinSkillTable.ID + " integer primary key not null, " +
                     ServantJoinSkillTable.SERVANT_ID + " integer not null ," +
+                    ServantJoinSkillTable.SKILL_CLASSIFICATION + " text not null, " +
                     ServantJoinSkillTable.SKILL_ID + " integer not null" + ");";
 
-    // 서번트 경험치 테이블 생성
-    public static final String SQL_CREATE_EXP =
-            "create table " +
-                    ExpTable.TABLE_NAME + " (" +
-                    ExpTable.ID + " integer not null , " +
-                    ExpTable.SERVANT_LEVEL + " integer not null ," +
-                    ExpTable.SERVANT_EXP + " integer not null" + ");";
-
-    // 스킬 테이블 생성
+    // 2_2) 서번트 액티브 스킬 테이블 생성
     public static final String SQL_CREATE_ACTIVE_SKILL =
             "create table " +
                     ActiveSkillTable.TABLE_NAME + " (" +
@@ -173,6 +177,17 @@ public class DataBase {
                     ActiveSkillTable.SKILL_COOLDOWN + " integer , " +
                     ActiveSkillTable.SKILL_PERCENT + " integer , " +
                     ActiveSkillTable.SKILL_ENHANCE + " integer " +
+                    ");";
+
+    // 2_3) 서번트 패시브 스킬 테이블 생성
+    public static final String SQL_CREATE_PASSIVE_SKILL =
+            "create table " +
+                    PassiveSkillTable.TABLE_NAME + " (" +
+                    PassiveSkillTable.SKILL_ID + " integer primary key not null, " +
+                    PassiveSkillTable.SKILL_ICON + " text not null ," +
+                    PassiveSkillTable.SKILL_NAME + " text not null , " +
+                    PassiveSkillTable.SKILL_RANK + " text , " +
+                    PassiveSkillTable.SKILL_EXPLAIN + " text " +
                     ");";
 
     // 3. 서번트 조인 보구 테이블 생성
@@ -198,5 +213,15 @@ public class DataBase {
                     WeaponTable.WEAPON_PERCENT + " integer , " +
                     WeaponTable.WEAPON_ENHANCE + " integer " +
                     ");";
+
+    // 4. 경험치 테이블
+    // 서번트 경험치 테이블 생성
+    public static final String SQL_CREATE_EXP =
+            "create table " +
+                    ExpTable.TABLE_NAME + " (" +
+                    ExpTable.ID + " integer not null , " +
+                    ExpTable.SERVANT_LEVEL + " integer not null ," +
+                    ExpTable.SERVANT_EXP + " integer not null" + ");";
+
 
 }
