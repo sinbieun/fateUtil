@@ -1,28 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal">
 
-    <RelativeLayout
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TabHost
+        android:id="@+id/tabhost"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TabHost
-            android:id="@+id/tabhost"
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <LinearLayout
+
+            <!--탭 위젯-->
+            <TabWidget
+                android:id="@android:id/tabs"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="wrap_content" />
 
-                <!--탭 위젯-->
-                <TabWidget
-                    android:id="@android:id/tabs"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
                 <FrameLayout
                     android:id="@android:id/tabcontent"
@@ -52,15 +55,22 @@
                             android:gravity="center"
                             android:text="액티브 스킬" />
 
-
                         <TableLayout
                             android:id="@+id/active_skill_table"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"></TableLayout>
 
+                        <TextView
+                            android:id="@+id/passive_skill_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="패시브 스킬" />
 
-                        </TableLayout>
-
+                        <TableLayout
+                            android:id="@+id/passive_skill_table"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"></TableLayout>
 
                     </LinearLayout>
 
@@ -74,15 +84,15 @@
 
                     </LinearLayout>
 
-
                 </FrameLayout>
+            </HorizontalScrollView>
 
-            </LinearLayout>
+        </LinearLayout>
+
+    </TabHost>
+
+</RelativeLayout>
 
 
-        </TabHost>
-
-    </RelativeLayout>
-</HorizontalScrollView>
 
 

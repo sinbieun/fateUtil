@@ -296,9 +296,11 @@ public class DbOpenHelper {
     1_2) 서번트 조인 리스트 에서 아이디에 맞는 서번트 리스트 가져오기
 
     2. 스킬 검색
-    2_1) 서번트가 가지고 있는 스킬 아이콘, 이름 가지고 오기
-    2_2) 서번트가 가지고 있는 스킬의 설명 리스트 가져오기
-    2_3) 서번트가 가지고 있는 스킬의 수치 가져오기
+    2_1) 서번트가 가지고 있는 액티브 스킬 아이콘, 이름 가지고 오기
+    2_2) 서번트가 가지고 있는 액티브 스킬의 설명 리스트 가져오기
+    2_3) 서번트가 가지고 있는 액티브 스킬의 효과 가져오기
+    2_4) 서번트가 가지고 있는 액티브 스킬의 수치 가져오기
+    2_5) 서번트가 가지고 있는 패시브 스킬 가져오기
      */
 
     // 1. 서번트 검색
@@ -401,8 +403,8 @@ public class DbOpenHelper {
         return contactServantList;
     }
 
-    // 2_1) 서번트가 가지고 있는 스킬 아이콘, 이름 가지고 오기
-    public List<SkillContact> getServantHavingSkill(int servantId) {
+    // 2_1) 서번트가 가지고 있는 액티브 스킬 아이콘, 이름 가지고 오기
+    public List<SkillContact> getServantHavingActiveSkill(int servantId) {
         List<SkillContact> skillHaving = new ArrayList<SkillContact>();
 
         // 서번트가 가지고 있는 스킬 데이터를 가져온다.
@@ -437,8 +439,8 @@ public class DbOpenHelper {
         return skillHaving;
     }
 
-    // 2_2) 서번트가 가지고 있는 스킬의 설명 리스트 가져오기
-    public List<SkillContact> getServantSkillExplain(int servantId, String skillName) {
+    // 2_2) 서번트가 가지고 있는 액티브 스킬의 설명 리스트 가져오기
+    public List<SkillContact> getServantActiveSkillExplain(int servantId, String skillName) {
         List<SkillContact> skillExplain = new ArrayList<>();
 
         // 설명 리스트를 가져온다.
@@ -479,8 +481,8 @@ public class DbOpenHelper {
         return skillExplain;
     }
 
-    // 수치가 있는 서번트 스킬 효과 가져오기
-    public List<SkillContact> getServantSkillEffect(int servantId, String skillName) {
+    // 2_3) 서번트가 가지고 있는 액티브 스킬의 효과 가져오기
+    public List<SkillContact> getServantActiveSkillEffect(int servantId, String skillName) {
         List<SkillContact> skillEffect = new ArrayList<>();
 
         String selectHavingSkillEffect = "select" +
@@ -512,7 +514,7 @@ public class DbOpenHelper {
     }
 
     // 2_4) 서번트가 가지고 있는 스킬의 수치 가져오기
-    public List<SkillContact> getServantHavingValue(int servantId, String skillName, String skillEffect) {
+    public List<SkillContact> getServantActiveSkillValue(int servantId, String skillName, String skillEffect) {
         List<SkillContact> skillNumber = new ArrayList<SkillContact>();
 
         // 서번트가 가지고 있는 수치를 가져온다.
@@ -551,6 +553,43 @@ public class DbOpenHelper {
 
         return skillNumber;
 
+    }
+
+    // 2_5) 서번트가 가지고 있는 패시브 스킬 가져오기
+    public List<SkillContact> getServantHavingPassiveSkill(int servantId) {
+        List<SkillContact> skillHaving = new ArrayList<SkillContact>();
+
+        // 서번트가 가지고 있는 스킬 데이터를 가져온다.
+        String selectHavingSkill = "SELECT " +
+                " SPS.skill_id as skill_id, " +
+                " SPS.skill_icon as skill_icon, " +
+                " (SPS.skill_name || ' ' || SPS.skill_rank ) as skill_full_name, " +
+                " SPS.skill_explain as skill_explain " +
+                " from  " + DataBase.ServantJoinSkillTable.TABLE_NAME + " as SJS " +
+                " inner join " + DataBase.ServantNameTable.TABLE_NAME + " as SN" +
+                " on SJS.servant_id = " + servantId + " AND SN.name_id=" + servantId +
+                " inner join " + DataBase.PassiveSkillTable.TABLE_NAME + " as SPS" +
+                " on SJS.skill_id = SPS.skill_id" +
+                " where SJS.skill_classification =" + "'P'" +
+                " group by skill_full_name" +
+                " order by skill_id";
+
+        mDB = mDBHelper.getReadableDatabase();
+
+        // 커서에 검색 쿼리 삽입
+        Cursor cursor = mDB.rawQuery(selectHavingSkill, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                SkillContact contact = new SkillContact();
+                contact.setSkillIcon(cursor.getString(cursor.getColumnIndex("skill_icon")));
+                contact.setSkillFullName(cursor.getString(cursor.getColumnIndex("skill_full_name")));
+                contact.setSkillExplain(cursor.getString(cursor.getColumnIndex("skill_explain")));
+                skillHaving.add(contact);
+            } while (cursor.moveToNext());
+        }
+
+        return skillHaving;
     }
 
 

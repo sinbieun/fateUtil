@@ -25,12 +25,20 @@ public class SearchIntent extends AppCompatActivity {
     private DbOpenHelper mDbOpenHelper;
     private int position;
     private TabHost tabHost1;
-    private List<SkillContact> servantHavingSkillValue;
-    private List<SkillContact> servantHavingSkill;
+
+    // 스킬 명
+    private String skillName;
+
+    // 액티브 스킬 변수
+    private List<SkillContact> servantHavingActiveSkill;
     private List<SkillContact> servantHavingSkillExplain;
     private List<SkillContact> servantHavingSkillEffect;
+    private List<SkillContact> servantHavingSkillValue;
 
-    private String skillName;
+    // 패시브 스킬 변수
+    private List<SkillContact> servantHavingPassiveSkill;
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,7 +52,7 @@ public class SearchIntent extends AppCompatActivity {
 
 
         init(); // 초기화
-        createTable(); // 스킬 테이블 생성
+        createSkillTable(); // 스킬 테이블 생성
 
     }
 
@@ -63,7 +71,7 @@ public class SearchIntent extends AppCompatActivity {
     public void init() {
 
         // 상단 탭 관리
-        tabHost1 = (TabHost) findViewById(R.id.tabhost);
+        tabHost1 = findViewById(R.id.tabhost);
         tabHost1.setup();
 
         // 서번트 기본 스텟
@@ -89,30 +97,37 @@ public class SearchIntent extends AppCompatActivity {
         tabHost1.addTab(tabSpec3);
 
         // 뒤로가기 버튼 설정
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if(getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
 
 
     }
 
-    public void createTable() {
+    public void createSkillTable() {
 
         // DB를 열고 데이터를 가져온다.
         mDbOpenHelper.open();
 
         // 1. 서번트가 보유하고 있는 스킬들을 가져온다.
-        servantHavingSkill = mDbOpenHelper.getServantHavingSkill(position); // 리스트 위치에 따라 검색을 다르게 한다.
+        // 1_1) 서번트가 소유하고 있는 액티브 스킬을 가져온다.
+        servantHavingActiveSkill = mDbOpenHelper.getServantHavingActiveSkill(position); // 리스트 위치에 따라 검색을 다르게 한다.
+        // 1_2) 서번트가 소유하고 있는 패시브 스킬을 가져온다.
+        servantHavingPassiveSkill = mDbOpenHelper.getServantHavingPassiveSkill(position);
         // 2. 보유하고 있는 스킬 갯수에 따라 테이블의 행을 생성한다.
-        tableSkillHaving(servantHavingSkill.size(), 3);
+        tableHavingActiveSkill(servantHavingActiveSkill.size(), 3); // 액티브 스킬
+        tablePassiveSkil(servantHavingPassiveSkill.size(), 3); // 패시브 스킬
 
         mDbOpenHelper.close();
 
     }
 
-    // 스킬 테이블 생성
-    public void tableSkillHaving(int trCt, int tdCt) {
+    // 액티브 스킬 테이블 생성
+    public void tableHavingActiveSkill(int trCt, int tdCt) {
 
         // 테이블 변수
-        TableLayout skillTable = (TableLayout) findViewById(R.id.active_skill_table);
+        TableLayout skillTable = findViewById(R.id.active_skill_table);
         skillTable.setPadding(2,2,2,2);
         TableRow.LayoutParams rowLayout = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT);
         String packName = this.getPackageName();
@@ -126,11 +141,11 @@ public class SearchIntent extends AppCompatActivity {
             // row[tr].setLayoutParams(rowLayout);
 
             // 스킬 이름을 가져온다.
-            SkillContact skillNameContact = servantHavingSkill.get(tr);
+            SkillContact skillNameContact = servantHavingActiveSkill.get(tr);
             skillName = skillNameContact.getSkillName();
 
-            servantHavingSkillExplain = mDbOpenHelper.getServantSkillExplain(position, skillName); // 해당 스킬 설명을 가져온다
-            servantHavingSkillEffect = mDbOpenHelper.getServantSkillEffect(position, skillName); // 해당 스킬의 이펙트를 가져온다.
+            servantHavingSkillExplain = mDbOpenHelper.getServantActiveSkillExplain(position, skillName); // 해당 스킬 설명을 가져온다
+            servantHavingSkillEffect = mDbOpenHelper.getServantActiveSkillEffect(position, skillName); // 해당 스킬의 이펙트를 가져온다.
 
             // 1. 스킬 이미지, 스킬 이름, 스킬 설명을 넣는다.
             for (int td = 0; td < 3; td++) {
@@ -159,16 +174,16 @@ public class SearchIntent extends AppCompatActivity {
 
                     // 3) 스킬 설명 넣기
                     case 2: {
-                        String strExplain = "", str;
+                        StringBuilder sb = new StringBuilder();
+                        String str;
                         SkillContact skillExplain;
                         for(int tr1 = 0; tr1 < servantHavingSkillExplain.size(); tr1++){
                             skillExplain = servantHavingSkillExplain.get(tr1); // 스킬 설명을 가져온다.
                             str = skillExplain.getSkillExplain() + "\n";
-                            strExplain += str;
+                            sb.append(str);
                         }
-
                         textViews[tr][td] = new TextView(this);
-                        textViews[tr][td].setText(strExplain);
+                        textViews[tr][td].setText(sb.toString());
                         textViews[tr][td].setTextSize(8);
                         textViews[tr][td].setGravity(Gravity.CENTER);
                         rowLayout.weight = 3;
@@ -183,14 +198,13 @@ public class SearchIntent extends AppCompatActivity {
             skillTable.addView(row[tr], rowLayout);
             // 3. 스킬이미지, 스킬 이름, 스킬 설명을 띄워준다.
             // 4. 스킬 수치 값을 집어 넣는다.
-            tableSkillValue(servantHavingSkillEffect.size()+2, 10);
+            tableActiveSkillValue(servantHavingSkillEffect.size()+2, 10);
 
         } // tr 의 끝
 
     }
-
-    // 스킬 수치 테이블 생성
-    public void tableSkillValue(int trCt, int tdCt) {
+    // 액티브 스킬 수치 테이블 생성
+    public void tableActiveSkillValue(int trCt, int tdCt) {
 
         // 테이블 변수
         TableLayout skillTable = (TableLayout) findViewById(R.id.active_skill_table);
@@ -223,11 +237,11 @@ public class SearchIntent extends AppCompatActivity {
                     row[tr].addView(text[tr][td1]);
                 }
                 // 두번째 줄 부터 마지막의 전 줄 까지 효과 입력
-                else if (tr > 0 && tr < (trCt-1)) {
+                else if (tr < (trCt-1)) {
                     // 스킬 효과를 가져온다.
                     skillEffect = servantHavingSkillEffect.get(tr-1);
                     effect = skillEffect.getSkillEffect();
-                    servantHavingSkillValue = mDbOpenHelper.getServantHavingValue(position, skillName, effect); // 효과를 사용해서 스킬 수치를 가져온다.
+                    servantHavingSkillValue = mDbOpenHelper.getServantActiveSkillValue(position, skillName, effect); // 효과를 사용해서 스킬 수치를 가져온다.
 
                     text[tr][td1].setText(effect);
                     text[tr][td1].setTextSize(10);
@@ -239,7 +253,7 @@ public class SearchIntent extends AppCompatActivity {
                     // 효과 가져오기
                     skillEffect = servantHavingSkillEffect.get(tr-2);
                     effect = skillEffect.getSkillEffect();
-                    servantHavingSkillValue = mDbOpenHelper.getServantHavingValue(position, skillName, effect); // 쿨다운 가져오기
+                    servantHavingSkillValue = mDbOpenHelper.getServantActiveSkillValue(position, skillName, effect); // 쿨다운 가져오기
 
                     text[tr][td1].setText("쿨다운");
                     text[tr][td1].setTextSize(10);
@@ -266,7 +280,7 @@ public class SearchIntent extends AppCompatActivity {
                 }
 
                 // 스킬 수치 넣기
-                else if (tr > 0 && tr < (trCt - 1)) {
+                else if (tr < (trCt - 1)) {
                     // 열에 따라 스킬 수치 가져오기
                     skillValue = servantHavingSkillValue.get(td2);
                     skillNumber = skillValue.getSkillNumber();
@@ -292,6 +306,65 @@ public class SearchIntent extends AppCompatActivity {
             } // td for end
             skillTable.addView(row[tr], rowLayout); // 뷰에 추가
         } // tr for end
+
+    }
+    // 패시브 스킬 테이블 생성
+    public void tablePassiveSkil(int trCt, int tdCt){
+        // 테이블 변수
+        TableLayout skillTable = findViewById(R.id.passive_skill_table);
+        skillTable.setPadding(5,5,5,5);
+        TableRow.LayoutParams rowLayout = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT);
+        String packName = this.getPackageName();
+        TableRow row[] = new TableRow[trCt];
+        ImageView skillIcon[][] = new ImageView[trCt][tdCt];
+        TextView textViews[][] = new TextView[trCt][tdCt];
+
+        for (int tr = 0; tr < trCt; tr++) {
+            row[tr] = new TableRow(this);
+
+            // 스킬 이름을 가져온다.
+            SkillContact skillContact = servantHavingPassiveSkill.get(tr);
+
+            // 1. 스킬 이미지, 스킬 이름, 스킬 설명을 넣는다.
+            for (int td = 0; td < 3; td++) {
+                switch (td) {
+                    // 1) 스킬 이미지 넣기
+                    case 0: {
+                        String skillPath = skillContact.getSkillIcon();
+                        skillIcon[tr][td] = new ImageView(this);
+                        skillIcon[tr][td].setImageResource(getResources().getIdentifier("@drawable/" + skillPath, "drawable", packName));
+                        rowLayout.weight = 1;
+                        row[tr].addView(skillIcon[tr][td]);
+                        break;
+                    }
+                    // 2) 스킬 이름 넣기
+                    case 1: {
+                        String skillFullName = skillContact.getSkillFullName();
+                        textViews[tr][td] = new TextView(this);
+                        textViews[tr][td].setText(skillFullName);
+                        textViews[tr][td].setTextSize(8);
+                        textViews[tr][td].setGravity(Gravity.CENTER);
+                        rowLayout.weight = 2;
+                        row[tr].addView(textViews[tr][td]);
+                        break;
+                    }
+
+                    // 3) 스킬 설명 넣기
+                    case 2: {
+                        String skillExplain = skillContact.getSkillExplain();
+                        textViews[tr][td] = new TextView(this);
+                        textViews[tr][td].setText(skillExplain);
+                        textViews[tr][td].setTextSize(8);
+                        textViews[tr][td].setGravity(Gravity.CENTER);
+                        rowLayout.weight = 3;
+                        row[tr].addView(textViews[tr][td]);
+                        break;
+                    }
+
+                }
+            } // td 의 끝
+            skillTable.addView(row[tr], rowLayout);
+        } // tr 의 끝
 
     }
 }
