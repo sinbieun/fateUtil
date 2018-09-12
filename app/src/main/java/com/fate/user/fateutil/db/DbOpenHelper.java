@@ -21,7 +21,7 @@ import java.util.List;
 public class DbOpenHelper {
 
     private static final String DATABASE_NAME = "fatedb.db";
-    private static final int DATABASE_VERSION = 1_1_15;
+    private static final int DATABASE_VERSION = 1_1_18;
     private DatabaseHelper mDBHelper;
     public static SQLiteDatabase mDB;
     private Context mContext;
@@ -409,6 +409,7 @@ public class DbOpenHelper {
 
         // 서번트가 가지고 있는 스킬 데이터를 가져온다.
         String selectHavingSkill = "SELECT " +
+                "SJS.id as join_id, " +
                 "SAS.skill_name as skill_name," +
                 "(SAS.skill_name || ' ' || SAS.skill_rank) as skill_full_name," +
                 "SAS.skill_icon as skill_icon" +
@@ -419,7 +420,7 @@ public class DbOpenHelper {
                 " on SJS.skill_id = SAS.skill_id" +
                 " where SAS.skill_classification =" + "'L'" + " and SJS.skill_classification =" + "'A'" +
                 " group by skill_full_name" +
-                " order by SAS.skill_id";
+                " order by join_id";
 
         mDB = mDBHelper.getReadableDatabase();
 
@@ -571,7 +572,6 @@ public class DbOpenHelper {
                 " inner join " + DataBase.PassiveSkillTable.TABLE_NAME + " as SPS" +
                 " on SJS.skill_id = SPS.skill_id" +
                 " where SJS.skill_classification =" + "'P'" +
-                " group by skill_full_name" +
                 " order by skill_id";
 
         mDB = mDBHelper.getReadableDatabase();

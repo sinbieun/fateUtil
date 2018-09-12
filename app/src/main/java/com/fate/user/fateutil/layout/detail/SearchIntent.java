@@ -39,7 +39,6 @@ public class SearchIntent extends AppCompatActivity {
     private List<SkillContact> servantHavingPassiveSkill;
 
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         mDbOpenHelper = new DbOpenHelper(this);
@@ -97,10 +96,9 @@ public class SearchIntent extends AppCompatActivity {
         tabHost1.addTab(tabSpec3);
 
         // 뒤로가기 버튼 설정
-        if(getSupportActionBar() != null){
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
-
 
 
     }
@@ -128,7 +126,7 @@ public class SearchIntent extends AppCompatActivity {
 
         // 테이블 변수
         TableLayout skillTable = findViewById(R.id.active_skill_table);
-        skillTable.setPadding(2,2,2,2);
+        skillTable.setPadding(2, 2, 2, 2);
         TableRow.LayoutParams rowLayout = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT);
         String packName = this.getPackageName();
         TableRow row[] = new TableRow[trCt];
@@ -177,7 +175,7 @@ public class SearchIntent extends AppCompatActivity {
                         StringBuilder sb = new StringBuilder();
                         String str;
                         SkillContact skillExplain;
-                        for(int tr1 = 0; tr1 < servantHavingSkillExplain.size(); tr1++){
+                        for (int tr1 = 0; tr1 < servantHavingSkillExplain.size(); tr1++) {
                             skillExplain = servantHavingSkillExplain.get(tr1); // 스킬 설명을 가져온다.
                             str = skillExplain.getSkillExplain() + "\n";
                             sb.append(str);
@@ -198,11 +196,12 @@ public class SearchIntent extends AppCompatActivity {
             skillTable.addView(row[tr], rowLayout);
             // 3. 스킬이미지, 스킬 이름, 스킬 설명을 띄워준다.
             // 4. 스킬 수치 값을 집어 넣는다.
-            tableActiveSkillValue(servantHavingSkillEffect.size()+2, 10);
+            tableActiveSkillValue(servantHavingSkillEffect.size() + 2, 10);
 
         } // tr 의 끝
 
     }
+
     // 액티브 스킬 수치 테이블 생성
     public void tableActiveSkillValue(int trCt, int tdCt) {
 
@@ -226,7 +225,7 @@ public class SearchIntent extends AppCompatActivity {
             // 스킬 레벨, 스킬 효과, 스킬 쿨다운 표시
             for (int td1 = 0; td1 < 1; td1++) {
                 text[tr][td1] = new TextView(this);
-               text[tr][td1].setLayoutParams(textLayout);
+                text[tr][td1].setLayoutParams(textLayout);
 
 
                 // 첫 줄
@@ -237,9 +236,9 @@ public class SearchIntent extends AppCompatActivity {
                     row[tr].addView(text[tr][td1]);
                 }
                 // 두번째 줄 부터 마지막의 전 줄 까지 효과 입력
-                else if (tr < (trCt-1)) {
+                else if (tr < (trCt - 1)) {
                     // 스킬 효과를 가져온다.
-                    skillEffect = servantHavingSkillEffect.get(tr-1);
+                    skillEffect = servantHavingSkillEffect.get(tr - 1);
                     effect = skillEffect.getSkillEffect();
                     servantHavingSkillValue = mDbOpenHelper.getServantActiveSkillValue(position, skillName, effect); // 효과를 사용해서 스킬 수치를 가져온다.
 
@@ -251,7 +250,7 @@ public class SearchIntent extends AppCompatActivity {
                 // 마지막은 쿨다운 표시
                 else {
                     // 효과 가져오기
-                    skillEffect = servantHavingSkillEffect.get(tr-2);
+                    skillEffect = servantHavingSkillEffect.get(tr - 2);
                     effect = skillEffect.getSkillEffect();
                     servantHavingSkillValue = mDbOpenHelper.getServantActiveSkillValue(position, skillName, effect); // 쿨다운 가져오기
 
@@ -308,11 +307,12 @@ public class SearchIntent extends AppCompatActivity {
         } // tr for end
 
     }
+
     // 패시브 스킬 테이블 생성
-    public void tablePassiveSkil(int trCt, int tdCt){
+    public void tablePassiveSkil(int trCt, int tdCt) {
         // 테이블 변수
         TableLayout skillTable = findViewById(R.id.passive_skill_table);
-        skillTable.setPadding(5,5,5,5);
+        skillTable.setPadding(5, 5, 5, 5);
         TableRow.LayoutParams rowLayout = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT);
         String packName = this.getPackageName();
         TableRow row[] = new TableRow[trCt];
@@ -350,6 +350,7 @@ public class SearchIntent extends AppCompatActivity {
                     }
 
                     // 3) 스킬 설명 넣기
+                    // 패시브 스킬이 한개에 효과가 여러개인 경우 수정 필요
                     case 2: {
                         String skillExplain = skillContact.getSkillExplain();
                         textViews[tr][td] = new TextView(this);
