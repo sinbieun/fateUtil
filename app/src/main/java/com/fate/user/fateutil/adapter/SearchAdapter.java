@@ -73,31 +73,23 @@ public class SearchAdapter extends BaseAdapter {
         final ServantContact servant = servantList.get(position);
         String packName = context.getPackageName();
 
-        // 1. 캐시된 뷰가 없을 경우 새로 생성하고 뷰홀더를 생성한다.
-        if (view == null) {
+        // 1. 캐시된 뷰가 없을 경우 새로 생성하고 뷰홀더를 생성한다. ( 캐시 삭제 2018-09-19 : 데이터가 중복하여 호출 됨 )
+        viewHolder = new ServantViewHolder();
+        view = li.inflate(R.layout.search_listview, null);
 
-            viewHolder = new ServantViewHolder();
-            view = li.inflate(R.layout.search_listview, null);
+        // 1). 리스트 뷰를 만들때 사용 될 id를 가지고 온다.
+        viewHolder.servantIcon = (ImageView) view.findViewById(R.id.servant_icon);
+        viewHolder.servantName = (TextView) view.findViewById(R.id.servant_name);
 
-            // 1). 리스트 뷰를 만들때 사용 될 id를 가지고 온다.
-            viewHolder.servantIcon = (ImageView) view.findViewById(R.id.servant_icon);
-            viewHolder.servantName = (TextView) view.findViewById(R.id.servant_name);
+        viewHolder.gradeStar1 = (ImageView) view.findViewById(R.id.grade_star_1);
+        viewHolder.gradeStar2 = (ImageView) view.findViewById(R.id.grade_star_2);
+        viewHolder.gradeStar3 = (ImageView) view.findViewById(R.id.grade_star_3);
+        viewHolder.gradeStar4 = (ImageView) view.findViewById(R.id.grade_star_4);
+        viewHolder.gradeStar5 = (ImageView) view.findViewById(R.id.grade_star_5);
 
-            viewHolder.gradeStar1 = (ImageView) view.findViewById(R.id.grade_star_1);
-            viewHolder.gradeStar2 = (ImageView) view.findViewById(R.id.grade_star_2);
-            viewHolder.gradeStar3 = (ImageView) view.findViewById(R.id.grade_star_3);
-            viewHolder.gradeStar4 = (ImageView) view.findViewById(R.id.grade_star_4);
-            viewHolder.gradeStar5 = (ImageView) view.findViewById(R.id.grade_star_5);
+        viewHolder.servantClass = (ImageView) view.findViewById(R.id.class_icon);
 
-            viewHolder.servantClass = (ImageView) view.findViewById(R.id.class_icon);
-
-            view.setTag(viewHolder);
-
-        }
-        // 2. 캐시된 뷰가 있을 경우 저장된 뷰홀더를 사용한다..
-        else {
-            viewHolder = (ServantViewHolder) view.getTag();
-        }
+        view.setTag(viewHolder);
 
         // 뷰 홀더에 넣어준다.
         viewHolder.servantIcon.setImageResource(context.getResources().getIdentifier("@drawable/" + servant.getServantIcon(), "drawable",packName));
@@ -151,19 +143,19 @@ public class SearchAdapter extends BaseAdapter {
             case "캐스터" :
                 viewHolder.servantClass.setImageResource(context.getResources().getIdentifier("@drawable/icon_class_caster", "drawable",packName));
                 break;
-            case "어새신" :
+            case "어쌔신" :
                 viewHolder.servantClass.setImageResource(context.getResources().getIdentifier("@drawable/icon_class_assassin", "drawable",packName));
                 break;
             case "버서커" :
                 viewHolder.servantClass.setImageResource(context.getResources().getIdentifier("@drawable/icon_class_berserker", "drawable",packName));
                 break;
-            case "쉴더" :
+            case "실더" :
                 viewHolder.servantClass.setImageResource(context.getResources().getIdentifier("@drawable/icon_class_shielder", "drawable",packName));
                 break;
             case "룰러" :
                 viewHolder.servantClass.setImageResource(context.getResources().getIdentifier("@drawable/icon_class_ruler", "drawable",packName));
                 break;
-            case "어벤져" :
+            case "어벤저" :
                 viewHolder.servantClass.setImageResource(context.getResources().getIdentifier("@drawable/icon_class_avenger", "drawable",packName));
                 break;
         }

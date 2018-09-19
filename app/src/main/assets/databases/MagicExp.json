@@ -1,0 +1,641 @@
+[{
+  "id": "1",
+  "magic_id": "1",
+  "magic_exp_level": "1",
+  "magic_exp_count": "10000",
+  "magic_exp_total": "0",
+  "magic_delete_yn": "N"
+},
+  {
+    "id": "2",
+    "magic_id": "1",
+    "magic_exp_level": "2",
+    "magic_exp_count": "30000",
+    "magic_exp_total": "10000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "3",
+    "magic_id": "1",
+    "magic_exp_level": "3",
+    "magic_exp_count": "60000",
+    "magic_exp_total": "40000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "4",
+    "magic_id": "1",
+    "magic_exp_level": "4",
+    "magic_exp_count": "120000",
+    "magic_exp_total": "100000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "5",
+    "magic_id": "1",
+    "magic_exp_level": "5",
+    "magic_exp_count": "240000",
+    "magic_exp_total": "220000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "6",
+    "magic_id": "1",
+    "magic_exp_level": "6",
+    "magic_exp_count": "480000",
+    "magic_exp_total": "460000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "7",
+    "magic_id": "1",
+    "magic_exp_level": "7",
+    "magic_exp_count": "960000",
+    "magic_exp_total": "940000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "8",
+    "magic_id": "1",
+    "magic_exp_level": "8",
+    "magic_exp_count": "1920000",
+    "magic_exp_total": "1900000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "9",
+    "magic_id": "1",
+    "magic_exp_level": "9",
+    "magic_exp_count": "3840000",
+    "magic_exp_total": "3820000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "10",
+    "magic_id": "1",
+    "magic_exp_level": "10",
+    "magic_exp_count": "0",
+    "magic_exp_total": "7660000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "11",
+    "magic_id": "2",
+    "magic_exp_level": "1",
+    "magic_exp_count": "1569000",
+    "magic_exp_total": "0",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "12",
+    "magic_id": "2",
+    "magic_exp_level": "2",
+    "magic_exp_count": "3138000",
+    "magic_exp_total": "1569000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "13",
+    "magic_id": "2",
+    "magic_exp_level": "3",
+    "magic_exp_count": "4707000",
+    "magic_exp_total": "4707000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "14",
+    "magic_id": "2",
+    "magic_exp_level": "4",
+    "magic_exp_count": "6276000",
+    "magic_exp_total": "9414000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "15",
+    "magic_id": "2",
+    "magic_exp_level": "5",
+    "magic_exp_count": "7845000",
+    "magic_exp_total": "15690000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "16",
+    "magic_id": "2",
+    "magic_exp_level": "6",
+    "magic_exp_count": "9414000",
+    "magic_exp_total": "23535000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "17",
+    "magic_id": "2",
+    "magic_exp_level": "7",
+    "magic_exp_count": "10983000",
+    "magic_exp_total": "32949000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "18",
+    "magic_id": "2",
+    "magic_exp_level": "8",
+    "magic_exp_count": "12552000",
+    "magic_exp_total": "43932000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "19",
+    "magic_id": "2",
+    "magic_exp_level": "9",
+    "magic_exp_count": "14121000",
+    "magic_exp_total": "56484000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "20",
+    "magic_id": "2",
+    "magic_exp_level": "10",
+    "magic_exp_count": "0",
+    "magic_exp_total": "70605000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "21",
+    "magic_id": "3",
+    "magic_exp_level": "1",
+    "magic_exp_count": "1569000",
+    "magic_exp_total": "0",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "22",
+    "magic_id": "3",
+    "magic_exp_level": "2",
+    "magic_exp_count": "3138000",
+    "magic_exp_total": "1569000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "23",
+    "magic_id": "3",
+    "magic_exp_level": "3",
+    "magic_exp_count": "4707000",
+    "magic_exp_total": "4707000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "24",
+    "magic_id": "3",
+    "magic_exp_level": "4",
+    "magic_exp_count": "6276000",
+    "magic_exp_total": "9414000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "25",
+    "magic_id": "3",
+    "magic_exp_level": "5",
+    "magic_exp_count": "7845000",
+    "magic_exp_total": "15690000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "26",
+    "magic_id": "3",
+    "magic_exp_level": "6",
+    "magic_exp_count": "9414000",
+    "magic_exp_total": "23535000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "27",
+    "magic_id": "3",
+    "magic_exp_level": "7",
+    "magic_exp_count": "10983000",
+    "magic_exp_total": "32949000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "28",
+    "magic_id": "3",
+    "magic_exp_level": "8",
+    "magic_exp_count": "12552000",
+    "magic_exp_total": "43932000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "29",
+    "magic_id": "3",
+    "magic_exp_level": "9",
+    "magic_exp_count": "14121000",
+    "magic_exp_total": "56484000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "30",
+    "magic_id": "3",
+    "magic_exp_level": "10",
+    "magic_exp_count": "0",
+    "magic_exp_total": "70605000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "31",
+    "magic_id": "4",
+    "magic_exp_level": "1",
+    "magic_exp_count": "1569000",
+    "magic_exp_total": "0",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "32",
+    "magic_id": "4",
+    "magic_exp_level": "2",
+    "magic_exp_count": "3138000",
+    "magic_exp_total": "1569000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "33",
+    "magic_id": "4",
+    "magic_exp_level": "3",
+    "magic_exp_count": "4707000",
+    "magic_exp_total": "4707000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "34",
+    "magic_id": "4",
+    "magic_exp_level": "4",
+    "magic_exp_count": "6276000",
+    "magic_exp_total": "9414000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "35",
+    "magic_id": "4",
+    "magic_exp_level": "5",
+    "magic_exp_count": "7845000",
+    "magic_exp_total": "15690000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "36",
+    "magic_id": "4",
+    "magic_exp_level": "6",
+    "magic_exp_count": "9414000",
+    "magic_exp_total": "23535000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "37",
+    "magic_id": "4",
+    "magic_exp_level": "7",
+    "magic_exp_count": "10983000",
+    "magic_exp_total": "32949000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "38",
+    "magic_id": "4",
+    "magic_exp_level": "8",
+    "magic_exp_count": "12552000",
+    "magic_exp_total": "43932000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "39",
+    "magic_id": "4",
+    "magic_exp_level": "9",
+    "magic_exp_count": "14121000",
+    "magic_exp_total": "56484000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "40",
+    "magic_id": "4",
+    "magic_exp_level": "10",
+    "magic_exp_count": "0",
+    "magic_exp_total": "70605000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "41",
+    "magic_id": "5",
+    "magic_exp_level": "1",
+    "magic_exp_count": "53000",
+    "magic_exp_total": "0",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "42",
+    "magic_id": "5",
+    "magic_exp_level": "2",
+    "magic_exp_count": "79500",
+    "magic_exp_total": "53000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "43",
+    "magic_id": "5",
+    "magic_exp_level": "3",
+    "magic_exp_count": "172500",
+    "magic_exp_total": "132500",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "44",
+    "magic_id": "5",
+    "magic_exp_level": "4",
+    "magic_exp_count": "304000",
+    "magic_exp_total": "305000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "45",
+    "magic_id": "5",
+    "magic_exp_level": "5",
+    "magic_exp_count": "609000",
+    "magic_exp_total": "609000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "46",
+    "magic_id": "5",
+    "magic_exp_level": "6",
+    "magic_exp_count": "982000",
+    "magic_exp_total": "1218000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "47",
+    "magic_id": "5",
+    "magic_exp_level": "7",
+    "magic_exp_count": "1527000",
+    "magic_exp_total": "2200000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "48",
+    "magic_id": "5",
+    "magic_exp_level": "8",
+    "magic_exp_count": "2236000",
+    "magic_exp_total": "3727000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "49",
+    "magic_id": "5",
+    "magic_exp_level": "9",
+    "magic_exp_count": "2987000",
+    "magic_exp_total": "5963000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "50",
+    "magic_id": "5",
+    "magic_exp_level": "10",
+    "magic_exp_count": "0",
+    "magic_exp_total": "8950000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "51",
+    "magic_id": "6",
+    "magic_exp_level": "1",
+    "magic_exp_count": "53000",
+    "magic_exp_total": "0",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "52",
+    "magic_id": "6",
+    "magic_exp_level": "2",
+    "magic_exp_count": "79500",
+    "magic_exp_total": "53000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "53",
+    "magic_id": "6",
+    "magic_exp_level": "3",
+    "magic_exp_count": "172500",
+    "magic_exp_total": "132500",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "54",
+    "magic_id": "6",
+    "magic_exp_level": "4",
+    "magic_exp_count": "304000",
+    "magic_exp_total": "305000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "55",
+    "magic_id": "6",
+    "magic_exp_level": "5",
+    "magic_exp_count": "609000",
+    "magic_exp_total": "609000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "56",
+    "magic_id": "6",
+    "magic_exp_level": "6",
+    "magic_exp_count": "982000",
+    "magic_exp_total": "1218000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "57",
+    "magic_id": "6",
+    "magic_exp_level": "7",
+    "magic_exp_count": "1527000",
+    "magic_exp_total": "2200000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "58",
+    "magic_id": "6",
+    "magic_exp_level": "8",
+    "magic_exp_count": "2236000",
+    "magic_exp_total": "3727000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "59",
+    "magic_id": "6",
+    "magic_exp_level": "9",
+    "magic_exp_count": "2987000",
+    "magic_exp_total": "5963000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "60",
+    "magic_id": "6",
+    "magic_exp_level": "10",
+    "magic_exp_count": "0",
+    "magic_exp_total": "8950000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "61",
+    "magic_id": "7",
+    "magic_exp_level": "1",
+    "magic_exp_count": "53000",
+    "magic_exp_total": "0",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "62",
+    "magic_id": "7",
+    "magic_exp_level": "2",
+    "magic_exp_count": "79500",
+    "magic_exp_total": "53000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "63",
+    "magic_id": "7",
+    "magic_exp_level": "3",
+    "magic_exp_count": "172500",
+    "magic_exp_total": "132500",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "64",
+    "magic_id": "7",
+    "magic_exp_level": "4",
+    "magic_exp_count": "304000",
+    "magic_exp_total": "305000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "65",
+    "magic_id": "7",
+    "magic_exp_level": "5",
+    "magic_exp_count": "609000",
+    "magic_exp_total": "609000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "66",
+    "magic_id": "7",
+    "magic_exp_level": "6",
+    "magic_exp_count": "982000",
+    "magic_exp_total": "1218000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "67",
+    "magic_id": "7",
+    "magic_exp_level": "7",
+    "magic_exp_count": "1527000",
+    "magic_exp_total": "2200000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "68",
+    "magic_id": "7",
+    "magic_exp_level": "8",
+    "magic_exp_count": "2236000",
+    "magic_exp_total": "3727000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "69",
+    "magic_id": "7",
+    "magic_exp_level": "9",
+    "magic_exp_count": "2987000",
+    "magic_exp_total": "5963000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "70",
+    "magic_id": "7",
+    "magic_exp_level": "10",
+    "magic_exp_count": "0",
+    "magic_exp_total": "8950000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "71",
+    "magic_id": "8",
+    "magic_exp_level": "1",
+    "magic_exp_count": "53000",
+    "magic_exp_total": "0",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "72",
+    "magic_id": "8",
+    "magic_exp_level": "2",
+    "magic_exp_count": "79500",
+    "magic_exp_total": "53000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "73",
+    "magic_id": "8",
+    "magic_exp_level": "3",
+    "magic_exp_count": "172500",
+    "magic_exp_total": "132500",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "74",
+    "magic_id": "8",
+    "magic_exp_level": "4",
+    "magic_exp_count": "304000",
+    "magic_exp_total": "305000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "75",
+    "magic_id": "8",
+    "magic_exp_level": "5",
+    "magic_exp_count": "609000",
+    "magic_exp_total": "609000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "76",
+    "magic_id": "8",
+    "magic_exp_level": "6",
+    "magic_exp_count": "982000",
+    "magic_exp_total": "1218000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "77",
+    "magic_id": "8",
+    "magic_exp_level": "7",
+    "magic_exp_count": "1527000",
+    "magic_exp_total": "2200000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "78",
+    "magic_id": "8",
+    "magic_exp_level": "8",
+    "magic_exp_count": "2236000",
+    "magic_exp_total": "3727000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "79",
+    "magic_id": "8",
+    "magic_exp_level": "9",
+    "magic_exp_count": "2987000",
+    "magic_exp_total": "5963000",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "80",
+    "magic_id": "8",
+    "magic_exp_level": "10",
+    "magic_exp_count": "0",
+    "magic_exp_total": "8950000",
+    "magic_delete_yn": "N"
+  }
+]

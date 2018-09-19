@@ -1,0 +1,85 @@
+[{
+  "id": "1",
+  "magic_name": "마술예장 칼데아",
+  "magic_content": "인리계속보장기관 칼데아의 마스터에게 지급되는 마술예장",
+  "magic_image": "img_magic_1",
+  "magic_delete_yn": "N"
+},
+  {
+    "id": "2",
+    "magic_name": "마술협회 제복",
+    "magic_content": "마술협회 시계탑이 우수하다고 인정한 학생에게 보내는 마술예장",
+    "magic_image": "img_magic_2",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "3",
+    "magic_name": "아틀라스원 제복",
+    "magic_content": "아틀라스원이 최강인 것을 만든다는 목적으로 시험제작한 마술예장",
+    "magic_image": "img_magic_3",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "4",
+    "magic_name": "칼데아 전투복",
+    "magic_content": "인리계속보장기관 칼데아의 기술부가 격화하는 전투에 버틸 수 있도록 만든 마술예장",
+    "magic_image": "img_magic_4",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "5",
+    "magic_name": "애니버서리 블론드",
+    "magic_content": "기사왕이 착용했던 의상을 본뜬 마술예장",
+    "magic_image": "img_magic_5",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "6",
+    "magic_name": "로열 브랜드",
+    "magic_content": "어떤 성배전쟁에서 사용된 아름다운 기사의 마술예장",
+    "magic_image": "img_magic_6",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "7",
+    "magic_name": "브릴리언트 서머",
+    "magic_content": "다 빈치 공방 특제 대열대지방용 장비 \n즉 수영복이지만, 전투기능도 갖춰져 있는 마술예장",
+    "magic_image": "img_magic_7",
+    "magic_delete_yn": "N"
+  },
+  {
+    "id": "8",
+    "magic_name": "달의 바다의 기억",
+    "magic_content": "어느 평행세계에 존재한다는, 어떤 학원의 제복을 모방한 마술예장",
+    "magic_image": "img_magic_8",
+    "magic_delete_yn": "Y"
+  },
+  {
+    "id": "9",
+    "magic_name": "달의 뒷편의 기억",
+    "magic_content": "어떤 평행세계에 있다고 하는 어떤 학원의 구 교복을 모방한 마술예장",
+    "magic_image": "img_magic_9",
+    "magic_delete_yn": "Y"
+  },
+  {
+    "id": "10",
+    "magic_name": " 2004년의 단편",
+    "magic_content": "일본 지방도시에 있는 학원의 교복을 본뜬 마술예장 \n성배전쟁에서 몇명의 마스터가 입고 있었다",
+    "magic_image": "img_magic_10",
+    "magic_delete_yn": "Y"
+  },
+  {
+    "id": "11",
+    "magic_name": "극지용 칼데아 제복",
+    "magic_content": "극한환경에서의 활동을 상정한 마술예장",
+    "magic_image": "img_magic_11",
+    "magic_delete_yn": "Y"
+  },
+  {
+    "id": "12",
+    "magic_name": "트로피칼 서머",
+    "magic_content": "다 빈치 공방 특제 대남국(対南国)용장비 \n즉 알로하지만, 전투기능도 갖춰져 있는 마술예장",
+    "magic_image": "img_magic_12",
+    "magic_delete_yn": "Y"
+  }
+]

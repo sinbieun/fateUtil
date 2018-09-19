@@ -114,6 +114,42 @@ public class DataBase {
         public static final String SERVANT_EXP = "servantExp";
     }
 
+    // 5. 마술예장 테이블 변수 생성
+    public static final class MagicTable implements BaseColumns {
+        public static final String TABLE_NAME = "Magic";
+        public static final String ID = "id";
+        public static final String MAGIC_NAME = "magicName";
+        public static final String MAGIC_CONTENT = "magicContent";
+        public static final String MAGIC_IMAGE = "magicImage";
+        public static final String MAGIC_DELETE_YN = "magicDeleteYn";
+    }
+
+    // 6. 마술예장 스킬 테이블 변수 생성
+    public static final class MagicEffectTable implements BaseColumns {
+        public static final String TABLE_NAME = "MagicEffect";
+        public static final String ID = "id";
+        public static final String MAGIC_ID = "magicId";
+        public static final String MAGIC_EFFECT_NAME = "magicEffectName";
+        public static final String MAGIC_EFFECT_GOAL = "magicEffectGoal";
+        public static final String MAGIC_EFFECT_CONTENT = "magicEffectContent";
+        public static final String MAGIC_EFFECT_TIME = "magicEffectTime";
+        public static final String MAGIC_EFFECT_LEVEL = "magicEffectLevel";
+        public static final String MAGIC_EFFECT_IMAGE = "magicEffectImage";
+        public static final String MAGIC_EFFECT_UTIL = "magicEffectUtil";
+        public static final String MAGIC_EFFECT_DELETE_YN = "magicEffectDeleteYn";
+    }
+
+    // 7. 마술예장 경험치 테이블 변수 생성
+    public static final class MagicExpTable implements BaseColumns {
+        public static final String TABLE_NAME = "MagicEffect";
+        public static final String ID = "id";
+        public static final String MAGIC_ID = "magicId";
+        public static final String MAGIC_EXP_LEVEL = "magicExpLevel";
+        public static final String MAGIC_EXP_COUNT = "magicExpCount";
+        public static final String MAGIC_EXP_TOTAL = "magicExpTotal";
+        public static final String MAGIC_DELETE_YN = "magicDeleteYn";
+    }
+
 
     // 1. 서번트 조인 리스트
     // 1_1) 서번트 조인 리스트 테이블 생성
@@ -223,5 +259,42 @@ public class DataBase {
                     ExpTable.SERVANT_LEVEL + " integer not null ," +
                     ExpTable.SERVANT_EXP + " integer not null" + ");";
 
+    // 5. 마술예장 테이블
+    // 마술예장 테이블 생성
+    public static final String SQL_CREATE_MAGIC =
+            "create table " +
+                    MagicTable.TABLE_NAME + " (" +
+                    MagicTable.ID + " integer not null , " +
+                    MagicTable.MAGIC_NAME + " text not null , " +
+                    MagicTable.MAGIC_CONTENT + " text not null ," +
+                    MagicTable.MAGIC_IMAGE + " text not null ," +
+                    MagicTable.MAGIC_DELETE_YN + " char(1) not null" + ");";
 
+    // 6. 마술예장 스킬 테이블
+    // 마술예장 스킬 테이블 생성
+    public static final String SQL_CREATE_MAGIC_EFFECT =
+            "create table " +
+                    MagicEffectTable.TABLE_NAME + " (" +
+                    MagicEffectTable.ID + " integer not null , " +
+                    MagicEffectTable.MAGIC_ID + " integer not null , " +
+                    MagicEffectTable.MAGIC_EFFECT_NAME + " text not null ," +
+                    MagicEffectTable.MAGIC_EFFECT_GOAL + " text not null ," +
+                    MagicEffectTable.MAGIC_EFFECT_CONTENT + " text not null ," +
+                    MagicEffectTable.MAGIC_EFFECT_TIME + " integer not null ," +
+                    MagicEffectTable.MAGIC_EFFECT_LEVEL + " integer not null ," +
+                    MagicEffectTable.MAGIC_EFFECT_IMAGE + " text not null ," +
+                    MagicEffectTable.MAGIC_EFFECT_UTIL + " text not null ," +
+                    MagicEffectTable.MAGIC_EFFECT_DELETE_YN + " char(1) not null" + ");";
+
+    // 7. 마술예장 경험치 테이블
+    // 마술예장 경험치 테이블 생성
+    public static final String SQL_CREATE_MAGIC_EXP =
+            "create table " +
+                    MagicExpTable.TABLE_NAME + " (" +
+                    MagicExpTable.ID + " integer not null , " +
+                    MagicExpTable.MAGIC_ID + " integer not null , " +
+                    MagicExpTable.MAGIC_EXP_LEVEL + " integer not null ," +
+                    MagicExpTable.MAGIC_EXP_COUNT + " integer not null ," +
+                    MagicExpTable.MAGIC_EXP_TOTAL + " integer not null ," +
+                    MagicExpTable.MAGIC_DELETE_YN + " char(1) not null" + ");";
 }

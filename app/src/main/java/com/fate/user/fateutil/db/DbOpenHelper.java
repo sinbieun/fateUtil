@@ -44,6 +44,9 @@ public class DbOpenHelper {
             db.execSQL(DataBase.SQL_CREATE_ACTIVE_SKILL);
             db.execSQL(DataBase.SQL_CREATE_PASSIVE_SKILL);
             db.execSQL(DataBase.SQL_CREATE_SERVANT_JOIN_SKILL);
+            db.execSQL(DataBase.SQL_CREATE_MAGIC);
+            db.execSQL(DataBase.SQL_CREATE_MAGIC_EFFECT);
+            db.execSQL(DataBase.SQL_CREATE_MAGIC_EXP);
         }
 
         // 버전이 업데이트 되었을 경우 DB를 다시 만들어 준다.
@@ -57,6 +60,9 @@ public class DbOpenHelper {
             db.execSQL("DROP TABLE IF EXISTS " + DataBase.ActiveSkillTable.TABLE_NAME);
             db.execSQL("DROP TABLE IF EXISTS " + DataBase.PassiveSkillTable.TABLE_NAME);
             db.execSQL("DROP TABLE IF EXISTS " + DataBase.ServantJoinSkillTable.TABLE_NAME);
+            db.execSQL("DROP TABLE IF EXISTS " + DataBase.MagicTable.TABLE_NAME);
+            db.execSQL("DROP TABLE IF EXISTS " + DataBase.MagicEffectTable.TABLE_NAME);
+            db.execSQL("DROP TABLE IF EXISTS " + DataBase.MagicExpTable.TABLE_NAME);
             onCreate(db);
         }
     }
