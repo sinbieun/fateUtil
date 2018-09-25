@@ -1,4 +1,4 @@
-package com.fate.user.fateutil.db.contract.Skill;
+package com.fate.user.fateutil.db.contact.Skill;
 
 // 스킬 getter, setter
 public class SkillContact {

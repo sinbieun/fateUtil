@@ -15,7 +15,7 @@ import android.widget.TextView;
 import com.fate.user.fateutil.R;
 
 import com.fate.user.fateutil.db.DbOpenHelper;
-import com.fate.user.fateutil.db.contract.Skill.SkillContact;
+import com.fate.user.fateutil.db.contact.Skill.SkillContact;
 
 
 import java.util.List;

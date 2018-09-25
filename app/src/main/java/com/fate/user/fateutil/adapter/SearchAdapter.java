@@ -8,7 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.fate.user.fateutil.db.contract.Servant.ServantContact;
+import com.fate.user.fateutil.db.contact.Servant.ServantContact;
 import com.fate.user.fateutil.R;
 
 import java.util.ArrayList;

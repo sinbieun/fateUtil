@@ -1,4 +1,4 @@
-package com.fate.user.fateutil.db;
+package com.fate.user.fateutil.db.contact.Exp;
 
 public class ExpContact {
 

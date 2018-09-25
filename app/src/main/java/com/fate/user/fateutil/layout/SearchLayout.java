@@ -15,8 +15,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.GridView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -27,7 +25,7 @@ import com.fate.user.fateutil.adapter.SearchAdapter;
 import com.fate.user.fateutil.db.DbOpenHelper;
 
 import com.fate.user.fateutil.db.Parser;
-import com.fate.user.fateutil.db.contract.Servant.ServantContact;
+import com.fate.user.fateutil.db.contact.Servant.ServantContact;
 import com.fate.user.fateutil.layout.detail.SearchIntent;
 
 import java.util.List;

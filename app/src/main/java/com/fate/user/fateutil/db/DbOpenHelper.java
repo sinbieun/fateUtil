@@ -7,13 +7,14 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.fate.user.fateutil.db.contract.Servant.ServantClassContract;
-import com.fate.user.fateutil.db.contract.Servant.ServantContact;
-import com.fate.user.fateutil.db.contract.Servant.ServantIconContract;
-import com.fate.user.fateutil.db.contract.Skill.ServantJoinSkillContract;
-import com.fate.user.fateutil.db.contract.Servant.ServantNameContract;
-import com.fate.user.fateutil.db.contract.Skill.SkillContact;
-import com.fate.user.fateutil.db.contract.WeaponContact;
+import com.fate.user.fateutil.db.contact.Exp.ExpContact;
+import com.fate.user.fateutil.db.contact.Servant.ServantClassContact;
+import com.fate.user.fateutil.db.contact.Servant.ServantContact;
+import com.fate.user.fateutil.db.contact.Servant.ServantIconContact;
+import com.fate.user.fateutil.db.contact.Skill.ServantJoinSkillContact;
+import com.fate.user.fateutil.db.contact.Servant.ServantNameContact;
+import com.fate.user.fateutil.db.contact.Skill.SkillContact;
+import com.fate.user.fateutil.db.contact.Weapon.WeaponContact;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +22,7 @@ import java.util.List;
 public class DbOpenHelper {
 
     private static final String DATABASE_NAME = "fatedb.db";
-    private static final int DATABASE_VERSION = 1_1_18;
+    private static final int DATABASE_VERSION = 1_1_32;
     private DatabaseHelper mDBHelper;
     public static SQLiteDatabase mDB;
     private Context mContext;
@@ -129,7 +130,7 @@ public class DbOpenHelper {
     }
 
     // 1_2) 서번트 아이콘 데이터 집어 넣기
-    public void addServantIcon(ServantIconContract contact) {
+    public void addServantIcon(ServantIconContact contact) {
 
         mDB = mDBHelper.getWritableDatabase();
 
@@ -142,7 +143,7 @@ public class DbOpenHelper {
     }
 
     // 1_3) 서번트 이름 데이터 집어 넣기
-    public void addServantName(ServantNameContract contact) {
+    public void addServantName(ServantNameContact contact) {
 
         mDB = mDBHelper.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -155,7 +156,7 @@ public class DbOpenHelper {
     }
 
     // 1_4) 서번트 클래스 데이터 집어넣기
-    public void addServantClass(ServantClassContract contact) {
+    public void addServantClass(ServantClassContact contact) {
 
         mDB = mDBHelper.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -169,7 +170,7 @@ public class DbOpenHelper {
 
 
     // 2_1) 서번트 액티브 스킬 조인 리스트 데이터 집어 넣기
-    public void addServantJoinSkillContact(ServantJoinSkillContract contact) {
+    public void addServantJoinSkillContact(ServantJoinSkillContact contact) {
 
         mDB = mDBHelper.getWritableDatabase();
 

@@ -1,4 +1,4 @@
-package com.fate.user.fateutil.db.contract.Servant;
+package com.fate.user.fateutil.db.contact.Servant;
 
 public class ServantContact {
 

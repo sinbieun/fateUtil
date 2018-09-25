@@ -11,16 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.fate.user.fateutil.R;
-import com.fate.user.fateutil.db.DataBase;
 import com.fate.user.fateutil.db.DbOpenHelper;
-import com.fate.user.fateutil.db.ExpContact;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.io.InputStream;
 
 public class LevelLayout extends LinearLayout {
 

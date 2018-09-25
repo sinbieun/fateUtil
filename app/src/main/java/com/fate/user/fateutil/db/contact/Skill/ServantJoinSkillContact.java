@@ -1,6 +1,6 @@
-package com.fate.user.fateutil.db.contract.Skill;
+package com.fate.user.fateutil.db.contact.Skill;
 
-public class ServantJoinSkillContract {
+public class ServantJoinSkillContact {
 
     private int id;
     private int servantId;
@@ -9,7 +9,7 @@ public class ServantJoinSkillContract {
 
 
 
-    public ServantJoinSkillContract(int id, int servantId, String skillClassification, int skillId) {
+    public ServantJoinSkillContact(int id, int servantId, String skillClassification, int skillId) {
         this.id = id;
         this.servantId = servantId;
         this.skillClassification = skillClassification;

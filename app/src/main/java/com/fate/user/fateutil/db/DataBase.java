@@ -141,7 +141,7 @@ public class DataBase {
 
     // 7. 마술예장 경험치 테이블 변수 생성
     public static final class MagicExpTable implements BaseColumns {
-        public static final String TABLE_NAME = "MagicEffect";
+        public static final String TABLE_NAME = "MagicExp";
         public static final String ID = "id";
         public static final String MAGIC_ID = "magicId";
         public static final String MAGIC_EXP_LEVEL = "magicExpLevel";

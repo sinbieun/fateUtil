@@ -1,12 +1,12 @@
-package com.fate.user.fateutil.db.contract.Servant;
+package com.fate.user.fateutil.db.contact.Servant;
 
-public class ServantNameContract {
+public class ServantNameContact {
 
     private int servantNameId; // 서번트 이름 아이디
     private String servantName; // 서번트 이름
 
-    public ServantNameContract(){ }
-    public ServantNameContract(int servantNameId, String servantName){
+    public ServantNameContact(){ }
+    public ServantNameContact(int servantNameId, String servantName){
         this.servantNameId = servantNameId;
         this.servantName = servantName;
     }

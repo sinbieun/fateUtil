@@ -4,12 +4,13 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.widget.LinearLayout;
 
-import com.fate.user.fateutil.db.contract.Servant.ServantClassContract;
-import com.fate.user.fateutil.db.contract.Servant.ServantContact;
-import com.fate.user.fateutil.db.contract.Servant.ServantIconContract;
-import com.fate.user.fateutil.db.contract.Skill.ServantJoinSkillContract;
-import com.fate.user.fateutil.db.contract.Servant.ServantNameContract;
-import com.fate.user.fateutil.db.contract.Skill.SkillContact;
+import com.fate.user.fateutil.db.contact.Exp.ExpContact;
+import com.fate.user.fateutil.db.contact.Servant.ServantClassContact;
+import com.fate.user.fateutil.db.contact.Servant.ServantContact;
+import com.fate.user.fateutil.db.contact.Servant.ServantIconContact;
+import com.fate.user.fateutil.db.contact.Skill.ServantJoinSkillContact;
+import com.fate.user.fateutil.db.contact.Servant.ServantNameContact;
+import com.fate.user.fateutil.db.contact.Skill.SkillContact;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -136,7 +137,7 @@ public class Parser extends LinearLayout {
                 String servantIcon = jObject.getString("icon_name");
 
                 // 데이터를 삽입한다.
-                mDbOpenHelper.addServantIcon(new ServantIconContract(id, servantIcon));
+                mDbOpenHelper.addServantIcon(new ServantIconContact(id, servantIcon));
             }
             mDbOpenHelper.mDB.setTransactionSuccessful(); // 데이터 삽입이 완전히 종료되면 실행된다.
         } catch (JSONException e) {
@@ -174,7 +175,7 @@ public class Parser extends LinearLayout {
                 String servantName = jObject.getString("name_value");
 
                 // 데이터를 삽입한다.
-                mDbOpenHelper.addServantName(new ServantNameContract(id, servantName));
+                mDbOpenHelper.addServantName(new ServantNameContact(id, servantName));
             }
             mDbOpenHelper.mDB.setTransactionSuccessful(); // 데이터 삽입이 완전히 종료되면 실행된다.
         } catch (JSONException e) {
@@ -213,7 +214,7 @@ public class Parser extends LinearLayout {
                 String servantClass = jObject.getString("class_name");
 
                 // 데이터를 삽입한다.
-                mDbOpenHelper.addServantClass(new ServantClassContract(id, servantClass));
+                mDbOpenHelper.addServantClass(new ServantClassContact(id, servantClass));
             }
             mDbOpenHelper.mDB.setTransactionSuccessful(); // 데이터 삽입이 완전히 종료되면 실행된다.
         } catch (JSONException e) {
@@ -250,7 +251,7 @@ public class Parser extends LinearLayout {
 
 
                 // 데이터 삽입
-                mDbOpenHelper.addServantJoinSkillContact(new ServantJoinSkillContract(id, servantId, skillClassification, skillId));
+                mDbOpenHelper.addServantJoinSkillContact(new ServantJoinSkillContact(id, servantId, skillClassification, skillId));
             }
             // 5. 완전히 종료되면 실행
             mDbOpenHelper.mDB.setTransactionSuccessful();
