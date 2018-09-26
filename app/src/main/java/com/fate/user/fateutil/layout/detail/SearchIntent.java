@@ -39,6 +39,11 @@ public class SearchIntent extends AppCompatActivity {
     // 패시브 스킬 변수
     private List<SkillContact> servantHavingPassiveSkill;
 
+    // 재료 변수
+    private List<MaterialContact> ServantMaterial;
+
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -118,6 +123,13 @@ public class SearchIntent extends AppCompatActivity {
         tableHavingActiveSkill(servantHavingActiveSkill.size(), 3); // 액티브 스킬
         tablePassiveSkil(servantHavingPassiveSkill.size(), 3); // 패시브 스킬
 
+        // 2. 보유하고 있는 강화 재료를 가져온다.
+        // 2_1) 서번트가 보유하고 있는 영기재림 재료를 가져온다.
+        ServantMaterial = mDbOpenHelper.getServantMaterial(position, 'A');
+        tableMaterial(5,3,ServantMaterial);
+        // 2_2) 서번트가 보유하고 있는 스킬재림 재료를 가져온다.
+        ServantMaterial = mDbOpenHelper.getServantMaterial(position, 'S');
+        tableMaterial(10,3,ServantMaterial);
         mDbOpenHelper.close();
 
     }
@@ -202,7 +214,6 @@ public class SearchIntent extends AppCompatActivity {
         } // tr 의 끝
 
     }
-
     // 액티브 스킬 수치 테이블 생성
     public void tableActiveSkillValue(int trCt, int tdCt) {
 
@@ -308,7 +319,6 @@ public class SearchIntent extends AppCompatActivity {
         } // tr for end
 
     }
-
     // 패시브 스킬 테이블 생성
     public void tablePassiveSkil(int trCt, int tdCt) {
         // 테이블 변수

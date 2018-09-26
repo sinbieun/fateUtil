@@ -4,7 +4,8 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.widget.LinearLayout;
 
-import com.fate.user.fateutil.db.contact.Exp.ExpContact;
+import com.fate.user.fateutil.db.contact.Material.MaterialContact;
+import com.fate.user.fateutil.db.contact.Servant.ServantExpContact;
 import com.fate.user.fateutil.db.contact.Servant.ServantClassContact;
 import com.fate.user.fateutil.db.contact.Servant.ServantContact;
 import com.fate.user.fateutil.db.contact.Servant.ServantIconContact;
@@ -57,17 +58,19 @@ public class Parser extends LinearLayout {
         1_2) 서번트 아이콘 테이블에 데이터 삽입
         1_3) 서번트 이름 테이블에 데이터 삽입
         1_4) 서번트 클래스 테이블에 데이터 삽입
+        1_5) 서번트 경험치를 집어 넣는다.
 
         2. 서번트 스킬
         2_1) 서번트 조인 스킬 테이블에 데이터 삽입
         2_2) 서번트 액티브 스킬 테이블에 데이터 삽입
 
-        3. 경험치
-        3_1) 서번트 경험치를 집어 넣는다.
+        4. 서번트 재료
+        4_1) 서번트 조인 재료 테이블에 데이터 삽입
+        4_2) 서번트 재료 테이블에 데이터 삽입
 
      */
     // 1_1) 서번트 리스트 조인 테이블에 데이터 삽입
-    public void servanJointListParser() {
+    public void servantJointListParser() {
 
         mDbOpenHelper.open();
 
@@ -108,7 +111,6 @@ public class Parser extends LinearLayout {
         }
 
     }
-
     // 1_2) 서번트 아이콘 테이블에 데이터 삽입
     public void servantIconParser() {
         // 0. 테이블에 값이 있다면 checkData에서 true를 반환하고 데이터 값을 넣지 않는다.
@@ -147,7 +149,6 @@ public class Parser extends LinearLayout {
             mDbOpenHelper.close(); // DB 닫기
         }
     }
-
     // 1_3) 서번트 이름 테이블에 데이터 삽입
     public void servantNameParser() {
         // 0. 테이블에 값이 있다면 checkData에서 true를 반환하고 데이터 값을 넣지 않는다.
@@ -185,7 +186,6 @@ public class Parser extends LinearLayout {
             mDbOpenHelper.close(); // DB 닫기
         }
     }
-
     // 1_4) 서번트 클래스 테이블에 데이터 삽입
     public void servantClassParser() {
         // 0. 테이블에 값이 있다면 checkData에서 true를 반환하고 데이터 값을 넣지 않는다.
@@ -224,7 +224,47 @@ public class Parser extends LinearLayout {
             mDbOpenHelper.close(); // DB 닫기
         }
     }
+    // 1_5) 서번트 경험치를 집어 넣는다.
+    public void servantExpParser() {
+        // 0. 테이블에 값이 있으면 저장하지 않는다.
 
+        mDbOpenHelper.open();
+        if (mDbOpenHelper.checkData(DataBase.ServantExpTable.TABLE_NAME) == true) {
+            mDbOpenHelper.close();
+            return;
+        }
+        // 1. Servant.json 파일을 String에 저장
+        String fileName = "databases/ServantExp.json";
+        String jsonString = loadServantFromAsset(fileName);
+        // 트랜잭션 시작
+        mDbOpenHelper.mDB.beginTransaction();
+        try {
+            JSONArray jarray = new JSONArray(jsonString);
+
+            for (int i = 0; i < jarray.length(); i++) {
+                JSONObject jObject = jarray.getJSONObject(i);
+                // 2. 아이디, 서번트 아이콘 서번트 이름, 서번트 클래스, 서번트 등급에 따라 저장
+                int id = jObject.getInt("id");
+                int servantLevel = jObject.getInt("servant_level");
+                int servantExp = jObject.getInt("servant_exp");
+                // 3. 데이터 삽입을 하여준다.
+                mDbOpenHelper.addServantExpContact(new ServantExpContact(id, servantLevel, servantExp));
+
+            }
+            // 4. 완전히 종료되면 실행
+            mDbOpenHelper.mDB.setTransactionSuccessful();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } finally {
+            // 5. 삽입 끝나면 트랜잭션 종료
+            mDbOpenHelper.mDB.endTransaction();
+            // 6. DB 닫기
+            mDbOpenHelper.close();
+        }
+
+    }
+
+    // 2. 서번트 스킬
     // 2_1) 서번트 조인 스킬 테이블에 데이터 삽입
     public void servantJoinSkillParser() {
         // 0. 테이블에 값이 있다면 checkData에서 true를 반환하고 데이터 값을 넣지 않는다.
@@ -251,7 +291,7 @@ public class Parser extends LinearLayout {
 
 
                 // 데이터 삽입
-                mDbOpenHelper.addServantJoinSkillContact(new ServantJoinSkillContact(id, servantId, skillClassification, skillId));
+                mDbOpenHelper.addServantJoinSkill(new ServantJoinSkillContact(id, servantId, skillClassification, skillId));
             }
             // 5. 완전히 종료되면 실행
             mDbOpenHelper.mDB.setTransactionSuccessful();
@@ -265,7 +305,6 @@ public class Parser extends LinearLayout {
         }
 
     }
-
     // 2_2) 서번트 액티브 스킬 테이블에 데이터 삽입
     public void activeSkillParser() {
         // 0. 테이블에 값이 있으면 db에 저장하지 않는다.
@@ -320,7 +359,6 @@ public class Parser extends LinearLayout {
             mDbOpenHelper.close();
         }
     }
-
     // 2_3) 서번트 패시브 스킬 테이블에 데이터 삽입
     public void passiveSkillParser() {
         // 0. 테이블에 값이 있으면 db에 저장하지 않는다.
@@ -363,17 +401,18 @@ public class Parser extends LinearLayout {
         }
     }
 
-    // 3_1) 서번트 경험치를 집어 넣는다.
-    public void expParser() {
+    // 4. 서번트 재료
+    // 4_1) 서번트 조인 재료 테이블에 데이터 삽입
+    public void servantJoinMaterialParser(){
         // 0. 테이블에 값이 있으면 저장하지 않는다.
 
         mDbOpenHelper.open();
-        if (mDbOpenHelper.checkData(DataBase.ServantExpTable.TABLE_NAME) == true) {
+        if (mDbOpenHelper.checkData(DataBase.ServantJoinMaterialTable.TABLE_NAME)) {
             mDbOpenHelper.close();
             return;
         }
         // 1. Servant.json 파일을 String에 저장
-        String fileName = "databases/ServantExp.json";
+        String fileName = "databases/ServantJoinMaterial.json";
         String jsonString = loadServantFromAsset(fileName);
         // 트랜잭션 시작
         mDbOpenHelper.mDB.beginTransaction();
@@ -382,13 +421,17 @@ public class Parser extends LinearLayout {
 
             for (int i = 0; i < jarray.length(); i++) {
                 JSONObject jObject = jarray.getJSONObject(i);
-                // 2. 아이디, 서번트 아이콘 서번트 이름, 서번트 클래스, 서번트 등급에 따라 저장
-                int id = jObject.getInt("id");
-                int servantLevel = jObject.getInt("servant_level");
-                int servantExp = jObject.getInt("servant_exp");
-                // 3. 데이터 삽입을 하여준다.
-                mDbOpenHelper.addExpContact(new ExpContact(id, servantLevel, servantExp));
 
+                // 2. 강화 아이디, 서번트 아이디, 강화 분류, 강화 레벨, 재료 아이디, 재료 갯수
+                int upgradeId = jObject.getInt("upgrade_id");
+                int servantId = jObject.getInt("servant_id");
+                String upgradeClassification = jObject.getString("upgrade_classification");
+                int upgradeLevel = jObject.getInt("upgrade_level");
+                int materialId = jObject.getInt("material_id");
+                int materialValue = jObject.getInt("material_value");
+
+                // 3. 데이터 삽입을 하여준다.
+                mDbOpenHelper.addServantJoinMaterial(new MaterialContact(upgradeId, servantId, upgradeClassification, upgradeLevel,materialId, materialValue));
             }
             // 4. 완전히 종료되면 실행
             mDbOpenHelper.mDB.setTransactionSuccessful();
@@ -402,5 +445,48 @@ public class Parser extends LinearLayout {
         }
 
     }
+    // 4_2) 서번트 재료 테이블에 데이터 삽입
+    public void servantMaterialParser(){
+        // 0. 테이블에 값이 있으면 저장하지 않는다.
+
+        mDbOpenHelper.open();
+        if (mDbOpenHelper.checkData(DataBase.ServantMaterialTable.TABLE_NAME)) {
+            mDbOpenHelper.close();
+            return;
+        }
+        // 1. Servant.json 파일을 String에 저장
+        String fileName = "databases/ServantMaterial.json";
+        String jsonString = loadServantFromAsset(fileName);
+        // 트랜잭션 시작
+        mDbOpenHelper.mDB.beginTransaction();
+        try {
+            JSONArray jarray = new JSONArray(jsonString);
+
+            for (int i = 0; i < jarray.length(); i++) {
+                JSONObject jObject = jarray.getJSONObject(i);
+
+                // 2.재료 아이디, 재료 이름
+                int materialId = jObject.getInt("material_id");
+                String materialName = jObject.getString("material_name");
+                String materialKorName = jObject.getString("material_kor_name");
+
+                // 3. 데이터 삽입을 하여준다.
+                mDbOpenHelper.addServantMaterial(new MaterialContact(materialId, materialName, materialKorName));
+            }
+            // 4. 완전히 종료되면 실행
+            mDbOpenHelper.mDB.setTransactionSuccessful();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } finally {
+            // 5. 삽입 끝나면 트랜잭션 종료
+            mDbOpenHelper.mDB.endTransaction();
+            // 6. DB 닫기
+            mDbOpenHelper.close();
+        }
+
+    }
+
+
+
 
 }

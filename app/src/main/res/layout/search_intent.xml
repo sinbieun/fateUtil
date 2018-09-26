@@ -23,98 +23,101 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <HorizontalScrollView
+            <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <FrameLayout
-                    android:id="@android:id/tabcontent"
+                <HorizontalScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent">
 
-                    <!--첫번째 페이지-->
-                    <LinearLayout
-                        android:id="@+id/content1"
+                    <FrameLayout
+                        android:id="@android:id/tabcontent"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:layout_height="wrap_content">
 
-                    </LinearLayout>
-
-                    <!--두번째 페이지-->
-                    <LinearLayout
-                        android:id="@+id/content2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/active_skill_title"
+                        <!--첫번째 페이지-->
+                        <LinearLayout
+                            android:id="@+id/content1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="액티브 스킬" />
+                            android:orientation="vertical">
 
-                        <TableLayout
-                            android:id="@+id/active_skill_table"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"></TableLayout>
+                        </LinearLayout>
 
-                        <TextView
-                            android:id="@+id/passive_skill_title"
+                        <!--두번째 페이지-->
+                        <LinearLayout
+                            android:id="@+id/content2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="패시브 스킬" />
+                            android:orientation="vertical">
 
-                        <TableLayout
-                            android:id="@+id/passive_skill_table"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"></TableLayout>
+                            <TextView
+                                android:id="@+id/active_skill_title"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="액티브 스킬" />
 
-                    </LinearLayout>
+                            <TableLayout
+                                android:id="@+id/active_skill_table"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"></TableLayout>
+
+                            <TextView
+                                android:id="@+id/passive_skill_title"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="패시브 스킬" />
+
+                            <TableLayout
+                                android:id="@+id/passive_skill_table"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"></TableLayout>
+
+                        </LinearLayout>
 
 
-                    <!--세번째 페이지-->
-                    <LinearLayout
-                        android:id="@+id/content3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/acsension_material_title"
+                        <!--세번째 페이지-->
+                        <LinearLayout
+                            android:id="@+id/content3"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:gravity="center"
-                            android:text="영기 재림 재료" />
+                            android:orientation="vertical">
 
-                        <TableLayout
-                            android:id="@+id/acsension_material_table"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"></TableLayout>
+                            <TextView
+                                android:id="@+id/acsension_material_title"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:gravity="center"
+                                android:text="영기 재림 재료" />
 
-                        <TextView
-                            android:id="@+id/skill_enhance_material_title"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:layout_gravity="center_vertical"
-                            android:text="스킬 강화 재료" />
+                            <TableLayout
+                                android:id="@+id/acsension_material_table"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"></TableLayout>
 
-                        <TableLayout
-                            android:id="@+id/skill_enhance_material_table"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"></TableLayout>
+                            <TextView
+                                android:id="@+id/skill_enhance_material_title"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:gravity="center"
+                                android:text="스킬 강화 재료" />
 
-                    </LinearLayout>
+                            <TableLayout
+                                android:id="@+id/skill_enhance_material_table"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"></TableLayout>
 
-                </FrameLayout>
-            </HorizontalScrollView>
+                        </LinearLayout>
 
+                    </FrameLayout>
+                </HorizontalScrollView>
+            </ScrollView>
         </LinearLayout>
-
     </TabHost>
 
 </RelativeLayout>

@@ -3,7 +3,6 @@ package com.fate.user.fateutil;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
-import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -227,8 +226,8 @@ public class MainActivity extends AppCompatActivity
 
     public void InputData() {
         parser = new Parser(this);
-        parser.expParser();
-        parser.servanJointListParser();
+        parser.servantExpParser();
+        parser.servantJointListParser();
         parser.servantIconParser();
         parser.servantNameParser();
         parser.servantClassParser();
@@ -236,5 +235,8 @@ public class MainActivity extends AppCompatActivity
         parser.activeSkillParser();
         parser.passiveSkillParser();
         parser.servantJoinSkillParser();
+
+        parser.servantJoinMaterialParser();
+        parser.servantMaterialParser();
     }
 }

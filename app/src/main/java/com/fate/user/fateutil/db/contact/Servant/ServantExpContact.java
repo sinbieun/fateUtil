@@ -1,16 +1,16 @@
-package com.fate.user.fateutil.db.contact.Exp;
+package com.fate.user.fateutil.db.contact.Servant;
 
-public class ExpContact {
+public class ServantExpContact {
 
     int id;
     int servantLevel;
     int servantExp;
 
-    public ExpContact(){
+    public ServantExpContact(){
 
     }
 
-    public ExpContact(int id, int servantLevel, int servantExp){
+    public ServantExpContact(int id, int servantLevel, int servantExp){
         this.id = id;
         this.servantLevel = servantLevel;
         this.servantExp = servantExp;
