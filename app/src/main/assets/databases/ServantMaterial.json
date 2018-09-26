@@ -1,0 +1,272 @@
+[
+    {
+        "material_id": "1",
+        "material_kor_name": "검의 휘석",
+        "material_name": "icon_material_gem_of_saber"
+    },
+    {
+        "material_id": "2",
+        "material_kor_name": "궁의 휘석",
+        "material_name": "icon_material_gem_of_archer"
+    },
+    {
+        "material_id": "3",
+        "material_kor_name": "창의 휘석",
+        "material_name": "icon_material_gem_of_lancer"
+    },
+    {
+        "material_id": "4",
+        "material_kor_name": "기의 휘석",
+        "material_name": "icon_material_gem_of_rider"
+    },
+    {
+        "material_id": "5",
+        "material_kor_name": "술의 휘석",
+        "material_name": "icon_material_gem_of_caster"
+    },
+    {
+        "material_id": "6",
+        "material_kor_name": "살의 휘석",
+        "material_name": "icon_material_gem_of_assassin"
+    },
+    {
+        "material_id": "7",
+        "material_kor_name": "광의 휘석",
+        "material_name": "icon_material_gem_of_berserker"
+    },
+    {
+        "material_id": "8",
+        "material_kor_name": "검의 마석",
+        "material_name": "icon_material_magic_of_saber"
+    },
+    {
+        "material_id": "9",
+        "material_kor_name": "궁의 마석",
+        "material_name": "icon_material_magic_of_archer"
+    },
+    {
+        "material_id": "10",
+        "material_kor_name": "창의 마석",
+        "material_name": "icon_material_magic_of_lancer"
+    },
+    {
+        "material_id": "11",
+        "material_kor_name": "기의 마석",
+        "material_name": "icon_material_magic_of_rider"
+    },
+    {
+        "material_id": "12",
+        "material_kor_name": "술의 마석",
+        "material_name": "icon_material_magic_of_caster"
+    },
+    {
+        "material_id": "13",
+        "material_kor_name": "살의 마석",
+        "material_name": "icon_material_magic_of_assassin"
+    },
+    {
+        "material_id": "14",
+        "material_kor_name": "광의 마석",
+        "material_name": "icon_material_magic_of_berserker"
+    },
+    {
+        "material_id": "15",
+        "material_kor_name": "검의 비석",
+        "material_name": "icon_material_secret_of_saber"
+    },
+    {
+        "material_id": "16",
+        "material_kor_name": "궁의 비석",
+        "material_name": "icon_material_secret_of_archer"
+    },
+    {
+        "material_id": "17",
+        "material_kor_name": "창의 비석",
+        "material_name": "icon_material_secret_of_lancer"
+    },
+    {
+        "material_id": "18",
+        "material_kor_name": "기의 비석",
+        "material_name": "icon_material_secret_of_rider"
+    },
+    {
+        "material_id": "19",
+        "material_kor_name": "술의 비석",
+        "material_name": "icon_material_secret_of_caster"
+    },
+    {
+        "material_id": "20",
+        "material_kor_name": "살의 비석",
+        "material_name": "icon_material_secret_of_assassin"
+    },
+    {
+        "material_id": "21",
+        "material_kor_name": "광의 비석",
+        "material_name": "icon_material_secret_of_berserker"
+    },
+    {
+        "material_id": "22",
+        "material_kor_name": "세이버 피스",
+        "material_name": "icon_material_saber_piece"
+    },
+    {
+        "material_id": "23",
+        "material_kor_name": "아처 피스",
+        "material_name": "icon_material_archer_piece"
+    },
+    {
+        "material_id": "24",
+        "material_kor_name": "랜서 피스",
+        "material_name": "icon_material_lancer_piece"
+    },
+    {
+        "material_id": "25",
+        "material_kor_name": "라이더 피스",
+        "material_name": "icon_material_rider_piece"
+    },
+    {
+        "material_id": "26",
+        "material_kor_name": "캐스터 피스",
+        "material_name": "icon_material_caster_piece"
+    },
+    {
+        "material_id": "27",
+        "material_kor_name": "어쌔신 피스",
+        "material_name": "icon_material_assassin_piece"
+    },
+    {
+        "material_id": "28",
+        "material_kor_name": "버서커 피스",
+        "material_name": "icon_material_berserker_piece"
+    },
+    {
+        "material_id": "29",
+        "material_kor_name": "세이버 모뉴먼트",
+        "material_name": "icon_material_saber_monument"
+    },
+    {
+        "material_id": "30",
+        "material_kor_name": "아처 모뉴먼트",
+        "material_name": "icon_material_archer_monument"
+    },
+    {
+        "material_id": "31",
+        "material_kor_name": "랜서 모뉴먼트",
+        "material_name": "icon_material_lancer_monument"
+    },
+    {
+        "material_id": "32",
+        "material_kor_name": "라이더 모뉴먼트",
+        "material_name": "icon_material_rider_monument"
+    },
+    {
+        "material_id": "33",
+        "material_kor_name": "캐스터 모뉴먼트",
+        "material_name": "icon_material_caster_monument"
+    },
+    {
+        "material_id": "34",
+        "material_kor_name": "어쌔신 모뉴먼트",
+        "material_name": "icon_material_assassin_monument"
+    },
+    {
+        "material_id": "35",
+        "material_kor_name": "버서커 모뉴먼트",
+        "material_name": "icon_material_berserker_monument"
+    },
+    {
+        "material_id": "36",
+        "material_kor_name": "전승결정",
+        "material_name": "icon_material_crystallized_lore"
+    },
+    {
+        "material_id": "37",
+        "material_kor_name": "QP",
+        "material_name": "icon_material_qp"
+    },
+    {
+        "material_id": "38",
+        "material_kor_name": "영웅의 증표",
+        "material_name": "icon_material_proof_of_hero"
+    },
+    {
+        "material_id": "39",
+        "material_kor_name": "흉골",
+        "material_name": "icon_material_evil_bone"
+    },
+    {
+        "material_id": "40",
+        "material_kor_name": "용의 송곳니",
+        "material_name": "icon_material_dragon_fang"
+    },
+    {
+        "material_id": "41",
+        "material_kor_name": "허영의 먼지",
+        "material_name": "icon_material_voids_dust"
+    },
+    {
+        "material_id": "42",
+        "material_kor_name": "세계수의 씨앗",
+        "material_name": "icon_material_seed_of_yggdrasil"
+    },
+    {
+        "material_id": "43",
+        "material_kor_name": "고스트 랜턴",
+        "material_name": "icon_material_ghost_lantern"
+    },
+    {
+        "material_id": "44",
+        "material_kor_name": "팔연쌍정",
+        "material_name": "icon_material_octuplet_twin_crystals"
+    },
+    {
+        "material_id": "45",
+        "material_kor_name": "뱀의 보옥",
+        "material_name": "icon_material_serpent_jewel"
+    },
+    {
+        "material_id": "46",
+        "material_kor_name": "봉황의 깃털",
+        "material_name": "icon_material_phoenix_feather"
+    },
+    {
+        "material_id": "47",
+        "material_kor_name": "무간의 톱니바퀴",
+        "material_name": "icon_material_eternal_gear"
+    },
+    {
+        "material_id": "48",
+        "material_kor_name": "금단의 페이지",
+        "material_name": "icon_material_forbidden_page"
+    },
+    {
+        "material_id": "49",
+        "material_kor_name": "호문쿨루스 베이비",
+        "material_name": "icon_material_homunculus_baby"
+    },
+    {
+        "material_id": "50",
+        "material_kor_name": "운제철",
+        "material_name": "icon_material_meteoric_horseshoe"
+    },
+    {
+        "material_id": "51",
+        "material_kor_name": "성배",
+        "material_name": "icon_material_holy_grail"
+    },
+    {
+        "material_id": "52",
+        "material_kor_name": "혼돈의 발톱",
+        "material_name": "icon_material_claw_of_chaos"
+    },
+    {
+        "material_id": "53",
+        "material_kor_name": "용의 역린",
+        "material_name": "icon_material_dragons_reverse_scale"
+    },
+    {
+        "material_id": "54",
+        "material_kor_name": "만신의 심장",
+        "material_name": "icon_material_heart_of_the_foreign_god"
+    }
+]

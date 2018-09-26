@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.fate.user.fateutil.R;
 
 import com.fate.user.fateutil.db.DbOpenHelper;
+import com.fate.user.fateutil.db.contact.Material.MaterialContact;
 import com.fate.user.fateutil.db.contact.Skill.SkillContact;
 
 
@@ -368,6 +369,93 @@ public class SearchIntent extends AppCompatActivity {
         } // tr 의 끝
 
     }
+
+    public void tableMaterial(int trCt, int tdCt, List<MaterialContact> Material) {
+        // 테이블 변수
+        TableLayout tableLayout;
+        if (trCt == 5) {
+            tableLayout = findViewById(R.id.acsension_material_table);
+        } else {
+            tableLayout = findViewById(R.id.skill_enhance_material_table);
+        }
+
+        TableRow.LayoutParams rowLayout = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT);
+        TableRow row[] = new TableRow[trCt];
+        ImageView materialIcon[][] = new ImageView[trCt][tdCt];
+        TextView textViews[][] = new TextView[trCt][tdCt];
+
+        String packName = this.getPackageName();
+
+        // 레벨
+        int level = 1;
+        int upgradeLevel = 0;
+
+        // 아이템 이름
+        String ascensionMaterialName = null; //
+        String MaterialName = null; // 재료 이름
+        String materialPath; // 재료 경로
+
+        // 아이템 갯수
+        int ascensionMaterialValue = 0;
+
+
+        // 영기재림 자료나 스킬 강화 재료가 없으면 작성하지 않음
+        if (Material == null)
+            return;
+
+        for (int i = 0; i < Material.size(); i++) {
+            MaterialContact materialContact = Material.get(i); // 영기재림 데이터
+            upgradeLevel = materialContact.getUpgradeLevel(); // 업그레이드 레벨을 가져옴
+            ascensionMaterialName = materialContact.getMaterialName(); // 필요 재료 이름 가져옴
+            ascensionMaterialValue = materialContact.getMaterialValue(); // 필요 재료 갯수 가져옴
+            materialPath = materialContact.getMaterialName();
+
+            for (int td = 0; td < tdCt; td++) {
+                row[upgradeLevel - 2] = new TableRow(this); // 행
+                textViews[upgradeLevel - 2][td] = new TextView(this); // 텍스트
+                materialIcon[upgradeLevel - 2][td] = new ImageView(this); // 재료 아이콘
+
+                // 1. 현재 레벨 표시
+                // 2. 레벨 아래에 아이콘 표시
+                // 3. 아이콘 옆에 갯수 표시
+
+                switch (td) {
+                    // 레벨 표시
+                    case 0: {
+                        if (level != upgradeLevel) {
+                            level = upgradeLevel;
+                            textViews[upgradeLevel - 2][td].setText(String.valueOf("Lv " + upgradeLevel));
+                            textViews[upgradeLevel - 2][td].setTextSize(15);
+                            textViews[upgradeLevel - 2][td].setGravity(Gravity.CENTER);
+                            row[upgradeLevel - 2].addView(textViews[upgradeLevel - 2][td]);
+                        }
+                        break;
+                    }
+
+                    // 사진 표시
+                    case 1: {
+                        materialIcon[upgradeLevel - 2][td].setImageResource(getResources().getIdentifier("@drawable/" + materialPath, "drawable", packName));
+                        textViews[upgradeLevel - 2][td].setGravity(Gravity.CENTER);
+                        row[upgradeLevel - 2].addView(materialIcon[upgradeLevel - 2][td]);
+                        break;
+                    }
+
+                    // 재료 갯수 표시
+                    case 2: {
+                        textViews[upgradeLevel - 2][td].setText(String.valueOf(ascensionMaterialValue));
+                        textViews[upgradeLevel - 2][td].setTextSize(15);
+                        textViews[upgradeLevel - 2][td].setGravity(Gravity.CENTER);
+                        row[upgradeLevel - 2].addView(textViews[upgradeLevel - 2][td]);
+                        break;
+                    }
+
+                }
+                tableLayout.addView(row[upgradeLevel - 2], rowLayout);
+            }
+        }
+
+    }
+
 }
 
 

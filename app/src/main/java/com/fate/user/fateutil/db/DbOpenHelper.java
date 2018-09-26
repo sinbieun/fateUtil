@@ -37,14 +37,20 @@ public class DbOpenHelper {
         // 테이블 생성
         @Override
         public void onCreate(SQLiteDatabase db) {
-            db.execSQL(DataBase.SQL_CREATE_SERVANT_JOIN_LIST);
+            // 서번트 테이블 생성
             db.execSQL(DataBase.SQL_CREATE_SERVANT_ICON);
             db.execSQL(DataBase.SQL_CREATE_SERVANT_NAME);
             db.execSQL(DataBase.SQL_CREATE_SERVANT_CLASS);
-            db.execSQL(DataBase.SQL_CREATE_EXP);
+            db.execSQL(DataBase.SQL_CREATE_SERVANT_EXP);
+            db.execSQL(DataBase.SQL_CREATE_SERVANT_JOIN_LIST);
+            // 서번트 스킬
             db.execSQL(DataBase.SQL_CREATE_ACTIVE_SKILL);
             db.execSQL(DataBase.SQL_CREATE_PASSIVE_SKILL);
             db.execSQL(DataBase.SQL_CREATE_SERVANT_JOIN_SKILL);
+            // 서번트 재료
+            db.execSQL(DataBase.SQL_CREATE_SERVANT_MATERIAL);
+            db.execSQL(DataBase.SQL_CREATE_SERVANT_JOIN_MATERIAL);
+            // 마술 예장
             db.execSQL(DataBase.SQL_CREATE_MAGIC);
             db.execSQL(DataBase.SQL_CREATE_MAGIC_EFFECT);
             db.execSQL(DataBase.SQL_CREATE_MAGIC_EXP);
@@ -53,14 +59,20 @@ public class DbOpenHelper {
         // 버전이 업데이트 되었을 경우 DB를 다시 만들어 준다.
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+            // 서번트 테이블
             db.execSQL("DROP TABLE IF EXISTS " + DataBase.ServantIconTable.TABLE_NAME);
             db.execSQL("DROP TABLE IF EXISTS " + DataBase.ServantNameTable.TABLE_NAME);
             db.execSQL("DROP TABLE IF EXISTS " + DataBase.ServantClassTable.TABLE_NAME);
+            db.execSQL("DROP TABLE IF EXISTS " + DataBase.ServantExpTable.TABLE_NAME);
             db.execSQL("DROP TABLE IF EXISTS " + DataBase.ServantJoinListTable.TABLE_NAME);
-            db.execSQL("DROP TABLE IF EXISTS " + DataBase.ExpTable.TABLE_NAME);
+            // 서번트 스킬 테이블
             db.execSQL("DROP TABLE IF EXISTS " + DataBase.ActiveSkillTable.TABLE_NAME);
             db.execSQL("DROP TABLE IF EXISTS " + DataBase.PassiveSkillTable.TABLE_NAME);
             db.execSQL("DROP TABLE IF EXISTS " + DataBase.ServantJoinSkillTable.TABLE_NAME);
+            // 서번트 재료 테이블
+            db.execSQL("DROP TABLE IF EXISTS " + DataBase.ServantMaterialTable.TABLE_NAME);
+            db.execSQL("DROP TABLE IF EXISTS " + DataBase.ServantJoinMaterialTable.TABLE_NAME);
+            // 마술 예장 테이블
             db.execSQL("DROP TABLE IF EXISTS " + DataBase.MagicTable.TABLE_NAME);
             db.execSQL("DROP TABLE IF EXISTS " + DataBase.MagicEffectTable.TABLE_NAME);
             db.execSQL("DROP TABLE IF EXISTS " + DataBase.MagicExpTable.TABLE_NAME);
@@ -261,11 +273,11 @@ public class DbOpenHelper {
         mDB = mDBHelper.getWritableDatabase();
 
         ContentValues cv = new ContentValues();
-        cv.put(DataBase.ExpTable.ID, contact.getId());
-        cv.put(DataBase.ExpTable.SERVANT_LEVEL, contact.getServantLevel());
-        cv.put(DataBase.ExpTable.SERVANT_EXP, contact.getServantExp());
+        cv.put(DataBase.ServantExpTable.ID, contact.getId());
+        cv.put(DataBase.ServantExpTable.SERVANT_LEVEL, contact.getServantLevel());
+        cv.put(DataBase.ServantExpTable.SERVANT_EXP, contact.getServantExp());
 
-        mDB.insert(DataBase.ExpTable.TABLE_NAME, null, cv);
+        mDB.insert(DataBase.ServantExpTable.TABLE_NAME, null, cv);
 
     }
 
@@ -277,13 +289,13 @@ public class DbOpenHelper {
         mDB = mDBHelper.getReadableDatabase();
 
         // id 서번트 레벨, 서번트 경험치 컬럼
-        String[] columns = {DataBase.ExpTable.ID, DataBase.ExpTable.SERVANT_LEVEL, DataBase.ExpTable.SERVANT_EXP};
+        String[] columns = {DataBase.ServantExpTable.ID, DataBase.ServantExpTable.SERVANT_LEVEL, DataBase.ServantExpTable.SERVANT_EXP};
         String[] parms = new String[1]; // 파라메터
         parms[0] = Level;
 
 
         // 2) 커서를 통해 데이터를 뽑아온다.
-        Cursor cursor = mDB.query(DataBase.ExpTable.TABLE_NAME, columns, DataBase.ExpTable.SERVANT_LEVEL + "=?", parms, null, null, null);
+        Cursor cursor = mDB.query(DataBase.ServantExpTable.TABLE_NAME, columns, DataBase.ServantExpTable.SERVANT_LEVEL + "=?", parms, null, null, null);
 
         if (cursor != null) {
             while (cursor.moveToNext() == true) {

@@ -82,6 +82,32 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
+                        <TextView
+                            android:id="@+id/acsension_material_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:gravity="center"
+                            android:text="영기 재림 재료" />
+
+                        <TableLayout
+                            android:id="@+id/acsension_material_table"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"></TableLayout>
+
+                        <TextView
+                            android:id="@+id/skill_enhance_material_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:layout_gravity="center_vertical"
+                            android:text="스킬 강화 재료" />
+
+                        <TableLayout
+                            android:id="@+id/skill_enhance_material_table"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"></TableLayout>
+
                     </LinearLayout>
 
                 </FrameLayout>

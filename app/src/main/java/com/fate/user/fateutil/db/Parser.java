@@ -368,12 +368,12 @@ public class Parser extends LinearLayout {
         // 0. 테이블에 값이 있으면 저장하지 않는다.
 
         mDbOpenHelper.open();
-        if (mDbOpenHelper.checkData(DataBase.ExpTable.TABLE_NAME) == true) {
+        if (mDbOpenHelper.checkData(DataBase.ServantExpTable.TABLE_NAME) == true) {
             mDbOpenHelper.close();
             return;
         }
         // 1. Servant.json 파일을 String에 저장
-        String fileName = "databases/Exp.json";
+        String fileName = "databases/ServantExp.json";
         String jsonString = loadServantFromAsset(fileName);
         // 트랜잭션 시작
         mDbOpenHelper.mDB.beginTransaction();

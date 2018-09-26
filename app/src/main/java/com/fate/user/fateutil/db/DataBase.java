@@ -9,8 +9,62 @@ public class DataBase {
     private DataBase() {
     }
 
+    /*
+    - 1 - 테이블 변수 생성
+    1. 서번트 테이블 변수 생성
+    1_1) 서번트 조인 리스트 테이블 변수 생성 (서번트 아이디, 아이콘 아이디, 이름 아이디, 클래스 아이디)
+    1_2) 서번트 아이콘 테이블 변수 생성 (서번트 아이콘 이름 아이디, 서번트 아이콘 이름)
+    1_3) 서번트 이름 테이블 변수 생성 (서번트 이름 아이디, 서번트 이름 값)
+    1_4) 서번트 클래스 테이블 변수 생성 (서번트 클래스 아이디, 서번트 클래스 이름)
+    1_5) 서번트 경험치 테이블 변수 생성
+
+    2. 스킬 테이블 변수 생성
+    2_1) 서번트 조인 액티브스킬 테이블 변수 생성 (아이디, 서번트 아이디, 스킬 아이디)
+    2_2) 서번트 액티브 스킬 테이블 변수 생성
+    2_3) 서번트 패시브 스킬 테이블 변수 생성
+
+    3. 보구 테이블
+    3_1) 보구 테이블 변수 생성
+
+    5. 서번트 재료 테이블
+    5_1) 서번트 조인 재료 테이블 변수 생성
+    5_2) 서번트 재료 테이블 변수 생성
+
+    6. 마술예장 테이블
+    6_1) 마술예장 테이블 변수 생성
+    6_2) 마술예장 스킬 테이블 변수 생성
+    6_3) 마술예장 경험치 테이블 변수 생성
+
+    - 2 - 테이블 생성문
+    1. 서번트 조인 리스트
+    1_1) 서번트 조인 리스트 테이블 생성
+    1_2) 서번트 아이콘 테이블 생성
+    1_3) 서번트 이름 테이블 생성
+    1_4) 서번트 클래스 테이블 생성
+    1_5) 서번트 경험치 테이블 생성
+
+    2. 서번트 스킬
+    2_1) 서번트 조인 액티브 스킬 테이블 생성
+    2_2) 서번트 액티브 스킬 테이블 생성
+    2_3) 서번트 패시브 스킬 테이블 생성
+
+    3. 서번트 조인 보구 테이블 생성
+    3_1) 서번트 보구 테이블 생성
+
+    5. 서번트 재료 테이블
+    5_1) 서번트 조인 재료 테이블 생성
+    5_2) 서번트 재료 테이블 생성
+
+    6. 마술예장 테이블
+    6_1) 마술예장 테이블 생성
+    6_2) 마술예장 스킬 테이블 생성
+    6_3) 마술예장 경험치 테이블 생성
+
+    */
+
+    // - 1 - 테이블 변수
     // 1. 서번트 테이블 생성
-    // 1_1) 서번트 조인 리스트 테이블 생성 (서번트 아이디, 아이콘 아이디, 이름 아이디, 클래스 아이디)
+    // 1_1) 서번트 조인 리스트 테이블 변수 생성 (서번트 아이디, 아이콘 아이디, 이름 아이디, 클래스 아이디)
     public static final class ServantJoinListTable implements BaseColumns {
         public static final String TABLE_NAME = "ServantJoinList";
         public static final String SERVANT_ID = "servant_id";
@@ -19,41 +73,42 @@ public class DataBase {
         public static final String CLASS_ID = "class_id";
         public static final String GRADE_VALUE = "grade_value";
     }
-
-    // 1_2) 서번트 아이콘 테이블 생성 (서번트 아이콘 이름 아이디, 서번트 아이콘 이름)
+    // 1_2) 서번트 아이콘 테이블 변수 생성 (서번트 아이콘 이름 아이디, 서번트 아이콘 이름)
     public static final class ServantIconTable implements BaseColumns {
         public static final String TABLE_NAME = "ServantIcon";
         public static final String ICON_ID = "icon_id";
         public static final String ICON_NAME = "icon_name";
     }
-
-    // 1_3) 서번트 이름 테이블 생성 (서번트 이름 아이디, 서번트 이름 값)
+    // 1_3) 서번트 이름 테이블 변수 생성 (서번트 이름 아이디, 서번트 이름 값)
     public static final class ServantNameTable implements BaseColumns {
         public static final String TABLE_NAME = "ServantName";
         public static final String NAME_ID = "name_id";
         public static final String NAME_VALUE = "name_value";
     }
-
-    // 1_4) 서번트 클래스 테이블 생성 (서번트 클래스 아이디, 서번트 클래스 이름)
+    // 1_4) 서번트 클래스 테이블 변수 생성 (서번트 클래스 아이디, 서번트 클래스 이름)
     public static final class ServantClassTable implements BaseColumns {
         public static final String TABLE_NAME = "ServantClass";
         public static final String CLASS_ID = "class_id";
         public static final String CLASS_NAME = "class_name";
     }
+    // 1_5) 서번트 경험치 테이블 변수 생성
+    public static final class ServantExpTable implements BaseColumns {
+        public static final String TABLE_NAME = "Servant_Exp";
+        public static final String ID = "id";
+        public static final String SERVANT_LEVEL = "servantLevel";
+        public static final String SERVANT_EXP = "servantExp";
+    }
 
-    // 3. 스킬 테이블 변수 생성
-    // 3_1) 서번트 조인 액티브스킬 테이블 생성 (아이디, 서번트 아이디, 스킬 아이디)
+    // 2. 스킬 테이블 변수 생성
+    // 2_1) 서번트 조인 액티브스킬 테이블 변수 생성 (아이디, 서번트 아이디, 스킬 아이디)
     public static final class ServantJoinSkillTable implements BaseColumns {
         public static final String TABLE_NAME = "ServantJoinSkill";
         public static final String ID = "id";
         public static final String SERVANT_ID = "servant_id";
-        public static final String SKILL_CLASSIFICATION ="skill_classification";
+        public static final String SKILL_CLASSIFICATION = "skill_classification";
         public static final String SKILL_ID = "skill_id";
     }
-
-    // 3_2) 서번트 액티브 스킬 테이블 생성
-    // (스킬 아이디, 스킬 아이콘, 스킬 이름, 스킬 랭크, 스킬 분류, 스킬 레벨, 스킬 타겟, 스킬 범위
-    // 스킬 효과, 스킬 값, 스킬 장단점, 스킬 지속시간, 스킬 쿨다운, 스킬 퍼센트 여부, 스킬 강화여부)
+    // 2_2) 서번트 액티브 스킬 테이블 변수 생성
     public static final class ActiveSkillTable implements BaseColumns {
         public static final String TABLE_NAME = "ServantActiveSkill";
         public static final String SKILL_ID = "skill_id";
@@ -73,8 +128,7 @@ public class DataBase {
         public static final String SKILL_PERCENT = "skill_percent";
         public static final String SKILL_ENHANCE = "skill_enhance";
     }
-
-    // 3_3) 서번트 패시브 스킬 테이블 생성
+    // 2_3) 서번트 패시브 스킬 테이블 변수 생성
     public static final class PassiveSkillTable implements BaseColumns {
         public static final String TABLE_NAME = "ServantPassiveSkill";
         public static final String SKILL_ID = "skill_id";
@@ -84,7 +138,8 @@ public class DataBase {
         public static final String SKILL_EXPLAIN = "skill_explain";
     }
 
-    // 보구 테이블 변수
+    // 3. 보구 테이블
+    // 3_1) 보구 테이블 변수 생성
     public static final class WeaponTable implements BaseColumns {
         public static final String TABLE_NAME = "ServantWeapon";
         public static final String ID = "id";
@@ -106,15 +161,27 @@ public class DataBase {
         public static final String WEAPON_ENHANCE = "weapon_enhance";
     }
 
-    // 4. 경험치 테이블 변수 생성
-    public static final class ExpTable implements BaseColumns {
-        public static final String TABLE_NAME = "exp";
-        public static final String ID = "id";
-        public static final String SERVANT_LEVEL = "servantLevel";
-        public static final String SERVANT_EXP = "servantExp";
+    // 5. 서번트 재료 테이블
+    // 5_1) 서번트 조인 재료 테이블 변수 생성
+    public static final class ServantJoinMaterialTable implements BaseColumns{
+        public static final String TABLE_NAME = "ServantJoinMaterial";
+        public static final String UPGRADE_ID = "upgrade_id";
+        public static final String SERVANT_ID = "servant_id";
+        public static final String UPGRADE_CLASSIFICATION = "upgrade_classification";
+        public static final String UPGRADE_LEVEL = "upgrade_level";
+        public static final String MATERIAL_ID = "material_id";
+        public static final String MATERIAL_VALUE = "material_value";
+    }
+    // 5_2) 서번트 재료 테이블 생성
+    public static final class ServantMaterialTable implements BaseColumns{
+        public static final String TABLE_NAME = "ServantMaterial";
+        public static final String MATERIAL_ID = "material_id";
+        public static final String MATERIAL_NAME = "material_name";
+        public static final String MATERIAL_KOR_NAME = "material_kor_name";
     }
 
-    // 5. 마술예장 테이블 변수 생성
+    // 6. 마술예장 테이블
+    // 6_1) 마술예장 테이블 변수 생성
     public static final class MagicTable implements BaseColumns {
         public static final String TABLE_NAME = "Magic";
         public static final String ID = "id";
@@ -123,8 +190,7 @@ public class DataBase {
         public static final String MAGIC_IMAGE = "magicImage";
         public static final String MAGIC_DELETE_YN = "magicDeleteYn";
     }
-
-    // 6. 마술예장 스킬 테이블 변수 생성
+    // 6_2) 마술예장 스킬 테이블 변수 생성
     public static final class MagicEffectTable implements BaseColumns {
         public static final String TABLE_NAME = "MagicEffect";
         public static final String ID = "id";
@@ -138,8 +204,7 @@ public class DataBase {
         public static final String MAGIC_EFFECT_UTIL = "magicEffectUtil";
         public static final String MAGIC_EFFECT_DELETE_YN = "magicEffectDeleteYn";
     }
-
-    // 7. 마술예장 경험치 테이블 변수 생성
+    // 6_3) 마술예장 경험치 테이블 변수 생성
     public static final class MagicExpTable implements BaseColumns {
         public static final String TABLE_NAME = "MagicExp";
         public static final String ID = "id";
@@ -150,7 +215,7 @@ public class DataBase {
         public static final String MAGIC_DELETE_YN = "magicDeleteYn";
     }
 
-
+    // - 2 - 테이블 생성문
     // 1. 서번트 조인 리스트
     // 1_1) 서번트 조인 리스트 테이블 생성
     public static final String SQL_CREATE_SERVANT_JOIN_LIST =
@@ -251,16 +316,36 @@ public class DataBase {
                     ");";
 
     // 4. 경험치 테이블
-    // 서번트 경험치 테이블 생성
-    public static final String SQL_CREATE_EXP =
+    // 4_1) 서번트 경험치 테이블 생성
+    public static final String SQL_CREATE_SERVANT_EXP =
             "create table " +
-                    ExpTable.TABLE_NAME + " (" +
-                    ExpTable.ID + " integer not null , " +
-                    ExpTable.SERVANT_LEVEL + " integer not null ," +
-                    ExpTable.SERVANT_EXP + " integer not null" + ");";
+                    ServantExpTable.TABLE_NAME + " (" +
+                    ServantExpTable.ID + " integer not null , " +
+                    ServantExpTable.SERVANT_LEVEL + " integer not null ," +
+                    ServantExpTable.SERVANT_EXP + " integer not null" + ");";
 
-    // 5. 마술예장 테이블
-    // 마술예장 테이블 생성
+    // 5. 서번트 재료 테이블
+    // 5_1) 서번트 조인 재료 테이블 생성
+    public static final String SQL_CREATE_SERVANT_JOIN_MATERIAL =
+            "create table " +
+                    ServantJoinMaterialTable.TABLE_NAME + " (" +
+                    ServantJoinMaterialTable.UPGRADE_ID + " integer not null, " +
+                    ServantJoinMaterialTable.SERVANT_ID + " integer not null, " +
+                    ServantJoinMaterialTable.UPGRADE_CLASSIFICATION + " text , " +
+                    ServantJoinMaterialTable.UPGRADE_LEVEL + " text , " +
+                    ServantJoinMaterialTable.MATERIAL_ID + " integer not null, " +
+                    ServantJoinMaterialTable.MATERIAL_VALUE + " integer " + "); ";
+
+    // 5_2) 서번트 재료 테이블 생성
+    public static final String SQL_CREATE_SERVANT_MATERIAL =
+            "create table " +
+                    ServantMaterialTable.TABLE_NAME + " (" +
+                    ServantMaterialTable.MATERIAL_ID + " integer not null, " +
+                    ServantMaterialTable.MATERIAL_NAME + " text not null, " +
+                    ServantMaterialTable.MATERIAL_KOR_NAME + " text not null " +"); ";
+
+    // 6. 마술예장 테이블
+    // 6_1) 마술예장 테이블 생성
     public static final String SQL_CREATE_MAGIC =
             "create table " +
                     MagicTable.TABLE_NAME + " (" +
@@ -270,8 +355,7 @@ public class DataBase {
                     MagicTable.MAGIC_IMAGE + " text not null ," +
                     MagicTable.MAGIC_DELETE_YN + " char(1) not null" + ");";
 
-    // 6. 마술예장 스킬 테이블
-    // 마술예장 스킬 테이블 생성
+    // 6_2) 마술예장 스킬 테이블 생성
     public static final String SQL_CREATE_MAGIC_EFFECT =
             "create table " +
                     MagicEffectTable.TABLE_NAME + " (" +
@@ -286,8 +370,7 @@ public class DataBase {
                     MagicEffectTable.MAGIC_EFFECT_UTIL + " text not null ," +
                     MagicEffectTable.MAGIC_EFFECT_DELETE_YN + " char(1) not null" + ");";
 
-    // 7. 마술예장 경험치 테이블
-    // 마술예장 경험치 테이블 생성
+    // 6_3) 마술예장 경험치 테이블 생성
     public static final String SQL_CREATE_MAGIC_EXP =
             "create table " +
                     MagicExpTable.TABLE_NAME + " (" +
