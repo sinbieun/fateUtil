@@ -16,6 +16,7 @@ import com.fate.user.fateutil.R;
 
 import com.fate.user.fateutil.db.DbOpenHelper;
 import com.fate.user.fateutil.db.contact.Material.MaterialContact;
+import com.fate.user.fateutil.db.contact.Servant.ServantAscensionContact;
 import com.fate.user.fateutil.db.contact.Skill.SkillContact;
 
 
@@ -40,9 +41,10 @@ public class SearchIntent extends AppCompatActivity {
     private List<SkillContact> servantHavingPassiveSkill;
 
     // 재료 변수
-    private List<MaterialContact> ServantMaterial;
+    private List<MaterialContact> servantMaterial;
 
-
+    // 서번트 영기재림 이미지 변수
+    private List<ServantAscensionContact> servantAscensionsImage;
 
 
     @Override
@@ -125,11 +127,14 @@ public class SearchIntent extends AppCompatActivity {
 
         // 2. 보유하고 있는 강화 재료를 가져온다.
         // 2_1) 서번트가 보유하고 있는 영기재림 재료를 가져온다.
-        ServantMaterial = mDbOpenHelper.getServantMaterial(position, 'A');
-        tableMaterial(5,3,ServantMaterial);
+        servantMaterial = mDbOpenHelper.getServantMaterial(position, 'A');
+        tableMaterial(5,3, servantMaterial);
         // 2_2) 서번트가 보유하고 있는 스킬재림 재료를 가져온다.
-        ServantMaterial = mDbOpenHelper.getServantMaterial(position, 'S');
-        tableMaterial(10,3,ServantMaterial);
+        servantMaterial = mDbOpenHelper.getServantMaterial(position, 'S');
+        tableMaterial(10,3, servantMaterial);
+
+        // 서번트 영기재림 이미지
+        tableAcsensionImg(position);
         mDbOpenHelper.close();
 
     }
@@ -218,7 +223,7 @@ public class SearchIntent extends AppCompatActivity {
     public void tableActiveSkillValue(int trCt, int tdCt) {
 
         // 테이블 변수
-        TableLayout skillTable = (TableLayout) findViewById(R.id.active_skill_table);
+        TableLayout skillTable = findViewById(R.id.active_skill_table);
         //TableRow.LayoutParams rowLayout = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f);
         TableRow.LayoutParams rowLayout = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT, 1f);
         TableRow.LayoutParams textLayout = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT);
@@ -379,7 +384,7 @@ public class SearchIntent extends AppCompatActivity {
         } // tr 의 끝
 
     }
-
+    // 영기 재림 채료 테이블 생성
     public void tableMaterial(int trCt, int tdCt, List<MaterialContact> Material) {
         // 테이블 변수
         TableLayout tableLayout;
@@ -389,7 +394,8 @@ public class SearchIntent extends AppCompatActivity {
             tableLayout = findViewById(R.id.skill_enhance_material_table);
         }
 
-        TableRow.LayoutParams rowLayout = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT);
+        //tableLayout.setPadding(50, 50, 50, 50);
+        TableRow.LayoutParams rowLayout = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT);
         TableRow row[] = new TableRow[trCt];
         ImageView materialIcon[][] = new ImageView[trCt][tdCt];
         TextView textViews[][] = new TextView[trCt][tdCt];
@@ -398,7 +404,7 @@ public class SearchIntent extends AppCompatActivity {
 
         // 레벨
         int level = 1;
-        int upgradeLevel = 0;
+        int upgradeLevel;
 
         // 아이템 이름
         String ascensionMaterialName = null; //
@@ -406,7 +412,7 @@ public class SearchIntent extends AppCompatActivity {
         String materialPath; // 재료 경로
 
         // 아이템 갯수
-        int ascensionMaterialValue = 0;
+        int ascensionMaterialValue;
 
 
         // 영기재림 자료나 스킬 강화 재료가 없으면 작성하지 않음
@@ -416,12 +422,15 @@ public class SearchIntent extends AppCompatActivity {
         for (int i = 0; i < Material.size(); i++) {
             MaterialContact materialContact = Material.get(i); // 영기재림 데이터
             upgradeLevel = materialContact.getUpgradeLevel(); // 업그레이드 레벨을 가져옴
-            ascensionMaterialName = materialContact.getMaterialName(); // 필요 재료 이름 가져옴
+            // ascensionMaterialName = materialContact.getMaterialName(); // 필요 재료 이름 가져옴
             ascensionMaterialValue = materialContact.getMaterialValue(); // 필요 재료 갯수 가져옴
             materialPath = materialContact.getMaterialName();
 
+            row[upgradeLevel - 2] = new TableRow(this); // 행
+
             for (int td = 0; td < tdCt; td++) {
-                row[upgradeLevel - 2] = new TableRow(this); // 행
+
+                //row[upgradeLevel - 2] = new TableRow(this); // 행
                 textViews[upgradeLevel - 2][td] = new TextView(this); // 텍스트
                 materialIcon[upgradeLevel - 2][td] = new ImageView(this); // 재료 아이콘
 
@@ -433,8 +442,15 @@ public class SearchIntent extends AppCompatActivity {
                     // 레벨 표시
                     case 0: {
                         if (level != upgradeLevel) {
-                            level = upgradeLevel;
+                            //textViews[upgradeLevel - 2][td] = new TextView(this); // 텍스트
                             textViews[upgradeLevel - 2][td].setText(String.valueOf("Lv " + upgradeLevel));
+                            textViews[upgradeLevel - 2][td].setTextSize(15);
+                            textViews[upgradeLevel - 2][td].setGravity(Gravity.CENTER);
+                            row[upgradeLevel - 2].addView(textViews[upgradeLevel - 2][td]);
+                            level = upgradeLevel;
+                        }
+                        else{
+                            textViews[upgradeLevel - 2][td].setText(" ");
                             textViews[upgradeLevel - 2][td].setTextSize(15);
                             textViews[upgradeLevel - 2][td].setGravity(Gravity.CENTER);
                             row[upgradeLevel - 2].addView(textViews[upgradeLevel - 2][td]);
@@ -444,14 +460,15 @@ public class SearchIntent extends AppCompatActivity {
 
                     // 사진 표시
                     case 1: {
+                        //materialIcon[upgradeLevel - 2][td] = new ImageView(this); // 재료 아이콘
                         materialIcon[upgradeLevel - 2][td].setImageResource(getResources().getIdentifier("@drawable/" + materialPath, "drawable", packName));
-                        textViews[upgradeLevel - 2][td].setGravity(Gravity.CENTER);
                         row[upgradeLevel - 2].addView(materialIcon[upgradeLevel - 2][td]);
                         break;
                     }
 
                     // 재료 갯수 표시
                     case 2: {
+                        //textViews[upgradeLevel - 2][td] = new TextView(this); // 텍스트
                         textViews[upgradeLevel - 2][td].setText(String.valueOf(ascensionMaterialValue));
                         textViews[upgradeLevel - 2][td].setTextSize(15);
                         textViews[upgradeLevel - 2][td].setGravity(Gravity.CENTER);
@@ -460,12 +477,30 @@ public class SearchIntent extends AppCompatActivity {
                     }
 
                 }
-                tableLayout.addView(row[upgradeLevel - 2], rowLayout);
+                //tableLayout.addView(row[upgradeLevel - 2], rowLayout);
             }
+            tableLayout.addView(row[upgradeLevel - 2], rowLayout);
         }
 
     }
+    // 서번트 영기재림 이미지
+    public void tableAcsensionImg(int servantId){
+        //servantAscensionsImage = mDbOpenHelper.getServantAscensionImage(servantId);
 
+        // 1. 이미지를 가지고 온다.
+        // 2.
+
+        /*
+        for(int i = 0; i < servantAscensionsImage.size(); i++){
+            ServantAscensionContact ascensionContact = servantAscensionsImage.get(i);
+
+        }*/
+
+
+
+
+
+    }
 }
 
 

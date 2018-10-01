@@ -194,7 +194,7 @@ public class MainActivity extends AppCompatActivity
         }
 
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
@@ -205,7 +205,7 @@ public class MainActivity extends AppCompatActivity
      * @param title
      */
     public void toolbarTitleChange(String title) {
-        TextView toolbarTitle = (TextView) findViewById(R.id.toolbar_title);
+        TextView toolbarTitle = findViewById(R.id.toolbar_title);
         toolbarTitle.setText(title);
     }
 
@@ -238,5 +238,7 @@ public class MainActivity extends AppCompatActivity
 
         parser.servantJoinMaterialParser();
         parser.servantMaterialParser();
+
+        parser.servantAscensionImgParser();
     }
 }

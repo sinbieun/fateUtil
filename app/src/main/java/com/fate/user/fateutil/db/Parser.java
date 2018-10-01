@@ -5,6 +5,7 @@ import android.content.res.AssetManager;
 import android.widget.LinearLayout;
 
 import com.fate.user.fateutil.db.contact.Material.MaterialContact;
+import com.fate.user.fateutil.db.contact.Servant.ServantAscensionContact;
 import com.fate.user.fateutil.db.contact.Servant.ServantExpContact;
 import com.fate.user.fateutil.db.contact.Servant.ServantClassContact;
 import com.fate.user.fateutil.db.contact.Servant.ServantContact;
@@ -53,20 +54,20 @@ public class Parser extends LinearLayout {
 
     /*
         JSON 파일 파싱해서 DB에 집어 넣기
-        1. 서번트
+        1. 서번트 리스트
         1_1) 서번트 리스트 조인 테이블에 데이터 삽입
         1_2) 서번트 아이콘 테이블에 데이터 삽입
         1_3) 서번트 이름 테이블에 데이터 삽입
         1_4) 서번트 클래스 테이블에 데이터 삽입
         1_5) 서번트 경험치를 집어 넣는다.
 
-        2. 서번트 스킬
-        2_1) 서번트 조인 스킬 테이블에 데이터 삽입
-        2_2) 서번트 액티브 스킬 테이블에 데이터 삽입
-
-        4. 서번트 재료
-        4_1) 서번트 조인 재료 테이블에 데이터 삽입
-        4_2) 서번트 재료 테이블에 데이터 삽입
+        2. 서번트 스테이터스
+        2_1) 서번트 영기재림 이미지 테이블 데이터 삽입
+        2_2) 서번트 조인 스킬 테이블에 데이터 삽입
+        2_3) 서번트 액티브 스킬 테이블에 데이터 삽입
+        2_4) 서번트 패시브 스킬 테이블에 데이터 삽입
+        2_5) 서번트 조인 재료 테이블에 데이터 삽입
+        2_6) 서번트 재료 테이블에 데이터 삽입
 
      */
     // 1_1) 서번트 리스트 조인 테이블에 데이터 삽입
@@ -264,8 +265,47 @@ public class Parser extends LinearLayout {
 
     }
 
-    // 2. 서번트 스킬
-    // 2_1) 서번트 조인 스킬 테이블에 데이터 삽입
+    // 2. 서번트 스테이터스
+    // 2_1) 서번트 영기재림 이미지 테이블에 데이터 삽입
+    public void servantAscensionImgParser(){
+        mDbOpenHelper.open();
+        if (mDbOpenHelper.checkData(DataBase.ServantAscensionImageTable.TABLE_NAME) == true) {
+            mDbOpenHelper.close();
+            return;
+        }
+
+        fileName = "databases/ServantAscensionImage.json"; // 파일 이름 저장 변수
+        jsonString = loadServantFromAsset(fileName); // JSON에서 데이터를 뽑아서 집어 넣는다.
+
+        // 트랜잭션 시작
+        mDbOpenHelper.mDB.beginTransaction();
+        try {
+            jarray = new JSONArray(jsonString);
+            for (int i = 0; i < jarray.length(); i++) {
+                JSONObject jObject = jarray.getJSONObject(i);
+
+                int ascensionId = jObject.getInt("ascension_id");
+                int servantId = jObject.getInt("servant_id");
+                int ascensionLevel = jObject.getInt("ascension_level");
+                String ascensionClassification =  jObject.getString("ascension_classification");
+                String ascensionImgName = jObject.getString("ascension_img_name");
+
+                // 데이터 삽입
+                mDbOpenHelper.addServantAscensionImage(new ServantAscensionContact(ascensionId, servantId, ascensionClassification, ascensionLevel, ascensionImgName));
+            }
+            // 5. 완전히 종료되면 실행
+            mDbOpenHelper.mDB.setTransactionSuccessful();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } finally {
+            // 6. 삽입 끝나면 트랜잭션 종료
+            mDbOpenHelper.mDB.endTransaction();
+            // 7. DB 닫기
+            mDbOpenHelper.close();
+        }
+
+    }
+    // 2_2) 서번트 조인 스킬 테이블에 데이터 삽입
     public void servantJoinSkillParser() {
         // 0. 테이블에 값이 있다면 checkData에서 true를 반환하고 데이터 값을 넣지 않는다.
         mDbOpenHelper.open();
@@ -305,7 +345,7 @@ public class Parser extends LinearLayout {
         }
 
     }
-    // 2_2) 서번트 액티브 스킬 테이블에 데이터 삽입
+    // 2_3) 서번트 액티브 스킬 테이블에 데이터 삽입
     public void activeSkillParser() {
         // 0. 테이블에 값이 있으면 db에 저장하지 않는다.
         mDbOpenHelper.open();
@@ -359,7 +399,7 @@ public class Parser extends LinearLayout {
             mDbOpenHelper.close();
         }
     }
-    // 2_3) 서번트 패시브 스킬 테이블에 데이터 삽입
+    // 2_4) 서번트 패시브 스킬 테이블에 데이터 삽입
     public void passiveSkillParser() {
         // 0. 테이블에 값이 있으면 db에 저장하지 않는다.
         mDbOpenHelper.open();
@@ -400,9 +440,7 @@ public class Parser extends LinearLayout {
             mDbOpenHelper.close();
         }
     }
-
-    // 4. 서번트 재료
-    // 4_1) 서번트 조인 재료 테이블에 데이터 삽입
+    // 2_5) 서번트 조인 재료 테이블에 데이터 삽입
     public void servantJoinMaterialParser(){
         // 0. 테이블에 값이 있으면 저장하지 않는다.
 
@@ -445,7 +483,7 @@ public class Parser extends LinearLayout {
         }
 
     }
-    // 4_2) 서번트 재료 테이블에 데이터 삽입
+    // 2_6) 서번트 재료 테이블에 데이터 삽입
     public void servantMaterialParser(){
         // 0. 테이블에 값이 있으면 저장하지 않는다.
 
@@ -485,8 +523,5 @@ public class Parser extends LinearLayout {
         }
 
     }
-
-
-
 
 }

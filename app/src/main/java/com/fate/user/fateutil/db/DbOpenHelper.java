@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.fate.user.fateutil.db.contact.Material.MaterialContact;
+import com.fate.user.fateutil.db.contact.Servant.ServantAscensionContact;
 import com.fate.user.fateutil.db.contact.Servant.ServantExpContact;
 import com.fate.user.fateutil.db.contact.Servant.ServantClassContact;
 import com.fate.user.fateutil.db.contact.Servant.ServantContact;
@@ -23,7 +24,7 @@ import java.util.List;
 public class DbOpenHelper {
 
     private static final String DATABASE_NAME = "fatedb.db";
-    private static final int DATABASE_VERSION = 1_1_33;
+    private static final int DATABASE_VERSION = 1_1_35;
     private DatabaseHelper mDBHelper;
     public static SQLiteDatabase mDB;
     private Context mContext;
@@ -44,6 +45,9 @@ public class DbOpenHelper {
             db.execSQL(DataBase.SQL_CREATE_SERVANT_CLASS);
             db.execSQL(DataBase.SQL_CREATE_SERVANT_EXP);
             db.execSQL(DataBase.SQL_CREATE_SERVANT_JOIN_LIST);
+
+            // 서번트 스테이터스
+            db.execSQL(DataBase.SQL_CREATE_ASCENSION_IMG);
             // 서번트 스킬
             db.execSQL(DataBase.SQL_CREATE_ACTIVE_SKILL);
             db.execSQL(DataBase.SQL_CREATE_PASSIVE_SKILL);
@@ -51,6 +55,7 @@ public class DbOpenHelper {
             // 서번트 재료
             db.execSQL(DataBase.SQL_CREATE_SERVANT_MATERIAL);
             db.execSQL(DataBase.SQL_CREATE_SERVANT_JOIN_MATERIAL);
+
             // 마술 예장
             db.execSQL(DataBase.SQL_CREATE_MAGIC);
             db.execSQL(DataBase.SQL_CREATE_MAGIC_EFFECT);
@@ -66,6 +71,8 @@ public class DbOpenHelper {
             db.execSQL("DROP TABLE IF EXISTS " + DataBase.ServantClassTable.TABLE_NAME);
             db.execSQL("DROP TABLE IF EXISTS " + DataBase.ServantExpTable.TABLE_NAME);
             db.execSQL("DROP TABLE IF EXISTS " + DataBase.ServantJoinListTable.TABLE_NAME);
+            // 서번트 스테이터스
+            db.execSQL("DROP TABLE IF EXISTS " + DataBase.ServantAscensionImageTable.TABLE_NAME);
             // 서번트 스킬 테이블
             db.execSQL("DROP TABLE IF EXISTS " + DataBase.ActiveSkillTable.TABLE_NAME);
             db.execSQL("DROP TABLE IF EXISTS " + DataBase.PassiveSkillTable.TABLE_NAME);
@@ -125,16 +132,17 @@ public class DbOpenHelper {
     1_4) 서번트 클래스 데이터 집어넣기
     1_5) 서번트 경험치 데이터 집어 넣기
 
-    2. 서번트 스킬
-    2_1) 서번트 액티브 스킬 조인 리스트 데이터 집어 넣기
-    2_2) 서번트 액티브 스킬 데이터 집어 넣기
+    2. 서번트 스테이터스
+    2_1) 서번트 영기재림 이미지 데이터 집어 넣기
+    2_2) 서번트 액티브 스킬 조인 리스트 데이터 집어 넣기
+    2_3) 서번트 액티브 스킬 데이터 집어 넣기
+    2_4) 서번트 패시트 스킬 데이터 집어 닣기
+    2_5) 서번트 재료 조인 테이블에 데이터 집어 넣기
+    2_6) 서번트 재료 테이블 데이터 집어 넣기
 
     3. 서번트 보구
     3_1) 서번트 보구 조인 리스트
 
-    4. 서번트 재료
-    4_1) 서번트 재료 조인 테이블에 데이터 집어 넣기
-    4_2) 서번트 재료 테이블 데이터 집어 넣기
      */
 
     // 1. 서번트 리스트
@@ -206,8 +214,23 @@ public class DbOpenHelper {
 
     }
 
-    // 2. 서번트 스킬
-    // 2_1) 서번트 액티브 스킬 조인 리스트 데이터 집어 넣기
+    // 2. 서번트 스테이터스
+    // 2_1) 서번트 영기재림 이미지 데이터 집어 넣기
+    public void addServantAscensionImage(ServantAscensionContact contact){
+
+        mDB = mDBHelper.getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+        cv.put(DataBase.ServantAscensionImageTable.ASCENSION_ID, contact.getAscensionId());
+        cv.put(DataBase.ServantAscensionImageTable.SERVANT_ID, contact.getServantId());
+        cv.put(DataBase.ServantAscensionImageTable.ASCENSION_CLASSIFICATION, contact.getAscensionClassification());
+        cv.put(DataBase.ServantAscensionImageTable.ASCENSION_LEVEL, contact.getAscensionLevel());
+        cv.put(DataBase.ServantAscensionImageTable.ASCENSION_IMG_NAME, contact.getAscensionImgName());
+
+        mDB.insert(DataBase.ServantAscensionImageTable.TABLE_NAME, null, cv);
+
+    }
+    // 2_2) 서번트 액티브 스킬 조인 리스트 데이터 집어 넣기
     public void addServantJoinSkill(ServantJoinSkillContact contact) {
 
         mDB = mDBHelper.getWritableDatabase();
@@ -221,8 +244,7 @@ public class DbOpenHelper {
         mDB.insert(DataBase.ServantJoinSkillTable.TABLE_NAME, null, cv);
 
     }
-
-    // 2_2) 서번트 액티브 스킬 데이터 집어 넣기
+    // 2_3) 서번트 액티브 스킬 데이터 집어 넣기
     public void addActiveSkillList(SkillContact contact) {
 
         mDB = mDBHelper.getWritableDatabase();
@@ -248,8 +270,7 @@ public class DbOpenHelper {
         mDB.insert(DataBase.ActiveSkillTable.TABLE_NAME, null, cv);
 
     }
-
-    // 2_3) 서번트 패시브 스킬 데이터 집어 넣기
+    // 2_4) 서번트 패시브 스킬 데이터 집어 넣기
     public void addPassiveSkillList(SkillContact contact) {
 
         mDB = mDBHelper.getWritableDatabase();
@@ -264,9 +285,37 @@ public class DbOpenHelper {
         mDB.insert(DataBase.PassiveSkillTable.TABLE_NAME, null, cv);
 
     }
+    // 2_5) 서번트 조인 재료 데이터 삽입
+    public void addServantJoinMaterial(MaterialContact contact) {
+        mDB = mDBHelper.getWritableDatabase();
 
-    // 3. 서번트 보구
-    // 3_1) 보구 테이블에 데이터 삽입
+        ContentValues cv = new ContentValues();
+        cv.put(DataBase.ServantJoinMaterialTable.UPGRADE_ID, contact.getUpgradeId());
+        cv.put(DataBase.ServantJoinMaterialTable.SERVANT_ID, contact.getServantId());
+        cv.put(DataBase.ServantJoinMaterialTable.UPGRADE_LEVEL, contact.getUpgradeLevel());
+        cv.put(DataBase.ServantJoinMaterialTable.UPGRADE_CLASSIFICATION, contact.getUpgradeClassification());
+        cv.put(DataBase.ServantJoinMaterialTable.UPGRADE_LEVEL, contact.getUpgradeLevel());
+        cv.put(DataBase.ServantJoinMaterialTable.MATERIAL_ID, contact.getMaterialId());
+        cv.put(DataBase.ServantJoinMaterialTable.MATERIAL_VALUE, contact.getMaterialValue());
+
+        mDB.insert(DataBase.ServantJoinMaterialTable.TABLE_NAME, null, cv);
+    }
+    // 2_6) 서번트 재료 데이터 삽입
+    public void addServantMaterial(MaterialContact contact) {
+        mDB = mDBHelper.getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+        cv.put(DataBase.ServantMaterialTable.MATERIAL_ID, contact.getMaterialId());
+        cv.put(DataBase.ServantMaterialTable.MATERIAL_NAME, contact.getMaterialName());
+        cv.put(DataBase.ServantMaterialTable.MATERIAL_KOR_NAME, contact.getMaterialKorName());
+
+        mDB.insert(DataBase.ServantMaterialTable.TABLE_NAME, null, cv);
+
+    }
+
+
+    // 5. 서번트 보구
+    // 5_1) 보구 테이블에 데이터 삽입
     public void addWeaponContact(WeaponContact contact) {
 
         mDB = mDBHelper.getWritableDatabase();
@@ -294,38 +343,6 @@ public class DbOpenHelper {
 
     }
 
-    // 4. 서번트 재료
-    // 4_1) 서번트 조인 재료 데이터 삽입
-    public void addServantJoinMaterial(MaterialContact contact) {
-        mDB = mDBHelper.getWritableDatabase();
-
-        ContentValues cv = new ContentValues();
-        cv.put(DataBase.ServantJoinMaterialTable.UPGRADE_ID, contact.getUpgradeId());
-        cv.put(DataBase.ServantJoinMaterialTable.SERVANT_ID, contact.getServantId());
-        cv.put(DataBase.ServantJoinMaterialTable.UPGRADE_LEVEL, contact.getUpgradeLevel());
-        cv.put(DataBase.ServantJoinMaterialTable.UPGRADE_CLASSIFICATION, contact.getUpgradeClassification());
-        cv.put(DataBase.ServantJoinMaterialTable.UPGRADE_LEVEL, contact.getUpgradeLevel());
-        cv.put(DataBase.ServantJoinMaterialTable.MATERIAL_ID, contact.getMaterialId());
-        cv.put(DataBase.ServantJoinMaterialTable.MATERIAL_VALUE, contact.getMaterialValue());
-
-        mDB.insert(DataBase.ServantJoinMaterialTable.TABLE_NAME, null, cv);
-    }
-
-    // 4_2) 서번트 재료 데이터 삽입
-    public void addServantMaterial(MaterialContact contact) {
-        mDB = mDBHelper.getWritableDatabase();
-
-        ContentValues cv = new ContentValues();
-        cv.put(DataBase.ServantMaterialTable.MATERIAL_ID, contact.getMaterialId());
-        cv.put(DataBase.ServantMaterialTable.MATERIAL_NAME, contact.getMaterialName());
-        cv.put(DataBase.ServantMaterialTable.MATERIAL_KOR_NAME, contact.getMaterialKorName());
-
-        mDB.insert(DataBase.ServantMaterialTable.TABLE_NAME, null, cv);
-
-    }
-
-
-
     /*
     - 데이터 베이스에서 검색하기 -
     1. 서번트 검색
@@ -333,17 +350,18 @@ public class DbOpenHelper {
     1_2) 서번트 조인 리스트 에서 아이디에 맞는 서번트 리스트 가져오기
     1_3) 서번트 경험치에서 레벨에 해당하는 경험치 값 가져오기
 
-    2. 스킬 검색
+    2. 서번트 스테이터스
     2_1) 서번트가 가지고 있는 액티브 스킬 아이콘, 이름 가지고 오기
     2_2) 서번트가 가지고 있는 액티브 스킬의 설명 리스트 가져오기
     2_3) 서번트가 가지고 있는 액티브 스킬의 효과 가져오기
     2_4) 서번트가 가지고 있는 액티브 스킬의 수치 가져오기
     2_5) 서번트가 가지고 있는 패시브 스킬 가져오기
+    2_6) 서번트가 가지고 있는 영기재료, 스킬재료 가져오기
+    2_7) 서번트가 가지고 있는 서번트 재림 이미지 가져오기
+
 
     3. 보구 검색
 
-    4. 서번트 스킬 검색
-    4_1) 서번트 재료 가져오기
      */
 
     // 1. 서번트 검색
@@ -661,6 +679,81 @@ public class DbOpenHelper {
 
         return skillHaving;
     }
+    // 2_6) 서번트가 가지고 있는 영기재료, 스킬재료 가져오기
+    public List<MaterialContact> getServantMaterial(int servantId, char classification) {
+        List<MaterialContact> materialHaving = new ArrayList<>();
+
+        // 서번트가 가지고 있는 스킬 데이터를 가져온다.
+        String selectHavingMaterial = "select " +
+                " SJM.upgrade_id as upgrade_id, " +
+                " SN.name_value as servant_name, " +
+                " SJM.upgrade_classification as upgrade_classification, " +
+                " SJM.upgrade_level as upgrade_level, " +
+                "SM.material_name as material_name, " +
+                "SJM.material_value as material_value " +
+                " from ServantMaterial SM " +
+                " inner join ServantJoinMaterial SJM " +
+                " on SM.material_id = SJM.material_id " +
+                " inner join ServantName SN " +
+                " on SN.name_id = SJM.servant_id " +
+                " where upgrade_classification = '" + classification + "' " +
+                " and  SJM.servant_id = " + servantId +
+                " order by upgrade_id ";
+
+        mDB = mDBHelper.getReadableDatabase();
+
+        // 커서에 검색 쿼리 삽입
+        Cursor cursor = mDB.rawQuery(selectHavingMaterial, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                MaterialContact contact = new MaterialContact();
+                contact.setMaterialName(cursor.getString(cursor.getColumnIndex("material_name")));
+                contact.setUpgradeClassification(cursor.getString(cursor.getColumnIndex("upgrade_classification")));
+                contact.setUpgradeLevel(cursor.getInt(cursor.getColumnIndex("upgrade_level")));
+                contact.setMaterialName(cursor.getString(cursor.getColumnIndex("material_name")));
+                contact.setMaterialValue(cursor.getInt(cursor.getColumnIndex("material_value")));
+
+                materialHaving.add(contact);
+            } while (cursor.moveToNext());
+        }
+
+        return materialHaving;
+
+    }
+    // 2_7) 서번트가 가지고 있는 서번트 재림 이미지 가져오기
+    public List<ServantAscensionContact> getServantAscensionImage(int servantId){
+        List<ServantAscensionContact> servantImage = new ArrayList<>();
+        // 서번트가 가지고 있는 재림 이미지를 가져온다.
+        String selectServantImage = "select " +
+                " SN.name_value as name_value," +
+                " SAI.ascension_classification as ascension_classification, " +
+                " SAI.ascension_level as ascension_level," +
+                " SAI.ascension_img_name as ascension_img_name" +
+                " from ServantAscensionImg SAI" +
+                " inner join ServantName SN" +
+                " on SAI.servant_id = SN.name_id;";
+
+        mDB = mDBHelper.getReadableDatabase();
+
+        // 커서에 검색 쿼리 삽입
+        Cursor cursor = mDB.rawQuery(selectServantImage, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                ServantAscensionContact contact = new ServantAscensionContact();
+                contact.setAscensionId(cursor.getInt(cursor.getColumnIndex("ascension_id")));
+                contact.setServantId(cursor.getInt(cursor.getColumnIndex("servant_id")));
+                contact.setAscensionClassification(cursor.getString(cursor.getColumnIndex("ascension_classification")));
+                contact.setAscensionLevel(cursor.getInt(cursor.getColumnIndex("ascension_level")));
+                contact.setAscensionImgName(cursor.getString(cursor.getColumnIndex("ascension_img_name")));
+
+                servantImage.add(contact);
+            } while (cursor.moveToNext());
+        }
+
+        return servantImage;
+    }
 
     // 3. 보구 검색
     // 3_1) 보구 리스트 가져오기 (수정 예정)
@@ -722,49 +815,7 @@ public class DbOpenHelper {
         return contactSkillList;
     }
 
-    // 4. 서번트 재료 검색
-    // 4_1) 서번트 재료 가져오기
-    public List<MaterialContact> getServantMaterial(int servantId, char classification) {
-        List<MaterialContact> materialHaving = new ArrayList<>();
 
-        // 서번트가 가지고 있는 스킬 데이터를 가져온다.
-        String selectHavingMaterial = "select " +
-                " SJM.upgrade_id as upgrade_id, " +
-                " SN.name_value as servant_name, " +
-                " SJM.upgrade_classification as upgrade_classification, " +
-                " SJM.upgrade_level as upgrade_level, " +
-                "SM.material_name as material_name, " +
-                "SJM.material_value as material_value " +
-                " from ServantMaterial SM " +
-                " inner join ServantJoinMaterial SJM " +
-                " on SM.material_id = SJM.material_id " +
-                " inner join ServantName SN " +
-                " on SN.name_id = SJM.servant_id " +
-                " where upgrade_classification = '" + classification + "' " +
-                " and  SJM.servant_id = " + servantId +
-                " order by upgrade_id ";
-
-        mDB = mDBHelper.getReadableDatabase();
-
-        // 커서에 검색 쿼리 삽입
-        Cursor cursor = mDB.rawQuery(selectHavingMaterial, null);
-
-        if (cursor.moveToFirst()) {
-            do {
-                MaterialContact contact = new MaterialContact();
-                contact.setMaterialName(cursor.getString(cursor.getColumnIndex("material_name")));
-                contact.setUpgradeClassification(cursor.getString(cursor.getColumnIndex("upgrade_classification")));
-                contact.setUpgradeLevel(cursor.getInt(cursor.getColumnIndex("upgrade_level")));
-                contact.setMaterialName(cursor.getString(cursor.getColumnIndex("material_name")));
-                contact.setMaterialValue(cursor.getInt(cursor.getColumnIndex("material_value")));
-
-                materialHaving.add(contact);
-            } while (cursor.moveToNext());
-        }
-
-        return materialHaving;
-
-    }
 }
 
 

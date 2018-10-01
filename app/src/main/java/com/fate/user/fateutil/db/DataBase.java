@@ -26,6 +26,9 @@ public class DataBase {
     3. 보구 테이블
     3_1) 보구 테이블 변수 생성
 
+    4. 서번트 스테이터스
+    4_1) 서번트 재림 이미지 테이블 변수 생성
+
     5. 서번트 재료 테이블
     5_1) 서번트 조인 재료 테이블 변수 생성
     5_2) 서번트 재료 테이블 변수 생성
@@ -50,6 +53,9 @@ public class DataBase {
 
     3. 서번트 조인 보구 테이블 생성
     3_1) 서번트 보구 테이블 생성
+
+    4. 서번트 스테이터스
+    4_1) 서번트 영기재림 이미지 테이블 생성
 
     5. 서번트 재료 테이블
     5_1) 서번트 조인 재료 테이블 생성
@@ -93,7 +99,7 @@ public class DataBase {
     }
     // 1_5) 서번트 경험치 테이블 변수 생성
     public static final class ServantExpTable implements BaseColumns {
-        public static final String TABLE_NAME = "Servant_Exp";
+        public static final String TABLE_NAME = "ServantExp";
         public static final String ID = "id";
         public static final String SERVANT_LEVEL = "servantLevel";
         public static final String SERVANT_EXP = "servantExp";
@@ -159,6 +165,17 @@ public class DataBase {
         public static final String WEAPON_DURATION = "weapon_duration";
         public static final String WEAPON_PERCENT = "weapon_percent";
         public static final String WEAPON_ENHANCE = "weapon_enhance";
+    }
+
+    // 4. 서번트 스테이터스
+    // 4_1) 서번트 재림 이미지 테이블 변수 생성
+    public static final class ServantAscensionImageTable implements BaseColumns{
+        public static final String TABLE_NAME = "ServantAscensionImg";
+        public static final String ASCENSION_ID = "ascension_id";
+        public static final String SERVANT_ID = "servant_id";
+        public static final String ASCENSION_CLASSIFICATION = "ascension_classification";
+        public static final String ASCENSION_LEVEL = "ascension_level";
+        public static final String ASCENSION_IMG_NAME = "ascension_img_name";
     }
 
     // 5. 서번트 재료 테이블
@@ -248,6 +265,14 @@ public class DataBase {
                     ServantClassTable.CLASS_ID + " integer primary key not null, " +
                     ServantClassTable.CLASS_NAME + " text not null" + ");";
 
+    // 1_5) 서번트 경험치 테이블 생성
+    public static final String SQL_CREATE_SERVANT_EXP =
+            "create table " +
+                    ServantExpTable.TABLE_NAME + " (" +
+                    ServantExpTable.ID + " integer not null , " +
+                    ServantExpTable.SERVANT_LEVEL + " integer not null ," +
+                    ServantExpTable.SERVANT_EXP + " integer not null" + ");";
+
     // 2. 서번트 스킬
     // 2_1) 서번트 조인 액티브 스킬 테이블 생성
     public static final String SQL_CREATE_SERVANT_JOIN_SKILL =
@@ -315,14 +340,16 @@ public class DataBase {
                     WeaponTable.WEAPON_ENHANCE + " integer " +
                     ");";
 
-    // 4. 경험치 테이블
-    // 4_1) 서번트 경험치 테이블 생성
-    public static final String SQL_CREATE_SERVANT_EXP =
+    // 4. 서번트 스테이터스
+    // 4_1) 서번트 영기재림 이미지
+    public static final String SQL_CREATE_ASCENSION_IMG =
             "create table " +
-                    ServantExpTable.TABLE_NAME + " (" +
-                    ServantExpTable.ID + " integer not null , " +
-                    ServantExpTable.SERVANT_LEVEL + " integer not null ," +
-                    ServantExpTable.SERVANT_EXP + " integer not null" + ");";
+                    ServantAscensionImageTable.TABLE_NAME + " (" +
+                    ServantAscensionImageTable.ASCENSION_ID + " integer not null, " +
+                    ServantAscensionImageTable.SERVANT_ID + " integer not null, " +
+                    ServantAscensionImageTable.ASCENSION_CLASSIFICATION + " text, " +
+                    ServantAscensionImageTable.ASCENSION_LEVEL + " integer, " +
+                    ServantAscensionImageTable.ASCENSION_IMG_NAME + " text " + "); ";
 
     // 5. 서번트 재료 테이블
     // 5_1) 서번트 조인 재료 테이블 생성
