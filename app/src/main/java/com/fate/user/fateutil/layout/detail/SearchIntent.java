@@ -487,18 +487,8 @@ public class SearchIntent extends AppCompatActivity {
     public void tableAcsensionImg(int servantId){
         //servantAscensionsImage = mDbOpenHelper.getServantAscensionImage(servantId);
 
-        // 1. 이미지를 가지고 온다.
-        // 2.
-
-        /*
-        for(int i = 0; i < servantAscensionsImage.size(); i++){
-            ServantAscensionContact ascensionContact = servantAscensionsImage.get(i);
-
-        }*/
-
-
-
-
+        // 1. 아이디에 따라 이미지를 가지고 온다.
+        // 2. 버튼을 누르면 이미지를 add뷰 한다.
 
     }
 }
