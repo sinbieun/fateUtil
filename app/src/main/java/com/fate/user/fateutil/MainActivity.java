@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.fate.user.fateutil.db.Parser;
+import com.fate.user.fateutil.layout.HomeLayout;
 import com.fate.user.fateutil.layout.LevelLayout;
 import com.fate.user.fateutil.layout.NoticeLayout;
 import com.fate.user.fateutil.layout.SearchLayout;
@@ -80,6 +81,25 @@ public class MainActivity extends AppCompatActivity
         // parser.servantJoinSkillParser(); // 조인 테이블 삽입
 
         // 맨처음 변경점
+        firstLayout();
+    }
+
+    /**
+     * 첫번째 레이아웃
+     */
+    public void firstLayout(){
+        // 저장된 레이아웃이 있다면 뷰 삭제
+        if (contentView != null) {
+            contentView.removeAllViews();
+        }
+
+        // 저장된 레이아웃이 없다면 뷰를 띄워준다.
+        HomeLayout homeLayout = new HomeLayout(this);
+        contentView.addView(homeLayout);
+
+        // 공지사항 레이아웃 그려주기
+        homeLayout.init();
+
         // 타이틀 변경
         this.toolbarTitleChange(getString(R.string.toolbar_title_main));
     }
@@ -129,6 +149,8 @@ public class MainActivity extends AppCompatActivity
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        }else if (id == R.id.action_history) {
+            return true;
         }
 
         return super.onOptionsItemSelected(item);
@@ -142,7 +164,22 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_notice) {
+        if (id == R.id.nav_home) {
+            // 저장된 레이아웃이 있다면 뷰 삭제
+            if (contentView != null) {
+                contentView.removeAllViews();
+            }
+
+            // 저장된 레이아웃이 없다면 뷰를 띄워준다.
+            HomeLayout homeLayout = new HomeLayout(this);
+            contentView.addView(homeLayout);
+
+            // 공지사항 레이아웃 그려주기
+            homeLayout.init();
+
+            // 타이틀 변경
+            this.toolbarTitleChange(getString(R.string.toolbar_title_main));
+        }else if (id == R.id.nav_notice) {
             // 저장된 레이아웃이 있다면 뷰 삭제
             if (contentView != null) {
                 contentView.removeAllViews();
