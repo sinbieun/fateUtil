@@ -30,6 +30,11 @@
             android:icon="@drawable/ic_menu_level"
             android:title="경험치" />
 
+        <item
+            android:id="@+id/nav_magic"
+            android:icon="@drawable/ic_menu_level"
+            android:title="마술예장" />
+
     </group>
 
 </menu>

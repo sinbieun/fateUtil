@@ -22,6 +22,7 @@ import android.widget.Toast;
 import com.fate.user.fateutil.db.Parser;
 import com.fate.user.fateutil.layout.HomeLayout;
 import com.fate.user.fateutil.layout.LevelLayout;
+import com.fate.user.fateutil.layout.MagicLayout;
 import com.fate.user.fateutil.layout.NoticeLayout;
 import com.fate.user.fateutil.layout.SearchLayout;
 import com.fate.user.fateutil.layout.ServantLayout;
@@ -36,9 +37,15 @@ public class MainActivity extends AppCompatActivity
     private RelativeLayout contentView;
     private Parser parser;
 
+    // VIEW
+    public NavigationView navigationView;
+
     // ALERT
     private long backKeyPressedTime = 0;
     private Toast toast;
+
+    // layout parameter
+    private String whereCurrentLayout = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,14 +55,6 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -63,7 +62,7 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setItemIconTintList(null);
         navigationView.setNavigationItemSelectedListener(this);
 
@@ -95,6 +94,7 @@ public class MainActivity extends AppCompatActivity
 
         // 저장된 레이아웃이 없다면 뷰를 띄워준다.
         HomeLayout homeLayout = new HomeLayout(this);
+        homeLayout.mainActivity = this;
         contentView.addView(homeLayout);
 
         // 공지사항 레이아웃 그려주기
@@ -102,25 +102,46 @@ public class MainActivity extends AppCompatActivity
 
         // 타이틀 변경
         this.toolbarTitleChange(getString(R.string.toolbar_title_main));
+        whereCurrentLayout = "home";
     }
 
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if(drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(Gravity.START);
-            return;
-        }
 
-        if(System.currentTimeMillis() > (backKeyPressedTime + 2000)) {
-            backKeyPressedTime = System.currentTimeMillis();
-            showGuide();
-            return;
-        }
+        if("home".equals(whereCurrentLayout)) {
+            if(drawer.isDrawerOpen(GravityCompat.START)) {
+                drawer.closeDrawer(Gravity.START);
+                return;
+            }
 
-        if(System.currentTimeMillis() <= (backKeyPressedTime + 2000)) {
-            finish();
-            toast.cancel();
+            if(System.currentTimeMillis() > (backKeyPressedTime + 2000)) {
+                backKeyPressedTime = System.currentTimeMillis();
+                showGuide();
+                return;
+            }
+
+            if(System.currentTimeMillis() <= (backKeyPressedTime + 2000)) {
+                finish();
+                toast.cancel();
+            }
+        }else{
+            // 저장된 레이아웃이 있다면 뷰 삭제
+            if (contentView != null) {
+                contentView.removeAllViews();
+            }
+
+            // 저장된 레이아웃이 없다면 뷰를 띄워준다.
+            HomeLayout homeLayout = new HomeLayout(this);
+            homeLayout.mainActivity = this;
+            contentView.addView(homeLayout);
+
+            // 공지사항 레이아웃 그려주기
+            homeLayout.init();
+
+            // 타이틀 변경
+            this.toolbarTitleChange(getString(R.string.toolbar_title_main));
+            whereCurrentLayout = "home";
         }
     }
 
@@ -172,6 +193,7 @@ public class MainActivity extends AppCompatActivity
 
             // 저장된 레이아웃이 없다면 뷰를 띄워준다.
             HomeLayout homeLayout = new HomeLayout(this);
+            homeLayout.mainActivity = this;
             contentView.addView(homeLayout);
 
             // 공지사항 레이아웃 그려주기
@@ -179,6 +201,7 @@ public class MainActivity extends AppCompatActivity
 
             // 타이틀 변경
             this.toolbarTitleChange(getString(R.string.toolbar_title_main));
+            whereCurrentLayout = "home";
         }else if (id == R.id.nav_notice) {
             // 저장된 레이아웃이 있다면 뷰 삭제
             if (contentView != null) {
@@ -194,6 +217,7 @@ public class MainActivity extends AppCompatActivity
 
             // 타이틀 변경
             this.toolbarTitleChange(getString(R.string.toolbar_title_notice));
+            whereCurrentLayout = "notice";
         } else if (id == R.id.nav_search) {
 
             if (contentView != null) {
@@ -206,6 +230,7 @@ public class MainActivity extends AppCompatActivity
 
             // 타이틀 변경
             this.toolbarTitleChange(getString(R.string.toolbar_title_search));
+            whereCurrentLayout = "servant";
         } else if (id == R.id.nav_servant) {
 
             if (contentView != null) {
@@ -217,6 +242,7 @@ public class MainActivity extends AppCompatActivity
 
             // 타이틀 변경
             this.toolbarTitleChange(getString(R.string.toolbar_title_servant));
+            whereCurrentLayout = "bookmark";
         } else if (id == R.id.nav_level) {
 
             if (contentView != null) {
@@ -228,12 +254,103 @@ public class MainActivity extends AppCompatActivity
 
             // 타이틀 변경
             this.toolbarTitleChange(getString(R.string.toolbar_title_exp));
+            whereCurrentLayout = "exp";
+        } else if (id == R.id.nav_magic) {
+
+            if (contentView != null) {
+                contentView.removeAllViews();
+            }
+
+            MagicLayout magicLayout = new MagicLayout(this);
+            contentView.addView(magicLayout);
+
+            // 타이틀 변경
+            this.toolbarTitleChange(getString(R.string.toolbar_magic_exp));
+            whereCurrentLayout = "magic";
         }
 
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    /**
+     * 타 레이아웃에서 다른 레이아웃으로 이동
+     * @param gubun
+     */
+    public void moveMenuForLayout(String gubun){
+        if (gubun.equals("home")) {
+            // 저장된 레이아웃이 있다면 뷰 삭제
+            if (contentView != null) {
+                contentView.removeAllViews();
+            }
+
+            // 저장된 레이아웃이 없다면 뷰를 띄워준다.
+            HomeLayout homeLayout = new HomeLayout(this);
+            homeLayout.mainActivity = this;
+            contentView.addView(homeLayout);
+
+            // 공지사항 레이아웃 그려주기
+            homeLayout.init();
+
+            // 타이틀 변경
+            this.toolbarTitleChange(getString(R.string.toolbar_title_main));
+            whereCurrentLayout = "home";
+        }else if (gubun.equals("notice")) {
+            // 저장된 레이아웃이 있다면 뷰 삭제
+            if (contentView != null) {
+                contentView.removeAllViews();
+            }
+
+            // 저장된 레이아웃이 없다면 뷰를 띄워준다.
+            NoticeLayout noticeLayout = new NoticeLayout(this);
+            contentView.addView(noticeLayout);
+
+            // 공지사항 레이아웃 그려주기
+            noticeLayout.init();
+
+            // 타이틀 변경
+            this.toolbarTitleChange(getString(R.string.toolbar_title_notice));
+            whereCurrentLayout = "notice";
+        } else if (gubun.equals("servant")) {
+
+            if (contentView != null) {
+                contentView.removeAllViews();
+            }
+
+            SearchLayout searchLayout = new SearchLayout(this);        // 1. Layout Setting
+            searchLayout.init();                                                // 2. DB에서 서번트 항목 전체를 할당 받고 Adapter와 연결하여준다.
+            contentView.addView(searchLayout);
+
+            // 타이틀 변경
+            this.toolbarTitleChange(getString(R.string.toolbar_title_search));
+            whereCurrentLayout = "servant";
+        } else if (gubun.equals("bookmark")) {
+
+            if (contentView != null) {
+                contentView.removeAllViews();
+            }
+
+            ServantLayout servantLayout = new ServantLayout(this);
+            contentView.addView(servantLayout);
+
+            // 타이틀 변경
+            this.toolbarTitleChange(getString(R.string.toolbar_title_servant));
+            whereCurrentLayout = "bookmark";
+        } else if (gubun.equals("exp")) {
+
+            if (contentView != null) {
+                contentView.removeAllViews();
+            }
+
+            LevelLayout levelLayout = new LevelLayout(this);
+            contentView.addView(levelLayout);
+
+            // 타이틀 변경
+            this.toolbarTitleChange(getString(R.string.toolbar_title_exp));
+            whereCurrentLayout = "exp";
+        }
     }
 
     /**
