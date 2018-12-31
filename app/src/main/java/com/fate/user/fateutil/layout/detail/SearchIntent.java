@@ -31,6 +31,8 @@ public class SearchIntent extends AppCompatActivity {
     private int position;
     private TabHost tabHost1;
 
+    //String packName = this.getPackageName(); // 팩 이름
+
     // 스킬 명
     private String skillName;
 
@@ -110,6 +112,14 @@ public class SearchIntent extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
+        //
+        // 버튼 이미지 뷰 호출
+        Button ascention_btn_1 = findViewById(R.id.first_ascention_button);
+        Button ascention_btn_2 = findViewById(R.id.second_ascention_button);
+        Button ascention_btn_3 = findViewById(R.id.third_ascention_button);
+        Button ascention_btn_4 = findViewById(R.id.forth_ascention_button);
+        final ImageView ascention_img = findViewById(R.id.img_ascention);
+
 
     }
 
@@ -118,26 +128,27 @@ public class SearchIntent extends AppCompatActivity {
         // DB를 열고 데이터를 가져온다.
         mDbOpenHelper.open();
 
-        // 1. 서번트가 보유하고 있는 스킬들을 가져온다.
-        // 1_1) 서번트가 소유하고 있는 액티브 스킬을 가져온다.
+        // 1. 서번트 영기재림 이미지
+        servantAscensionImg = mDbOpenHelper.getServantAscensionImage(position); // 이미지를 가지고 온다.
+        tableAcsensionImg(servantAscensionImg);
+
+        // 2. 서번트가 보유하고 있는 스킬들을 가져온다.
+        // 2_1) 서번트가 소유하고 있는 액티브 스킬을 가져온다.
         servantHavingActiveSkill = mDbOpenHelper.getServantHavingActiveSkill(position); // 리스트 위치에 따라 검색을 다르게 한다.
-        // 1_2) 서번트가 소유하고 있는 패시브 스킬을 가져온다.
+        // 2_2) 서번트가 소유하고 있는 패시브 스킬을 가져온다.
         servantHavingPassiveSkill = mDbOpenHelper.getServantHavingPassiveSkill(position);
-        // 2. 보유하고 있는 스킬 갯수에 따라 테이블의 행을 생성한다.
+        // 2_3) 보유하고 있는 스킬 갯수에 따라 테이블의 행을 생성한다.
         tableHavingActiveSkill(servantHavingActiveSkill.size(), 3); // 액티브 스킬
         tablePassiveSkil(servantHavingPassiveSkill.size(), 3); // 패시브 스킬
 
-        // 2. 보유하고 있는 강화 재료를 가져온다.
+        // 3. 보유하고 있는 강화 재료를 가져온다.
         // 2_1) 서번트가 보유하고 있는 영기재림 재료를 가져온다.
         servantMaterial = mDbOpenHelper.getServantMaterial(position, 'A');
-        tableMaterial(5,3, servantMaterial);
+        tableMaterial(5, 3, servantMaterial);
         // 2_2) 서번트가 보유하고 있는 스킬재림 재료를 가져온다.
         servantMaterial = mDbOpenHelper.getServantMaterial(position, 'S');
-        tableMaterial(10,3, servantMaterial);
+        tableMaterial(10, 3, servantMaterial);
 
-        // 서번트 영기재림 이미지
-        servantAscensionImg = mDbOpenHelper.getServantAscensionImage(position); // 이미지를 가지고 온다.
-        tableAcsensionImg(servantAscensionImg);
         mDbOpenHelper.close();
 
     }
@@ -222,6 +233,7 @@ public class SearchIntent extends AppCompatActivity {
         } // tr 의 끝
 
     }
+
     // 액티브 스킬 수치 테이블 생성
     public void tableActiveSkillValue(int trCt, int tdCt) {
 
@@ -327,6 +339,7 @@ public class SearchIntent extends AppCompatActivity {
         } // tr for end
 
     }
+
     // 패시브 스킬 테이블 생성
     public void tablePassiveSkil(int trCt, int tdCt) {
         // 테이블 변수
@@ -387,6 +400,7 @@ public class SearchIntent extends AppCompatActivity {
         } // tr 의 끝
 
     }
+
     // 영기 재림 재료 테이블 생성
     public void tableMaterial(int trCt, int tdCt, List<MaterialContact> Material) {
         // 테이블 변수
@@ -451,8 +465,7 @@ public class SearchIntent extends AppCompatActivity {
                             textViews[upgradeLevel - 2][td].setGravity(Gravity.CENTER);
                             row[upgradeLevel - 2].addView(textViews[upgradeLevel - 2][td]);
                             level = upgradeLevel;
-                        }
-                        else{
+                        } else {
                             textViews[upgradeLevel - 2][td].setText(" ");
                             textViews[upgradeLevel - 2][td].setTextSize(15);
                             textViews[upgradeLevel - 2][td].setGravity(Gravity.CENTER);
@@ -486,67 +499,58 @@ public class SearchIntent extends AppCompatActivity {
         }
 
     }
-    // 서번트 영기재림 이미지(완료) => 최적화
-    public void tableAcsensionImg(final List<ServantAscensionContact> servantAscensionImg){
 
-        // 버튼 이미지 뷰 호출
+    // 서번트 영기재림 이미지(완료) => 최적화
+    public void tableAcsensionImg(final List<ServantAscensionContact> servantAscensionImg) {
+
+        //
         Button ascention_btn_1 = findViewById(R.id.first_ascention_button);
         Button ascention_btn_2 = findViewById(R.id.second_ascention_button);
         Button ascention_btn_3 = findViewById(R.id.third_ascention_button);
         Button ascention_btn_4 = findViewById(R.id.forth_ascention_button);
-        final ImageView ascention_img = findViewById(R.id.img_ascention);
+        final String packName = this.getPackageName();
 
-        final String packName = this.getPackageName(); // 팩 이름
-        String imgPath; // 이미지 경로
-        ServantAscensionContact servantAscensionContact = servantAscensionImg.get(0); // contact
-        imgPath= servantAscensionContact.getAscensionImgName();
-        ascention_img.setImageResource(getResources().getIdentifier("@drawable/" + imgPath, "drawable", packName));
-
-        // 버튼 클릭 이벤트
-        ascention_btn_1.setOnClickListener(new Button.OnClickListener() {
+        // 버튼 리스너
+        Button.OnClickListener onClickListener = new Button.OnClickListener(){
             @Override
             public void onClick(View view) {
+                ImageView ascention_img = findViewById(R.id.img_ascention);
                 String imgPath; // 이미지 경로
-                ascention_img.setImageResource(0);
-                ServantAscensionContact servantAscensionContact = servantAscensionImg.get(0); // contact
-                imgPath= servantAscensionContact.getAscensionImgName();
-                ascention_img.setImageResource(getResources().getIdentifier("@drawable/" + imgPath, "drawable", packName));
+                ServantAscensionContact servantAscensionContact;
+                switch (view.getId()){
+                    case R.id.first_ascention_button :
+                        ascention_img.setImageResource(0);
+                        servantAscensionContact = servantAscensionImg.get(0); // contact
+                        imgPath= servantAscensionContact.getAscensionImgName();
+                        ascention_img.setImageResource(getResources().getIdentifier("@drawable/" + imgPath, "drawable", packName));
+                        break;
+                    case R.id.second_ascention_button :
+                        ascention_img.setImageResource(0);
+                        servantAscensionContact = servantAscensionImg.get(1); // contact
+                        imgPath= servantAscensionContact.getAscensionImgName();
+                        ascention_img.setImageResource(getResources().getIdentifier("@drawable/" + imgPath, "drawable", packName));
+                        break;
+                    case R.id.third_ascention_button :
+                        ascention_img.setImageResource(0);
+                        servantAscensionContact = servantAscensionImg.get(2); // contact
+                        imgPath= servantAscensionContact.getAscensionImgName();
+                        ascention_img.setImageResource(getResources().getIdentifier("@drawable/" + imgPath, "drawable", packName));
+                        break;
+                    case R.id.forth_ascention_button :
+                        ascention_img.setImageResource(0);
+                        servantAscensionContact = servantAscensionImg.get(3); // contact
+                        imgPath= servantAscensionContact.getAscensionImgName();
+                        ascention_img.setImageResource(getResources().getIdentifier("@drawable/" + imgPath, "drawable", packName));
+                        break;
+                }
             }
-        });
+        };
 
-        ascention_btn_2.setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String imgPath; // 이미지 경로
-                ascention_img.setImageResource(0);
-                ServantAscensionContact servantAscensionContact = servantAscensionImg.get(1); // contact
-                imgPath= servantAscensionContact.getAscensionImgName();
-                ascention_img.setImageResource(getResources().getIdentifier("@drawable/" + imgPath, "drawable", packName));
-            }
-        });
-
-        ascention_btn_3.setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String imgPath; // 이미지 경로
-                ascention_img.setImageResource(0);
-                ServantAscensionContact servantAscensionContact = servantAscensionImg.get(2); // contact
-                imgPath= servantAscensionContact.getAscensionImgName();
-                ascention_img.setImageResource(getResources().getIdentifier("@drawable/" + imgPath, "drawable", packName));
-            }
-        });
-
-        ascention_btn_4.setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String imgPath; // 이미지 경로
-                ascention_img.setImageResource(0);
-                ServantAscensionContact servantAscensionContact = servantAscensionImg.get(3); // contact
-                imgPath= servantAscensionContact.getAscensionImgName();
-                ascention_img.setImageResource(getResources().getIdentifier("@drawable/" + imgPath, "drawable", packName));
-            }
-        });
-
+        // 리스너 설정
+        ascention_btn_1.setOnClickListener(onClickListener);
+        ascention_btn_2.setOnClickListener(onClickListener);
+        ascention_btn_3.setOnClickListener(onClickListener);
+        ascention_btn_4.setOnClickListener(onClickListener);
     }
 }
 
