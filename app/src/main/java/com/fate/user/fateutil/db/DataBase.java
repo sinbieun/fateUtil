@@ -202,7 +202,7 @@ public class DataBase {
     public static final class MagicTable implements BaseColumns {
         public static final String TABLE_NAME = "Magic";
         public static final String ID = "id";
-        public static final String MAGIC_NAME = "";
+        public static final String MAGIC_NAME = "magic_name";
         public static final String MAGIC_CONTENT = "magic_content";
         public static final String MAGIC_IMAGE = "magic_image";
         public static final String MAGIC_DELETE_YN = "magic_delete_yn";
