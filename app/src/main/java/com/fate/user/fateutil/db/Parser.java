@@ -4,6 +4,9 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.widget.LinearLayout;
 
+import com.fate.user.fateutil.db.contact.Magic.MagicContact;
+import com.fate.user.fateutil.db.contact.Magic.MagicEffectContact;
+import com.fate.user.fateutil.db.contact.Magic.MagicExpContact;
 import com.fate.user.fateutil.db.contact.Material.MaterialContact;
 import com.fate.user.fateutil.db.contact.Servant.ServantAscensionContact;
 import com.fate.user.fateutil.db.contact.Servant.ServantExpContact;
@@ -68,6 +71,11 @@ public class Parser extends LinearLayout {
         2_4) 서번트 패시브 스킬 테이블에 데이터 삽입
         2_5) 서번트 조인 재료 테이블에 데이터 삽입
         2_6) 서번트 재료 테이블에 데이터 삽입
+
+        3. 마술 예장 데이터 ( Magic )
+        3_1) 마술 예장 데이터 삽입
+        3_2) 마술 예장 효과 데이터 삽입
+        3_3) 마술 예장 경험치 데이터 삽입
 
      */
     // 1_1) 서번트 리스트 조인 테이블에 데이터 삽입
@@ -524,4 +532,141 @@ public class Parser extends LinearLayout {
 
     }
 
+    // 3_1) 마술예장 데이터 삽입
+    public void magicParser(){
+        // 0. 테이블에 값이 있으면 저장하지 않는다.
+
+        mDbOpenHelper.open();
+        if (mDbOpenHelper.checkData(DataBase.MagicTable.TABLE_NAME)) {
+            mDbOpenHelper.close();
+            return;
+        }
+        // 1. Servant.json 파일을 String에 저장
+        String fileName = "databases/Magic.json";
+        String jsonString = loadServantFromAsset(fileName);
+        // 트랜잭션 시작
+        mDbOpenHelper.mDB.beginTransaction();
+        try {
+            JSONArray jarray = new JSONArray(jsonString);
+
+            for (int i = 0; i < jarray.length(); i++) {
+                JSONObject jObject = jarray.getJSONObject(i);
+
+                // 2. 데이터 세팅
+                MagicContact magicContact = new MagicContact();
+                magicContact.setId(jObject.getInt("id"));
+                magicContact.setMagicName(jObject.getString("magic_name"));
+                magicContact.setMagicContent(jObject.getString("magic_content"));
+                magicContact.setMagicImage(jObject.getString("magic_image"));
+                magicContact.setMagicDeleteYn(jObject.getString("magic_delete_yn"));
+
+
+                // 3. 데이터 삽입을 하여준다.
+                mDbOpenHelper.addMagic(magicContact);
+            }
+            // 4. 완전히 종료되면 실행
+            mDbOpenHelper.mDB.setTransactionSuccessful();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } finally {
+            // 5. 삽입 끝나면 트랜잭션 종료
+            mDbOpenHelper.mDB.endTransaction();
+            // 6. DB 닫기
+            mDbOpenHelper.close();
+        }
+    }
+
+    // 3_2) 마술예장 효과 데이터 삽입
+    public void magicEffectParser(){
+        // 0. 테이블에 값이 있으면 저장하지 않는다.
+
+        mDbOpenHelper.open();
+        if (mDbOpenHelper.checkData(DataBase.MagicEffectTable.TABLE_NAME)) {
+            mDbOpenHelper.close();
+            return;
+        }
+        // 1. Servant.json 파일을 String에 저장
+        String fileName = "databases/MagicEffect.json";
+        String jsonString = loadServantFromAsset(fileName);
+        // 트랜잭션 시작
+        mDbOpenHelper.mDB.beginTransaction();
+        try {
+            JSONArray jarray = new JSONArray(jsonString);
+
+            for (int i = 0; i < jarray.length(); i++) {
+                JSONObject jObject = jarray.getJSONObject(i);
+
+                // 2. 데이터 세팅
+                MagicEffectContact magicEffectContact = new MagicEffectContact();
+
+                magicEffectContact.setId(jObject.getInt("id"));
+                magicEffectContact.setMagicId(jObject.getInt("magic_id"));
+                magicEffectContact.setMagicEffectName(jObject.getString("magic_effect_name"));
+                magicEffectContact.setMagicEffectGoal(jObject.getString("magic_effect_goal"));
+                magicEffectContact.setMagicEffectContent(jObject.getString("magic_effect_content"));
+                magicEffectContact.setMagicEffectTime(jObject.getString("magic_effect_time"));
+                magicEffectContact.setMagicEffectLevel(jObject.getString("magic_effect_level"));
+                magicEffectContact.setMagicEffectImage(jObject.getString("magic_effect_image"));
+                magicEffectContact.setMagicEffectUtil(jObject.getString("magic_effect_util"));
+                magicEffectContact.setMagicEffectDeleteYn(jObject.getString("magic_effect_delete_yn"));
+
+                // 3. 데이터 삽입을 하여준다.
+                mDbOpenHelper.addMagicEffect(magicEffectContact);
+            }
+            // 4. 완전히 종료되면 실행
+            mDbOpenHelper.mDB.setTransactionSuccessful();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } finally {
+            // 5. 삽입 끝나면 트랜잭션 종료
+            mDbOpenHelper.mDB.endTransaction();
+            // 6. DB 닫기
+            mDbOpenHelper.close();
+        }
+    }
+
+    // 3_3) 마술예장 경험치 데이터 삽입
+    public void magicExpParser(){
+        // 0. 테이블에 값이 있으면 저장하지 않는다.
+
+        mDbOpenHelper.open();
+        if (mDbOpenHelper.checkData(DataBase.MagicExpTable.TABLE_NAME)) {
+            mDbOpenHelper.close();
+            return;
+        }
+        // 1. Servant.json 파일을 String에 저장
+        String fileName = "databases/MagicExp.json";
+        String jsonString = loadServantFromAsset(fileName);
+        // 트랜잭션 시작
+        mDbOpenHelper.mDB.beginTransaction();
+        try {
+            JSONArray jarray = new JSONArray(jsonString);
+
+            for (int i = 0; i < jarray.length(); i++) {
+                JSONObject jObject = jarray.getJSONObject(i);
+
+                // 2. 데이터 세팅
+                MagicExpContact magicExpContact = new MagicExpContact();
+
+                magicExpContact.setId(jObject.getInt("id"));
+                magicExpContact.setMagicId(jObject.getInt("magic_id"));
+                magicExpContact.setMagicExpLevel(jObject.getInt("magic_exp_level"));
+                magicExpContact.setMagicExpCount(jObject.getInt("magic_exp_count"));
+                magicExpContact.setMagicExpTotal(jObject.getInt("magic_exp_total"));
+                magicExpContact.setMagicExpDeleteYn(jObject.getString("magic_delete_yn"));
+
+                // 3. 데이터 삽입을 하여준다.
+                mDbOpenHelper.addMagicExp(magicExpContact);
+            }
+            // 4. 완전히 종료되면 실행
+            mDbOpenHelper.mDB.setTransactionSuccessful();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } finally {
+            // 5. 삽입 끝나면 트랜잭션 종료
+            mDbOpenHelper.mDB.endTransaction();
+            // 6. DB 닫기
+            mDbOpenHelper.close();
+        }
+    }
 }

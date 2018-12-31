@@ -202,34 +202,34 @@ public class DataBase {
     public static final class MagicTable implements BaseColumns {
         public static final String TABLE_NAME = "Magic";
         public static final String ID = "id";
-        public static final String MAGIC_NAME = "magicName";
-        public static final String MAGIC_CONTENT = "magicContent";
-        public static final String MAGIC_IMAGE = "magicImage";
-        public static final String MAGIC_DELETE_YN = "magicDeleteYn";
+        public static final String MAGIC_NAME = "";
+        public static final String MAGIC_CONTENT = "magic_content";
+        public static final String MAGIC_IMAGE = "magic_image";
+        public static final String MAGIC_DELETE_YN = "magic_delete_yn";
     }
     // 6_2) 마술예장 스킬 테이블 변수 생성
     public static final class MagicEffectTable implements BaseColumns {
         public static final String TABLE_NAME = "MagicEffect";
         public static final String ID = "id";
-        public static final String MAGIC_ID = "magicId";
-        public static final String MAGIC_EFFECT_NAME = "magicEffectName";
-        public static final String MAGIC_EFFECT_GOAL = "magicEffectGoal";
-        public static final String MAGIC_EFFECT_CONTENT = "magicEffectContent";
-        public static final String MAGIC_EFFECT_TIME = "magicEffectTime";
-        public static final String MAGIC_EFFECT_LEVEL = "magicEffectLevel";
-        public static final String MAGIC_EFFECT_IMAGE = "magicEffectImage";
-        public static final String MAGIC_EFFECT_UTIL = "magicEffectUtil";
-        public static final String MAGIC_EFFECT_DELETE_YN = "magicEffectDeleteYn";
+        public static final String MAGIC_ID = "magic_id";
+        public static final String MAGIC_EFFECT_NAME = "magic_effect_name";
+        public static final String MAGIC_EFFECT_GOAL = "magic_effect_goal";
+        public static final String MAGIC_EFFECT_CONTENT = "magic_effect_content";
+        public static final String MAGIC_EFFECT_TIME = "magic_effect_time";
+        public static final String MAGIC_EFFECT_LEVEL = "magic_effect_level";
+        public static final String MAGIC_EFFECT_IMAGE = "magic_effect_image";
+        public static final String MAGIC_EFFECT_UTIL = "magic_effect_util";
+        public static final String MAGIC_EFFECT_DELETE_YN = "magic_effect_delete_yn";
     }
     // 6_3) 마술예장 경험치 테이블 변수 생성
     public static final class MagicExpTable implements BaseColumns {
         public static final String TABLE_NAME = "MagicExp";
         public static final String ID = "id";
-        public static final String MAGIC_ID = "magicId";
-        public static final String MAGIC_EXP_LEVEL = "magicExpLevel";
-        public static final String MAGIC_EXP_COUNT = "magicExpCount";
-        public static final String MAGIC_EXP_TOTAL = "magicExpTotal";
-        public static final String MAGIC_DELETE_YN = "magicDeleteYn";
+        public static final String MAGIC_ID = "magic_id";
+        public static final String MAGIC_EXP_LEVEL = "magic_exp_level";
+        public static final String MAGIC_EXP_COUNT = "magic_exp_count";
+        public static final String MAGIC_EXP_TOTAL = "magic_exp_total";
+        public static final String MAGIC_DELETE_YN = "magic_delete_yn";
     }
 
     // - 2 - 테이블 생성문

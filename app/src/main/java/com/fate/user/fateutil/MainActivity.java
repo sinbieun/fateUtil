@@ -1,5 +1,6 @@
 package com.fate.user.fateutil;
 
+import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -37,6 +39,10 @@ public class MainActivity extends AppCompatActivity
     private RelativeLayout contentView;
     private Parser parser;
 
+    // SIZE
+    public int deviceHeight = 0;
+    public int deviceWidth = 0;
+
     // VIEW
     public NavigationView navigationView;
 
@@ -61,6 +67,12 @@ public class MainActivity extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+
+        // SIZE 추가
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        deviceWidth = getPixelToDp(this, displayMetrics.widthPixels);
+        deviceHeight = getPixelToDp(this, displayMetrics.heightPixels);
 
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setItemIconTintList(null);
@@ -264,6 +276,9 @@ public class MainActivity extends AppCompatActivity
             MagicLayout magicLayout = new MagicLayout(this);
             contentView.addView(magicLayout);
 
+            magicLayout.mainActivity = this;
+            magicLayout.init();
+
             // 타이틀 변경
             this.toolbarTitleChange(getString(R.string.toolbar_magic_exp));
             whereCurrentLayout = "magic";
@@ -350,6 +365,21 @@ public class MainActivity extends AppCompatActivity
             // 타이틀 변경
             this.toolbarTitleChange(getString(R.string.toolbar_title_exp));
             whereCurrentLayout = "exp";
+        } else if (gubun.equals("magic")) {
+
+            if (contentView != null) {
+                contentView.removeAllViews();
+            }
+
+            MagicLayout magicLayout = new MagicLayout(this);
+            contentView.addView(magicLayout);
+
+            magicLayout.mainActivity = this;
+            magicLayout.init();
+
+            // 타이틀 변경
+            this.toolbarTitleChange(getString(R.string.toolbar_magic_exp));
+            whereCurrentLayout = "magic";
         }
     }
 
@@ -394,5 +424,27 @@ public class MainActivity extends AppCompatActivity
         parser.servantMaterialParser();
 
         parser.servantAscensionImgParser();
+
+        // 마술 예장 정보 데이터 삽입
+        parser.magicParser();           // 마술 예장
+        parser.magicEffectParser();     // 마술 예장 효과
+        parser.magicExpParser();        // 마술 예장 경험치
+    }
+
+    /**
+     * PX -> DP
+     * @param context
+     * @param pixel
+     * @return
+     */
+    public int getPixelToDp(Context context, int pixel) {
+        float dp = 0;
+        try {
+            DisplayMetrics metrics = context.getResources().getDisplayMetrics();
+            dp = pixel / (metrics.densityDpi / 160f);
+        } catch (Exception e) {
+
+        }
+        return (int) dp;
     }
 }

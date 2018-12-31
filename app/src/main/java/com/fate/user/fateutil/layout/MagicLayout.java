@@ -2,125 +2,341 @@ package com.fate.user.fateutil.layout;
 
 import android.content.Context;
 import android.content.res.AssetManager;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.fate.user.fateutil.MainActivity;
 import com.fate.user.fateutil.R;
 import com.fate.user.fateutil.db.DbOpenHelper;
+import com.fate.user.fateutil.db.contact.Magic.MagicContact;
+import com.fate.user.fateutil.db.contact.Magic.MagicExpContact;
+
+import org.w3c.dom.Text;
+
+import java.util.List;
 
 public class MagicLayout extends LinearLayout {
 
-
-    private  Button btnLevel = null;
-    private  EditText currentLevel, targetLevel;
-    private  LinearLayout currentLayout;
-    private  TextView fourClass, fourNormal, threeClass, threeNormal;
-    private  LayoutInflater li;
-    private  AssetManager assetManager = getResources().getAssets();
+    private RelativeLayout currentLayout;
+    private LayoutInflater li;
+    private AssetManager assetManager = getResources().getAssets();
+    public MainActivity mainActivity;
 
     // DB 변수
     private DbOpenHelper mDbOpenHelper;
 
+    // 마술 예장 데이터
+    private ArrayAdapter<CharSequence> magicSpinnerList;
+
+    private TextView tab1Button;
+    private TextView tab2Button;
+    private TextView tab3Button;
+
+    private LinearLayout tab1Layout;
+    private LinearLayout tab2Layout;
+    private LinearLayout tab3Layout;
+
+    // 1탭 요소
+    private ImageView magicImageView;
+    private TextView magicContentView;
+
+    // 3탭 요소
+    private LinearLayout expMenuLayout;
+    private GridLayout expGridLayout;
+
+    // 파라미터 세팅
+    private int selectMagicId = 1;
+    private String selectedMenu = "";
 
     public MagicLayout(Context context) {
         super(context);
 
         String infService = context.LAYOUT_INFLATER_SERVICE;
         li = (LayoutInflater) context.getSystemService(infService);
-        currentLayout = (LinearLayout) li.inflate(R.layout.level_main, null);
+    }
+
+    /**
+     * 시작 시, 세팅
+     */
+    public void init(){
+        currentLayout = (RelativeLayout) li.inflate(R.layout.magic_main, null);
         addView(currentLayout);
 
-
-        // 1. id 찾기
-        btnLevel = currentLayout.findViewById(R.id.btn_Level);
-        currentLevel = currentLayout.findViewById(R.id.current_level);
-        targetLevel = currentLayout.findViewById(R.id.target_level);
-        fourClass = currentLayout.findViewById(R.id.four_class);
-        fourNormal = currentLayout.findViewById(R.id.four_normal);
-        threeClass = currentLayout.findViewById(R.id.three_class);
-        threeNormal = currentLayout.findViewById(R.id.three_normal);
-
+        // DB Setting
         mDbOpenHelper = new DbOpenHelper(currentLayout.getContext());
 
-        // 2. 계산 버튼 클릭시 작동
-        btnLevel.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Calculate();
+        // first data setting
+        selectMagicId = 1;
+        selectedMenu = "설명";
+
+        setViewData();
+    }
+
+    /**
+     * 외부에서 데이터 세팅
+     */
+    public void setData(SQLiteDatabase db){
+    }
+
+    /**
+     * 데이터 세팅
+     */
+    private void setViewData(){
+       // List<MagicContact> magicList =  mDbOpenHelper.getMagicList();
+
+        Spinner weaponSpinner = (Spinner) findViewById(R.id.magic_spinner);
+        magicSpinnerList = ArrayAdapter.createFromResource(getContext(), R.array.magicArray, R.layout.spinner_style_1);
+        weaponSpinner.setAdapter(magicSpinnerList);
+        weaponSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                selectMagicId = selectMagic(magicSpinnerList.getItem(position).toString());
+                drawGridLayout();
+            }
+
+            public void onNothingSelected(AdapterView<?> parent) {
             }
         });
 
+        // 탭 세팅
+        tab1Button = (TextView) findViewById(R.id.tab_1);
+        tab1Button.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String prevSelectedMenu = selectedMenu;
+                selectedMenu = "설명";
+                if(!prevSelectedMenu.equals(selectedMenu)) {
+                    drawGridLayout();
+
+                    tab1Button.setBackgroundResource(R.drawable.tab_background_gradient_selected);
+                    tab2Button.setBackgroundResource(R.drawable.tab_background_gradient);
+                    tab3Button.setBackgroundResource(R.drawable.tab_background_gradient);
+
+                    tab1Button.setTextColor(Color.parseColor("#FFFFFF"));
+                    tab2Button.setTextColor(Color.parseColor("#AAAAAA"));
+                    tab3Button.setTextColor(Color.parseColor("#AAAAAA"));
+                }
+            }
+        });
+
+        tab2Button = (TextView) findViewById(R.id.tab_2);
+        tab2Button.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String prevSelectedMenu = selectedMenu;
+                selectedMenu = "효과";
+                if(!prevSelectedMenu.equals(selectedMenu)) {
+                    drawGridLayout();
+
+                    tab1Button.setBackgroundResource(R.drawable.tab_background_gradient);
+                    tab2Button.setBackgroundResource(R.drawable.tab_background_gradient_selected);
+                    tab3Button.setBackgroundResource(R.drawable.tab_background_gradient);
+
+                    tab1Button.setTextColor(Color.parseColor("#AAAAAA"));
+                    tab2Button.setTextColor(Color.parseColor("#FFFFFF"));
+                    tab3Button.setTextColor(Color.parseColor("#AAAAAA"));
+                }
+            }
+        });
+
+        tab3Button = (TextView) findViewById(R.id.tab_3);
+        tab3Button.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String prevSelectedMenu = selectedMenu;
+                selectedMenu = "경험치";
+                if(!prevSelectedMenu.equals(selectedMenu)) {
+                    drawGridLayout();
+
+                    tab1Button.setBackgroundResource(R.drawable.tab_background_gradient);
+                    tab2Button.setBackgroundResource(R.drawable.tab_background_gradient);
+                    tab3Button.setBackgroundResource(R.drawable.tab_background_gradient_selected);
+
+                    tab1Button.setTextColor(Color.parseColor("#AAAAAA"));
+                    tab2Button.setTextColor(Color.parseColor("#AAAAAA"));
+                    tab3Button.setTextColor(Color.parseColor("#FFFFFF"));
+                }
+            }
+        });
+
+        // 탭 세팅
+        tab1Layout = (LinearLayout) findViewById(R.id.tab_layout_1);
+        tab2Layout = (LinearLayout) findViewById(R.id.tab_layout_2);
+        tab3Layout = (LinearLayout) findViewById(R.id.tab_layout_3);
+
+        // 1탭 요소
+        magicImageView = (ImageView) findViewById(R.id.magic_image);
+        magicContentView = (TextView) findViewById(R.id.magic_content);
+
+        // 3탭 요소
+        expMenuLayout = (LinearLayout) findViewById(R.id.exp_menu_layout);
+        expGridLayout = (GridLayout) findViewById(R.id.exp_grid_layout);
     }
 
-    public void Calculate (){
+    /**
+     * 화면 뿌려주기
+     */
+    private void drawGridLayout(){
 
-        int currentExp = 0; // 현재의 경험치
-        int targetExp = 0; // 목표의 경험치
+        int allSizeWidthWithMargin = mainActivity.deviceWidth - 20;
 
-        int currentLv = 0; // 현재의 레벨
-        int targetLv = 0; // 목표의 레벨
+        if(selectedMenu != null){
+            mDbOpenHelper.open();
+            if(selectedMenu.equals("설명")){
+                // VIEW SHOW & HIDE
+                tab1Layout.setVisibility(View.VISIBLE);
+                tab2Layout.setVisibility(View.GONE);
+                tab3Layout.setVisibility(View.GONE);
 
-        int sumExp; // 전체 경험치 - 1 한 값
+                MagicContact getMagic = mDbOpenHelper.getMagic(selectMagicId);
+                magicImageView.setImageResource(getContext().getResources().getIdentifier("@drawable/" + getMagic.getMagicImage(), "drawable",getContext().getPackageName()));
+                magicContentView.setText(getMagic.getMagicContent());
+            }else if(selectedMenu.equals("효과")){
+                // VIEW SHOW & HIDE
+                tab1Layout.setVisibility(View.GONE);
+                tab2Layout.setVisibility(View.VISIBLE);
+                tab3Layout.setVisibility(View.GONE);
 
-        // 경험치 카드 경험치
-        final int fourClassExp = 32400; // 4성 클래스
-        final int fourNormalExp = 27000; // 4성 일반
-        final int threeClassExp = 10800; // 3성 클래스
-        final int threeNormalExp = 9000; // 3성 일반
+            }else if(selectedMenu.equals("경험치")){
+                // VIEW SHOW & HIDE
+                tab1Layout.setVisibility(View.GONE);
+                tab2Layout.setVisibility(View.GONE);
+                tab3Layout.setVisibility(View.VISIBLE);
 
-        int exp [] = new int[4];
-        exp[0] = fourClassExp;
-        exp[1] = fourNormalExp;
-        exp[2] = threeClassExp;
-        exp[3] = threeNormalExp;
+                // 표 초기화
+                expGridLayout.removeAllViews();
 
-        // 4성 클래스, 4성 일반, 3성 클래스, 3성 일반 저장
-        int result[] = new int [4];
+                int columnWidth = (int) ((float)( allSizeWidthWithMargin ) / 3 );
+                int lastColumnWidth = allSizeWidthWithMargin - ( columnWidth * 2 );
 
-        // 경험치 입력칸이 공백이면 계산하지 않음
-        if((currentLevel.getText().toString().length() == 0) || (targetLevel.getText().toString().length() == 0)){
-            Toast.makeText(getContext(),"다시 입력해주십시오", Toast.LENGTH_SHORT).show();
-            return ;
-        }
-        // 공백이 아니면 경험치 입력 텍스트 값을 정수형으로 변환한다.
-        else {
-            currentLv = Integer.parseInt(currentLevel.getText().toString());
-            targetLv = Integer.parseInt(targetLevel.getText().toString());
-        }
+                drawExpGridLayoutData("레벨", columnWidth,30,25, "M");
+                drawExpGridLayoutData("경험치", columnWidth,30,25, "M");
+                drawExpGridLayoutData("누적 경험치", lastColumnWidth,30,25, "M");
 
-        // 계산 부분
-        // 목표 레벨이 현재 레벨보다 작거나 같을 때
-        if (currentLv >= targetLv){
-            Toast.makeText(getContext(),"목표레벨이 현재 레벨보다 작거나 같습니다.", Toast.LENGTH_SHORT).show();
-        }
-        // 입력된 레벨이 100보다 클때
-        else if ((currentLv > 100) || (targetLv > 100)){
-            Toast.makeText(getContext(),"최대 레벨은 100입니다", Toast.LENGTH_SHORT).show();
-        }
-        // DB에서 커서를 사용하여 데이터 값을 가져온다.
-        else{
-            mDbOpenHelper.open(); // db열기
-            currentExp = mDbOpenHelper.getExpContact(currentLevel.getText().toString());  // 현재 경험치
-            targetExp = mDbOpenHelper.getExpContact(targetLevel.getText().toString());  // 목표 경험치
+                // 데이터 호출
+                List<MagicExpContact> magicExpList = mDbOpenHelper.getMagicExpList(selectMagicId);
+
+                for (int expIndex = 0 ; expIndex < magicExpList.size() ; expIndex++){
+                    // 레벨
+                    drawExpGridLayoutData(String.valueOf(magicExpList.get(expIndex).getMagicExpLevel()), columnWidth, 30, 15, "C");
+
+                    // 경험치
+                    drawExpGridLayoutData(String.valueOf(magicExpList.get(expIndex).getMagicExpCount()), columnWidth, 30, 15, "C");
+
+                    // 누적 경험치
+                    drawExpGridLayoutData(String.valueOf(magicExpList.get(expIndex).getMagicExpTotal()), lastColumnWidth, 30, 15, "C");
+                }
+            }   // 구분
             mDbOpenHelper.close();
+        }   // null check
+    }
+
+    /**
+     * 선택된 마술예장의 아이디 반환
+     * @param selectMagicName
+     * @return
+     */
+    private int selectMagic(String selectMagicName){
+        int returnId = 1;
+        if(selectMagicName != null){
+            switch (selectMagicName){
+                case "마술예장 칼데아" :
+                    returnId = 1;
+                    break;
+                case "마술협회 제복" :
+                    returnId = 2;
+                    break;
+                case "아틀라스원 제복" :
+                    returnId = 3;
+                    break;
+                case "칼데아 전투복" :
+                    returnId = 4;
+                    break;
+                case "애니버서리 블론드" :
+                    returnId = 5;
+                    break;
+                case "로열 브랜드" :
+                    returnId = 6;
+                    break;
+                case "브릴리언트 서머" :
+                    returnId = 7;
+                    break;
+                case "달의 바다의 기억" :
+                    returnId = 8;
+                    break;
+                case "달의 뒷편의 기억" :
+                    returnId = 9;
+                    break;
+                case "2004년의 단편" :
+                    returnId = 10;
+                    break;
+                case "극지용 칼데아 제복" :
+                    returnId = 11;
+                    break;
+                case "트로피칼 서머" :
+                    returnId = 12;
+                    break;
+            }
+        }   // null check
+
+        return returnId;
+    }
+
+    /**
+     * 메뉴 레이아웃에 그려주기 - 데이터
+     * @param data
+     * @param objWidth
+     * @param objHeight
+     * @param objTextSize
+     */
+    public void drawExpGridLayoutData(String data, int objWidth, int objHeight, int objTextSize, String kindGubun){
+        if("M".equals(kindGubun)) {
+            TextView tempTextView = new TextView(getContext());
+            tempTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, objTextSize);
+            tempTextView.setTextColor(Color.parseColor("#FFFFFF"));
+            tempTextView.setGravity(Gravity.CENTER);
+            tempTextView.setText(data);
+
+            ViewGroup.LayoutParams tempViewParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            tempViewParams.width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, objWidth, getResources().getDisplayMetrics());
+            tempViewParams.height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, objHeight, getResources().getDisplayMetrics());
+            tempTextView.setLayoutParams(tempViewParams);
+
+            tempTextView.setBackgroundResource(R.drawable.grid_border_2);
+
+            expMenuLayout.addView(tempTextView);
+        }else if("C".equals(kindGubun)) {
+            TextView tempView = new TextView(getContext());
+            tempView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, objTextSize);
+            tempView.setTextColor(Color.parseColor("#FFFFFF"));
+            tempView.setGravity(Gravity.CENTER);
+            tempView.setText(data);
+
+            ViewGroup.LayoutParams tempParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            tempParams.width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, objWidth, getResources().getDisplayMetrics());
+            tempParams.height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, objHeight, getResources().getDisplayMetrics());
+            tempView.setLayoutParams(tempParams);
+
+            //tempView.setBackgroundResource(R.drawable.grid_border_2);
+
+            expGridLayout.addView(tempView);
         }
-
-
-        // 가져온 경험치 값을 사용하여 계산한다.
-        sumExp = targetExp - currentExp;
-        for(int i = 0; i < exp.length; i++){
-            result[i] = sumExp / exp[i];
-        }
-
-        // 계산 한 것을 각각의 테이블에 띄워준다.
-        fourClass.setText(Integer.toString(result[0]) + "개");
-        fourNormal.setText(Integer.toString(result[1]) + "개");
-        threeClass.setText(Integer.toString(result[2]) + "개");
-        threeNormal.setText(Integer.toString(result[3]) + "개");
     }
 }

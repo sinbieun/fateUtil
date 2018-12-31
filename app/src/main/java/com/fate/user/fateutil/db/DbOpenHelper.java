@@ -7,6 +7,9 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.fate.user.fateutil.db.contact.Magic.MagicContact;
+import com.fate.user.fateutil.db.contact.Magic.MagicEffectContact;
+import com.fate.user.fateutil.db.contact.Magic.MagicExpContact;
 import com.fate.user.fateutil.db.contact.Material.MaterialContact;
 import com.fate.user.fateutil.db.contact.Servant.ServantAscensionContact;
 import com.fate.user.fateutil.db.contact.Servant.ServantExpContact;
@@ -815,7 +818,125 @@ public class DbOpenHelper {
         return contactSkillList;
     }
 
+    // 4. 마술예장
 
+    // 4_1) 마술 예장 정보 추가
+    public void addMagic(MagicContact contact) {
+        mDB = mDBHelper.getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+        cv.put(DataBase.MagicTable.ID, contact.getId());
+        cv.put(DataBase.MagicTable.MAGIC_CONTENT, contact.getMagicContent());
+        cv.put(DataBase.MagicTable.MAGIC_NAME, contact.getMagicName());
+        cv.put(DataBase.MagicTable.MAGIC_IMAGE, contact.getMagicImage());
+        cv.put(DataBase.MagicTable.MAGIC_DELETE_YN, contact.getMagicDeleteYn());
+
+        mDB.insert(DataBase.MagicTable.TABLE_NAME, null, cv);
+
+    }
+
+    // 4_2) 마술 예장 효과 정보 추가
+    public void addMagicEffect(MagicEffectContact contact) {
+        mDB = mDBHelper.getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+        cv.put(DataBase.MagicEffectTable.ID, contact.getId());
+
+        cv.put(DataBase.MagicEffectTable.MAGIC_ID , contact.getMagicId());
+        cv.put(DataBase.MagicEffectTable.MAGIC_EFFECT_NAME, contact.getMagicEffectName());
+        cv.put(DataBase.MagicEffectTable.MAGIC_EFFECT_GOAL, contact.getMagicEffectGoal());
+        cv.put(DataBase.MagicEffectTable.MAGIC_EFFECT_CONTENT, contact.getMagicEffectContent());
+        cv.put(DataBase.MagicEffectTable.MAGIC_EFFECT_TIME, contact.getMagicEffectTime());
+        cv.put(DataBase.MagicEffectTable.MAGIC_EFFECT_LEVEL, contact.getMagicEffectLevel());
+        cv.put(DataBase.MagicEffectTable.MAGIC_EFFECT_IMAGE, contact.getMagicEffectImage());
+        cv.put(DataBase.MagicEffectTable.MAGIC_EFFECT_UTIL, contact.getMagicEffectUtil());
+        cv.put(DataBase.MagicEffectTable.MAGIC_EFFECT_DELETE_YN, contact.getMagicEffectDeleteYn());
+
+        mDB.insert(DataBase.MagicEffectTable.TABLE_NAME, null, cv);
+
+    }
+
+    // 4_3) 마술 예장 경험치 정보 추가
+    public void addMagicExp(MagicExpContact contact) {
+        mDB = mDBHelper.getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+        cv.put(DataBase.MagicExpTable.ID, contact.getId());
+
+        cv.put(DataBase.MagicExpTable.MAGIC_ID , contact.getMagicId());
+        cv.put(DataBase.MagicExpTable.MAGIC_EXP_LEVEL, contact.getMagicExpLevel());
+        cv.put(DataBase.MagicExpTable.MAGIC_EXP_COUNT, contact.getMagicExpCount());
+        cv.put(DataBase.MagicExpTable.MAGIC_EXP_TOTAL, contact.getMagicExpTotal());
+        cv.put(DataBase.MagicExpTable.MAGIC_DELETE_YN, contact.getMagicExpDeleteYn());
+
+        mDB.insert(DataBase.MagicExpTable.TABLE_NAME, null, cv);
+
+    }
+
+    // 4-4) 마술예장 정보 가져오기
+    public MagicContact getMagic(int magicId){
+        MagicContact magicData = new MagicContact();
+
+        // 검색 쿼리 저장
+        String selectMagicListQuery = "";
+
+        selectMagicListQuery += "SELECT ";
+        selectMagicListQuery += "magic_name as magicName ";
+        selectMagicListQuery += ", magic_content as magicContent ";
+        selectMagicListQuery += ", magic_image as magicImage ";
+        selectMagicListQuery += "FROM Magic ";
+        selectMagicListQuery += "WHERE id = " + magicId;
+
+
+        mDB = mDBHelper.getReadableDatabase();
+
+        // 커서에 검색 쿼리 삽입
+        Cursor cursor = mDB.rawQuery(selectMagicListQuery, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                magicData.setMagicName(cursor.getString(cursor.getColumnIndex("magicName")));
+                magicData.setMagicContent(cursor.getString(cursor.getColumnIndex("magicContent")));
+                magicData.setMagicImage(cursor.getString(cursor.getColumnIndex("magicImage")));
+            } while (cursor.moveToNext());
+        }
+
+        return magicData;
+    }
+
+    // 4-6) 마술예장 경험치 정보 가져오기
+    public List<MagicExpContact> getMagicExpList(int magicId){
+        List<MagicExpContact> magicExpData = new ArrayList<MagicExpContact>();
+
+        // 검색 쿼리 저장
+        String selectMagicLExpistQuery = "";
+
+        selectMagicLExpistQuery += "SELECT ";
+        selectMagicLExpistQuery += "magic_exp_level as magicExpLevel ";
+        selectMagicLExpistQuery += ", magic_exp_count as magicExpCount ";
+        selectMagicLExpistQuery += ", magic_exp_total as magicExpTotal ";
+        selectMagicLExpistQuery += "FROM MagicExp ";
+        selectMagicLExpistQuery += "WHERE magic_id = " + magicId;
+
+
+        mDB = mDBHelper.getReadableDatabase();
+
+        // 커서에 검색 쿼리 삽입
+        Cursor cursor = mDB.rawQuery(selectMagicLExpistQuery, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                MagicExpContact tempMagicExpContact = new MagicExpContact();
+                tempMagicExpContact.setMagicExpLevel(cursor.getInt(cursor.getColumnIndex("magicExpLevel")));
+                tempMagicExpContact.setMagicExpCount(cursor.getInt(cursor.getColumnIndex("magicExpCount")));
+                tempMagicExpContact.setMagicExpTotal(cursor.getInt(cursor.getColumnIndex("magicExpTotal")));
+
+                magicExpData.add(tempMagicExpContact);
+            } while (cursor.moveToNext());
+        }
+
+        return magicExpData;
+    }
 }
 
 

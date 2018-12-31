@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="magicArray">
+        <item>마술예장 칼데아</item>
+        <item>마술협회 제복</item>
+        <item>아틀라스원 제복</item>
+        <item>칼데아 전투복</item>
+        <item>애니버서리 블론드</item>
+        <item>로열 브랜드</item>
+        <item>브릴리언트 서머</item>
+        <item>달의 바다의 기억</item>
+        <item>달의 뒷편의 기억</item>
+        <item>2004년의 단편</item>
+        <item>극지용 칼데아 제복</item>
+        <item>트로피칼 서머</item>
+    </string-array>
+</resources>
