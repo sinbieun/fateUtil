@@ -1,11 +1,11 @@
 package com.fate.user.fateutil.db.contact.Servant;
 
 public class ServantAscensionContact {
-    private int ascensionId;
-    private int servantId;
-    private String ascensionClassification;
-    private int ascensionLevel;
-    private String ascensionImgName;
+    private int ascensionId; // 서번트 재림 아이디
+    private int servantId; // 서번트 아이디
+    private String ascensionClassification; // 서번트 클래스 분류
+    private int ascensionLevel; // 재림 단계
+    private String ascensionImgName; // 재림 이미지 이름
 
     public ServantAscensionContact(){
 

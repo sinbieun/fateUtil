@@ -11,8 +11,6 @@ public class ServantContact {
     private String servantClass;
     private int servantGrade; // 서번트 등급
 
-
-
     // 생성자
     public ServantContact(){}
     public ServantContact(int servantId, int servantIconId, int servantNameId, int servantClassId, int servantGrade){

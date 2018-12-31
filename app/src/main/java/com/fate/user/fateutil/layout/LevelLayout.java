@@ -14,7 +14,7 @@ import com.fate.user.fateutil.R;
 import com.fate.user.fateutil.db.DbOpenHelper;
 
 public class LevelLayout extends LinearLayout {
-
+    // 서번트  경험치 레이아웃
 
     private  Button btnLevel = null;
     private  EditText currentLevel, targetLevel;

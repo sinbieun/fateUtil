@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TableLayout;
@@ -17,6 +19,7 @@ import com.fate.user.fateutil.R;
 import com.fate.user.fateutil.db.DbOpenHelper;
 import com.fate.user.fateutil.db.contact.Material.MaterialContact;
 import com.fate.user.fateutil.db.contact.Servant.ServantAscensionContact;
+import com.fate.user.fateutil.db.contact.Servant.ServantIconContact;
 import com.fate.user.fateutil.db.contact.Skill.SkillContact;
 
 
@@ -44,8 +47,7 @@ public class SearchIntent extends AppCompatActivity {
     private List<MaterialContact> servantMaterial;
 
     // 서번트 영기재림 이미지 변수
-    private List<ServantAscensionContact> servantAscensionsImage;
-
+    private List<ServantAscensionContact> servantAscensionImg;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -134,7 +136,8 @@ public class SearchIntent extends AppCompatActivity {
         tableMaterial(10,3, servantMaterial);
 
         // 서번트 영기재림 이미지
-        tableAcsensionImg(position);
+        servantAscensionImg = mDbOpenHelper.getServantAscensionImage(position); // 이미지를 가지고 온다.
+        tableAcsensionImg(servantAscensionImg);
         mDbOpenHelper.close();
 
     }
@@ -384,7 +387,7 @@ public class SearchIntent extends AppCompatActivity {
         } // tr 의 끝
 
     }
-    // 영기 재림 채료 테이블 생성
+    // 영기 재림 재료 테이블 생성
     public void tableMaterial(int trCt, int tdCt, List<MaterialContact> Material) {
         // 테이블 변수
         TableLayout tableLayout;
@@ -414,7 +417,6 @@ public class SearchIntent extends AppCompatActivity {
         // 아이템 갯수
         int ascensionMaterialValue;
 
-
         // 영기재림 자료나 스킬 강화 재료가 없으면 작성하지 않음
         if (Material == null)
             return;
@@ -425,6 +427,7 @@ public class SearchIntent extends AppCompatActivity {
             // ascensionMaterialName = materialContact.getMaterialName(); // 필요 재료 이름 가져옴
             ascensionMaterialValue = materialContact.getMaterialValue(); // 필요 재료 갯수 가져옴
             materialPath = materialContact.getMaterialName();
+
 
             row[upgradeLevel - 2] = new TableRow(this); // 행
 
@@ -483,12 +486,66 @@ public class SearchIntent extends AppCompatActivity {
         }
 
     }
-    // 서번트 영기재림 이미지
-    public void tableAcsensionImg(int servantId){
-        //servantAscensionsImage = mDbOpenHelper.getServantAscensionImage(servantId);
+    // 서번트 영기재림 이미지(완료) => 최적화
+    public void tableAcsensionImg(final List<ServantAscensionContact> servantAscensionImg){
 
-        // 1. 아이디에 따라 이미지를 가지고 온다.
-        // 2. 버튼을 누르면 이미지를 add뷰 한다.
+        // 버튼 이미지 뷰 호출
+        Button ascention_btn_1 = findViewById(R.id.first_ascention_button);
+        Button ascention_btn_2 = findViewById(R.id.second_ascention_button);
+        Button ascention_btn_3 = findViewById(R.id.third_ascention_button);
+        Button ascention_btn_4 = findViewById(R.id.forth_ascention_button);
+        final ImageView ascention_img = findViewById(R.id.img_ascention);
+
+        final String packName = this.getPackageName(); // 팩 이름
+        String imgPath; // 이미지 경로
+        ServantAscensionContact servantAscensionContact = servantAscensionImg.get(0); // contact
+        imgPath= servantAscensionContact.getAscensionImgName();
+        ascention_img.setImageResource(getResources().getIdentifier("@drawable/" + imgPath, "drawable", packName));
+
+        // 버튼 클릭 이벤트
+        ascention_btn_1.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String imgPath; // 이미지 경로
+                ascention_img.setImageResource(0);
+                ServantAscensionContact servantAscensionContact = servantAscensionImg.get(0); // contact
+                imgPath= servantAscensionContact.getAscensionImgName();
+                ascention_img.setImageResource(getResources().getIdentifier("@drawable/" + imgPath, "drawable", packName));
+            }
+        });
+
+        ascention_btn_2.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String imgPath; // 이미지 경로
+                ascention_img.setImageResource(0);
+                ServantAscensionContact servantAscensionContact = servantAscensionImg.get(1); // contact
+                imgPath= servantAscensionContact.getAscensionImgName();
+                ascention_img.setImageResource(getResources().getIdentifier("@drawable/" + imgPath, "drawable", packName));
+            }
+        });
+
+        ascention_btn_3.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String imgPath; // 이미지 경로
+                ascention_img.setImageResource(0);
+                ServantAscensionContact servantAscensionContact = servantAscensionImg.get(2); // contact
+                imgPath= servantAscensionContact.getAscensionImgName();
+                ascention_img.setImageResource(getResources().getIdentifier("@drawable/" + imgPath, "drawable", packName));
+            }
+        });
+
+        ascention_btn_4.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String imgPath; // 이미지 경로
+                ascention_img.setImageResource(0);
+                ServantAscensionContact servantAscensionContact = servantAscensionImg.get(3); // contact
+                imgPath= servantAscensionContact.getAscensionImgName();
+                ascention_img.setImageResource(getResources().getIdentifier("@drawable/" + imgPath, "drawable", packName));
+            }
+        });
 
     }
 }
