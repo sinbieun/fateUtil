@@ -24,7 +24,7 @@ import java.util.List;
 public class DbOpenHelper {
 
     private static final String DATABASE_NAME = "fatedb.db";
-    private static final int DATABASE_VERSION = 1_1_35;
+    private static final int DATABASE_VERSION = 1_1_36;
     private DatabaseHelper mDBHelper;
     public static SQLiteDatabase mDB;
     private Context mContext;

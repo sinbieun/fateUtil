@@ -31,8 +31,6 @@ public class SearchIntent extends AppCompatActivity {
     private int position;
     private TabHost tabHost1;
 
-    //String packName = this.getPackageName(); // 팩 이름
-
     // 스킬 명
     private String skillName;
 
@@ -123,6 +121,7 @@ public class SearchIntent extends AppCompatActivity {
 
     }
 
+    // DB 불러오기
     public void createSkillTable() {
 
         // DB를 열고 데이터를 가져온다.
@@ -500,10 +499,10 @@ public class SearchIntent extends AppCompatActivity {
 
     }
 
-    // 서번트 영기재림 이미지(완료) => 최적화
+    // 서번트 영기재림 이미지
     public void tableAcsensionImg(final List<ServantAscensionContact> servantAscensionImg) {
 
-        //
+        // 초기화
         Button ascention_btn_1 = findViewById(R.id.first_ascention_button);
         Button ascention_btn_2 = findViewById(R.id.second_ascention_button);
         Button ascention_btn_3 = findViewById(R.id.third_ascention_button);
@@ -511,35 +510,36 @@ public class SearchIntent extends AppCompatActivity {
         final String packName = this.getPackageName();
 
         // 버튼 리스너
-        Button.OnClickListener onClickListener = new Button.OnClickListener(){
+        Button.OnClickListener onClickListener = new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ImageView ascention_img = findViewById(R.id.img_ascention);
                 String imgPath; // 이미지 경로
                 ServantAscensionContact servantAscensionContact;
-                switch (view.getId()){
-                    case R.id.first_ascention_button :
-                        ascention_img.setImageResource(0);
+
+                switch (view.getId()) {
+                    case R.id.first_ascention_button:
+                        ascention_img.setImageResource(0); // 이미지 초기화
                         servantAscensionContact = servantAscensionImg.get(0); // contact
-                        imgPath= servantAscensionContact.getAscensionImgName();
+                        imgPath = servantAscensionContact.getAscensionImgName();
                         ascention_img.setImageResource(getResources().getIdentifier("@drawable/" + imgPath, "drawable", packName));
                         break;
-                    case R.id.second_ascention_button :
+                    case R.id.second_ascention_button:
                         ascention_img.setImageResource(0);
                         servantAscensionContact = servantAscensionImg.get(1); // contact
-                        imgPath= servantAscensionContact.getAscensionImgName();
+                        imgPath = servantAscensionContact.getAscensionImgName();
                         ascention_img.setImageResource(getResources().getIdentifier("@drawable/" + imgPath, "drawable", packName));
                         break;
-                    case R.id.third_ascention_button :
+                    case R.id.third_ascention_button:
                         ascention_img.setImageResource(0);
                         servantAscensionContact = servantAscensionImg.get(2); // contact
-                        imgPath= servantAscensionContact.getAscensionImgName();
+                        imgPath = servantAscensionContact.getAscensionImgName();
                         ascention_img.setImageResource(getResources().getIdentifier("@drawable/" + imgPath, "drawable", packName));
                         break;
-                    case R.id.forth_ascention_button :
+                    case R.id.forth_ascention_button:
                         ascention_img.setImageResource(0);
                         servantAscensionContact = servantAscensionImg.get(3); // contact
-                        imgPath= servantAscensionContact.getAscensionImgName();
+                        imgPath = servantAscensionContact.getAscensionImgName();
                         ascention_img.setImageResource(getResources().getIdentifier("@drawable/" + imgPath, "drawable", packName));
                         break;
                 }

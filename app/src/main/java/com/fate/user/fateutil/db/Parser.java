@@ -76,7 +76,7 @@ public class Parser extends LinearLayout {
         mDbOpenHelper.open();
 
         // 테이블에 값이 있다면 checkData에서 true를 반환하고 데이터 값을 넣지 않는다. (수정 예정)
-        if (mDbOpenHelper.checkData(DataBase.ServantJoinListTable.TABLE_NAME) == true) {
+        if (mDbOpenHelper.checkData(DataBase.ServantJoinListTable.TABLE_NAME)) {
             mDbOpenHelper.close();
             return;
         }
@@ -119,7 +119,7 @@ public class Parser extends LinearLayout {
         mDbOpenHelper.open();
 
         // 테이블에 값이 있다면 checkData에서 true를 반환하고 데이터 값을 넣지 않는다. (수정 예정)
-        if (mDbOpenHelper.checkData(DataBase.ServantIconTable.TABLE_NAME) == true) {
+        if (mDbOpenHelper.checkData(DataBase.ServantIconTable.TABLE_NAME)) {
             mDbOpenHelper.close();
             return;
         }
@@ -269,12 +269,12 @@ public class Parser extends LinearLayout {
     // 2_1) 서번트 영기재림 이미지 테이블에 데이터 삽입
     public void servantAscensionImgParser(){
         mDbOpenHelper.open();
-        if (mDbOpenHelper.checkData(DataBase.ServantAscensionImageTable.TABLE_NAME) == true) {
+        if (mDbOpenHelper.checkData(DataBase.ServantAscensionImageTable.TABLE_NAME)) {
             mDbOpenHelper.close();
             return;
         }
 
-        fileName = "databases/ServantAscensionImage.json"; // 파일 이름 저장 변수
+        fileName = "databases/ServantAscensionImg.json"; // 파일 이름 저장 변수
         jsonString = loadServantFromAsset(fileName); // JSON에서 데이터를 뽑아서 집어 넣는다.
 
         // 트랜잭션 시작
@@ -309,7 +309,7 @@ public class Parser extends LinearLayout {
     public void servantJoinSkillParser() {
         // 0. 테이블에 값이 있다면 checkData에서 true를 반환하고 데이터 값을 넣지 않는다.
         mDbOpenHelper.open();
-        if (mDbOpenHelper.checkData(DataBase.ServantJoinSkillTable.TABLE_NAME) == true) {
+        if (mDbOpenHelper.checkData(DataBase.ServantAscensionImageTable.TABLE_NAME)) {
             mDbOpenHelper.close();
             return;
         }
@@ -403,7 +403,7 @@ public class Parser extends LinearLayout {
     public void passiveSkillParser() {
         // 0. 테이블에 값이 있으면 db에 저장하지 않는다.
         mDbOpenHelper.open();
-        if (mDbOpenHelper.checkData(DataBase.PassiveSkillTable.TABLE_NAME) == true) {
+        if (mDbOpenHelper.checkData(DataBase.ServantAscensionImageTable.TABLE_NAME)) {
             mDbOpenHelper.close();
             return;
         }
