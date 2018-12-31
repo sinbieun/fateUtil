@@ -74,9 +74,10 @@
                             </LinearLayout>
 
                             <ImageView
-                                android:id="@+id/image_ascention"
+                                android:id="@+id/img_ascention"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" />
+
                         </LinearLayout>
 
                         <!--두번째 페이지-->

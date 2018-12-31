@@ -27,7 +27,7 @@ import java.util.List;
 public class DbOpenHelper {
 
     private static final String DATABASE_NAME = "fatedb.db";
-    private static final int DATABASE_VERSION = 1_1_35;
+    private static final int DATABASE_VERSION = 1_1_36;
     private DatabaseHelper mDBHelper;
     public static SQLiteDatabase mDB;
     private Context mContext;
@@ -729,13 +729,15 @@ public class DbOpenHelper {
         List<ServantAscensionContact> servantImage = new ArrayList<>();
         // 서번트가 가지고 있는 재림 이미지를 가져온다.
         String selectServantImage = "select " +
-                " SN.name_value as name_value," +
+                " SAI.ascension_id as ascension_id," +
+                " SAI.servant_id as servant_id," +
                 " SAI.ascension_classification as ascension_classification, " +
                 " SAI.ascension_level as ascension_level," +
                 " SAI.ascension_img_name as ascension_img_name" +
                 " from ServantAscensionImg SAI" +
                 " inner join ServantName SN" +
-                " on SAI.servant_id = SN.name_id;";
+                " on SAI.servant_id = SN.name_id" +
+                " and SN.name_id = " + servantId;
 
         mDB = mDBHelper.getReadableDatabase();
 
@@ -745,11 +747,11 @@ public class DbOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 ServantAscensionContact contact = new ServantAscensionContact();
-                contact.setAscensionId(cursor.getInt(cursor.getColumnIndex("ascension_id")));
-                contact.setServantId(cursor.getInt(cursor.getColumnIndex("servant_id")));
-                contact.setAscensionClassification(cursor.getString(cursor.getColumnIndex("ascension_classification")));
-                contact.setAscensionLevel(cursor.getInt(cursor.getColumnIndex("ascension_level")));
-                contact.setAscensionImgName(cursor.getString(cursor.getColumnIndex("ascension_img_name")));
+                contact.setAscensionId(cursor.getInt(cursor.getColumnIndex("ascension_id"))); // 재림 아이디
+                contact.setServantId(cursor.getInt(cursor.getColumnIndex("servant_id"))); // 서번트 아이디
+                contact.setAscensionClassification(cursor.getString(cursor.getColumnIndex("ascension_classification"))); // 영기재림 분류
+                contact.setAscensionLevel(cursor.getInt(cursor.getColumnIndex("ascension_level"))); // 영기 재림 단계
+                contact.setAscensionImgName(cursor.getString(cursor.getColumnIndex("ascension_img_name"))); // 이미지 이름
 
                 servantImage.add(contact);
             } while (cursor.moveToNext());

@@ -23,7 +23,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 public class NoticeLayout extends LinearLayout {
-
+    // 공지사항 레이아웃
     private LinearLayout currentLayout;
     private LayoutInflater li = null;
 
