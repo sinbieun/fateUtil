@@ -27,6 +27,8 @@ import com.fate.user.fateutil.R;
 import com.fate.user.fateutil.db.DbOpenHelper;
 import com.fate.user.fateutil.db.contact.Magic.MagicContact;
 import com.fate.user.fateutil.db.contact.Magic.MagicExpContact;
+import com.fate.user.fateutil.model.MagicEffectForFirstModel;
+import com.fate.user.fateutil.model.MagicEffectForSecondModel;
 
 import org.w3c.dom.Text;
 
@@ -56,6 +58,24 @@ public class MagicLayout extends LinearLayout {
     // 1탭 요소
     private ImageView magicImageView;
     private TextView magicContentView;
+
+    // 2탭 요소
+    private LinearLayout effectGridSecondMenuLayout;
+    private GridLayout effectGridLayoutSecond;
+
+    private LinearLayout effectGridFirstLayout1;
+    private ImageView effectGridFirstImage1;
+    private TextView effectGridFirstText1;
+    private LinearLayout effectGridFirstLayout2;
+    private ImageView effectGridFirstImage2;
+    private TextView effectGridFirstText2;
+    private LinearLayout effectGridFirstLayout3;
+    private ImageView effectGridFirstImage3;
+    private TextView effectGridFirstText3;
+
+    private TextView effectContent;
+
+    private List<MagicEffectForFirstModel> magicEffectForFirstModelList;    // 현재 선택된 마술예장의 효과 목록
 
     // 3탭 요소
     private LinearLayout expMenuLayout;
@@ -185,6 +205,22 @@ public class MagicLayout extends LinearLayout {
         magicImageView = (ImageView) findViewById(R.id.magic_image);
         magicContentView = (TextView) findViewById(R.id.magic_content);
 
+        // 2탭 요소
+        effectGridFirstLayout1 = (LinearLayout) findViewById(R.id.effect_grid_first_layout_1);
+        effectGridFirstImage1 = (ImageView) findViewById(R.id.effect_grid_first_image_1);
+        effectGridFirstText1 = (TextView) findViewById(R.id.effect_grid_first_text_1);
+        effectGridFirstLayout2 = (LinearLayout) findViewById(R.id.effect_grid_first_layout_2);
+        effectGridFirstImage2 = (ImageView) findViewById(R.id.effect_grid_first_image_2);
+        effectGridFirstText2 = (TextView) findViewById(R.id.effect_grid_first_text_2);
+        effectGridFirstLayout3 = (LinearLayout) findViewById(R.id.effect_grid_first_layout_3);
+        effectGridFirstImage3 = (ImageView) findViewById(R.id.effect_grid_first_image_3);
+        effectGridFirstText3 = (TextView) findViewById(R.id.effect_grid_first_text_3);
+
+        effectContent = (TextView) findViewById(R.id.effect_content);
+
+        effectGridSecondMenuLayout = (LinearLayout) findViewById(R.id.effect_grid_second_menu_layout);
+        effectGridLayoutSecond = (GridLayout) findViewById(R.id.effect_grid_second_layout);
+
         // 3탭 요소
         expMenuLayout = (LinearLayout) findViewById(R.id.exp_menu_layout);
         expGridLayout = (GridLayout) findViewById(R.id.exp_grid_layout);
@@ -205,6 +241,7 @@ public class MagicLayout extends LinearLayout {
                 tab2Layout.setVisibility(View.GONE);
                 tab3Layout.setVisibility(View.GONE);
 
+                // 탭1 기능 시작
                 MagicContact getMagic = mDbOpenHelper.getMagic(selectMagicId);
                 magicImageView.setImageResource(getContext().getResources().getIdentifier("@drawable/" + getMagic.getMagicImage(), "drawable",getContext().getPackageName()));
                 magicContentView.setText(getMagic.getMagicContent());
@@ -214,6 +251,50 @@ public class MagicLayout extends LinearLayout {
                 tab2Layout.setVisibility(View.VISIBLE);
                 tab3Layout.setVisibility(View.GONE);
 
+                // 데이터 호출
+                // 해당 마술예장에 속해있는 리스트 가져오기
+                magicEffectForFirstModelList = mDbOpenHelper.getMagicEffectListForFirst(selectMagicId);
+
+                // 탭2 기능 시작
+                //effectGridFirstLayout1 = (LinearLayout) findViewById(R.id.effect_grid_first_layout_1);
+                //effectGridFirstLayout2 = (LinearLayout) findViewById(R.id.effect_grid_first_layout_2);
+                //effectGridFirstLayout3 = (LinearLayout) findViewById(R.id.effect_grid_first_layout_3);
+
+                // 첫번째 스킬
+                effectGridFirstImage1.setImageResource(getContext().getResources().getIdentifier("@drawable/" + magicEffectForFirstModelList.get(0).getMagicEffectImage(), "drawable",getContext().getPackageName()));
+                effectGridFirstText1.setText(magicEffectForFirstModelList.get(0).getMagicEffectName() + "\n" + magicEffectForFirstModelList.get(0).getMagicEffectGoal());
+                effectGridFirstLayout1.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        effectContent.setText(magicEffectForFirstModelList.get(0).getMagicEffectContent());
+                        drawEffectWithEffectId(selectMagicId, magicEffectForFirstModelList.get(0).getMagicEffectName());
+                    }
+                });
+
+                // 두번째 스킬
+                effectGridFirstImage2.setImageResource(getContext().getResources().getIdentifier("@drawable/" + magicEffectForFirstModelList.get(1).getMagicEffectImage(), "drawable",getContext().getPackageName()));
+                effectGridFirstText2.setText(magicEffectForFirstModelList.get(1).getMagicEffectName() + "\n" + magicEffectForFirstModelList.get(1).getMagicEffectGoal());
+                effectGridFirstLayout2.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        effectContent.setText(magicEffectForFirstModelList.get(1).getMagicEffectContent());
+                        drawEffectWithEffectId(selectMagicId, magicEffectForFirstModelList.get(1).getMagicEffectName());
+                    }
+                });
+
+                // 세번째 스킬
+                effectGridFirstImage3.setImageResource(getContext().getResources().getIdentifier("@drawable/" + magicEffectForFirstModelList.get(2).getMagicEffectImage(), "drawable",getContext().getPackageName()));
+                effectGridFirstText3.setText(magicEffectForFirstModelList.get(2).getMagicEffectName() + "\n" + magicEffectForFirstModelList.get(2).getMagicEffectGoal());
+                effectGridFirstLayout3.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        effectContent.setText(magicEffectForFirstModelList.get(2).getMagicEffectContent());
+                        drawEffectWithEffectId(selectMagicId, magicEffectForFirstModelList.get(2).getMagicEffectName());
+                    }
+                });
+
+                // 해당 마술예장에 속해있는 리스트 가져오기
+                // 그 리스트 클릭 시, 옆에 레벨 보여주기
             }else if(selectedMenu.equals("경험치")){
                 // VIEW SHOW & HIDE
                 tab1Layout.setVisibility(View.GONE);
@@ -223,6 +304,7 @@ public class MagicLayout extends LinearLayout {
                 // 표 초기화
                 expGridLayout.removeAllViews();
 
+                // 탭3 기능 시작
                 int columnWidth = (int) ((float)( allSizeWidthWithMargin ) / 3 );
                 int lastColumnWidth = allSizeWidthWithMargin - ( columnWidth * 2 );
 
@@ -297,6 +379,76 @@ public class MagicLayout extends LinearLayout {
         }   // null check
 
         return returnId;
+    }
+
+    /**
+     * 이펙트 아이디 받아와서 이펙트 레이아웃 그려주는 곳으로 토스
+     * @param magicId
+     * @param magicName
+     */
+    private void drawEffectWithEffectId(int magicId, String magicName){
+        effectGridSecondMenuLayout.removeAllViews();
+        effectGridLayoutSecond.removeAllViews();
+
+        // 이펙트 아이디로 정보가져오기
+        List<MagicEffectForSecondModel> magicEffectForSecondList = mDbOpenHelper.getMagicEffectListForSecond(magicId, magicName);
+
+        // 그려주기 시작
+        drawEffectGridLayoutData("레벨", 50,30,20, "M");
+        drawEffectGridLayoutData("성능", 50,30,20, "M");
+        drawEffectGridLayoutData("쿨타임", 70,30,20, "M");
+
+        for (int effectSecondIndex = 0 ; effectSecondIndex < magicEffectForSecondList.size() ; effectSecondIndex++){
+            // 레벨
+            drawEffectGridLayoutData(String.valueOf(magicEffectForSecondList.get(effectSecondIndex).getMagicEffectLevel()), 50, 30, 15, "C");
+
+            // 경험치
+            drawEffectGridLayoutData(String.valueOf(magicEffectForSecondList.get(effectSecondIndex).getMagicEffectUtil()), 50, 30, 15, "C");
+
+            // 누적 경험치
+            drawEffectGridLayoutData(String.valueOf(magicEffectForSecondList.get(effectSecondIndex).getMagicEffectTime()), 70, 30, 15, "C");
+        }
+    }
+
+    /**
+     * 이펙트 레이아웃에 그려주기 - 데이터
+     * @param data
+     * @param objWidth
+     * @param objHeight
+     * @param objTextSize
+     */
+    public void drawEffectGridLayoutData(String data, int objWidth, int objHeight, int objTextSize, String kindGubun){
+        if("M".equals(kindGubun)) {
+            TextView tempTextView = new TextView(getContext());
+            tempTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, objTextSize);
+            tempTextView.setTextColor(Color.parseColor("#FFFFFF"));
+            tempTextView.setGravity(Gravity.CENTER);
+            tempTextView.setText(data);
+
+            ViewGroup.LayoutParams tempViewParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            tempViewParams.width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, objWidth, getResources().getDisplayMetrics());
+            tempViewParams.height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, objHeight, getResources().getDisplayMetrics());
+            tempTextView.setLayoutParams(tempViewParams);
+
+            tempTextView.setBackgroundResource(R.drawable.grid_border_2);
+
+            effectGridSecondMenuLayout.addView(tempTextView);
+        }else if("C".equals(kindGubun)) {
+            TextView tempView = new TextView(getContext());
+            tempView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, objTextSize);
+            tempView.setTextColor(Color.parseColor("#FFFFFF"));
+            tempView.setGravity(Gravity.CENTER);
+            tempView.setText(data);
+
+            ViewGroup.LayoutParams tempParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            tempParams.width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, objWidth, getResources().getDisplayMetrics());
+            tempParams.height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, objHeight, getResources().getDisplayMetrics());
+            tempView.setLayoutParams(tempParams);
+
+            //tempView.setBackgroundResource(R.drawable.grid_border_2);
+
+            effectGridLayoutSecond.addView(tempView);
+        }
     }
 
     /**

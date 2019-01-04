@@ -20,6 +20,8 @@ import com.fate.user.fateutil.db.contact.Skill.ServantJoinSkillContact;
 import com.fate.user.fateutil.db.contact.Servant.ServantNameContact;
 import com.fate.user.fateutil.db.contact.Skill.SkillContact;
 import com.fate.user.fateutil.db.contact.Weapon.WeaponContact;
+import com.fate.user.fateutil.model.MagicEffectForFirstModel;
+import com.fate.user.fateutil.model.MagicEffectForSecondModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -906,7 +908,82 @@ public class DbOpenHelper {
         return magicData;
     }
 
-    // 4-6) 마술예장 경험치 정보 가져오기
+    // 4-5) 마술예장 효과 정보 가져오기 ( 대분류 0
+    public List<MagicEffectForFirstModel> getMagicEffectListForFirst(int magicId){
+        List<MagicEffectForFirstModel> magicEffectForFirstData = new ArrayList<MagicEffectForFirstModel>();
+
+        // 검색 쿼리 저장
+        String selectMagicLExpistQuery = "";
+
+        selectMagicLExpistQuery += "SELECT ";
+        selectMagicLExpistQuery += "id as id ";
+        selectMagicLExpistQuery += ", magic_effect_name as magicEffectName ";
+        selectMagicLExpistQuery += ", magic_effect_image as magicEffectImage ";
+        selectMagicLExpistQuery += ", magic_effect_goal as magicEffectGoal ";
+        selectMagicLExpistQuery += ", magic_effect_content as magicEffectContent ";
+        selectMagicLExpistQuery += "FROM MagicEffect ";
+        selectMagicLExpistQuery += "WHERE magic_id = " + magicId;
+        selectMagicLExpistQuery += " GROUP BY magicEffectName";
+
+
+        mDB = mDBHelper.getReadableDatabase();
+
+        // 커서에 검색 쿼리 삽입
+        Cursor cursor = mDB.rawQuery(selectMagicLExpistQuery, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                MagicEffectForFirstModel tempMagicEffectForFirstModel = new MagicEffectForFirstModel();
+                tempMagicEffectForFirstModel.setId(cursor.getInt(cursor.getColumnIndex("id")));
+                tempMagicEffectForFirstModel.setMagicEffectName(cursor.getString(cursor.getColumnIndex("magicEffectName")));
+                tempMagicEffectForFirstModel.setMagicEffectImage(cursor.getString(cursor.getColumnIndex("magicEffectImage")));
+                tempMagicEffectForFirstModel.setMagicEffectGoal(cursor.getString(cursor.getColumnIndex("magicEffectGoal")));
+                tempMagicEffectForFirstModel.setMagicEffectContent(cursor.getString(cursor.getColumnIndex("magicEffectContent")));
+
+                magicEffectForFirstData.add(tempMagicEffectForFirstModel);
+            } while (cursor.moveToNext());
+        }
+
+        return magicEffectForFirstData;
+    }
+
+    // 4-6) 마술예장 효과 정보 가져오기 ( 소분류 )
+    public List<MagicEffectForSecondModel> getMagicEffectListForSecond(int magicId, String magicName){
+        List<MagicEffectForSecondModel> magicEffectForSecondData = new ArrayList<MagicEffectForSecondModel>();
+
+        // 검색 쿼리 저장
+        String selectMagicEffectSecondListQuery = "";
+
+        selectMagicEffectSecondListQuery += "SELECT ";
+        selectMagicEffectSecondListQuery += "id as id ";
+        selectMagicEffectSecondListQuery += ", magic_effect_level as magicEffectLevel ";
+        selectMagicEffectSecondListQuery += ", magic_effect_util as magicEffectUtil ";
+        selectMagicEffectSecondListQuery += ", magic_effect_time as magicEffectTime ";
+        selectMagicEffectSecondListQuery += "FROM MagicEffect ";
+        selectMagicEffectSecondListQuery += "WHERE magic_id = " + magicId;
+        selectMagicEffectSecondListQuery += " AND magic_effect_name = '" + magicName + "'";
+
+        mDB = mDBHelper.getReadableDatabase();
+
+        // 커서에 검색 쿼리 삽입
+        Cursor cursor = mDB.rawQuery(selectMagicEffectSecondListQuery, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                MagicEffectForSecondModel tempMagicEffectForSecondModel = new MagicEffectForSecondModel();
+                tempMagicEffectForSecondModel.setId(cursor.getInt(cursor.getColumnIndex("id")));
+                tempMagicEffectForSecondModel.setMagicEffectLevel(cursor.getInt(cursor.getColumnIndex("magicEffectLevel")));
+                tempMagicEffectForSecondModel.setMagicEffectUtil(cursor.getString(cursor.getColumnIndex("magicEffectUtil")));
+                tempMagicEffectForSecondModel.setMagicEffectTime(cursor.getInt(cursor.getColumnIndex("magicEffectTime")));
+
+                magicEffectForSecondData.add(tempMagicEffectForSecondModel);
+            } while (cursor.moveToNext());
+        }
+
+        return magicEffectForSecondData;
+    }
+
+    // 4-7) 마술예장 경험치 정보 가져오기
     public List<MagicExpContact> getMagicExpList(int magicId){
         List<MagicExpContact> magicExpData = new ArrayList<MagicExpContact>();
 
