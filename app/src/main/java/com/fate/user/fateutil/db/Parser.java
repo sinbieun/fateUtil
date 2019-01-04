@@ -546,7 +546,6 @@ public class Parser extends LinearLayout {
         }
     }
 
-
     // 2_7) 서번트 조인 재료 테이블에 데이터 삽입
     public void servantJoinMaterialParser(){
         // 0. 테이블에 값이 있으면 저장하지 않는다.
@@ -630,7 +629,6 @@ public class Parser extends LinearLayout {
         }
 
     }
-
     // 3_1) 마술예장 데이터 삽입
     public void magicParser(){
         // 0. 테이블에 값이 있으면 저장하지 않는다.
