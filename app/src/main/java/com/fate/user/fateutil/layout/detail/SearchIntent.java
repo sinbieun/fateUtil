@@ -400,6 +400,21 @@ public class SearchIntent extends AppCompatActivity {
 
     }
 
+    // 서번트 보구 테이블 생성
+    public void tableWeaponTable(int trCt, int tdCt){
+        // 1. 보구 데이터 받음
+        // 1) 보구 강화 x / 보구 강화 O
+        // 2) 보구 이름, 서브 이름
+        // 3) 보구 타입, 보구 랭크, 보구 히트수
+        // 4) 보구 효과 , 보구 오버차지
+        // 5) 보구 lv에 따른 데미지 비율 , 보구 오버 차지 레벨에 따른 비율
+
+
+
+
+
+    }
+
     // 영기 재림 재료 테이블 생성
     public void tableMaterial(int trCt, int tdCt, List<MaterialContact> Material) {
         // 테이블 변수
@@ -552,6 +567,7 @@ public class SearchIntent extends AppCompatActivity {
         ascention_btn_3.setOnClickListener(onClickListener);
         ascention_btn_4.setOnClickListener(onClickListener);
     }
+
 }
 
 

@@ -3,7 +3,7 @@ package com.fate.user.fateutil.db.contact.Weapon;
 // 스킬 getter, setter
 public class WeaponContact {
 
-    private int id; // 보구 아이디
+    private int weaponId; // 보구 아이디
     private String weaponName; // 보구 이름
     private String weaponSubName; // 보구 서브 이름
     private String weaponRank; // 보구 랭크
@@ -12,6 +12,7 @@ public class WeaponContact {
     private String weaponTarget; // 보구 목표(아군, 적, 자기 자신)
     private String weaponRange; // 보구 범위(전체, 한 명)
     private String weaponExcept; // 보구 제외
+    private String weaponExplain; // 보구 설명
     private String weaponEffect; // 스킬 효과
     private float weaponValue; // 스킬 효과 수치
     private String weaponType; // 보구 타입
@@ -25,14 +26,40 @@ public class WeaponContact {
 
     }
 
+    public WeaponContact(int weapon_id, String weapon_name, String weapon_sub_name,
+                         String weapon_rank, String weapon_classification, int weapon_level,
+                         String weapon_target, String weapon_range, String weapon_except,
+                         String weapon_explain, String weapon_effect, int weapon_value,
+                         String weapon_type, String weapon_merit, int weapon_hit, int weapon_duration,
+                         int weapon_percent, int weapon_enhance) {
+        this.weaponId = weapon_id;
+        this.weaponName = weapon_name;
+        this.weaponSubName = weapon_sub_name;
+        this.weaponRank = weapon_rank;
+        this.weaponClassification = weapon_classification;
+        this.weaponLevel = weapon_level;
+        this.weaponTarget = weapon_target;
+        this.weaponRange = weapon_range;
+        this.weaponExcept = weapon_except;
+        this.weaponExplain = weapon_explain;
+        this.weaponEffect = weapon_effect;
+        this.weaponValue = weapon_value;
+        this.weaponType = weapon_type;
+        this.weaponMerit = weapon_merit;
+        this.weaponHit = weapon_hit;
+        this.weaponDuration = weapon_duration;
+        this.weaponPercent = weapon_percent;
+        this.weaponEnhance = weapon_enhance;
+    }
+
 
     // getter, setter
     public int getWeaponId() {
-        return this.id;
+        return this.weaponId;
     }
 
     public void setWeaponId(int id) {
-        this.id = id;
+        this.weaponId = weaponId;
     }
 
     public String getWeaponName() {
@@ -96,6 +123,14 @@ public class WeaponContact {
 
     public void setWeaponExcept(String weaponExcept){
         this.weaponExcept = weaponExcept;
+    }
+
+    public String getWeaponExplain() {
+        return weaponExplain;
+    }
+
+    public void setWeaponExplain(String weaponExplain) {
+        this.weaponExplain = weaponExplain;
     }
 
     public String getWeaponEffect() {

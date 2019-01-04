@@ -148,7 +148,7 @@ public class DataBase {
     // 3_1) 보구 테이블 변수 생성
     public static final class WeaponTable implements BaseColumns {
         public static final String TABLE_NAME = "ServantWeapon";
-        public static final String ID = "id";
+        public static final String WEAPON_ID = "weapon_id";
         public static final String WEAPON_NAME = "weapon_name";
         public static final String WEAPON_SUB_NAME = "weapon_sub_name";
         public static final String WEAPON_RANK = "weapon_rank";
@@ -165,6 +165,13 @@ public class DataBase {
         public static final String WEAPON_DURATION = "weapon_duration";
         public static final String WEAPON_PERCENT = "weapon_percent";
         public static final String WEAPON_ENHANCE = "weapon_enhance";
+    }
+
+    public static final class WeaponJoinTable implements BaseColumns {
+        public static final String TABLE_NAME = "ServantJoinWeapon";
+        public static final String ID = "id";
+        public static final String SERVANT_ID = "servant_id";
+        public static final String WEAPON_ID = "weapon_id";
     }
 
     // 4. 서번트 스테이터스
@@ -316,12 +323,12 @@ public class DataBase {
                     PassiveSkillTable.SKILL_EXPLAIN + " text " +
                     ");";
 
-    // 3. 서번트 조인 보구 테이블 생성
+    // 3. 보구 테이블 생성
     // 3_1) 서번트 보구 테이블 생성
-    public static final String SQL_CREATE_WEAPON =
+    public static final String SQL_CREATE_SERVANT_WEAPON =
             "create table " +
                     WeaponTable.TABLE_NAME + " (" +
-                    WeaponTable.ID + " integer primary key not null, " +
+                    WeaponTable.WEAPON_ID + " integer primary key not null, " +
                     WeaponTable.WEAPON_NAME + " text not null , " +
                     WeaponTable.WEAPON_SUB_NAME + " text , " +
                     WeaponTable.WEAPON_RANK + " text , " +
@@ -337,8 +344,16 @@ public class DataBase {
                     WeaponTable.WEAPON_HIT + " integer ," +
                     WeaponTable.WEAPON_DURATION + " integer ," +
                     WeaponTable.WEAPON_PERCENT + " integer , " +
-                    WeaponTable.WEAPON_ENHANCE + " integer " +
-                    ");";
+                    WeaponTable.WEAPON_ENHANCE + " integer" + ");";
+
+    // 3_2) 서번트 조인 보구 테이블 생성
+    public static final String SQL_CREATE_SERVANT_JOIN_WEAPON =
+            "create table " +
+                    WeaponJoinTable.TABLE_NAME + " (" +
+                    WeaponJoinTable.ID + " integer primary key not null , " +
+                    WeaponJoinTable.SERVANT_ID + " integer not null , " +
+                    WeaponJoinTable.WEAPON_ID + " integer not null , " +
+                    "CONSTRAINT FK_SERVANT_ID FOREIGN KEY (" + WeaponJoinTable.WEAPON_ID +") REFERENCES " + WeaponJoinTable.TABLE_NAME + ");";
 
     // 4. 서번트 스테이터스
     // 4_1) 서번트 영기재림 이미지

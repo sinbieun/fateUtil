@@ -408,22 +408,29 @@ public class MainActivity extends AppCompatActivity
         return db;
     }
 
+    // JSON 데이터 내부 DB로 삽입
     public void InputData() {
         parser = new Parser(this);
+        // 서번트 경험치
         parser.servantExpParser();
+        // 서번트 리스트
         parser.servantJointListParser();
-        parser.servantIconParser();
-        parser.servantNameParser();
-        parser.servantClassParser();
+        parser.servantIconParser(); // 서번트 아이콘
+        parser.servantNameParser(); // 서번트 이름
+        parser.servantClassParser(); // 서번트 클래스
+        // 서번트 스킬
+        parser.activeSkillParser(); // 액티브 스킬
+        parser.passiveSkillParser(); // 패시브 스킬
+        parser.servantJoinSkillParser(); // 스킬 조인 테이블
+        // 서번트 재료
+        parser.servantMaterialParser(); // 재료
+        parser.servantJoinMaterialParser(); // 재료 조인 테이블
+        // 서번트 보구
+        parser.servantWeaponParser();
+        parser.servantJoinWeaponParser();
+        // 서번트 영기재림 이미지
+        parser.servantAscensionImgParser(); // 재림 이미지
 
-        parser.activeSkillParser();
-        parser.passiveSkillParser();
-        parser.servantJoinSkillParser();
-
-        parser.servantJoinMaterialParser();
-        parser.servantMaterialParser();
-
-        parser.servantAscensionImgParser();
 
         // 마술 예장 정보 데이터 삽입
         parser.magicParser();           // 마술 예장

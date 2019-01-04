@@ -20,6 +20,7 @@ import com.fate.user.fateutil.db.contact.Skill.ServantJoinSkillContact;
 import com.fate.user.fateutil.db.contact.Servant.ServantNameContact;
 import com.fate.user.fateutil.db.contact.Skill.SkillContact;
 import com.fate.user.fateutil.db.contact.Weapon.WeaponContact;
+import com.fate.user.fateutil.db.contact.Weapon.WeaponJoinContact;
 import com.fate.user.fateutil.model.MagicEffectForFirstModel;
 import com.fate.user.fateutil.model.MagicEffectForSecondModel;
 
@@ -50,13 +51,14 @@ public class DbOpenHelper {
             db.execSQL(DataBase.SQL_CREATE_SERVANT_CLASS);
             db.execSQL(DataBase.SQL_CREATE_SERVANT_EXP);
             db.execSQL(DataBase.SQL_CREATE_SERVANT_JOIN_LIST);
-
             // 서번트 스테이터스
             db.execSQL(DataBase.SQL_CREATE_ASCENSION_IMG);
             // 서번트 스킬
             db.execSQL(DataBase.SQL_CREATE_ACTIVE_SKILL);
             db.execSQL(DataBase.SQL_CREATE_PASSIVE_SKILL);
             db.execSQL(DataBase.SQL_CREATE_SERVANT_JOIN_SKILL);
+            db.execSQL(DataBase.SQL_CREATE_SERVANT_WEAPON);
+            db.execSQL(DataBase.SQL_CREATE_SERVANT_JOIN_WEAPON);
             // 서번트 재료
             db.execSQL(DataBase.SQL_CREATE_SERVANT_MATERIAL);
             db.execSQL(DataBase.SQL_CREATE_SERVANT_JOIN_MATERIAL);
@@ -82,6 +84,8 @@ public class DbOpenHelper {
             db.execSQL("DROP TABLE IF EXISTS " + DataBase.ActiveSkillTable.TABLE_NAME);
             db.execSQL("DROP TABLE IF EXISTS " + DataBase.PassiveSkillTable.TABLE_NAME);
             db.execSQL("DROP TABLE IF EXISTS " + DataBase.ServantJoinSkillTable.TABLE_NAME);
+            db.execSQL("DROP TABLE IF EXISTS " + DataBase.WeaponJoinTable.TABLE_NAME);
+            db.execSQL("DROP TABLE IF EXISTS " + DataBase.WeaponTable.TABLE_NAME);
             // 서번트 재료 테이블
             db.execSQL("DROP TABLE IF EXISTS " + DataBase.ServantMaterialTable.TABLE_NAME);
             db.execSQL("DROP TABLE IF EXISTS " + DataBase.ServantJoinMaterialTable.TABLE_NAME);
@@ -321,12 +325,12 @@ public class DbOpenHelper {
 
     // 5. 서번트 보구
     // 5_1) 보구 테이블에 데이터 삽입
-    public void addWeaponContact(WeaponContact contact) {
+    public void addServantWeaponList(WeaponContact contact) {
 
         mDB = mDBHelper.getWritableDatabase();
 
         ContentValues cv = new ContentValues();
-        cv.put(DataBase.WeaponTable.ID, contact.getWeaponId());
+        cv.put(DataBase.WeaponTable.WEAPON_ID, contact.getWeaponId());
         cv.put(DataBase.WeaponTable.WEAPON_NAME, contact.getWeaponName());
         cv.put(DataBase.WeaponTable.WEAPON_SUB_NAME, contact.getWeaponSubName());
         cv.put(DataBase.WeaponTable.WEAPON_RANK, contact.getWeaponRank());
@@ -346,6 +350,17 @@ public class DbOpenHelper {
 
         mDB.insert(DataBase.WeaponTable.TABLE_NAME, null, cv);
 
+    }
+    // 5_1) 보구 조인 테이블에 데이터 삽입
+    public void addServantJoinWeapon(WeaponJoinContact contact){
+        mDB = mDBHelper.getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+        cv.put(DataBase.WeaponJoinTable.ID, contact.getId());
+        cv.put(DataBase.WeaponJoinTable.SERVANT_ID, contact.getServantId());
+        cv.put(DataBase.WeaponJoinTable.WEAPON_ID, contact.getWeaponId());
+
+        mDB.insert(DataBase.WeaponJoinTable.TABLE_NAME, null, cv);
     }
 
     /*

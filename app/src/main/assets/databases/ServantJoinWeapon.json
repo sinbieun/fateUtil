@@ -1,0 +1,52 @@
+[
+    {
+        "id": "1",
+        "servant_id": "1",
+        "weapon_id": "1"
+    },
+    {
+        "id": "2",
+        "servant_id": "1",
+        "weapon_id": "2"
+    },
+    {
+        "id": "3",
+        "servant_id": "1",
+        "weapon_id": "3"
+    },
+    {
+        "id": "4",
+        "servant_id": "1",
+        "weapon_id": "4"
+    },
+    {
+        "id": "5",
+        "servant_id": "1",
+        "weapon_id": "5"
+    },
+    {
+        "id": "6",
+        "servant_id": "1",
+        "weapon_id": "6"
+    },
+    {
+        "id": "7",
+        "servant_id": "1",
+        "weapon_id": "7"
+    },
+    {
+        "id": "8",
+        "servant_id": "1",
+        "weapon_id": "8"
+    },
+    {
+        "id": "9",
+        "servant_id": "1",
+        "weapon_id": "9"
+    },
+    {
+        "id": "10",
+        "servant_id": "1",
+        "weapon_id": "10"
+    }
+]

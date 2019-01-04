@@ -16,6 +16,8 @@ import com.fate.user.fateutil.db.contact.Servant.ServantIconContact;
 import com.fate.user.fateutil.db.contact.Skill.ServantJoinSkillContact;
 import com.fate.user.fateutil.db.contact.Servant.ServantNameContact;
 import com.fate.user.fateutil.db.contact.Skill.SkillContact;
+import com.fate.user.fateutil.db.contact.Weapon.WeaponContact;
+import com.fate.user.fateutil.db.contact.Weapon.WeaponJoinContact;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -448,7 +450,104 @@ public class Parser extends LinearLayout {
             mDbOpenHelper.close();
         }
     }
-    // 2_5) 서번트 조인 재료 테이블에 데이터 삽입
+    // 2_5) 서번트 보구 테이블에 데이터 삽입
+
+    public void servantWeaponParser(){
+        // 0. 테이블에 값이 있으면 db에 저장하지 않는다.
+        mDbOpenHelper.open();
+        if (mDbOpenHelper.checkData(DataBase.WeaponTable.TABLE_NAME)) {
+            mDbOpenHelper.close();
+            return;
+        }
+        fileName = "databases/ServantWeapon.json"; // 파일 이름 저장 변수
+        jsonString = loadServantFromAsset(fileName); // JSON에서 데이터를 뽑아서 집어 넣는다.
+        // 트랜잭션 시작
+        mDbOpenHelper.mDB.beginTransaction();
+        try {
+            jarray = new JSONArray(jsonString);
+
+            for (int i = 0; i < jarray.length(); i++) {
+                JSONObject jObject = jarray.getJSONObject(i);
+
+                // 2. 데이터 저장
+                int weapon_id = jObject.getInt("weapon_id"); // 보구 아이디
+                String weapon_name = jObject.getString("weapon_name"); // 보구 이름
+                String weapon_sub_name = jObject.getString("weapon_sub_name"); // 보구 서브 이름
+                String weapon_rank = jObject.getString("weapon_rank"); // 보구 랭크
+                String weapon_classification = jObject.getString("weapon_classification"); // 보구 구분
+                int weapon_level = jObject.getInt("weapon_level"); // 보구 레벨
+                String weapon_target = jObject.getString("weapon_target"); // 보구 목표
+                String weapon_range = jObject.getString("weapon_range"); // 보구 범위
+                String weapon_except = jObject.getString("weapon_except"); // 보구 효과 예외
+                String weapon_explain = jObject.getString("weapon_explain"); // 보구 설명
+                String weapon_effect = jObject.getString("weapon_effect"); // 보구 효과
+                int weapon_value = jObject.getInt("weapon_value"); // 보구 수치
+                String weapon_type = jObject.getString("weapon_type"); // 보구 타입
+                String weapon_merit = jObject.getString("weapon_merit"); // 보구 장단점
+                int weapon_hit = jObject.getInt("weapon_hit"); // 보구 타수
+                int weapon_duration = jObject.getInt("weapon_duration"); // 보구 지속시간
+                int weapon_percent = jObject.getInt("weapon_percent"); // 보구 퍼센트 여부
+                int weapon_enhance = jObject.getInt("weapon_enhance"); // 보구 강화 여부
+
+                // 3. 데이터 삽입을 하여준다.
+                mDbOpenHelper.addServantWeaponList(new WeaponContact(weapon_id, weapon_name, weapon_sub_name,
+                        weapon_rank, weapon_classification, weapon_level,
+                        weapon_target, weapon_range, weapon_except, weapon_explain,
+                        weapon_effect, weapon_value, weapon_type, weapon_merit, weapon_hit,
+                        weapon_duration, weapon_percent, weapon_enhance));
+
+            }
+            // 4. 완전히 종료되면 실행
+            mDbOpenHelper.mDB.setTransactionSuccessful();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } finally {
+            // 5. 삽입 끝나면 트랜잭션 종료
+            mDbOpenHelper.mDB.endTransaction();
+            // 6. DB 닫기
+            mDbOpenHelper.close();
+        }
+    }
+
+    // 2_6) 서번트 조인 보구 테이블에 데이터 삽입
+    public void servantJoinWeaponParser(){
+        // 0. 테이블에 값이 있으면 db에 저장하지 않는다.
+        mDbOpenHelper.open();
+        if (mDbOpenHelper.checkData(DataBase.WeaponJoinTable.TABLE_NAME)) {
+            mDbOpenHelper.close();
+            return;
+        }
+        fileName = "databases/ServantJoinWeapon.json"; // 파일 이름 저장 변수
+        jsonString = loadServantFromAsset(fileName); // JSON에서 데이터를 뽑아서 집어 넣는다.
+        // 트랜잭션 시작
+        mDbOpenHelper.mDB.beginTransaction();
+        try {
+            jarray = new JSONArray(jsonString);
+
+            for (int i = 0; i < jarray.length(); i++) {
+                JSONObject jObject = jarray.getJSONObject(i);
+
+                int id = jObject.getInt("id");
+                int servant_id = jObject.getInt("servant_id");
+                int weapon_id= jObject.getInt("weapon_id");
+
+                mDbOpenHelper.addServantJoinWeapon(new WeaponJoinContact(id, servant_id, weapon_id));
+
+            }
+            // 4. 완전히 종료되면 실행
+            mDbOpenHelper.mDB.setTransactionSuccessful();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } finally {
+            // 5. 삽입 끝나면 트랜잭션 종료
+            mDbOpenHelper.mDB.endTransaction();
+            // 6. DB 닫기
+            mDbOpenHelper.close();
+        }
+    }
+
+
+    // 2_7) 서번트 조인 재료 테이블에 데이터 삽입
     public void servantJoinMaterialParser(){
         // 0. 테이블에 값이 있으면 저장하지 않는다.
 
@@ -491,7 +590,7 @@ public class Parser extends LinearLayout {
         }
 
     }
-    // 2_6) 서번트 재료 테이블에 데이터 삽입
+    // 2_8) 서번트 재료 테이블에 데이터 삽입
     public void servantMaterialParser(){
         // 0. 테이블에 값이 있으면 저장하지 않는다.
 
@@ -575,7 +674,6 @@ public class Parser extends LinearLayout {
             mDbOpenHelper.close();
         }
     }
-
     // 3_2) 마술예장 효과 데이터 삽입
     public void magicEffectParser(){
         // 0. 테이블에 값이 있으면 저장하지 않는다.
@@ -624,7 +722,6 @@ public class Parser extends LinearLayout {
             mDbOpenHelper.close();
         }
     }
-
     // 3_3) 마술예장 경험치 데이터 삽입
     public void magicExpParser(){
         // 0. 테이블에 값이 있으면 저장하지 않는다.
