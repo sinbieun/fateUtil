@@ -394,19 +394,19 @@ public class MagicLayout extends LinearLayout {
         List<MagicEffectForSecondModel> magicEffectForSecondList = mDbOpenHelper.getMagicEffectListForSecond(magicId, magicName);
 
         // 그려주기 시작
-        drawEffectGridLayoutData("레벨", 50,30,20, "M");
-        drawEffectGridLayoutData("성능", 50,30,20, "M");
-        drawEffectGridLayoutData("쿨타임", 70,30,20, "M");
+        drawEffectGridLayoutData("레벨", 70,40,20, "M");
+        drawEffectGridLayoutData("성능", 70,40,20, "M");
+        drawEffectGridLayoutData("쿨타임", 90,40,20, "M");
 
         for (int effectSecondIndex = 0 ; effectSecondIndex < magicEffectForSecondList.size() ; effectSecondIndex++){
             // 레벨
-            drawEffectGridLayoutData(String.valueOf(magicEffectForSecondList.get(effectSecondIndex).getMagicEffectLevel()), 50, 30, 15, "C");
+            drawEffectGridLayoutData(String.valueOf(magicEffectForSecondList.get(effectSecondIndex).getMagicEffectLevel()), 70, 40, 15, "C");
 
             // 경험치
-            drawEffectGridLayoutData(String.valueOf(magicEffectForSecondList.get(effectSecondIndex).getMagicEffectUtil()), 50, 30, 15, "C");
+            drawEffectGridLayoutData(String.valueOf(magicEffectForSecondList.get(effectSecondIndex).getMagicEffectUtil()), 70, 40, 15, "C");
 
             // 누적 경험치
-            drawEffectGridLayoutData(String.valueOf(magicEffectForSecondList.get(effectSecondIndex).getMagicEffectTime()), 70, 30, 15, "C");
+            drawEffectGridLayoutData(String.valueOf(magicEffectForSecondList.get(effectSecondIndex).getMagicEffectTime()), 90, 40, 15, "C");
         }
     }
 
