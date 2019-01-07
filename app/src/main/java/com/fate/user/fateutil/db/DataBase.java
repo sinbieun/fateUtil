@@ -157,6 +157,7 @@ public class DataBase {
         public static final String WEAPON_TARGET = "weapon_target";
         public static final String WEAPON_RANGE = "weapon_range";
         public static final String WEAPON_EXCEPT = "weapon_except";
+        public static final String WEAPON_EXPLAIN = "weapon_explain";
         public static final String WEAPON_EFFECT = "weapon_effect";
         public static final String WEAPON_VALUE = "weapon_value";
         public static final String WEAPON_TYPE = "weapon_type";
@@ -337,6 +338,7 @@ public class DataBase {
                     WeaponTable.WEAPON_TARGET + " text , " +
                     WeaponTable.WEAPON_RANGE + " text , " +
                     WeaponTable.WEAPON_EXCEPT + " text , " +
+                    WeaponTable.WEAPON_EXPLAIN + " text ," +
                     WeaponTable.WEAPON_EFFECT + " text , " +
                     WeaponTable.WEAPON_VALUE + " real , " +
                     WeaponTable.WEAPON_TYPE + " text , " +

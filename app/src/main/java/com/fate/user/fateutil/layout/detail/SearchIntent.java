@@ -21,6 +21,7 @@ import com.fate.user.fateutil.db.contact.Material.MaterialContact;
 import com.fate.user.fateutil.db.contact.Servant.ServantAscensionContact;
 import com.fate.user.fateutil.db.contact.Servant.ServantIconContact;
 import com.fate.user.fateutil.db.contact.Skill.SkillContact;
+import com.fate.user.fateutil.db.contact.Weapon.WeaponContact;
 
 
 import java.util.List;
@@ -42,6 +43,8 @@ public class SearchIntent extends AppCompatActivity {
 
     // 패시브 스킬 변수
     private List<SkillContact> servantHavingPassiveSkill;
+    // 보구 변수
+    private List<WeaponContact> servantHavingWeapon;
 
     // 재료 변수
     private List<MaterialContact> servantMaterial;
@@ -147,6 +150,9 @@ public class SearchIntent extends AppCompatActivity {
         // 2_2) 서번트가 보유하고 있는 스킬재림 재료를 가져온다.
         servantMaterial = mDbOpenHelper.getServantMaterial(position, 'S');
         tableMaterial(10, 3, servantMaterial);
+
+        // 보구
+        servantHavingWeapon = mDbOpenHelper.getServantWeapon(position);
 
         mDbOpenHelper.close();
 
@@ -403,15 +409,21 @@ public class SearchIntent extends AppCompatActivity {
     // 서번트 보구 테이블 생성
     public void tableWeaponTable(int trCt, int tdCt){
         // 1. 보구 데이터 받음
+        TableLayout skillTable = findViewById(R.id.weapon_table_1);
+        skillTable.setPadding(2, 2, 2, 2);
+        TableRow.LayoutParams rowLayout = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT);
+        String packName = this.getPackageName();
+        TableRow row[] = new TableRow[trCt];
+        TextView textViews[][] = new TextView[trCt][tdCt];
+
+
+
+
         // 1) 보구 강화 x / 보구 강화 O
         // 2) 보구 이름, 서브 이름
         // 3) 보구 타입, 보구 랭크, 보구 히트수
         // 4) 보구 효과 , 보구 오버차지
         // 5) 보구 lv에 따른 데미지 비율 , 보구 오버 차지 레벨에 따른 비율
-
-
-
-
 
     }
 

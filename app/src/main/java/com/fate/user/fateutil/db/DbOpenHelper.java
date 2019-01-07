@@ -339,6 +339,7 @@ public class DbOpenHelper {
         cv.put(DataBase.WeaponTable.WEAPON_TARGET, contact.getWeaponTarget());
         cv.put(DataBase.WeaponTable.WEAPON_RANGE, contact.getWeaponRange());
         cv.put(DataBase.WeaponTable.WEAPON_EXCEPT, contact.getWeaponExcept());
+        cv.put(DataBase.WeaponTable.WEAPON_EXPLAIN, contact.getWeaponExplain());
         cv.put(DataBase.WeaponTable.WEAPON_EFFECT, contact.getWeaponEffect());
         cv.put(DataBase.WeaponTable.WEAPON_VALUE, contact.getWeaponValue());
         cv.put(DataBase.WeaponTable.WEAPON_TYPE, contact.getWeaponType());
@@ -779,35 +780,42 @@ public class DbOpenHelper {
 
     // 3. 보구 검색
     // 3_1) 보구 리스트 가져오기 (수정 예정)
-    public List<WeaponContact> getServantJoinWeapon(int servantId) {
+    public List<WeaponContact> getServantWeapon(int servantId) {
 
-        List<WeaponContact> contactSkillList = new ArrayList<WeaponContact>();
+        List<WeaponContact> getWeaponList = new ArrayList<WeaponContact>();
         // 검색 쿼리 저장
-        String selectServantJoinWeapon = "SELECT " +
-                "SS.weapon_name as weapon_name, " +
-                "SS.weapon_icon as weapon_icon, " +
-                "SS.weapon_rank as weapon_rank, " +
-                "SS.weapon_classification as weapon_classification, " +
-                "SS.weapon_level as weapon_level, " +
-                "SS.weapon_target as weapon_target, " +
-                "SS.weapon_range as weapon_range, " +
-                "SS.weapon_effect as weapon_effect, " +
-                "SS.weapon_value as weapon_value, " +
-                "SS.weapon_merit as weapon_merit, " +
-                "SS.weapon_duration as weapon_duration, " +
-                "SS.weapon_coolDown as weapon_cd, " +
-                "SS.weapon_percent as weapon_percent, " +
-                "SS.weapon_enhance as weapon_enhance " +
-                " from " + DataBase.ServantJoinSkillTable.TABLE_NAME + " as SJS " +
-                " inner join " + DataBase.ServantNameTable.TABLE_NAME + " as SN " +
-                " on SJS.servant_id = " + servantId + " AND SN.id = " + servantId +
-                " inner join " + DataBase.ActiveSkillTable.TABLE_NAME + " as SS " +
-                " on SJS.weapon_id = SS.id";
+        String selectServantWeapon = "SELECT " +
+                "SN.name_id as servant_id, " +
+                "SN.name_value as servant_name, " +
+                "WT.weapon_id as weapon_id, " +
+                "WT.weapon_name as weapon_name, " +
+                "WT.weapon_sub_name as weapon_sub_name,  " +
+                "WT.weapon_rank as weapon_rank, " +
+                "WT.weapon_classification as weapon_classification, " +
+                "WT.weapon_level as weapon_level, " +
+                "WT.weapon_target as weapon_target, " +
+                "WT.weapon_range as weapon_range, " +
+                "WT.weapon_except as weapon_except, " +
+                "WT.weapon_explain as weapon_explain, " +
+                "WT.weapon_effect as weapon_effect, " +
+                "WT.weapon_value as weapon_value, " +
+                "WT.weapon_type as weapon_type," +
+                "WT.weapon_merit as weapon_merit, " +
+                "WT.weapon_hit as weapon_hit, " +
+                "WT.weapon_duration as weapon_duration, " +
+                "WT.weapon_percent as weapon_percent, " +
+                "WT.weapon_enhance as weapon_enhance " +
+                "from " + DataBase.WeaponJoinTable.TABLE_NAME + " as WJT " +
+                "inner join " + DataBase.WeaponTable.TABLE_NAME + " as WT " +
+                "on WJT.weapon_id = WT.weapon_id " +
+                "inner join " + DataBase.ServantNameTable.TABLE_NAME + " as SN " +
+                "on SN.name_id = WJT.servant_id " +
+                "AND WJT.servant_id = " + servantId;
 
         mDB = mDBHelper.getReadableDatabase();
 
         // 커서에 검색 쿼리 삽입
-        Cursor cursor = mDB.rawQuery(selectServantJoinWeapon, null);
+        Cursor cursor = mDB.rawQuery(selectServantWeapon, null);
 
         if (cursor.moveToFirst()) {
             do {
@@ -821,6 +829,7 @@ public class DbOpenHelper {
                 contact.setWeaponTarget(cursor.getString(cursor.getColumnIndex("weapon_target")));
                 contact.setWeaponRange(cursor.getString(cursor.getColumnIndex("weapon_range")));
                 contact.setWeaponExcept(cursor.getString(cursor.getColumnIndex("weapon_except")));
+                contact.setWeaponExplain(cursor.getString(cursor.getColumnIndex("weapon_explain")));
                 contact.setWeaponEffect(cursor.getString(cursor.getColumnIndex("weapon_effect")));
                 contact.setWeaponValue(cursor.getFloat(cursor.getColumnIndex("weapon_value")));
                 contact.setWeaponType(cursor.getString(cursor.getColumnIndex("weapon_type")));
@@ -830,11 +839,11 @@ public class DbOpenHelper {
                 contact.setWeaponPercent(cursor.getInt(cursor.getColumnIndex("weapon_percent")));
                 contact.setWeaponEnhance(cursor.getInt(cursor.getColumnIndex("weapon_enhance")));
 
-                contactSkillList.add(contact);
+                getWeaponList.add(contact);
 
             } while (cursor.moveToNext());
         }
-        return contactSkillList;
+        return getWeaponList;
     }
 
     // 4. 마술예장
