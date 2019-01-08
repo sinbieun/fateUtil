@@ -166,6 +166,7 @@ public class DbOpenHelper {
         cv.put(DataBase.ServantJoinListTable.NAME_ID, contact.getServantNameId()); // 서번트 이름 아이디
         cv.put(DataBase.ServantJoinListTable.CLASS_ID, contact.getServantClassId()); // 서번트 클래스 아이디
         cv.put(DataBase.ServantJoinListTable.GRADE_VALUE, contact.getServantGrade()); // 서번트 등급 값
+        cv.put(DataBase.ServantJoinListTable.JOIN_DELETE_YN, contact.getJoin_delete_yn()); // 서번트 삭제 여부
 
         mDB.insert(DataBase.ServantJoinListTable.TABLE_NAME, null, cv);
     }
@@ -178,6 +179,7 @@ public class DbOpenHelper {
         ContentValues cv = new ContentValues();
         cv.put(DataBase.ServantIconTable.ICON_ID, contact.getServantIconId()); // 서번트 아이콘 아이디
         cv.put(DataBase.ServantIconTable.ICON_NAME, contact.getServantIcon()); // 서번트 아이콘
+        cv.put(DataBase.ServantIconTable.ICON_DELETE_YN, contact.getIcon_delete_yn()); // 서번트 아이콘 삭제 여부
 
         mDB.insert(DataBase.ServantIconTable.TABLE_NAME, null, cv);
 
@@ -191,6 +193,7 @@ public class DbOpenHelper {
 
         cv.put(DataBase.ServantNameTable.NAME_ID, contact.getServantNameId()); // 서번트 이름 아이디
         cv.put(DataBase.ServantNameTable.NAME_VALUE, contact.getServantName()); // 서번트 이름
+        cv.put(DataBase.ServantNameTable.NAME_DELETE_YN, contact.getName_delete_yn()); // 서번트 이름 삭제 여부
 
         mDB.insert(DataBase.ServantNameTable.TABLE_NAME, null, cv);
 
@@ -204,6 +207,7 @@ public class DbOpenHelper {
 
         cv.put(DataBase.ServantClassTable.CLASS_ID, contact.getServantClassId()); // 서번트 클래스 아이디
         cv.put(DataBase.ServantClassTable.CLASS_NAME, contact.getServantClass()); // 서번트 클래스
+        cv.put(DataBase.ServantClassTable.CLASS_DELETE_YN, contact.getClass_delete_yn()); // 서번트 클래스 삭제 여부
 
         mDB.insert(DataBase.ServantClassTable.TABLE_NAME, null, cv);
 
@@ -839,6 +843,48 @@ public class DbOpenHelper {
                 contact.setWeaponPercent(cursor.getInt(cursor.getColumnIndex("weapon_percent")));
                 contact.setWeaponEnhance(cursor.getInt(cursor.getColumnIndex("weapon_enhance")));
 
+                getWeaponList.add(contact);
+
+            } while (cursor.moveToNext());
+        }
+        return getWeaponList;
+    }
+
+    public List<WeaponContact> getServantWeapon1(int servantId) {
+
+        List<WeaponContact> getWeaponList = new ArrayList<WeaponContact>();
+        // 검색 쿼리 저장
+        String selectServantWeapon = "select " +
+                "SN.name_id as servant_id, " +
+                "SN.name_value as servant_name, " +
+                "WT.weapon_classification as weapon_classification, " +
+                "WT.weapon_level as weapon_level, " +
+                "(WT.weapon_name || ' - ' || WT.weapon_sub_name) as weapon_full_name, " +
+                "WT.weapon_type as weapon_type, " +
+                "WT.weapon_rank as weapon_rank, " +
+                "WT.weapon_hit as weapon_hit, " +
+                "(WT.weapon_target || ' ' || WT.weapon_range || '' || WT.weapon_explain) as weapon_full_explain " +
+                "from ServantJoinWeapon as WJT  " +
+                "inner join ServantWeapon as WT  " +
+                "on WJT.weapon_id = WT.weapon_id  " +
+                "inner join ServantName as SN  " +
+                "on SN.name_id = WJT.servant_id  " +
+                "AND WJT.servant_id = 1 " +
+                "where WT.weapon_level  between 0 and 1 ";
+
+        mDB = mDBHelper.getReadableDatabase();
+
+        // 커서에 검색 쿼리 삽입
+        Cursor cursor = mDB.rawQuery(selectServantWeapon, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                WeaponContact contact = new WeaponContact();
+                contact.setWeaponFullName(cursor.getString(cursor.getColumnIndex("weapon_full_name")));
+                contact.setWeaponRank(cursor.getString(cursor.getColumnIndex("weapon_rank")));
+                contact.setWeaponType(cursor.getString(cursor.getColumnIndex("weapon_type")));
+                contact.setWeaponHit(cursor.getInt(cursor.getColumnIndex("weapon_hit")));
+                contact.getWeaponFullExplain(cursor.getString(cursor.getColumnIndex("weapon_full_explain")));
                 getWeaponList.add(contact);
 
             } while (cursor.moveToNext());

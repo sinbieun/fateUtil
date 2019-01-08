@@ -1,42 +1,57 @@
 [
     {
+        "class_delete_yn": "N",
         "class_id": "1",
         "class_name": "세이버"
     },
     {
+        "class_delete_yn": "N",
         "class_id": "2",
         "class_name": "아처"
     },
     {
+        "class_delete_yn": "N",
         "class_id": "3",
         "class_name": "랜서"
     },
     {
+        "class_delete_yn": "N",
         "class_id": "4",
         "class_name": "라이더"
     },
     {
+        "class_delete_yn": "N",
         "class_id": "5",
         "class_name": "캐스터"
     },
     {
+        "class_delete_yn": "N",
         "class_id": "6",
         "class_name": "어쌔신"
     },
     {
+        "class_delete_yn": "N",
         "class_id": "7",
         "class_name": "버서커"
     },
     {
+        "class_delete_yn": "N",
         "class_id": "8",
         "class_name": "실더"
     },
     {
+        "class_delete_yn": "N",
         "class_id": "9",
         "class_name": "룰러"
     },
     {
+        "class_delete_yn": "N",
         "class_id": "10",
         "class_name": "어벤저"
+    },
+    {
+        "class_delete_yn": "N",
+        "class_id": "11",
+        "class_name": "비스트"
     }
 ]

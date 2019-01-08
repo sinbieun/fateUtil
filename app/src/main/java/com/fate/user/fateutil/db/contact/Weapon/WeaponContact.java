@@ -6,6 +6,7 @@ public class WeaponContact {
     private int weaponId; // 보구 아이디
     private String weaponName; // 보구 이름
     private String weaponSubName; // 보구 서브 이름
+    private String weaponFullName; // 보구 이름 + 보구 서브 이름
     private String weaponRank; // 보구 랭크
     private String weaponClassification; // 스킬 분류 (레벨 오버차지 아니면 고정값)
     private int weaponLevel; // 보구 레벨 (0부터 10까지 0은 고정값)
@@ -13,6 +14,7 @@ public class WeaponContact {
     private String weaponRange; // 보구 범위(전체, 한 명)
     private String weaponExcept; // 보구 제외
     private String weaponExplain; // 보구 설명
+    private String weaponFullExplain; // 보구 전체 설명
     private String weaponEffect; // 스킬 효과
     private float weaponValue; // 스킬 효과 수치
     private String weaponType; // 보구 타입
@@ -197,4 +199,19 @@ public class WeaponContact {
         this.weaponEnhance = weaponEnhance;
     }
 
+    public String getWeaponFullExplain(String weapon_full_explain) {
+        return weaponFullExplain;
+    }
+
+    public void setWeaponFullExplain(String weaponFullExplain) {
+        this.weaponFullExplain = weaponFullExplain;
+    }
+
+    public String getWeaponFullName() {
+        return weaponFullName;
+    }
+
+    public void setWeaponFullName(String weaponFullName) {
+        this.weaponFullName = weaponFullName;
+    }
 }

@@ -45,6 +45,8 @@ public class SearchIntent extends AppCompatActivity {
     private List<SkillContact> servantHavingPassiveSkill;
     // 보구 변수
     private List<WeaponContact> servantHavingWeapon;
+    private List<WeaponContact> servantHavingWeapon1;
+
 
     // 재료 변수
     private List<MaterialContact> servantMaterial;
@@ -152,7 +154,11 @@ public class SearchIntent extends AppCompatActivity {
         tableMaterial(10, 3, servantMaterial);
 
         // 보구
-        servantHavingWeapon = mDbOpenHelper.getServantWeapon(position);
+        // 1. 이름 랭크 히트수
+        //servantHavingWeapon1 = mDbOpenHelper.getServantWeapon1(position);
+        //tableWeaponMain(0,3,servantHavingWeapon1);
+        servantHavingWeapon = mDbOpenHelper.getServantWeapon1(position);
+        tableWeaponMain(servantHavingWeapon);
 
         mDbOpenHelper.close();
 
@@ -407,7 +413,8 @@ public class SearchIntent extends AppCompatActivity {
     }
 
     // 서번트 보구 테이블 생성
-    public void tableWeaponTable(int trCt, int tdCt){
+    /*
+    public void tableWeaponTable(int trCt, int tdCt, List<WeaponContact> weaponList){
         // 1. 보구 데이터 받음
         TableLayout skillTable = findViewById(R.id.weapon_table_1);
         skillTable.setPadding(2, 2, 2, 2);
@@ -426,6 +433,98 @@ public class SearchIntent extends AppCompatActivity {
         // 5) 보구 lv에 따른 데미지 비율 , 보구 오버 차지 레벨에 따른 비율
 
     }
+    */
+    public void tableWeaponMain(List<WeaponContact> weaponMain) {
+        TextView weaponName = findViewById(R.id.weapon_name);
+        TableLayout weaponFirst = findViewById(R.id.weapon_table_1); // 타입, 랭크 히트수
+        TableLayout weaponSecond = findViewById(R.id.weapon_table_2); // 효과
+        TableLayout weaponThird = findViewById(R.id.weapon_table_3);
+
+        String packName = this.getPackageName();
+
+        TableRow row2[] = new TableRow[weaponMain.size()];
+
+        //ImageView skillIcon[][] = new ImageView[trCt][tdCt];
+
+
+        // 표1에 그려줄것
+        TableRow row1[] = new TableRow[2];
+        TextView textViews1[][] = new TextView[2][3];
+
+        weaponName.setPadding(2, 2, 2, 2);
+        weaponSecond.setPadding(2, 2, 2, 2);
+        weaponThird.setPadding(2, 2, 2, 2);
+
+        TableRow.LayoutParams rowLayout = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT);
+
+        WeaponContact weaponContact = weaponMain.get(0);
+        weaponName.setText(weaponContact.getWeaponFullName());
+        weaponName.setTextSize(20);
+        weaponName.setGravity(Gravity.CENTER);
+
+        // 타입 랭크 히트
+        for (int tr1 = 0; tr1 < 2; tr1++) {
+            row1[tr1] = new TableRow(this);
+
+            weaponContact = weaponMain.get(tr1);
+            for (int td1 = 0; td1 < 3; td1++) {
+                textViews1[tr1][td1] = new TextView(this);
+
+                switch (td1) {
+                    case 0: {
+                        if (tr1 == 0) {
+                            textViews1[tr1][td1].setText("타입");
+                            textViews1[tr1][td1].setTextSize(20);
+                            textViews1[tr1][td1].setGravity(Gravity.CENTER);
+                            row1[tr1].addView(textViews1[tr1][td1]);
+                            break;
+                        }
+                        textViews1[tr1][td1].setText(weaponContact.getWeaponType());
+                        textViews1[tr1][td1].setTextSize(15);
+                        textViews1[tr1][td1].setGravity(Gravity.CENTER);
+                        row1[tr1].addView(textViews1[tr1][td1]);
+                        break;
+
+                    }
+
+                    case 1: {
+                        if (tr1 == 0) {
+                            textViews1[tr1][td1].setText("랭크");
+                            textViews1[tr1][td1].setTextSize(20);
+                            textViews1[tr1][td1].setGravity(Gravity.CENTER);
+                            row1[tr1].addView(textViews1[tr1][td1]);
+                            break;
+                        }
+                        textViews1[tr1][td1].setText(weaponContact.getWeaponRank());
+                        textViews1[tr1][td1].setTextSize(15);
+                        textViews1[tr1][td1].setGravity(Gravity.CENTER);
+                        row1[tr1].addView(textViews1[tr1][td1]);
+                        break;
+
+                    }
+
+                    case 2: {
+                        if (tr1 == 0) {
+                            textViews1[tr1][td1].setText("히트");
+                            textViews1[tr1][td1].setTextSize(20);
+                            textViews1[tr1][td1].setGravity(Gravity.CENTER);
+                            row1[tr1].addView(textViews1[tr1][td1]);
+                            break;
+                        }
+                        textViews1[tr1][td1].setText(String.valueOf(weaponContact.getWeaponHit()));
+                        textViews1[tr1][td1].setTextSize(15);
+                        textViews1[tr1][td1].setGravity(Gravity.CENTER);
+                        row1[tr1].addView(textViews1[tr1][td1]);
+                        break;
+
+                    }
+                }
+            }
+
+            weaponFirst.addView(row1[tr1], rowLayout);
+        }
+    }
+
 
     // 영기 재림 재료 테이블 생성
     public void tableMaterial(int trCt, int tdCt, List<MaterialContact> Material) {
@@ -579,7 +678,8 @@ public class SearchIntent extends AppCompatActivity {
         ascention_btn_3.setOnClickListener(onClickListener);
         ascention_btn_4.setOnClickListener(onClickListener);
     }
-
 }
+
+
 
 

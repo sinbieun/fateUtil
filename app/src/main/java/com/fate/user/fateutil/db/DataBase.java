@@ -78,24 +78,28 @@ public class DataBase {
         public static final String NAME_ID = "name_id";
         public static final String CLASS_ID = "class_id";
         public static final String GRADE_VALUE = "grade_value";
+        public static final String JOIN_DELETE_YN = "join_delete_yn";
     }
     // 1_2) 서번트 아이콘 테이블 변수 생성 (서번트 아이콘 이름 아이디, 서번트 아이콘 이름)
     public static final class ServantIconTable implements BaseColumns {
         public static final String TABLE_NAME = "ServantIcon";
         public static final String ICON_ID = "icon_id";
         public static final String ICON_NAME = "icon_name";
+        public static final String ICON_DELETE_YN = "icon_delete_yn";
     }
     // 1_3) 서번트 이름 테이블 변수 생성 (서번트 이름 아이디, 서번트 이름 값)
     public static final class ServantNameTable implements BaseColumns {
         public static final String TABLE_NAME = "ServantName";
         public static final String NAME_ID = "name_id";
         public static final String NAME_VALUE = "name_value";
+        public static final String NAME_DELETE_YN = "name_delete_yn";
     }
     // 1_4) 서번트 클래스 테이블 변수 생성 (서번트 클래스 아이디, 서번트 클래스 이름)
     public static final class ServantClassTable implements BaseColumns {
         public static final String TABLE_NAME = "ServantClass";
         public static final String CLASS_ID = "class_id";
         public static final String CLASS_NAME = "class_name";
+        public static final String CLASS_DELETE_YN = "class_delete_yn";
     }
     // 1_5) 서번트 경험치 테이블 변수 생성
     public static final class ServantExpTable implements BaseColumns {
@@ -250,28 +254,36 @@ public class DataBase {
                     ServantJoinListTable.ICON_ID + " integer not null ," +
                     ServantJoinListTable.NAME_ID + " integer not null , " +
                     ServantJoinListTable.CLASS_ID + " integer not null , " +
-                    ServantJoinListTable.GRADE_VALUE + " integer not null" + ");";
+                    ServantJoinListTable.GRADE_VALUE + " integer not null, " +
+                    ServantJoinListTable.JOIN_DELETE_YN + " text not null " +
+                    ");";
 
     // 1_2) 서번트 아이콘 테이블 생성
     public static final String SQL_CREATE_SERVANT_ICON =
             "create table " +
                     ServantIconTable.TABLE_NAME + " (" +
                     ServantIconTable.ICON_ID + " integer primary key not null, " +
-                    ServantIconTable.ICON_NAME + " text not null" + ");";
+                    ServantIconTable.ICON_NAME + " text not null, " +
+                    ServantIconTable.ICON_DELETE_YN + " text not null" +
+                    ");";
 
     // 1_3) 서번트 이름 테이블 생성
     public static final String SQL_CREATE_SERVANT_NAME =
             "create table " +
                     ServantNameTable.TABLE_NAME + " (" +
                     ServantNameTable.NAME_ID + " integer primary key not null, " +
-                    ServantNameTable.NAME_VALUE + " text not null" + ");";
+                    ServantNameTable.NAME_VALUE + " text not null, " +
+                    ServantNameTable.NAME_DELETE_YN + " text not null " +
+                    ");";
 
     // 1_4) 서번트 클래스 테이블 생성
     public static final String SQL_CREATE_SERVANT_CLASS =
             "create table " +
                     ServantClassTable.TABLE_NAME + " (" +
                     ServantClassTable.CLASS_ID + " integer primary key not null, " +
-                    ServantClassTable.CLASS_NAME + " text not null" + ");";
+                    ServantClassTable.CLASS_NAME + " text not null, " +
+                    ServantClassTable.CLASS_DELETE_YN + " text not null " +
+                    ");";
 
     // 1_5) 서번트 경험치 테이블 생성
     public static final String SQL_CREATE_SERVANT_EXP =
@@ -279,7 +291,7 @@ public class DataBase {
                     ServantExpTable.TABLE_NAME + " (" +
                     ServantExpTable.ID + " integer not null , " +
                     ServantExpTable.SERVANT_LEVEL + " integer not null ," +
-                    ServantExpTable.SERVANT_EXP + " integer not null" + ");";
+                    ServantExpTable.SERVANT_EXP + " integer not null " + ");";
 
     // 2. 서번트 스킬
     // 2_1) 서번트 조인 액티브 스킬 테이블 생성

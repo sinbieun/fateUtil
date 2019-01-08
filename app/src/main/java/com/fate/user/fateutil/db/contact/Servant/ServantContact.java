@@ -10,15 +10,17 @@ public class ServantContact {
     private int servantClassId; // 서번트 클래스 아이디
     private String servantClass;
     private int servantGrade; // 서번트 등급
+    private String join_delete_yn; // 삭제 여부
 
     // 생성자
     public ServantContact(){}
-    public ServantContact(int servantId, int servantIconId, int servantNameId, int servantClassId, int servantGrade){
+    public ServantContact(int servantId, int servantIconId, int servantNameId, int servantClassId, int servantGrade, String join_delete_yn){
         this.servantId = servantId;
         this.servantIconId = servantIconId;
         this.servantNameId = servantNameId;
         this.servantClassId = servantClassId;
         this.servantGrade = servantGrade;
+        this.join_delete_yn = join_delete_yn;
     }
     public ServantContact(int servantGrade){
         this.servantGrade = servantGrade;
@@ -79,7 +81,6 @@ public class ServantContact {
     public String getServantClass(){
         return servantClass;
     }
-
     public void setServantClass(String servantClass){
         this.servantClass = servantClass;
     }
@@ -91,5 +92,13 @@ public class ServantContact {
     public void setServantGrade(int servantGrade){
         this.servantGrade = servantGrade;
     }
+
+    public String getJoin_delete_yn(){
+        return join_delete_yn;
+    }
+    public void setJoin_delete_yn(String join_delete_yn){
+        this.join_delete_yn = join_delete_yn;
+    }
+
 
 } // ServantContact 끝

@@ -118,6 +118,11 @@
                                 android:gravity="center"
                                 android:text="보구" />
 
+                            <TextView
+                                android:id="@+id/weapon_name"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+
                             <TableLayout
                                 android:id="@+id/weapon_table_1"
                                 android:layout_width="match_parent"
@@ -126,6 +131,12 @@
 
                             <TableLayout
                                 android:id="@+id/weapon_table_2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                            </TableLayout>
+
+                            <TableLayout
+                                android:id="@+id/weapon_table_3"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content">
                             </TableLayout>

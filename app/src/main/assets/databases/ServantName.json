@@ -1,450 +1,772 @@
 [
     {
+        "name_delete_yn": "N",
         "name_id": "1",
         "name_value": "마슈 키리에라이트"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "2",
         "name_value": "알트리아 펜드래곤"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "3",
         "name_value": "알트리아 펜드래곤(얼터)"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "4",
         "name_value": "알트리아 펜드래곤(릴리)"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "5",
         "name_value": "네로 클라우디우스"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "6",
         "name_value": "지크프리트"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "7",
         "name_value": "가이우스 율리우스 카이사르"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "8",
         "name_value": "알테라"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "9",
         "name_value": "질 드 레"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "10",
         "name_value": "슈발리에 데옹"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "11",
         "name_value": "에미야"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "12",
         "name_value": "길가메시"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "13",
         "name_value": "로빈 후드"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "14",
         "name_value": "아탈란테"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "15",
         "name_value": "에우리알레"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "16",
         "name_value": "아라쉬"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "17",
         "name_value": "쿠 훌린"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "18",
         "name_value": "엘리자베트 바토리"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "19",
         "name_value": "무사시보 벤케이"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "20",
         "name_value": "쿠 훌린(프로토타입)"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "21",
         "name_value": "레오니다스 1세"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "22",
         "name_value": "로물루스"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "23",
         "name_value": "메두사"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "24",
         "name_value": "게오르기우스"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "25",
         "name_value": "에드워드 티치"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "26",
         "name_value": "부디카"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "27",
         "name_value": "우시와카마루"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "28",
         "name_value": "알렉산더"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "29",
         "name_value": "마리 앙투아네트"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "30",
         "name_value": "마르타"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "31",
         "name_value": "메데이아"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "32",
         "name_value": "질 드 레"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "33",
         "name_value": "한스 크리스티안 안데르센"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "34",
         "name_value": "윌리엄 셰익스피어"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "35",
         "name_value": "메피스토펠레스"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "36",
         "name_value": "볼프강 아마데우스 모차르트"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "37",
         "name_value": "제갈공명(엘멜로이 2세)"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "38",
         "name_value": "쿠 훌린"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "39",
         "name_value": "사사키 코지로"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "40",
         "name_value": "주완의 하산"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "41",
         "name_value": "스테노"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "42",
         "name_value": "형가"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "43",
         "name_value": "샤를-앙리 상송"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "44",
         "name_value": "팬덤 오브 디 오페라"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "45",
         "name_value": "마타 하리"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "46",
         "name_value": "카밀라"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "47",
         "name_value": "헤라클레스"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "48",
         "name_value": "랜슬롯"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "49",
         "name_value": "여포 봉선"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "50",
         "name_value": "스파르타쿠스"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "51",
         "name_value": "사카타 킨토키"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "52",
         "name_value": "블라드 3세"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "53",
         "name_value": "아스테리오스"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "54",
         "name_value": "칼리굴라"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "55",
         "name_value": "다리우스 3세"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "56",
         "name_value": "키요히메"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "57",
         "name_value": "에릭 블러드액스"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "58",
         "name_value": "타마모캣"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "59",
         "name_value": "잔 다르크"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "60",
         "name_value": "오리온"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "61",
         "name_value": "엘리자베트 바토리(할로윈)"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "62",
         "name_value": "타마모노마에"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "63",
         "name_value": "다윗"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "64",
         "name_value": "헥토르"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "65",
         "name_value": "프랜시스 드레이크"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "66",
         "name_value": "앤 보니&메리 리드"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "67",
         "name_value": "메데이아(릴리)"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "68",
         "name_value": "오키타 소지"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "69",
         "name_value": "오다 노부나가"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "70",
         "name_value": "스카사하"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "71",
         "name_value": "디어뮈드 오 디나"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "72",
         "name_value": "퍼거스 막 로이"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "73",
         "name_value": "알트리아 펜드래곤(산타 얼터)"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "74",
         "name_value": "너서리 라임"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "75",
         "name_value": "잭 더 리퍼"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "76",
         "name_value": "모드레드"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "77",
         "name_value": "니콜라 테슬라"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "78",
         "name_value": "알트리아 펜드래곤(얼터)"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "79",
         "name_value": "반 호엔하임 파라켈수스"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "80",
         "name_value": "찰스 배비지"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "81",
         "name_value": "헨리 지킬&하이드"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "82",
         "name_value": "프랑켄슈타인"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "83",
         "name_value": "솔로몬"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "84",
         "name_value": "아르주나"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "85",
         "name_value": "카르나"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "86",
         "name_value": "수수께끼의 히로인 X"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "87",
         "name_value": "핀 막 쿨"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "88",
         "name_value": "브륀힐드"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "89",
         "name_value": "베오울프"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "90",
         "name_value": "네로 클라우디우스(브라이드)"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "91",
         "name_value": "료기 시키"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "92",
         "name_value": "료기 시키"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "93",
         "name_value": "아마쿠사 시로"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "94",
         "name_value": "아스톨포"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "95",
         "name_value": "꼬마 길"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "96",
         "name_value": "에드몽 당테스"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "97",
         "name_value": "나이팅게일"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "98",
         "name_value": "쿠 훌린(얼터)"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "99",
         "name_value": "여왕 메이브"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "100",
         "name_value": "엘레나 블라바츠키"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "101",
         "name_value": "라마"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "102",
         "name_value": "이서문"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "103",
         "name_value": "토마스 에디슨"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "104",
         "name_value": "제로니모"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "105",
         "name_value": "발리 더 키드"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "106",
         "name_value": "잔 다르크(얼터)"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "107",
         "name_value": "앙리 마유"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "108",
         "name_value": "이스칸다르"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "109",
         "name_value": "에미야"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "110",
         "name_value": "백모의 하산"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "111",
         "name_value": "아이리스필(하늘의 옷)"
     },
     {
+        "name_delete_yn": "N",
         "name_id": "112",
         "name_value": "슈텐도지"
+    },
+    {
+        "name_delete_yn": "N",
+        "name_id": "113",
+        "name_value": "현장 삼장"
+    },
+    {
+        "name_delete_yn": "N",
+        "name_id": "114",
+        "name_value": "미나모토노 라이코"
+    },
+    {
+        "name_delete_yn": "N",
+        "name_id": "115",
+        "name_value": "사카타 킨토키(라이더)"
+    },
+    {
+        "name_delete_yn": "N",
+        "name_id": "116",
+        "name_value": "이바라키도지"
+    },
+    {
+        "name_delete_yn": "N",
+        "name_id": "117",
+        "name_value": "후마 코타로"
+    },
+    {
+        "name_delete_yn": "N",
+        "name_id": "118",
+        "name_value": "오지만디아스"
+    },
+    {
+        "name_delete_yn": "N",
+        "name_id": "119",
+        "name_value": "알트리아 펜드래곤(랜서)"
+    },
+    {
+        "name_delete_yn": "N",
+        "name_id": "120",
+        "name_value": "니토크리스"
+    },
+    {
+        "name_delete_yn": "N",
+        "name_id": "121",
+        "name_value": "랜슬롯"
+    },
+    {
+        "name_delete_yn": "N",
+        "name_id": "122",
+        "name_value": "트리스탄"
+    },
+    {
+        "name_delete_yn": "N",
+        "name_id": "123",
+        "name_value": "가웨인"
+    },
+    {
+        "name_delete_yn": "N",
+        "name_id": "124",
+        "name_value": "정밀의 하산"
+    },
+    {
+        "name_delete_yn": "N",
+        "name_id": "125",
+        "name_value": "타와라 토타"
+    },
+    {
+        "name_delete_yn": "N",
+        "name_id": "126",
+        "name_value": "베디비어"
+    },
+    {
+        "name_delete_yn": "N",
+        "name_id": "127",
+        "name_value": "레오나르도 다 빈치"
+    },
+    {
+        "name_delete_yn": "N",
+        "name_id": "128",
+        "name_value": "타마모노마에(랜서)"
+    },
+    {
+        "name_delete_yn": "N",
+        "name_id": "129",
+        "name_value": "알트리아 펜드래곤(아처)"
+    },
+    {
+        "name_delete_yn": "N",
+        "name_id": "130",
+        "name_value": "마리 앙투아네트(캐스터)"
+    },
+    {
+        "name_delete_yn": "N",
+        "name_id": "131",
+        "name_value": "앤 보니&메리 리드(아처)"
+    },
+    {
+        "name_delete_yn": "N",
+        "name_id": "132",
+        "name_value": "모드레드(라이더)"
+    },
+    {
+        "name_delete_yn": "N",
+        "name_id": "133",
+        "name_value": "스카사하(어새신)"
+    },
+    {
+        "name_delete_yn": "N",
+        "name_id": "134",
+        "name_value": "키요히메(랜서)"
+    },
+    {
+        "name_delete_yn": "N",
+        "name_id": "135",
+        "name_value": "마르타(룰러)"
+    },
+    {
+        "name_delete_yn": "N",
+        "name_id": "136",
+        "name_value": "이리야스필 폰 아인츠베른"
+    },
+    {
+        "name_delete_yn": "N",
+        "name_id": "137",
+        "name_value": "클로에 폰 아인츠베른"
+    },
+    {
+        "name_delete_yn": "N",
+        "name_id": "138",
+        "name_value": "클레오파트라"
+    },
+    {
+        "name_delete_yn": "N",
+        "name_id": "139",
+        "name_value": "블라드 3세(EXTRA)"
+    },
+    {
+        "name_delete_yn": "N",
+        "name_id": "140",
+        "name_value": "엘리자베트 바토리(브레이브)"
+    },
+    {
+        "name_delete_yn": "N",
+        "name_id": "141",
+        "name_value": "잔다르크 얼터 산타 릴리"
+    },
+    {
+        "name_delete_yn": "N",
+        "name_id": "142",
+        "name_value": "이슈타르"
+    },
+    {
+        "name_delete_yn": "N",
+        "name_id": "143",
+        "name_value": "엘키두"
+    },
+    {
+        "name_delete_yn": "N",
+        "name_id": "144",
+        "name_value": "케찰코아틀"
+    },
+    {
+        "name_delete_yn": "N",
+        "name_id": "145",
+        "name_value": "길가메시(캐스터)"
+    },
+    {
+        "name_delete_yn": "N",
+        "name_id": "146",
+        "name_value": "메두사(랜서)"
+    },
+    {
+        "name_delete_yn": "N",
+        "name_id": "147",
+        "name_value": "고르곤"
+    },
+    {
+        "name_delete_yn": "N",
+        "name_id": "148",
+        "name_value": "재규어맨"
+    },
+    {
+        "name_delete_yn": "N",
+        "name_id": "149",
+        "name_value": "티아마트"
+    },
+    {
+        "name_delete_yn": "N",
+        "name_id": "150",
+        "name_value": "멀린"
+    },
+    {
+        "name_delete_yn": "N",
+        "name_id": "151",
+        "name_value": "게티아"
+    },
+    {
+        "name_delete_yn": "N",
+        "name_id": "152",
+        "name_value": "솔로몬"
+    },
+    {
+        "name_delete_yn": "N",
+        "name_id": "153",
+        "name_value": "미야모토 무사시"
+    },
+    {
+        "name_delete_yn": "N",
+        "name_id": "154",
+        "name_value": "킹핫산"
     }
 ]

@@ -108,9 +108,10 @@ public class Parser extends LinearLayout {
                 int servantNameId = jObject.getInt("name_id");
                 int servantClassId = jObject.getInt("class_id");
                 int servantGrade = jObject.getInt("grade_value");
+                String join_delete_yn = jObject.getString("join_delete_yn");
 
                 // 데이터 삽입
-                mDbOpenHelper.addServantJoinList(new ServantContact(servantId, servantIconId, servantNameId, servantClassId, servantGrade));
+                mDbOpenHelper.addServantJoinList(new ServantContact(servantId, servantIconId, servantNameId, servantClassId, servantGrade, join_delete_yn));
             }
             mDbOpenHelper.mDB.setTransactionSuccessful(); // 데이터 삽입이 완전히 종료되면 실행된다.
         } catch (JSONException e) {
@@ -148,9 +149,11 @@ public class Parser extends LinearLayout {
                 // 클래스 아이디 , 클래스 이름을 SON 배열에서 가져온다.
                 int id = jObject.getInt("icon_id");
                 String servantIcon = jObject.getString("icon_name");
+                String icon_delete_yn = jObject.getString("icon_delete_yn");
+
 
                 // 데이터를 삽입한다.
-                mDbOpenHelper.addServantIcon(new ServantIconContact(id, servantIcon));
+                mDbOpenHelper.addServantIcon(new ServantIconContact(id, servantIcon, icon_delete_yn));
             }
             mDbOpenHelper.mDB.setTransactionSuccessful(); // 데이터 삽입이 완전히 종료되면 실행된다.
         } catch (JSONException e) {
@@ -185,9 +188,10 @@ public class Parser extends LinearLayout {
                 // 클래스 아이디 , 클래스 이름을 SON 배열에서 가져온다.
                 int id = jObject.getInt("name_id");
                 String servantName = jObject.getString("name_value");
+                String name_delete_yn = jObject.getString("name_delete_yn");
 
                 // 데이터를 삽입한다.
-                mDbOpenHelper.addServantName(new ServantNameContact(id, servantName));
+                mDbOpenHelper.addServantName(new ServantNameContact(id, servantName, name_delete_yn));
             }
             mDbOpenHelper.mDB.setTransactionSuccessful(); // 데이터 삽입이 완전히 종료되면 실행된다.
         } catch (JSONException e) {
@@ -223,9 +227,10 @@ public class Parser extends LinearLayout {
                 // 클래스 아이디 , 클래스 이름을 SON 배열에서 가져온다.
                 int id = jObject.getInt("class_id");
                 String servantClass = jObject.getString("class_name");
+                String class_delete_yn = jObject.getString("class_delete_yn");
 
                 // 데이터를 삽입한다.
-                mDbOpenHelper.addServantClass(new ServantClassContact(id, servantClass));
+                mDbOpenHelper.addServantClass(new ServantClassContact(id, servantClass, class_delete_yn));
             }
             mDbOpenHelper.mDB.setTransactionSuccessful(); // 데이터 삽입이 완전히 종료되면 실행된다.
         } catch (JSONException e) {
@@ -258,6 +263,7 @@ public class Parser extends LinearLayout {
                 int id = jObject.getInt("id");
                 int servantLevel = jObject.getInt("servant_level");
                 int servantExp = jObject.getInt("servant_exp");
+
                 // 3. 데이터 삽입을 하여준다.
                 mDbOpenHelper.addServantExpContact(new ServantExpContact(id, servantLevel, servantExp));
 

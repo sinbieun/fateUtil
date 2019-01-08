@@ -3,784 +3,1208 @@
         "class_id": "8",
         "grade_value": "3",
         "icon_id": "1",
-        "servant_id": "1",
-        "name_id": "1"
+        "join_delete_yn": "N",
+        "name_id": "1",
+        "servant_id": "1"
     },
     {
         "class_id": "1",
         "grade_value": "5",
         "icon_id": "2",
-        "servant_id": "2",
-        "name_id": "2"
+        "join_delete_yn": "N",
+        "name_id": "2",
+        "servant_id": "2"
     },
     {
         "class_id": "1",
         "grade_value": "4",
         "icon_id": "3",
-        "servant_id": "3",
-        "name_id": "3"
+        "join_delete_yn": "N",
+        "name_id": "3",
+        "servant_id": "3"
     },
     {
         "class_id": "1",
         "grade_value": "4",
         "icon_id": "4",
-        "servant_id": "4",
-        "name_id": "4"
+        "join_delete_yn": "N",
+        "name_id": "4",
+        "servant_id": "4"
     },
     {
         "class_id": "1",
         "grade_value": "4",
         "icon_id": "5",
-        "servant_id": "5",
-        "name_id": "5"
+        "join_delete_yn": "N",
+        "name_id": "5",
+        "servant_id": "5"
     },
     {
         "class_id": "1",
         "grade_value": "4",
         "icon_id": "6",
-        "servant_id": "6",
-        "name_id": "6"
+        "join_delete_yn": "N",
+        "name_id": "6",
+        "servant_id": "6"
     },
     {
         "class_id": "1",
         "grade_value": "3",
         "icon_id": "7",
-        "servant_id": "7",
-        "name_id": "7"
+        "join_delete_yn": "N",
+        "name_id": "7",
+        "servant_id": "7"
     },
     {
         "class_id": "1",
         "grade_value": "5",
         "icon_id": "8",
-        "servant_id": "8",
-        "name_id": "8"
+        "join_delete_yn": "N",
+        "name_id": "8",
+        "servant_id": "8"
     },
     {
         "class_id": "1",
         "grade_value": "3",
         "icon_id": "9",
-        "servant_id": "9",
-        "name_id": "9"
+        "join_delete_yn": "N",
+        "name_id": "9",
+        "servant_id": "9"
     },
     {
         "class_id": "1",
         "grade_value": "4",
         "icon_id": "10",
-        "servant_id": "10",
-        "name_id": "10"
+        "join_delete_yn": "N",
+        "name_id": "10",
+        "servant_id": "10"
     },
     {
         "class_id": "2",
         "grade_value": "4",
         "icon_id": "11",
-        "servant_id": "11",
-        "name_id": "11"
+        "join_delete_yn": "N",
+        "name_id": "11",
+        "servant_id": "11"
     },
     {
         "class_id": "2",
         "grade_value": "5",
         "icon_id": "12",
-        "servant_id": "12",
-        "name_id": "12"
+        "join_delete_yn": "N",
+        "name_id": "12",
+        "servant_id": "12"
     },
     {
         "class_id": "2",
         "grade_value": "3",
         "icon_id": "13",
-        "servant_id": "13",
-        "name_id": "13"
+        "join_delete_yn": "N",
+        "name_id": "13",
+        "servant_id": "13"
     },
     {
         "class_id": "2",
         "grade_value": "4",
         "icon_id": "14",
-        "servant_id": "14",
-        "name_id": "14"
+        "join_delete_yn": "N",
+        "name_id": "14",
+        "servant_id": "14"
     },
     {
         "class_id": "2",
         "grade_value": "3",
         "icon_id": "15",
-        "servant_id": "15",
-        "name_id": "15"
+        "join_delete_yn": "N",
+        "name_id": "15",
+        "servant_id": "15"
     },
     {
         "class_id": "2",
         "grade_value": "1",
         "icon_id": "16",
-        "servant_id": "16",
-        "name_id": "16"
+        "join_delete_yn": "N",
+        "name_id": "16",
+        "servant_id": "16"
     },
     {
         "class_id": "3",
         "grade_value": "3",
         "icon_id": "17",
-        "servant_id": "17",
-        "name_id": "17"
+        "join_delete_yn": "N",
+        "name_id": "17",
+        "servant_id": "17"
     },
     {
         "class_id": "3",
         "grade_value": "4",
         "icon_id": "18",
-        "servant_id": "18",
-        "name_id": "18"
+        "join_delete_yn": "N",
+        "name_id": "18",
+        "servant_id": "18"
     },
     {
         "class_id": "3",
         "grade_value": "2",
         "icon_id": "19",
-        "servant_id": "19",
-        "name_id": "19"
+        "join_delete_yn": "N",
+        "name_id": "19",
+        "servant_id": "19"
     },
     {
         "class_id": "3",
         "grade_value": "3",
         "icon_id": "20",
-        "servant_id": "20",
-        "name_id": "20"
+        "join_delete_yn": "N",
+        "name_id": "20",
+        "servant_id": "20"
     },
     {
         "class_id": "3",
         "grade_value": "2",
         "icon_id": "21",
-        "servant_id": "21",
-        "name_id": "21"
+        "join_delete_yn": "N",
+        "name_id": "21",
+        "servant_id": "21"
     },
     {
         "class_id": "3",
         "grade_value": "3",
         "icon_id": "22",
-        "servant_id": "22",
-        "name_id": "22"
+        "join_delete_yn": "N",
+        "name_id": "22",
+        "servant_id": "22"
     },
     {
         "class_id": "4",
         "grade_value": "3",
         "icon_id": "23",
-        "servant_id": "23",
-        "name_id": "23"
+        "join_delete_yn": "N",
+        "name_id": "23",
+        "servant_id": "23"
     },
     {
         "class_id": "4",
         "grade_value": "2",
         "icon_id": "24",
-        "servant_id": "24",
-        "name_id": "24"
+        "join_delete_yn": "N",
+        "name_id": "24",
+        "servant_id": "24"
     },
     {
         "class_id": "4",
         "grade_value": "2",
         "icon_id": "25",
-        "servant_id": "25",
-        "name_id": "25"
+        "join_delete_yn": "N",
+        "name_id": "25",
+        "servant_id": "25"
     },
     {
         "class_id": "4",
         "grade_value": "3",
         "icon_id": "26",
-        "servant_id": "26",
-        "name_id": "26"
+        "join_delete_yn": "N",
+        "name_id": "26",
+        "servant_id": "26"
     },
     {
         "class_id": "4",
         "grade_value": "3",
         "icon_id": "27",
-        "servant_id": "27",
-        "name_id": "27"
+        "join_delete_yn": "N",
+        "name_id": "27",
+        "servant_id": "27"
     },
     {
         "class_id": "4",
         "grade_value": "3",
         "icon_id": "28",
-        "servant_id": "28",
-        "name_id": "28"
+        "join_delete_yn": "N",
+        "name_id": "28",
+        "servant_id": "28"
     },
     {
         "class_id": "4",
         "grade_value": "4",
         "icon_id": "29",
-        "servant_id": "29",
-        "name_id": "29"
+        "join_delete_yn": "N",
+        "name_id": "29",
+        "servant_id": "29"
     },
     {
         "class_id": "4",
         "grade_value": "4",
         "icon_id": "30",
-        "servant_id": "30",
-        "name_id": "30"
+        "join_delete_yn": "N",
+        "name_id": "30",
+        "servant_id": "30"
     },
     {
         "class_id": "5",
         "grade_value": "3",
         "icon_id": "31",
-        "servant_id": "31",
-        "name_id": "31"
+        "join_delete_yn": "N",
+        "name_id": "31",
+        "servant_id": "31"
     },
     {
         "class_id": "5",
         "grade_value": "3",
         "icon_id": "32",
-        "servant_id": "32",
-        "name_id": "32"
+        "join_delete_yn": "N",
+        "name_id": "32",
+        "servant_id": "32"
     },
     {
         "class_id": "5",
         "grade_value": "2",
         "icon_id": "33",
-        "servant_id": "33",
-        "name_id": "33"
+        "join_delete_yn": "N",
+        "name_id": "33",
+        "servant_id": "33"
     },
     {
         "class_id": "5",
         "grade_value": "2",
         "icon_id": "34",
-        "servant_id": "34",
-        "name_id": "34"
+        "join_delete_yn": "N",
+        "name_id": "34",
+        "servant_id": "34"
     },
     {
         "class_id": "5",
         "grade_value": "3",
         "icon_id": "35",
-        "servant_id": "35",
-        "name_id": "35"
+        "join_delete_yn": "N",
+        "name_id": "35",
+        "servant_id": "35"
     },
     {
         "class_id": "5",
         "grade_value": "1",
         "icon_id": "36",
-        "servant_id": "36",
-        "name_id": "36"
+        "join_delete_yn": "N",
+        "name_id": "36",
+        "servant_id": "36"
     },
     {
         "class_id": "5",
         "grade_value": "5",
         "icon_id": "37",
-        "servant_id": "37",
-        "name_id": "37"
+        "join_delete_yn": "N",
+        "name_id": "37",
+        "servant_id": "37"
     },
     {
         "class_id": "5",
         "grade_value": "3",
         "icon_id": "38",
-        "servant_id": "38",
-        "name_id": "38"
+        "join_delete_yn": "N",
+        "name_id": "38",
+        "servant_id": "38"
     },
     {
         "class_id": "6",
         "grade_value": "1",
         "icon_id": "39",
-        "servant_id": "39",
-        "name_id": "39"
+        "join_delete_yn": "N",
+        "name_id": "39",
+        "servant_id": "39"
     },
     {
         "class_id": "6",
         "grade_value": "2",
         "icon_id": "40",
-        "servant_id": "40",
-        "name_id": "40"
+        "join_delete_yn": "N",
+        "name_id": "40",
+        "servant_id": "40"
     },
     {
         "class_id": "6",
         "grade_value": "4",
         "icon_id": "41",
-        "servant_id": "41",
-        "name_id": "41"
+        "join_delete_yn": "N",
+        "name_id": "41",
+        "servant_id": "41"
     },
     {
         "class_id": "6",
         "grade_value": "3",
         "icon_id": "42",
-        "servant_id": "42",
-        "name_id": "42"
+        "join_delete_yn": "N",
+        "name_id": "42",
+        "servant_id": "42"
     },
     {
         "class_id": "6",
         "grade_value": "2",
         "icon_id": "43",
-        "servant_id": "43",
-        "name_id": "43"
+        "join_delete_yn": "N",
+        "name_id": "43",
+        "servant_id": "43"
     },
     {
         "class_id": "6",
         "grade_value": "2",
         "icon_id": "44",
-        "servant_id": "44",
-        "name_id": "44"
+        "join_delete_yn": "N",
+        "name_id": "44",
+        "servant_id": "44"
     },
     {
         "class_id": "6",
         "grade_value": "1",
         "icon_id": "45",
-        "servant_id": "45",
-        "name_id": "45"
+        "join_delete_yn": "N",
+        "name_id": "45",
+        "servant_id": "45"
     },
     {
         "class_id": "6",
         "grade_value": "4",
         "icon_id": "46",
-        "servant_id": "46",
-        "name_id": "46"
+        "join_delete_yn": "N",
+        "name_id": "46",
+        "servant_id": "46"
     },
     {
         "class_id": "7",
         "grade_value": "4",
         "icon_id": "47",
-        "servant_id": "47",
-        "name_id": "47"
+        "join_delete_yn": "N",
+        "name_id": "47",
+        "servant_id": "47"
     },
     {
         "class_id": "7",
         "grade_value": "4",
         "icon_id": "48",
-        "servant_id": "48",
-        "name_id": "48"
+        "join_delete_yn": "N",
+        "name_id": "48",
+        "servant_id": "48"
     },
     {
         "class_id": "7",
         "grade_value": "3",
         "icon_id": "49",
-        "servant_id": "49",
-        "name_id": "49"
+        "join_delete_yn": "N",
+        "name_id": "49",
+        "servant_id": "49"
     },
     {
         "class_id": "7",
         "grade_value": "1",
         "icon_id": "50",
-        "servant_id": "50",
-        "name_id": "50"
+        "join_delete_yn": "N",
+        "name_id": "50",
+        "servant_id": "50"
     },
     {
         "class_id": "7",
         "grade_value": "5",
         "icon_id": "51",
-        "servant_id": "51",
-        "name_id": "51"
+        "join_delete_yn": "N",
+        "name_id": "51",
+        "servant_id": "51"
     },
     {
         "class_id": "7",
         "grade_value": "5",
         "icon_id": "52",
-        "servant_id": "52",
-        "name_id": "52"
+        "join_delete_yn": "N",
+        "name_id": "52",
+        "servant_id": "52"
     },
     {
         "class_id": "7",
         "grade_value": "1",
         "icon_id": "53",
-        "servant_id": "53",
-        "name_id": "53"
+        "join_delete_yn": "N",
+        "name_id": "53",
+        "servant_id": "53"
     },
     {
         "class_id": "7",
         "grade_value": "2",
         "icon_id": "54",
-        "servant_id": "54",
-        "name_id": "54"
+        "join_delete_yn": "N",
+        "name_id": "54",
+        "servant_id": "54"
     },
     {
         "class_id": "7",
         "grade_value": "3",
         "icon_id": "55",
-        "servant_id": "55",
-        "name_id": "55"
+        "join_delete_yn": "N",
+        "name_id": "55",
+        "servant_id": "55"
     },
     {
         "class_id": "7",
         "grade_value": "3",
         "icon_id": "56",
-        "servant_id": "56",
-        "name_id": "56"
+        "join_delete_yn": "N",
+        "name_id": "56",
+        "servant_id": "56"
     },
     {
         "class_id": "7",
         "grade_value": "2",
         "icon_id": "57",
-        "servant_id": "57",
-        "name_id": "57"
+        "join_delete_yn": "N",
+        "name_id": "57",
+        "servant_id": "57"
     },
     {
         "class_id": "7",
         "grade_value": "4",
         "icon_id": "58",
-        "servant_id": "58",
-        "name_id": "58"
+        "join_delete_yn": "N",
+        "name_id": "58",
+        "servant_id": "58"
     },
     {
         "class_id": "9",
         "grade_value": "5",
         "icon_id": "59",
-        "servant_id": "59",
-        "name_id": "59"
+        "join_delete_yn": "N",
+        "name_id": "59",
+        "servant_id": "59"
     },
     {
         "class_id": "2",
         "grade_value": "5",
         "icon_id": "60",
-        "servant_id": "60",
-        "name_id": "60"
+        "join_delete_yn": "N",
+        "name_id": "60",
+        "servant_id": "60"
     },
     {
         "class_id": "5",
         "grade_value": "4",
         "icon_id": "61",
-        "servant_id": "61",
-        "name_id": "61"
+        "join_delete_yn": "N",
+        "name_id": "61",
+        "servant_id": "61"
     },
     {
         "class_id": "5",
         "grade_value": "5",
         "icon_id": "62",
-        "servant_id": "62",
-        "name_id": "62"
+        "join_delete_yn": "N",
+        "name_id": "62",
+        "servant_id": "62"
     },
     {
         "class_id": "2",
         "grade_value": "3",
         "icon_id": "63",
-        "servant_id": "63",
-        "name_id": "63"
+        "join_delete_yn": "N",
+        "name_id": "63",
+        "servant_id": "63"
     },
     {
         "class_id": "3",
         "grade_value": "3",
         "icon_id": "64",
-        "servant_id": "64",
-        "name_id": "64"
+        "join_delete_yn": "N",
+        "name_id": "64",
+        "servant_id": "64"
     },
     {
         "class_id": "4",
         "grade_value": "5",
         "icon_id": "65",
-        "servant_id": "65",
-        "name_id": "65"
+        "join_delete_yn": "N",
+        "name_id": "65",
+        "servant_id": "65"
     },
     {
         "class_id": "4",
         "grade_value": "4",
         "icon_id": "66",
-        "servant_id": "66",
-        "name_id": "66"
+        "join_delete_yn": "N",
+        "name_id": "66",
+        "servant_id": "66"
     },
     {
         "class_id": "5",
         "grade_value": "4",
         "icon_id": "67",
-        "servant_id": "67",
-        "name_id": "67"
+        "join_delete_yn": "N",
+        "name_id": "67",
+        "servant_id": "67"
     },
     {
         "class_id": "1",
         "grade_value": "5",
         "icon_id": "68",
-        "servant_id": "68",
-        "name_id": "68"
+        "join_delete_yn": "N",
+        "name_id": "68",
+        "servant_id": "68"
     },
     {
         "class_id": "2",
         "grade_value": "4",
         "icon_id": "69",
-        "servant_id": "69",
-        "name_id": "69"
+        "join_delete_yn": "N",
+        "name_id": "69",
+        "servant_id": "69"
     },
     {
         "class_id": "3",
         "grade_value": "5",
         "icon_id": "70",
-        "servant_id": "70",
-        "name_id": "70"
+        "join_delete_yn": "N",
+        "name_id": "70",
+        "servant_id": "70"
     },
     {
         "class_id": "3",
         "grade_value": "3",
         "icon_id": "71",
-        "servant_id": "71",
-        "name_id": "71"
+        "join_delete_yn": "N",
+        "name_id": "71",
+        "servant_id": "71"
     },
     {
         "class_id": "1",
         "grade_value": "3",
         "icon_id": "72",
-        "servant_id": "72",
-        "name_id": "72"
+        "join_delete_yn": "N",
+        "name_id": "72",
+        "servant_id": "72"
     },
     {
         "class_id": "4",
         "grade_value": "4",
         "icon_id": "73",
-        "servant_id": "73",
-        "name_id": "73"
+        "join_delete_yn": "N",
+        "name_id": "73",
+        "servant_id": "73"
     },
     {
         "class_id": "5",
         "grade_value": "4",
         "icon_id": "74",
-        "servant_id": "74",
-        "name_id": "74"
+        "join_delete_yn": "N",
+        "name_id": "74",
+        "servant_id": "74"
     },
     {
         "class_id": "6",
         "grade_value": "5",
         "icon_id": "75",
-        "servant_id": "75",
-        "name_id": "75"
+        "join_delete_yn": "N",
+        "name_id": "75",
+        "servant_id": "75"
     },
     {
         "class_id": "1",
         "grade_value": "5",
         "icon_id": "76",
-        "servant_id": "76",
-        "name_id": "76"
+        "join_delete_yn": "N",
+        "name_id": "76",
+        "servant_id": "76"
     },
     {
         "class_id": "2",
         "grade_value": "5",
         "icon_id": "77",
-        "servant_id": "77",
-        "name_id": "77"
+        "join_delete_yn": "N",
+        "name_id": "77",
+        "servant_id": "77"
     },
     {
         "class_id": "3",
         "grade_value": "4",
         "icon_id": "78",
-        "servant_id": "78",
-        "name_id": "78"
+        "join_delete_yn": "N",
+        "name_id": "78",
+        "servant_id": "78"
     },
     {
         "class_id": "5",
         "grade_value": "3",
         "icon_id": "79",
-        "servant_id": "79",
-        "name_id": "79"
+        "join_delete_yn": "N",
+        "name_id": "79",
+        "servant_id": "79"
     },
     {
         "class_id": "5",
         "grade_value": "3",
         "icon_id": "80",
-        "servant_id": "80",
-        "name_id": "80"
+        "join_delete_yn": "N",
+        "name_id": "80",
+        "servant_id": "80"
     },
     {
         "class_id": "6",
         "grade_value": "3",
         "icon_id": "81",
-        "servant_id": "81",
-        "name_id": "81"
+        "join_delete_yn": "N",
+        "name_id": "81",
+        "servant_id": "81"
     },
     {
         "class_id": "7",
         "grade_value": "4",
         "icon_id": "82",
-        "servant_id": "82",
-        "name_id": "82"
+        "join_delete_yn": "N",
+        "name_id": "82",
+        "servant_id": "82"
     },
     {
         "class_id": "0",
         "grade_value": "5",
         "icon_id": "83",
-        "servant_id": "83",
-        "name_id": "83"
+        "join_delete_yn": "N",
+        "name_id": "83",
+        "servant_id": "83"
     },
     {
         "class_id": "2",
         "grade_value": "5",
         "icon_id": "84",
-        "servant_id": "84",
-        "name_id": "84"
+        "join_delete_yn": "N",
+        "name_id": "84",
+        "servant_id": "84"
     },
     {
         "class_id": "3",
         "grade_value": "5",
         "icon_id": "85",
-        "servant_id": "85",
-        "name_id": "85"
+        "join_delete_yn": "N",
+        "name_id": "85",
+        "servant_id": "85"
     },
     {
         "class_id": "6",
         "grade_value": "5",
         "icon_id": "86",
-        "servant_id": "86",
-        "name_id": "86"
+        "join_delete_yn": "N",
+        "name_id": "86",
+        "servant_id": "86"
     },
     {
         "class_id": "3",
         "grade_value": "4",
         "icon_id": "87",
-        "servant_id": "87",
-        "name_id": "87"
+        "join_delete_yn": "N",
+        "name_id": "87",
+        "servant_id": "87"
     },
     {
         "class_id": "3",
         "grade_value": "4",
         "icon_id": "88",
-        "servant_id": "88",
-        "name_id": "88"
+        "join_delete_yn": "N",
+        "name_id": "88",
+        "servant_id": "88"
     },
     {
         "class_id": "7",
         "grade_value": "4",
         "icon_id": "89",
-        "servant_id": "89",
-        "name_id": "89"
+        "join_delete_yn": "N",
+        "name_id": "89",
+        "servant_id": "89"
     },
     {
         "class_id": "1",
         "grade_value": "5",
         "icon_id": "90",
-        "servant_id": "90",
-        "name_id": "90"
+        "join_delete_yn": "N",
+        "name_id": "90",
+        "servant_id": "90"
     },
     {
         "class_id": "1",
         "grade_value": "5",
         "icon_id": "91",
-        "servant_id": "91",
-        "name_id": "91"
+        "join_delete_yn": "N",
+        "name_id": "91",
+        "servant_id": "91"
     },
     {
         "class_id": "6",
         "grade_value": "4",
         "icon_id": "92",
-        "servant_id": "92",
-        "name_id": "92"
+        "join_delete_yn": "N",
+        "name_id": "92",
+        "servant_id": "92"
     },
     {
         "class_id": "9",
         "grade_value": "5",
         "icon_id": "93",
-        "servant_id": "93",
-        "name_id": "93"
+        "join_delete_yn": "N",
+        "name_id": "93",
+        "servant_id": "93"
     },
     {
         "class_id": "4",
         "grade_value": "4",
         "icon_id": "94",
-        "servant_id": "94",
-        "name_id": "94"
+        "join_delete_yn": "N",
+        "name_id": "94",
+        "servant_id": "94"
     },
     {
         "class_id": "2",
         "grade_value": "3",
         "icon_id": "95",
-        "servant_id": "95",
-        "name_id": "95"
+        "join_delete_yn": "N",
+        "name_id": "95",
+        "servant_id": "95"
     },
     {
         "class_id": "10",
         "grade_value": "5",
         "icon_id": "96",
-        "servant_id": "96",
-        "name_id": "96"
+        "join_delete_yn": "N",
+        "name_id": "96",
+        "servant_id": "96"
     },
     {
         "class_id": "7",
         "grade_value": "5",
         "icon_id": "97",
-        "servant_id": "97",
-        "name_id": "97"
+        "join_delete_yn": "N",
+        "name_id": "97",
+        "servant_id": "97"
     },
     {
         "class_id": "7",
         "grade_value": "5",
         "icon_id": "98",
-        "servant_id": "98",
-        "name_id": "98"
+        "join_delete_yn": "N",
+        "name_id": "98",
+        "servant_id": "98"
     },
     {
         "class_id": "4",
         "grade_value": "5",
         "icon_id": "99",
-        "servant_id": "99",
-        "name_id": "99"
+        "join_delete_yn": "N",
+        "name_id": "99",
+        "servant_id": "99"
     },
     {
         "class_id": "5",
         "grade_value": "4",
         "icon_id": "100",
-        "servant_id": "100",
-        "name_id": "100"
+        "join_delete_yn": "N",
+        "name_id": "100",
+        "servant_id": "100"
     },
     {
         "class_id": "1",
         "grade_value": "4",
         "icon_id": "101",
-        "servant_id": "101",
-        "name_id": "101"
+        "join_delete_yn": "N",
+        "name_id": "101",
+        "servant_id": "101"
     },
     {
         "class_id": "3",
         "grade_value": "4",
         "icon_id": "102",
-        "servant_id": "102",
-        "name_id": "102"
+        "join_delete_yn": "N",
+        "name_id": "102",
+        "servant_id": "102"
     },
     {
         "class_id": "5",
         "grade_value": "4",
         "icon_id": "103",
-        "servant_id": "103",
-        "name_id": "103"
+        "join_delete_yn": "N",
+        "name_id": "103",
+        "servant_id": "103"
     },
     {
         "class_id": "5",
         "grade_value": "3",
         "icon_id": "104",
-        "servant_id": "104",
-        "name_id": "104"
+        "join_delete_yn": "N",
+        "name_id": "104",
+        "servant_id": "104"
     },
     {
         "class_id": "2",
         "grade_value": "3",
         "icon_id": "105",
-        "servant_id": "105",
-        "name_id": "105"
+        "join_delete_yn": "N",
+        "name_id": "105",
+        "servant_id": "105"
     },
     {
         "class_id": "10",
         "grade_value": "5",
         "icon_id": "106",
-        "servant_id": "106",
-        "name_id": "106"
+        "join_delete_yn": "N",
+        "name_id": "106",
+        "servant_id": "106"
     },
     {
         "class_id": "10",
         "grade_value": "2",
         "icon_id": "107",
-        "servant_id": "107",
-        "name_id": "107"
+        "join_delete_yn": "N",
+        "name_id": "107",
+        "servant_id": "107"
     },
     {
         "class_id": "4",
         "grade_value": "5",
         "icon_id": "108",
-        "servant_id": "108",
-        "name_id": "108"
+        "join_delete_yn": "N",
+        "name_id": "108",
+        "servant_id": "108"
     },
     {
         "class_id": "6",
         "grade_value": "4",
         "icon_id": "109",
-        "servant_id": "109",
-        "name_id": "109"
+        "join_delete_yn": "N",
+        "name_id": "109",
+        "servant_id": "109"
     },
     {
         "class_id": "6",
         "grade_value": "3",
         "icon_id": "110",
-        "servant_id": "110",
-        "name_id": "110"
+        "join_delete_yn": "N",
+        "name_id": "110",
+        "servant_id": "110"
     },
     {
         "class_id": "5",
         "grade_value": "4",
         "icon_id": "111",
-        "servant_id": "111",
-        "name_id": "111"
+        "join_delete_yn": "N",
+        "name_id": "111",
+        "servant_id": "111"
     },
     {
         "class_id": "6",
         "grade_value": "5",
         "icon_id": "112",
-        "servant_id": "112",
-        "name_id": "112"
+        "join_delete_yn": "N",
+        "name_id": "112",
+        "servant_id": "112"
+    },
+    {
+        "class_id": "5",
+        "grade_value": "5",
+        "icon_id": "113",
+        "join_delete_yn": "N",
+        "name_id": "113",
+        "servant_id": "113"
+    },
+    {
+        "class_id": "7",
+        "grade_value": "5",
+        "icon_id": "114",
+        "join_delete_yn": "N",
+        "name_id": "114",
+        "servant_id": "114"
+    },
+    {
+        "class_id": "4",
+        "grade_value": "4",
+        "icon_id": "115",
+        "join_delete_yn": "N",
+        "name_id": "115",
+        "servant_id": "115"
+    },
+    {
+        "class_id": "7",
+        "grade_value": "4",
+        "icon_id": "116",
+        "join_delete_yn": "N",
+        "name_id": "116",
+        "servant_id": "116"
+    },
+    {
+        "class_id": "6",
+        "grade_value": "3",
+        "icon_id": "117",
+        "join_delete_yn": "N",
+        "name_id": "117",
+        "servant_id": "117"
+    },
+    {
+        "class_id": "4",
+        "grade_value": "5",
+        "icon_id": "118",
+        "join_delete_yn": "N",
+        "name_id": "118",
+        "servant_id": "118"
+    },
+    {
+        "class_id": "3",
+        "grade_value": "5",
+        "icon_id": "119",
+        "join_delete_yn": "N",
+        "name_id": "119",
+        "servant_id": "119"
+    },
+    {
+        "class_id": "5",
+        "grade_value": "4",
+        "icon_id": "120",
+        "join_delete_yn": "N",
+        "name_id": "120",
+        "servant_id": "120"
+    },
+    {
+        "class_id": "1",
+        "grade_value": "4",
+        "icon_id": "121",
+        "join_delete_yn": "N",
+        "name_id": "121",
+        "servant_id": "121"
+    },
+    {
+        "class_id": "2",
+        "grade_value": "4",
+        "icon_id": "122",
+        "join_delete_yn": "N",
+        "name_id": "122",
+        "servant_id": "122"
+    },
+    {
+        "class_id": "1",
+        "grade_value": "4",
+        "icon_id": "123",
+        "join_delete_yn": "N",
+        "name_id": "123",
+        "servant_id": "123"
+    },
+    {
+        "class_id": "6",
+        "grade_value": "3",
+        "icon_id": "124",
+        "join_delete_yn": "N",
+        "name_id": "124",
+        "servant_id": "124"
+    },
+    {
+        "class_id": "2",
+        "grade_value": "3",
+        "icon_id": "125",
+        "join_delete_yn": "N",
+        "name_id": "125",
+        "servant_id": "125"
+    },
+    {
+        "class_id": "1",
+        "grade_value": "3",
+        "icon_id": "126",
+        "join_delete_yn": "N",
+        "name_id": "126",
+        "servant_id": "126"
+    },
+    {
+        "class_id": "5",
+        "grade_value": "5",
+        "icon_id": "127",
+        "join_delete_yn": "N",
+        "name_id": "127",
+        "servant_id": "127"
+    },
+    {
+        "class_id": "3",
+        "grade_value": "5",
+        "icon_id": "128",
+        "join_delete_yn": "N",
+        "name_id": "128",
+        "servant_id": "128"
+    },
+    {
+        "class_id": "2",
+        "grade_value": "5",
+        "icon_id": "129",
+        "join_delete_yn": "N",
+        "name_id": "129",
+        "servant_id": "129"
+    },
+    {
+        "class_id": "5",
+        "grade_value": "4",
+        "icon_id": "130",
+        "join_delete_yn": "N",
+        "name_id": "130",
+        "servant_id": "130"
+    },
+    {
+        "class_id": "2",
+        "grade_value": "4",
+        "icon_id": "131",
+        "join_delete_yn": "N",
+        "name_id": "131",
+        "servant_id": "131"
+    },
+    {
+        "class_id": "4",
+        "grade_value": "4",
+        "icon_id": "132",
+        "join_delete_yn": "N",
+        "name_id": "132",
+        "servant_id": "132"
+    },
+    {
+        "class_id": "6",
+        "grade_value": "4",
+        "icon_id": "133",
+        "join_delete_yn": "N",
+        "name_id": "133",
+        "servant_id": "133"
+    },
+    {
+        "class_id": "3",
+        "grade_value": "4",
+        "icon_id": "134",
+        "join_delete_yn": "N",
+        "name_id": "134",
+        "servant_id": "134"
+    },
+    {
+        "class_id": "9",
+        "grade_value": "4",
+        "icon_id": "135",
+        "join_delete_yn": "N",
+        "name_id": "135",
+        "servant_id": "135"
+    },
+    {
+        "class_id": "5",
+        "grade_value": "5",
+        "icon_id": "136",
+        "join_delete_yn": "N",
+        "name_id": "136",
+        "servant_id": "136"
+    },
+    {
+        "class_id": "2",
+        "grade_value": "4",
+        "icon_id": "137",
+        "join_delete_yn": "N",
+        "name_id": "137",
+        "servant_id": "137"
+    },
+    {
+        "class_id": "1",
+        "grade_value": "4",
+        "icon_id": "138",
+        "join_delete_yn": "N",
+        "name_id": "138",
+        "servant_id": "138"
+    },
+    {
+        "class_id": "6",
+        "grade_value": "5",
+        "icon_id": "139",
+        "join_delete_yn": "N",
+        "name_id": "139",
+        "servant_id": "139"
+    },
+    {
+        "class_id": "3",
+        "grade_value": "4",
+        "icon_id": "140",
+        "join_delete_yn": "N",
+        "name_id": "140",
+        "servant_id": "140"
+    },
+    {
+        "class_id": "3",
+        "grade_value": "4",
+        "icon_id": "141",
+        "join_delete_yn": "N",
+        "name_id": "141",
+        "servant_id": "141"
+    },
+    {
+        "class_id": "2",
+        "grade_value": "5",
+        "icon_id": "142",
+        "join_delete_yn": "N",
+        "name_id": "142",
+        "servant_id": "142"
+    },
+    {
+        "class_id": "3",
+        "grade_value": "5",
+        "icon_id": "143",
+        "join_delete_yn": "N",
+        "name_id": "143",
+        "servant_id": "143"
+    },
+    {
+        "class_id": "4",
+        "grade_value": "5",
+        "icon_id": "144",
+        "join_delete_yn": "N",
+        "name_id": "144",
+        "servant_id": "144"
+    },
+    {
+        "class_id": "5",
+        "grade_value": "4",
+        "icon_id": "145",
+        "join_delete_yn": "N",
+        "name_id": "145",
+        "servant_id": "145"
+    },
+    {
+        "class_id": "3",
+        "grade_value": "4",
+        "icon_id": "146",
+        "join_delete_yn": "N",
+        "name_id": "146",
+        "servant_id": "146"
+    },
+    {
+        "class_id": "10",
+        "grade_value": "4",
+        "icon_id": "147",
+        "join_delete_yn": "N",
+        "name_id": "147",
+        "servant_id": "147"
+    },
+    {
+        "class_id": "3",
+        "grade_value": "3",
+        "icon_id": "148",
+        "join_delete_yn": "N",
+        "name_id": "148",
+        "servant_id": "148"
+    },
+    {
+        "class_id": "5",
+        "grade_value": "5",
+        "icon_id": "150",
+        "join_delete_yn": "N",
+        "name_id": "150",
+        "servant_id": "150"
+    },
+    {
+        "class_id": "1",
+        "grade_value": "5",
+        "icon_id": "153",
+        "join_delete_yn": "N",
+        "name_id": "153",
+        "servant_id": "153"
+    },
+    {
+        "class_id": "6",
+        "grade_value": "5",
+        "icon_id": "154",
+        "join_delete_yn": "N",
+        "name_id": "154",
+        "servant_id": "154"
     }
 ]
